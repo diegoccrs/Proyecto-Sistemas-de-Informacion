@@ -1,7 +1,7 @@
 # Proyecto-Sistemas-de-Informacion
 Desarrollo del Sitio Web para el Restaurante "Deli Pernil"
 
-* Integrantes:
+Integrantes:
 
 - Diego Cáceres
 
