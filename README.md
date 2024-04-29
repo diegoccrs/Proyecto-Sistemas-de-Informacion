@@ -1,16 +1,16 @@
 # Proyecto-Sistemas-de-Informacion
-Desarrollo de Sitio Web para el restaurante "Deli Pernil"
+Desarrollo del Sitio Web para el Restaurante "Deli Pernil"
 
-Integrantes:
+* Integrantes:
 
-Diego Cáceres
+- Diego Cáceres
 
-Diego Goncalves
+- Diego Goncalves
 
-Sebastian Hernandez
+- Sebastian Hernandez
 
-Virginia Torrealba
+- Virginia Torrealba
 
-Giselle Esclasans
+- Giselle Esclasans
 
-Victor Martinez
+- Victor Martinez
