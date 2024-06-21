@@ -7,7 +7,6 @@ import UserProvider from './providers/UserProvider.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <UserProvider>
-      
       <App />
     </UserProvider>
   </React.StrictMode>,
