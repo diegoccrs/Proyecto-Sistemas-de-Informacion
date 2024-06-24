@@ -56,6 +56,7 @@ export default function UserProvider({ children }) {
             console.error(e,"Error en la función obtenerAdministrator");
         }
 }
+
     //cada vez que el auth cambie pasara por aqui
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -81,3 +82,4 @@ export default function UserProvider({ children }) {
         </UserGlobal.Provider>
     );
 }
+
