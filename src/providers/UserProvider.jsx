@@ -21,6 +21,40 @@ export default function UserProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
 
+    //dado un user, este metodo busca el client en la base de datos, lo convierte en un objeto client
+    // y cambia el estado del user.
+    async function obtenerClient(user){
+        try{
+            const docRef = doc(db, "clientes", user.uid);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                // Accede a los campos del documento utilizando la sintaxis data.<nombre_del_campo>
+                const client = new Client(data.name, data.lastname, data.number, data.email, data.career, data.picture);
+                setUser(client);
+            }
+        }catch (e){
+            console.error(e,"Error en la función obtenerClient");
+        }
+    }
+}
+
+    async function obtenerAdministrator(user){
+        try{
+            const docRef = doc(db, "administradores", user.uid);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+
+                // Accede a los campos del documento utilizando la sintaxis data.<nombre_del_campo>
+                const admi = new Administrator(data.name,data.email,data.number,data.picture);
+                setUser(admi);
+            }
+        }catch (e){
+            console.error(e,"Error en la función obtenerAdministrator");
+        }
 }
     //cada vez que el auth cambie pasara por aqui
     useEffect(() => {
@@ -41,8 +75,9 @@ export default function UserProvider({ children }) {
         });
     }, []);
     
-    return (
-        <UserGlobal.Provider value = {{user,setUser} }>
-            {children}
-        </UserGlobal.Provider>
+        return (
+            <UserGlobal.Provider value = {{user,setUser} }>
+                {children}
+            </UserGlobal.Provider>
     );
+}
