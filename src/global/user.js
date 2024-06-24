@@ -1,3 +1,4 @@
+
 import { createGlobal, useGlobal} from "react";
 
 // Creamos un Global
