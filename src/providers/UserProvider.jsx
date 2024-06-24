@@ -10,7 +10,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import { Client } from '../objects/Client';
-import { Administrator } from '../objects/Administrator';
+import { Administrator } from '../objects/Admin';
 
 
 
