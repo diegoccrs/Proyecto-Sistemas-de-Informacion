@@ -1,8 +1,10 @@
 
-export function Client(name,email,number,picture,) {
+export function Client(name, lastname, number, email, career, picture) {
     this.name = name;
-    this.email = email;
+    this.lastname = lastname;
     this.number = number;
+    this.email = email;
+    this.career = career;
     this.picture = picture;
     
   }
