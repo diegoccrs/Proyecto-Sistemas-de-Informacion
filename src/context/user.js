@@ -1,11 +1,11 @@
 
-import { createGlobal, useGlobal} from "react";
+import { createContext, useContext} from "react";
 
-// Creamos un Global
-export const UserGlobal = createGlobal(null);
+// Creamos un Context
+export const UserContext = createContext(null);
 
 // Creamos un hook
 export function useUser(){
-    const user = useGlobal(UserGlobal);
+    const user = useContext(UserContext);
     return user;
 }

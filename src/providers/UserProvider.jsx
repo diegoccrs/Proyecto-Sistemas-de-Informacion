@@ -1,13 +1,13 @@
 
 //El UserGlobal es un objeto de contexto que se utiliza para compartir el tema entre componentes.
-import { UserGlobal } from '../global/user';
+import { UserContext } from '../context/user';
 
 // se importa el hook useState desde la biblioteca react. El hook useState se utiliza para gestionar el estado del 
 // user en el componente UserProvider.
 import { useEffect, useState } from 'react';
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection,getDocs,doc,getDoc } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import { Client } from '../objects/Client';
 import { Administrator } from '../objects/Administrator';
@@ -18,7 +18,7 @@ import { Administrator } from '../objects/Administrator';
 //children representa los componentes hijos que se envolverán con el tema proporcionado por UserProvider.
 export default function UserProvider({ children }) {
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    //const [loading, setLoading] = useState(true);
 
 
     //dado un user, este metodo busca el client en la base de datos, lo convierte en un objeto client
@@ -77,9 +77,9 @@ export default function UserProvider({ children }) {
     }, []);
     
     return (
-        <UserGlobal.Provider value = {{ user,setUser}}>
+        <UserContext.Provider value = {{ user,setUser}}>
             {children}
-        </UserGlobal.Provider>
+        </UserContext.Provider>
     );
 }
 
