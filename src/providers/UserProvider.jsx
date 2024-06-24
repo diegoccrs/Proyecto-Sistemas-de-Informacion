@@ -7,7 +7,7 @@ import { UserContext } from '../context/user';
 import { useEffect, useState } from 'react';
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { collection,getDocs,doc,getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import { Client } from '../objects/Client';
 import { Administrator } from '../objects/Admin';
@@ -18,7 +18,7 @@ import { Administrator } from '../objects/Admin';
 //children representa los componentes hijos que se envolverán con el tema proporcionado por UserProvider.
 export default function UserProvider({ children }) {
     const [user, setUser] = useState(null);
-    //const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
 
     //dado un user, este metodo busca el client en la base de datos, lo convierte en un objeto client
@@ -38,7 +38,7 @@ export default function UserProvider({ children }) {
             console.error(e,"Error en la función obtenerClient");
         }
     }
-}
+
 
     async function obtenerAdministrator(user){
         try{
@@ -82,4 +82,3 @@ export default function UserProvider({ children }) {
         </UserContext.Provider>
     );
 }
-
