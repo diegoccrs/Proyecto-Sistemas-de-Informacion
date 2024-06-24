@@ -21,6 +21,10 @@ export const routes = [
         path: "/acceder",
         name: "Acceder",
     },
+    {
+        path: "/IniciarSesion",
+        name: "IniciarSesion",
+    },
 ] as const
 
 
