@@ -1,4 +1,6 @@
 
-//export default function HomePage() {
-  //  const admins = useAdm();
-//}
+export default function HomePage() {
+    const admins = useAdm();
+}
+
+
