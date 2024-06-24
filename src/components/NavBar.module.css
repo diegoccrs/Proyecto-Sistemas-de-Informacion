@@ -1,9 +1,10 @@
 .header {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem 1rem;
     background-color: #ffffff;
+    font-family: "Marvel", sans-serif;
   }
   
   .logoContainer {
@@ -28,6 +29,7 @@
     font-size: 1.25rem;
     text-decoration: none;
     transition: color 0.3s;
+    font-family: "Marvel", sans-serif;
   }
   
   .nav-link:hover {
