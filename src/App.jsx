@@ -5,7 +5,7 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth'
-import { auth } from './firebase-config.js'
+import { auth } from './firebase.js'
 import './App.css'
 
 function App() {
