@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import Home from './views/HomePage';
 import Root from './layout/Roots.jsx';
-import { routes } from "./constants/routes";
+import  routes  from './constants/routes.ts';
 
 /**
 import HomePage from './views/HomePage';
@@ -20,6 +20,18 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root/>,
+     
+    },
+
+    {
+        path: "/",
+        element: <Home/>,
+     
+    },
+
+    {
+        path: "/",
+        element: <routes/>,
      
     }
 ]);
