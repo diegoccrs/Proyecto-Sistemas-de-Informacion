@@ -76,7 +76,7 @@ export default function UserProvider({ children }) {
     }, []);
     
     return (
-        <UserGlobal.Provider value = {{user,setUser} }>
+        <UserGlobal.Provider value = {{ user,setUser}}>
             {children}
         </UserGlobal.Provider>
     );
