@@ -3,7 +3,7 @@ import HomePage from './views/HomePage';
 import LoginPage from './views/LoginPage';
 import RegisterPage from './views/RegisterPage';
 
-export const router = createBrowserRouter{[
+export const router = createBrowserRouter([
     {
         path: '/',
         element: <HomePage />,
@@ -20,4 +20,4 @@ export const router = createBrowserRouter{[
         path: '/app',
         element: <div>App</div>,
     },
-]};
+]);
