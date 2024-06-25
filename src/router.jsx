@@ -8,6 +8,8 @@ import Nosotros from "./views/Nosotros.jsx";
 import Ayuda from "./views/Ayuda.jsx";
 import Acceder from "./views/Acceder.jsx";
 import IniciarSesion from "./views/LoginPage.jsx";
+import Perfil from "./views/Perfil.jsx";
+import EditarPerfil from "./views/EditPerfil.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
               {
                 path: routes[5].path,
                 element: <IniciarSesion />,
+              },
+              {
+                path: routes[6].path,
+                element: <Perfil />,
+              },
+              {
+                path: routes[7].path,
+                element: <EditarPerfil />,
               },
         ],
     }

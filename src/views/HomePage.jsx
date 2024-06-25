@@ -8,9 +8,10 @@ const HomePage = () => {
     const { user } = useUser();
   
     return (
-      <div className={styles.container}>
-        <div>
-            <h1>Si te gusta recomiéndanos. ¡Si no, también para que otro pase rabia! </h1>
+      <div>
+        <div className= {styles.slogan}>
+            <h1>Si te gusta <span className={styles.colored}>recomiéndanos.</span> </h1>
+            <h1> ¡Si no, también para que otro pase rabia! </h1>
         </div>
         <nav className={styles.nav}>
           

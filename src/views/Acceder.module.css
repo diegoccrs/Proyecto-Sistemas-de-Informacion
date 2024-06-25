@@ -1,45 +1,110 @@
-.header {
-    z-index: 1;
+
+
+.pageContainer {
     display: flex;
-    align-items: center;
-    box-sizing: border-box; 
-    width: 100%;
-    color: white;
-  
     justify-content: center;
-    background-color: #000A62;
-    font-size: 44px;
-    font-weight: bold;
-    flex-direction: column;
-    margin: 0 auto;
-
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-  
-      .nav-link {
-        color: #c1c1c1d8;
-        font-size: 1.25rem;
-        text-decoration: none;
-        transition: color 0.3s;
-  
-        &:hover {
-          color: #ffffff;
-        }
-  
-        &.active {
-          color: orange;
-        }
-      }
-    }
+    align-items: center;
+    height: 100vh;
+    background-color: black;
   }
 
-.d{
-  padding: 5%;
-}
-.linea_horizontal {
-  background-color: white;
-  border-top: 2px solid;
+  .boxContainer {
+    background-color: white;
+    border-radius: 10px;
+    padding: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-bottom: 30px;
+  }
+
+  .titleContainer {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .column {
+    width: 50%;
+    padding: auto;
+    box-sizing: border-box;
+    margin: 1px;
+  }
+
+  .column:first-child {
+    margin-right: 100px;
+    margin-left: 50px;
+  }
+  
+  .column:last-child {
+    margin-left: 20px;
+    margin-right: 50px;
+  }
+  
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .loginButton {
+    display: inline-block;
+    background-color: rgb(248, 176, 248);
+    background-color: ;
+    color: rgb(83, 8, 118);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+  
+    border: 0.5px solid #ccc;
+    background-color: #cacaca;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: rgb(248, 176, 248);
+    color: rgb(83, 8, 118);
+    padding: 10px 20px;
+    border: 5px solid rgb(83, 8, 118) ;
+    margin: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+
+.imageButtonsContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+.imageButton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 10px;
+    padding: 0;
+  }
+  
+.imageButton img {
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+  }  
+
+
+.errorLabel {
+  color: red;
+  font-size: 12px;
 }
