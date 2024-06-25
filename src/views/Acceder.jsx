@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
     createUserWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signInWithPopup
 } from 'firebase/auth'
-import { auth } from '../firebase-config.js'
+import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
 import styles from './Acceder.module.css';
 
 import googlelogo from '../img/google.png';
@@ -52,6 +53,43 @@ function Acceder() {
     };
 
 
+    const loginPopupGoogle = async () => {
+        setLoading(true);
+        try {
+            await signInWithPopup(auth, googleProvider);
+
+            console.log(user);
+
+            setError(null);
+            setLoading(false);
+            navigate("/");
+        } catch (error) {
+            console.log(error.message);
+
+            setError(error.message);
+            setLoading(false);
+        }
+    };
+
+    const loginPopupFacebook = async () => {
+        setLoading(true);
+        try {
+            await signInWithPopup(auth, facebookProvider);
+
+            console.log(user);
+
+            setError(null);
+            setLoading(false);
+            navigate("/");
+        } catch (error) {
+            console.log(error.message);
+
+            setError(error.message);
+            setLoading(false);
+        }
+    };
+
+
 
     return (
         <div className={styles.pageContainer}>
@@ -81,10 +119,10 @@ function Acceder() {
 
                             <Link to="/login" className={styles.loginButton}>Iniciar Sesion</Link>
                             <div className={styles.imageButtonsContainer}>
-                                <button className={styles.imageButton} onClick={() => ingresarGoogleClient()}>
+                                <button className={styles.imageButton} onClick={() => loginPopupGoogle()}>
                                     <img src={googlelogo} alt="google" />
                                 </button>
-                                <button className={styles.imageButton} onClick={() => ingresarFacebookClient()}>
+                                <button className={styles.imageButton} onClick={() => loginPopupFacebook()}>
                                     <img src={facebooklogo} alt="facebook" />
                                 </button>
 

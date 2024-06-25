@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
     signInWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signInWithPopup
 } from 'firebase/auth'
-import { auth } from '../firebase-config.js'
+import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
 import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
@@ -51,6 +52,43 @@ function IniciarSesion() {
         }
     };
 
+    
+    const loginPopupGoogle = async () => {
+        setLoading(true);
+        try {
+            await signInWithPopup(auth, googleProvider);
+
+            console.log(user);
+
+            setError(null);
+            setLoading(false);
+            navigate("/");
+        } catch (error) {
+            console.log(error.message);
+
+            setError(error.message);
+            setLoading(false);
+        }
+    };
+
+    const loginPopupFacebook = async () => {
+        setLoading(true);
+        try {
+            await signInWithPopup(auth, facebookProvider);
+
+            console.log(user);
+
+            setError(null);
+            setLoading(false);
+            navigate("/");
+        } catch (error) {
+            console.log(error.message);
+
+            setError(error.message);
+            setLoading(false);
+        }
+    };
+
 
 
     return (
@@ -71,10 +109,10 @@ function IniciarSesion() {
 
                 <div className={styles.center}>
                     <div className={styles.imageButtonsContainer}>
-                        <button className={styles.imageButton} onClick={() => botonIniciarGoogle()}>
+                        <button className={styles.imageButton} onClick={() => loginPopupGoogle()}>
                             <img src={googlelogo} alt="google" />
                         </button>
-                        <button className={styles.imageButton} onClick={() => botonIniciarFacebook()}>
+                        <button className={styles.imageButton} onClick={() => loginPopupFacebook()}>
                             <img src={facebooklogo} alt="facebook" />
                         </button>
 
