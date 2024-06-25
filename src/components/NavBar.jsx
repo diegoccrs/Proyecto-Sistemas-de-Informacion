@@ -1,4 +1,4 @@
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
@@ -17,6 +17,13 @@ export default function NavBar() {
         })
     }, []);
 
+    const logout = async () => {
+
+        await signOut(auth);
+    };
+
+
+
     return(
         <div className={styles.header}>
             <div className={styles.logoContainer}>
@@ -28,8 +35,9 @@ export default function NavBar() {
                 <Link className={styles["nav-link"]} to="/menu">Menú</Link>
                 <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
                 <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
-                <Link className={styles["nav-link"]} to="/acceder">Acceder</Link>
-                <Link className={styles["nav-link"]} to="/">{user?.email || 'None'}</Link>
+                {user ?
+                <Link className={styles["nav-link"]} to="/" onClick={logout}>Cerrar sesión</Link>
+                : <Link className={styles["nav-link"]} to="/acceder">Acceder</Link>}
             </div>
         </div>
     );
