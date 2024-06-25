@@ -1,8 +1,19 @@
-import React from 'react'
+import styles from './HomePage.module.css';
 
 function Error() {
     return (
-    <div>Error: Página no encontrada</div>
+        <div>
+            <div className= {styles.slogan}>
+                <br />
+                <br />
+                <br />
+                <h1><span className={styles.colored}>¡Lo sentimos!</span></h1>
+                <h2>Esta página no está disponible</h2>
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
     );
 };
 
