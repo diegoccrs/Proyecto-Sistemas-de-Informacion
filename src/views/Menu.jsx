@@ -1,37 +1,13 @@
-import { useUser } from '../context/user';
-import { Link, NavLink } from "react-router-dom";
-import { auth } from '../firebase';
-import styles from './HomePage.module.css';
-import { routes } from "../constants/routes";
+import styles from './Menu.module.css';
 
-const HomePage = () => {
-    const { user } = useUser();
-  
+function Menu() {
     return (
-      <div className={styles.container}>
         <div>
-            <h1>Si te gusta recomiéndanos. ¡Si no, también para que otro pase rabia! </h1>
+            <div className= {styles.slogan}>
+                <h1>Disfruta de nuestro <span className={styles.colored}>excelente</span> menú variado</h1>
+            </div>
         </div>
-        <nav className={styles.nav}>
-          
-          {user ? (
-            <NavLink
-              to={routes[4].path}
-              className={styles.navLink}
-              activeClassName={styles.activeNavLink}
-            >
-              {routes[4].name}
-            </NavLink>
-          ) : null}
-  
-          {user ? (
-            <button className={styles.logoutButton} onClick={() => auth.signOut()}>
-              Log Out
-            </button>
-          ) : null}
-        </nav>
-      </div>
     );
-  };
-  
-  export default HomePage;
+};
+
+export default Menu

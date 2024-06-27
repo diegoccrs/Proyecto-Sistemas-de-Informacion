@@ -1,10 +1,236 @@
+
+
+:root{
+  --clr-dark: #050929;
+  --clr-darkpurple: #5B19B0;
+  --clr-lightpurple: #F0D0FF;
+  --clr-darkorange: #FFAE50;
+  --clr-orange: #843F00;
+  --clr-lightorange: #FFF0E9;
+  --clr-white: #ffffff;
+  --clr-gray: #c7c7c7;
+  
+
+}
+
+@font-face {
+  font-family: font1;
+  src: url(Marvel-Bold.ttf);
+}
+
+@font-face {
+  font-family: font2;
+  src: url(AlegreyaSansSC-Thin.ttf);
+}
+
+@font-face {
+  font-family: font3;
+  src: url(AlegreyaSansSC-Light.ttf);
+}
+
+@font-face {
+  font-family: font4;
+  src: url(AlegreyaSansSC-Regular.ttf);
+}
+.bienvenido{
+  position: relative;
+  background-color: var(--clr-lightpurple);
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 40px;
+
+}
+
+.bienvenido::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajusta el valor de 0.5 para controlar la opacidad del oscurecimiento */
+}
+
+.titulo{
+  font-family: font4;
+  margin-top: 0;
+
+}
+
+.bold{
+  font-family: font3;
+}
+
+.container{
+  margin-right: 200px;
+  position: relative;
+  text-align: center;
+  font-family: font2;
+  
+  top: 40px;
+  left: 60px;
+  width: 40%;
+  
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 22px;
+  background-color: var(--clr-white);
+  
+  color: var(--clr-orange);
+  
+  
+
+}
+
 .slogan {
-    background-color: rgb(8, 8, 46);
+    background-color: var(--clr-dark);
     text-align: center;
     padding: 20px;
-    color: white;
+    color: var(--clr-white);
+    font-family: font3;
   }
 
 .colored {
-    color: rgb(231, 147, 244);
+    color: var(--clr-lightpurple);
   }
+
+
+
+.fondo{
+  position: absolute;
+  z-index: -1;
+  opacity: 0.3;
+
+}
+
+.parrafo{
+  margin: 0%;
+}
+
+.button{
+  margin-bottom: 0;
+  background-color: var(--clr-lightorange);
+  font-family: font1;
+  font-size: 20px;
+  color: var(--clr-orange);
+  border: none;
+  border-radius: 15px;
+  
+}
+
+.combos{
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(10%, 1fr));
+  height:max-content;
+  position: relative;
+
+}
+
+.zonacombos{
+  grid-row: 1 / 4;
+  grid-column: 1/8;
+  background-color: rgba(199, 199, 199, 0.4);   
+  border-bottom-right-radius: 30px;
+  justify-content: center;
+  align-content: center;
+  padding: 20px;
+ 
+
+}
+
+.descripcioncombos{
+  grid-row: 1 / 4;
+  grid-column: 8/12;
+  padding: 32px;
+  
+
+}
+
+.buttonc{
+  position: relative;
+  left: 600%;
+  bottom: 250%;
+  z-index: 1;
+
+  color: var(--clr-white);
+  background-color: var(--clr-darkpurple);
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  
+  border-color: var(--clr-darkpurple);
+}
+
+
+/*CARRUSEL*/
+.carrusel {
+  margin: 2%;
+
+}
+
+.slide {
+  background-color: var(--clr-white);
+  display: none;
+  
+
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px, 0px, 5px 0px var(--clr-gray);
+ 
+}
+
+.combocontenido{
+  display: flex;
+  align-items:flex-start;
+
+ border-radius: 20px;
+ overflow: hidden;
+ 
+}
+
+.comboImage{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  justify-self:left;
+
+}
+
+.comboDescription{
+ 
+ flex: 1;
+}
+
+.comboTitle{
+
+}
+.slide.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+.origenes{}
+
+.menu{}
+
+.contactos{}
+
