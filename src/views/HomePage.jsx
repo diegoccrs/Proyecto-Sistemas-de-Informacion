@@ -2,6 +2,9 @@ import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
 import { useState } from 'react';
 import c1 from '../img/View.png';
+import local from '../img/iglogo.png';
+import iglogo from '../img/iglogo.png';
+import xlogo from '../img/xlogo.png';
 
 function HomePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -85,6 +88,7 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
+                                <button className={styles.button}>Comprar</button>
                             </div>
                         </div>
                     </div>
@@ -99,20 +103,66 @@ function HomePage() {
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.titulo}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.bold}>mejores precios</div>, donde cada bocado es un viaje de sabores.</h2>
+                    <button className={styles.button}>Explorar Combos</button>
                 </div>
                 
             </div>
 
             <div className={styles.origenes}>
+                <div className={styles.containerOrigenes}>
+                    <div className={styles.descripcionorigenes}>
+                        <h1 className={styles.titulo}>Nuestros Orígenes</h1>
+                        <h2>Cómo llegamos aquí .</h2>
+                        <h3>Deli Pernil</h3>
+                        <button className={styles.button}>Conócenos</button>
+                    </div>
+                    <div className={styles.imagenorigenes}>
+                        <img  src={local} alt="local" />
+                    </div>
+                </div>
             
             </div>
 
             <div className={styles.menu}>
-            
+                <div className={styles.titulomenu}>
+                    <h1>Nuestro Menú</h1>
+                </div>
+                <div className={styles.cartasmenu}>
+                    <div className={styles.cartamenu}>
+                        <img  src={local} alt="local" />
+                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
+                    </div>
+                    <div className={styles.cartamenu}>
+                        <img  src={local} alt="local" />
+                        <h1 className={styles.titulocarta}>Cachapas</h1>
+                    </div>
+                    <div className={styles.cartamenu}>
+                        <img  src={local} alt="local" />
+                        <h1 className={styles.titulocarta}>Club House</h1>
+                    </div>
+                    <div className={styles.cartamenu}>
+                        <img  src={local} alt="local" />
+                        <h1 className={styles.titulocarta}>Parrillas</h1>
+                    </div>
+                    <div className={styles.cartamenu}>
+                        <img  src={local} alt="local" />
+                        <h1 className={styles.titulocarta}>Más</h1>
+                    </div>
+                   
+                </div>
             </div>
 
-            <div className={styles.contactos}>
-                
+            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+                <div className={styles.containerContactos}>
+                    <h1>Llámanos</h1>
+                    <h2>Caracas</h2>
+                    <h2>delipernil</h2>
+                    <h2>0424</h2>
+                    <div className={styles.redesSociales}>
+                        <img className={styles.social} src={iglogo} alt="Logo" />
+                        <img className={styles.social} src={xlogo} alt="Logo" />
+                    </div>
+                </div>
             </div>
         </div>
     );

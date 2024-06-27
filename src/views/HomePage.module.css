@@ -8,7 +8,7 @@
   --clr-orange: #843F00;
   --clr-lightorange: #FFF0E9;
   --clr-white: #ffffff;
-  --clr-gray: #c7c7c7;
+  --clr-gray: #ece6f7;
   
 
 }
@@ -125,13 +125,14 @@
   grid-template-rows: repeat(auto-fit, minmax(10%, 1fr));
   height:max-content;
   position: relative;
+ 
 
 }
 
 .zonacombos{
   grid-row: 1 / 4;
   grid-column: 1/8;
-  background-color: rgba(199, 199, 199, 0.4);   
+  background-color:var(--clr-gray);   
   border-bottom-right-radius: 30px;
   justify-content: center;
   align-content: center;
@@ -144,6 +145,7 @@
   grid-row: 1 / 4;
   grid-column: 8/12;
   padding: 32px;
+
   
 
 }
@@ -168,6 +170,7 @@
 /*CARRUSEL*/
 .carrusel {
   margin: 2%;
+  
 
 }
 
@@ -205,9 +208,6 @@
  flex: 1;
 }
 
-.comboTitle{
-
-}
 .slide.active {
   display: flex;
   flex-direction: column;
@@ -221,16 +221,97 @@
 
 
 
+.origenes{
+  display: flex;
+  justify-content: flex-end;
+  
+  
+}
+
+.containerOrigenes{
+  background-color: var(--clr-orange);
+  box-shadow: 0 0 0.9375em var(--clr-gray);
+  width: 800px;
+  height: 250px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  display:  flex;
+  margin: 30px;
+  
+
+}
+
+.descripcionorigenes{
+  flex: 0 0 50%;
+  position: relative;
+
+  padding:  20px;
+}
+
+.imagenorigenes{
+  flex: 1;
+  display: block;
+  width:100%;
+
+}
+
+.menu{
+  padding: 20px;
+  background-color: var(--clr-dark); 
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px; 
+
+  
+}
+
+.titulomenu{
+  margin: 50px;
+
+}
+.cartasmenu{
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  gap: 1em;
+  justify-content: center;
+
+}
+
+.cartamenu{
+  width: 50;
+  background-color: var(--clr-white);
+  border-radius: 10px;
+  padding: 3px;
+}
 
 
 
+.contactos{
+  align-content: center;
+  height: 500px;
 
+}
 
+.containerContactos{
+  background-color: var(--clr-white);
+  border-radius: 25px;
+  margin-left: 40px;
+  padding: 40px;
+  width:50%;
+  height: fit-content;
+  padding-top: 10px;
+}
 
+.redesSociales{
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
 
-.origenes{}
-
-.menu{}
-
-.contactos{}
+.social{
+  width: 30px;
+  height: 30px;
+  
+}
 
