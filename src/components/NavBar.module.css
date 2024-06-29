@@ -1,9 +1,38 @@
+:root{
+  --clr-dark: #050929;
+  --clr-darkpurple: #5B19B0;
+  --clr-lightpurple: #F0D0FF;
+  --clr-darkorange: #FFAE50;
+  --clr-lightorange: #FFF0E9;
+  --clr-white: #ffffff;
+  --clr-gray: #c7c7c7;
+  
+
+}
+
+
+@font-face {
+  font-family: font1;
+  src: url(Marvel-Bold.ttf);
+}
+
+.tlogo{
+  width: 70%;
+  height: 70;
+  position: relative;
+  left: 1%;
+ 
+}
+
 .header {
-    display: flex;
+    
+    display: block;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 1rem;
-    background-color: #ffffff;
+    z-index: 1;
+   
+    background-color: var(--clr-white);
+   
   }
   
   .logoContainer {
@@ -12,28 +41,90 @@
   }
   
   .logo {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     margin-right: 10px;
   }
+
+  .mlogo {
+    position: relative;
+    top: 30px;
+    width: 12px;
+    height: 32px;
+    margin-left: 20px;
+
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-left: auto;
+  }
+
+  .social {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    align-items: end;
+    
+  }
+  
+
   
   .nav {
     display: flex;
+    justify-content: space-around;
     align-items: center;
     gap: 1.5rem;
+    margin: 10px;
+    padding: auto;
   }
   
   .nav-link {
-    color: #000000d8;
+    color: var(--clr-dark) ;
     font-size: 1.25rem;
+    font-family: font1;
     text-decoration: none;
     transition: color 0.3s;
+    padding: 3px;
+
   }
   
   .nav-link:hover {
-    color: #000000;
+    color:var(--clr-darkpurple);
   }
   
   .nav-link.active {
-    color: #000000;
+    color:var(--clr-white);
+  }
+
+  .line {
+    border: none;
+    border-top: 3px solid var(--clr-darkpurple);
+    margin: 10px 0;
+  }
+
+  .line2 {
+
+    border-top: 5px solid var(--clr-gray);
+  }
+
+  .purpleLink {
+    background-color: var(--clr-lightpurple); 
+    border-radius: 10px;
+    padding: 0.5rem 3rem; 
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+
+  .perfil{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
   }
