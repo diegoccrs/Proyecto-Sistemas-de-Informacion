@@ -8,7 +8,7 @@ function Error() {
                 <br />
                 <br />
                 <h1><span className={styles.colored}>¡Lo sentimos!</span></h1>
-                <h2>Esta página no está disponible</h2>
+                <h2>Ésta página no está disponible</h2>
                 <br />
                 <br />
                 <br />
