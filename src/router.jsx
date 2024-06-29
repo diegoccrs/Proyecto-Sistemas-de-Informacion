@@ -1,65 +1,68 @@
-import { createBrowserRouter } from 'react-router-dom';
 
-
-import Home from './views/HomePage';
+import { createBrowserRouter } from "react-router-dom";
+import { routes } from "./constants/routes";
 import Root from './layout/Roots.jsx';
-import  { routes } from './constants/routes.ts';
 
-/**
-import HomePage from './views/HomePage';
-import LoginPage from './views/LoginPage';
-import RegisterPage from './views/RegisterPage';
-import RegisterAdm from '../views/RegisterAdm';
-import RegisterClient from '../views/RegisterClient';
-
-**/
-
+import Home from "./views/HomePage.jsx";
+import Menu from "./views/Menu.jsx";
+import Nosotros from "./views/Nosotros.jsx";
+import Ayuda from "./views/Ayuda.jsx";
+import Acceder from "./views/Acceder.jsx";
+import IniciarSesion from "./views/LoginPage.jsx";
+import Error from "./views/Error.jsx";
+import Perfil from "./views/Perfil.jsx";
+import EditarPerfil from "./views/EditarPerfil.jsx";
+import Hamburguesas from "./views/Hamburguesas.jsx";
 
 export const router = createBrowserRouter([
-
     {
         path: "/",
         element: <Root/>,
-     
-    },
-
-    {
-        path: "/",
-        element: <Home/>,
-     
-    },
-
-    {
-        path: "/",
-        element: <routes/>,
-     
+        children: [
+            {
+              path: routes[0].path,
+              element: <Home />,
+            },
+            {
+                path: routes[1].path,
+                element: <Menu />,
+                children: [
+                    {
+                      path: routes[1]["children"][0].path,
+                      element: <Hamburguesas />,
+                    },
+                  ],
+            },
+              {
+                path: routes[2].path,
+                element: <Nosotros />,
+              },
+              {
+                path: routes[3].path,
+                element: <Ayuda />,
+              },
+              {
+                path: routes[4].path,
+                element: <Acceder />,
+              },
+              {
+                path: routes[5].path,
+                element: <IniciarSesion />,
+              },
+              {
+                path: routes[6].path,
+                element: <Error />
+              },
+              {
+                path: routes[7].path,
+                element: <Perfil />
+              },
+              {
+                path: routes[8].path,
+                element: <EditarPerfil />
+              }
+            ],
     }
-]);
 
-    /**
-    {
-        path: '/',
-        element: <HomePage />,
-    },
-    {
-        path: '/login',
-        element: <LoginPage />,
-    },
-    {
-        path: '/register',
-        element: <RegisterPage />,
-    },
-    {
-        path: '/app',
-        element: <div>App</div>,
-    },
 
-    {
-        path: '/admin',
-        element: <RegisterAdm />,
-    },
-    {
-        path: '/client',
-        element: <RegisterClient />,
-    },
-    **/
+])
