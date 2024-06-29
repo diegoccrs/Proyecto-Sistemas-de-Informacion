@@ -113,5 +113,18 @@
   .purpleLink {
     background-color: var(--clr-lightpurple); 
     border-radius: 10px;
-    padding: 0.5rem 1rem; 
+    padding: 0.5rem 3rem; 
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+
+  .perfil{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
   }

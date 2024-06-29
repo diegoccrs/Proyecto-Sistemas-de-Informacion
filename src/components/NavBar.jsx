@@ -49,14 +49,13 @@ export default function NavBar() {
                     {user ?
                     <div>
                         <div className={styles.nav}>
-                        <Link className={styles["nav-link"]} to="/" onClick={logout}>Cerrar sesión</Link>
-                        <Link className={styles["nav-link"]} to="/perfil">Perfil</Link>
+                        <Link className={styles["nav-link"]} to="/perfil">Comentarios</Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
                         </div>
+                        
                     </div>
-                    : <Link className={styles["nav-link"]} to="/acceder">Acceder</Link>}
-                    {user ?
-                        <span className={styles["nav-link"]}>Sesión iniciada con: {user.email}</span>
-                    : <></>}
+                    : <Link className={`${styles["nav-link"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
+                    
                 </div>
             </div>
 
@@ -65,3 +64,12 @@ export default function NavBar() {
     );
 }
    
+
+/*  
+{user ?
+                        
+                        <span className={styles["nav-link"]}>Sesión iniciada con: {user.email}</span>
+                    : <></>}
+
+    <Link className={styles["nav-link"]} to="/" onClick={logout}>Cerrar sesión</Link>
+*/ 

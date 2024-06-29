@@ -7,7 +7,14 @@ export const routes = [
     },
     {
         path: "/menu",
-        name: "Menú",
+        name: "Menu",
+        children:[
+            {
+                path: "/menu/hamburguesas",
+                name: "Hamburguesas",
+            },
+
+        ],
     },
     {
         path: "/nosotros",
@@ -53,6 +60,7 @@ export const routes = [
         path: "/cliente",
         name: "Cliente",
     },
+
 ] as const
 
 

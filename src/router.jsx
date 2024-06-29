@@ -11,6 +11,7 @@ import IniciarSesion from "./views/LoginPage.jsx";
 import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
+import Hamburguesas from "./views/Hamburguesas.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +25,13 @@ export const router = createBrowserRouter([
             {
                 path: routes[1].path,
                 element: <Menu />,
-              },
+                children: [
+                    {
+                      path: routes[1]["children"][0].path,
+                      element: <Hamburguesas />,
+                    },
+                  ],
+            },
               {
                 path: routes[2].path,
                 element: <Nosotros />,
@@ -53,7 +60,7 @@ export const router = createBrowserRouter([
                 path: routes[8].path,
                 element: <EditarPerfil />
               }
-        ],
+            ],
     }
 
 
