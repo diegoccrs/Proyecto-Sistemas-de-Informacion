@@ -1,4 +1,4 @@
-import { Children } from "react";
+//import { Children } from "react";
 
 export const routes = [
     {
@@ -7,7 +7,14 @@ export const routes = [
     },
     {
         path: "/menu",
-        name: "Menú",
+        name: "Menu",
+        children:[
+            {
+                path: "/menu/hamburguesas",
+                name: "Hamburguesas",
+            },
+
+        ],
     },
     {
         path: "/nosotros",
@@ -21,6 +28,39 @@ export const routes = [
         path: "/acceder",
         name: "Acceder",
     },
+    {
+        path: "/login",
+        name: "IniciarSesion",
+    },
+    {
+        path: "/*",
+        name: "Error"
+    },
+    {
+        path: "/perfil",
+        name: "Perfil",
+    },
+    {
+        path: "/editarperfil",
+        name: "EditarPerfil",
+    },
+    {
+        path: "/comentarios",
+        name: "Comentarios",
+    },
+    {
+        path: "/historial",
+        name: "Historial",
+    },
+    {
+        path: "/PedidosActuales",
+        name: "PedidosActuales",
+    },
+    {
+        path: "/cliente",
+        name: "Cliente",
+    },
+
 ] as const
 
 

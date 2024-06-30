@@ -5,7 +5,11 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth'
-import { auth } from './firebase.js'
+import { auth } from './firebase-config.js'
+
+import { firestoreDB } from './firebase-config.js'
+import { collection, getDoc, addDoc } from 'firebase/firestore'
+
 import './App.css'
 
 function App() {
@@ -29,6 +33,11 @@ function App() {
                 auth,
                 regEmail,
                 regPassword);
+
+                await addDoc(collection(firestoreDB, "Usuario"), {
+                    email: regEmail,
+                    password: regPassword,
+                })
 
             console.log(user);
         } catch (error) {
