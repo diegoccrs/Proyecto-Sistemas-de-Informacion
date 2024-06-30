@@ -12,6 +12,37 @@
   }
 
 
+  
+  @font-face {
+    font-family: font1;
+    src: url(Marvel-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: font2;
+    src: url(AlegreyaSansSC-Thin.ttf);
+  }
+  
+  @font-face {
+    font-family: font3;
+    src: url(AlegreyaSansSC-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: font4;
+    src: url(AlegreyaSansSC-Regular.ttf);
+  }
+
+  .titulo{
+    font-family: font4;
+    margin-top: 0;
+  
+  }
+  
+  .bold{
+    font-family: font3;
+  }
+
 .slogan {
   background-color: rgb(8, 8, 46);
   text-align: center;
