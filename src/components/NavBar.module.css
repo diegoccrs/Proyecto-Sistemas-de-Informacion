@@ -1,14 +1,38 @@
-body {
-  font-family: "Arial", sans-serif;
+:root{
+  --clr-dark: #050929;
+  --clr-darkpurple: #5B19B0;
+  --clr-lightpurple: #F0D0FF;
+  --clr-darkorange: #FFAE50;
+  --clr-lightorange: #FFF0E9;
+  --clr-white: #ffffff;
+  --clr-gray: #c7c7c7;
+  
+
+}
+
+
+@font-face {
+  font-family: font1;
+  src: url(../assets/Marvel-Bold.ttf);
+}
+
+.tlogo{
+  width: 70%;
+  height: 70;
+  position: relative;
+  left: 1%;
+ 
 }
 
 .header {
+    
     display: block;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 1rem;
-    background-color: #ffffff;
-    font-family:  sans-serif;
+    z-index: 1;
+   
+    background-color: var(--clr-white);
+   
   }
   
   .logoContainer {
@@ -23,9 +47,12 @@ body {
   }
 
   .mlogo {
-    width: 2%;
-    height: 2%;
-    margin-left: 10px;
+    position: relative;
+    top: 30px;
+    width: 12px;
+    height: 32px;
+    margin-left: 20px;
+
   }
 
   .container {
@@ -47,36 +74,57 @@ body {
   
   .nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 1.5rem;
+    margin: 10px;
+    padding: auto;
   }
   
   .nav-link {
-    color: #000000d8;
+    color: var(--clr-dark) ;
     font-size: 1.25rem;
+    font-family: font1;
     text-decoration: none;
     transition: color 0.3s;
-    font-family: "Marvel", sans-serif;
     padding: 3px;
+
   }
   
   .nav-link:hover {
-    color: #000000;
+    color:var(--clr-darkpurple);
   }
   
   .nav-link.active {
-    color: #000000;
+    color:var(--clr-white);
   }
 
   .line {
     border: none;
-    border-top: 3px solid rgb(126, 0, 189);
+    border-top: 3px solid var(--clr-darkpurple);
     margin: 10px 0;
   }
 
+  .line2 {
+
+    border-top: 5px solid var(--clr-gray);
+  }
+
   .purpleLink {
-    background-color: #e6d6ff; /* Light purple background color */
-    border-radius: 10px; /* Rounded margins */
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
+    background-color: var(--clr-lightpurple); 
+    border-radius: 10px;
+    padding: 0.5rem 3rem; 
+  }
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+
+  .perfil{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
   }
