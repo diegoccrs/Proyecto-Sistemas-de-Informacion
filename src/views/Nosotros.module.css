@@ -63,6 +63,11 @@
     
 }
 
+.Inicio img{
+  max-width: 250px;
+
+}
+
 .Inicio2 {
   font-family: font3;
   display: flex;
@@ -75,6 +80,11 @@
   
   color: white;
   
+}
+
+.Inicio2 img{
+  max-width: 150px;
+
 }
 
 .Inicio3 h2{
@@ -102,21 +112,18 @@
 
 }
 
-.Inicio4 {
-  text-align: center;
-  font-family: font3;
-  display: flex;
-  gap: 64px;
-  padding: 32px;
 
-  
+
+.Inicio4 {
+  font-family: font3;
   background-color: rgb(8, 8, 46);
-  
+  text-align: center;
+  padding: 20px;
   color: white;
-  
 }
 
-.Inicio5 {
+
+.Inicio5{
   font-family: font3;
   display: flex;
   gap: 64px;
@@ -132,6 +139,13 @@
   
 }
 
+.Inicio5 h2{
+  color: blue
+}
+
+.Inicio6 h2{
+  color: blue
+}
 
 .Inicio5 img{
   max-width: 360px;

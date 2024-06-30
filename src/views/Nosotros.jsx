@@ -3,12 +3,14 @@ import styles_ from './Nosotros.module.css';
 
 //import mision from '../img/Misión.png';
 //import vision from '../img/Visiónn.png';
-//import nosotros from '../img/Nosotros.png';
+import nosotros from '../img/Nosotros.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
 import ger from '../img/Gerente.png';
 import rep from '../img/Represent.png';
+import equipo from '../img/Equipo1.png';
+
 
 
 function Nosotros() {
@@ -19,6 +21,10 @@ function Nosotros() {
             </div>
 
             <section className= {styles_.Inicio}>
+
+                <div>
+                    <img  src={nosotros} alt="nosotros" />
+                </div>
 
                 <div>
                     <h2>¿Quiénes Somos?</h2>
@@ -39,6 +45,10 @@ function Nosotros() {
                     <h3>
                     Lo que hace que Deli Pernil brindemos un excelente servicio, es nuestro equipo de profesionales. En esta sección podrás conocer un poco más sobre las personas que se encargan de que tu experiencia sea la mejor.
                     </h3>
+                </div>
+
+                <div>
+                    <img  src={equipo} alt="equipo" />
                 </div>
 
 
@@ -83,19 +93,19 @@ function Nosotros() {
                 <div>
                     <img  src={ger} alt="ger" />
 
-                    <h2>C. Contreras</h2>
+                    <h2>Diego Cáceres</h2>
                     <h3 className= {styles_.g}>Gerente</h3>
                 </div>
 
                 <div> 
                     <img  src={rep} alt="rep" />
-                    <h2>A. Cifuentes</h2>
+                    <h2>Giselle Esclasans</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
                 </div>
 
                 <div> 
                     <img  src={rep} alt="rep" />
-                    <h2>A. Cifuentes</h2>
+                    <h2>Diego Goncalves</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
                 </div>
             </section>
@@ -106,21 +116,21 @@ function Nosotros() {
                 <div>
                     
                     <img  src={rep} alt="rep" />
-                    <h2>A. Cifuentes</h2>
+                    <h2>Sebastian Hernandez</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
                 </div>        
                 
                 <div>
                     <img  src={ger} alt="ger" />
 
-                    <h2>C. Contreras</h2>
+                    <h2>Victor Martinez </h2>
                     <h3 className= {styles_.g}>Gerente</h3>
                 </div>
 
                 <div>
                     
                     <img  src={rep} alt="rep" />
-                    <h2>A. Cifuentes</h2>
+                    <h2>Virginia Torrealba</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
                 </div>
             </section>
