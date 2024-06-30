@@ -32,6 +32,8 @@
     font-family: font4;
     src: url(AlegreyaSansSC-Regular.ttf);
   }
+
+  
   .bienvenido{
     position: relative;
     background-color: var(--clr-lightpurple);
@@ -93,7 +95,7 @@
     }
   
   .colored {
-      color: var(--clr-lightpurple);
+      color: rgb(231, 147, 244);
     }
   
   
@@ -133,6 +135,9 @@
     grid-template-rows: repeat(auto-fit, minmax(10%, 1fr));
     height:max-content;
     position: relative;
+    
+
+    
    
   
   }
@@ -210,11 +215,16 @@
     justify-self:left;
   
   }
+
+  .descripcioncombos h1 h2{
+    color: rgb(231, 147, 244);
+  }
   
   .comboDescription{
     padding: 2rem;
     align-items: center;
     flex: 1;
+    
   }
   
   .slide.active {
@@ -227,6 +237,7 @@
   .slide-content {
     text-align: center;
   }
+
   
   
   
@@ -247,6 +258,8 @@
   
     display:  flex;
     margin: 30px;
+
+    font-family: font3;
     
   
   }
@@ -258,6 +271,7 @@
   
     padding:  20px;
   }
+
   
   .imagenorigenes{
     flex: 1;
@@ -276,6 +290,8 @@
     background-color: var(--clr-dark); 
     border-top-left-radius: 50px;
     border-top-right-radius: 50px; 
+
+    
   
     
   }
@@ -292,6 +308,11 @@
     gap: 1em;
     justify-content: center;
   
+  }
+
+  .cartasmenu img{
+    max-width: 350px;
+    
   }
   
   .cartamenu{

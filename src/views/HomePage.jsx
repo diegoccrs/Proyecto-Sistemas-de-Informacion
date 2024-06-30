@@ -116,11 +116,10 @@ function HomePage() {
 
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 <div className={styles.descripcioncombos}>
-                    <h1 className={styles.titulo}>COMBOS</h1>
-                    <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.bold}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
+                    <h1 className={styles.colored}>COMBOS</h1>
+                    <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
                     <button className={styles.button}>Explorar Combos</button>
-                </div>
-                
+                </div>                
             </div>
 
             <div className={styles.origenes}>
@@ -129,9 +128,7 @@ function HomePage() {
                         <h1 className={styles.titulo}>Nuestros Orígenes</h1>
                         <h2>Cómo llegamos aquí</h2>
                         <h3>Deli Pernil</h3>
-                        <Link className={styles["nav-link"]} to="/nosotros"><button className={styles.button}>Conócenos</button></Link>
-                        
-
+                        <Link className={styles["nav-link"]} to="/nosotros"><button className={styles.button}>Conócenos</button></Link>        
                     </div>
                     <div className={styles.imagenorigenes}>
                         <img  src={local_0} alt="local_0" />

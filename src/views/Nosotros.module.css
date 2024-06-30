@@ -43,12 +43,92 @@
   color: white;
 }
 
+.colored {
+  
+  color: rgb(231, 147, 244);
+  
+  
+}
+
 .Inicio {
     font-family: font3;
     display: flex;
     gap: 64px;
     padding: 32px;
     
+    
+    background-color: rgb(231, 147, 244);
+
+    
+    
+}
+
+.Inicio2 {
+  font-family: font3;
+  display: flex;
+  gap: 64px;
+  padding: 32px;
+
+  
+  background-color: rgb(8, 8, 46);
+  text-align: center;
+  
+  color: white;
+  
+}
+
+.Inicio3 h2{
+  color: blue
+}
+
+.Inicio3 .g{
+  color: rgb(144, 41, 160);
+
+
+}
+
+.Inicio3 {
+  font-family: font3;
+  display: flex;
+  gap: 64px;
+  padding: 32px;
+  
+}
+
+
+
+.Inicio3 img{
+  max-width: 500px;
+
+}
+
+.Inicio4 {
+  font-family: font3;
+  display: flex;
+  gap: 64px;
+  padding: 32px;
+
+  
+  background-color: rgb(8, 8, 46);
+  text-align: center;
+  
+  color: white;
+  
+}
+
+.Inicio5 .Inicio6 {
+  font-family: font3;
+  display: flex;
+  gap: 64px;
+  padding: 32px;
+  
+}
+
+
+
+.Inicio5 .Inicio6 img{
+  max-width: 500px;
+
 }
 
 .MV {
@@ -56,5 +136,8 @@
     display: flex;
     gap: 64px;
     padding: 32px;
+    
+
     background-color: rgb(231, 147, 244);
+
 }
