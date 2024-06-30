@@ -74,9 +74,10 @@
   
   .nav {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
+  
     gap: 1.5rem;
+    width: 100%;
     margin: 10px;
     padding: auto;
   }

@@ -14,8 +14,13 @@ import facebooklogo from '../img/facebook.png';
 
 
 
-function IniciarSesion() {
+import {getAdditionalUserInfo} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
+import { db } from '../firebase';
 
+
+function IniciarSesion() {
+    
     const [logEmail, setLogEmail] = useState('');
     const [logPassword, setLogPassword] = useState('');
 
@@ -52,11 +57,28 @@ function IniciarSesion() {
         }
     };
 
-    
+
     const loginPopupGoogle = async () => {
         setLoading(true);
         try {
-            await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            const aditionalInfo = getAdditionalUserInfo(result);
+            const id = auth.currentUser.uid;
+
+            if(aditionalInfo.isNewUser){
+                const docRef = doc(db, "Usuario", id);
+                const data = {
+                    admin: false,
+                    apellido: "",
+                    email:result.user.email,
+                    facultad: "",
+                    nombre: result.user.displayName,
+                    telefono: result.user.phoneNumber,
+
+                };
+                await setDoc(docRef, data, { merge: true });
+                
+            }
 
             console.log(user);
 
@@ -74,7 +96,24 @@ function IniciarSesion() {
     const loginPopupFacebook = async () => {
         setLoading(true);
         try {
-            await signInWithPopup(auth, facebookProvider);
+            const result = await signInWithPopup(auth,facebookProvider);
+            const aditionalInfo = getAdditionalUserInfo(result);
+            const id = auth.currentUser.uid;
+
+            if(aditionalInfo.isNewUser){
+                const docRef = doc(db, "Usuario", id);
+                const data = {
+                    admin: false,
+                    apellido: "",
+                    email:result.user.email,
+                    facultad: "",
+                    nombre: result.user.displayName,
+                    telefono: result.user.phoneNumber,
+
+                };
+                await setDoc(docRef, data, { merge: true });
+                
+            }
 
             console.log(user);
 
@@ -88,6 +127,8 @@ function IniciarSesion() {
             setLoading(false);
         }
     };
+
+   
 
 
 

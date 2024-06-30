@@ -56,11 +56,11 @@ export const router = createBrowserRouter([
               },
               {
                 path: routes[7].path,
-                element: <Perfil />
+                element: <Perfil />,
               },
               {
-                path: routes[8].path,
-                element: <EditarPerfil />
+                path: routes[7]["children"][0].path,
+                element: <EditarPerfil />,
               },
               {
                 path: routes[9].path,

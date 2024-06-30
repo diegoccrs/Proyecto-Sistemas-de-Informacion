@@ -13,6 +13,11 @@ import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
 
 
+import {getAdditionalUserInfo} from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
+import { db } from '../firebase';
+
+
 
 function Acceder() {
 
@@ -34,13 +39,28 @@ function Acceder() {
     const register = async () => {
         setLoading(true);
         try {
-            const user = await createUserWithEmailAndPassword(
+            const userCredential = await createUserWithEmailAndPassword(
                 auth,
                 regEmail,
                 regPassword);
 
-            console.log(user);
+            console.log(userCredential); 
+            
+            const id = auth.currentUser.uid;
+            const docRef = doc(db, "Usuario", id);
+            const data = {
+                admin: false,
+                apellido: "",
+                email: regEmail,
+                facultad: "",
+                nombre: "",
+                telefono: "",
+            
 
+              
+            };
+
+            await setDoc(docRef, data, { merge: true }), 
             setError(null);
             setLoading(false);
             navigate("/");
@@ -56,7 +76,24 @@ function Acceder() {
     const loginPopupGoogle = async () => {
         setLoading(true);
         try {
-            await signInWithPopup(auth, googleProvider);
+            const result = await signInWithPopup(auth, googleProvider);
+            const aditionalInfo = getAdditionalUserInfo(result);
+            const id = auth.currentUser.uid;
+
+            if(aditionalInfo.isNewUser){
+                const docRef = doc(db, "Usuario", id);
+                const data = {
+                    admin: false,
+                    apellido: "",
+                    email:result.user.email,
+                    facultad: "",
+                    nombre: result.user.displayName,
+                    telefono: result.user.phoneNumber,
+
+                };
+                await setDoc(docRef, data, { merge: true });
+                
+            }
 
             console.log(user);
 
@@ -74,7 +111,24 @@ function Acceder() {
     const loginPopupFacebook = async () => {
         setLoading(true);
         try {
-            await signInWithPopup(auth, facebookProvider);
+            const result = await signInWithPopup(auth,facebookProvider);
+            const aditionalInfo = getAdditionalUserInfo(result);
+            const id = auth.currentUser.uid;
+
+            if(aditionalInfo.isNewUser){
+                const docRef = doc(db, "Usuario", id);
+                const data = {
+                    admin: false,
+                    apellido: "",
+                    email:result.user.email,
+                    facultad: "",
+                    nombre: result.user.displayName,
+                    telefono: result.user.phoneNumber,
+
+                };
+                await setDoc(docRef, data, { merge: true });
+                
+            }
 
             console.log(user);
 
