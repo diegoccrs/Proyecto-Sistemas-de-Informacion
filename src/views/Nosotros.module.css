@@ -1,0 +1,60 @@
+:root{
+    --clr-dark: #050929;
+    --clr-darkpurple: #5B19B0;
+    --clr-lightpurple: #F0D0FF;
+    --clr-darkorange: #FFAE50;
+    --clr-orange: #843F00;
+    --clr-lightorange: #FFF0E9;
+    --clr-white: #ffffff;
+    --clr-gray: #ece6f7;
+    
+  
+  }
+
+
+  
+  @font-face {
+    font-family: font1;
+    src: url(Marvel-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: font2;
+    src: url(AlegreyaSansSC-Thin.ttf);
+  }
+  
+  @font-face {
+    font-family: font3;
+    src: url(AlegreyaSansSC-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: font4;
+    src: url(AlegreyaSansSC-Regular.ttf);
+  }
+
+  
+
+.slogan {
+  font-family: font4;
+  background-color: rgb(8, 8, 46);
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.Inicio {
+    font-family: font3;
+    display: flex;
+    gap: 64px;
+    padding: 32px;
+    
+}
+
+.MV {
+    font-family: font3;
+    display: flex;
+    gap: 64px;
+    padding: 32px;
+    background-color: rgb(231, 147, 244);
+}

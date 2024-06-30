@@ -13,8 +13,10 @@ function Ayuda() {
                 <h1>Estaremos encantados de atenderte</h1>
             </div>
             <div className={styles.formularioayuda}>
-                <h1>Contacta a nuestro equipo de ayuda</h1>
-                <h2>¿Cómo podemos ayudarte?</h2>
+                <div className={styles.formularioay}>
+                    <h1>Contacta a nuestro equipo de ayuda</h1>
+                    <h2>¿Cómo podemos ayudarte?</h2>
+                    </div>
                 <div className={styles.formulario}>
                     <div className={styles.formularioInfo}>
                         <div className={styles.formulario1}>
@@ -32,7 +34,7 @@ function Ayuda() {
                         </div>
                     </div>
                     
-                    <h3>¿Cuéntanos en qué necesitas ayuda?</h3>
+                    <h3>Cuéntanos, ¿en qué necesitas ayuda?</h3>
                         <input className={styles.inputC} type="text"/>
                     
                 </div>
@@ -43,7 +45,7 @@ function Ayuda() {
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
-                    <h2> <a href=""></a> delipernil@gmail.com</h2>
+                    <h2> <a href=""> delipernil@gmail.com</a></h2>
                     <h2> <a href="tel:04242285852">0424-2285852</a></h2>
                     <div className={styles.redesSociales}>
                         <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>

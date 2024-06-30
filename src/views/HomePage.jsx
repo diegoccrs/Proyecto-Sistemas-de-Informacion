@@ -84,8 +84,9 @@ function HomePage() {
                         <h2 className={styles.parrafo}> Club House</h2>
                         <h2 className={styles.parrafo}> Y muho más</h2>
 
-                   
-                    <button className={styles.button}>Ver Productos</button>
+                    <Link className={styles["nav-link"]} to="/menu"><button className={styles.button}>Ver Productos</button></Link>
+
+                    
                 </div>
             </div>
 
@@ -128,7 +129,9 @@ function HomePage() {
                         <h1 className={styles.titulo}>Nuestros Orígenes</h1>
                         <h2>Cómo llegamos aquí</h2>
                         <h3>Deli Pernil</h3>
-                        <button className={styles.button}>Conócenos</button>
+                        <Link className={styles["nav-link"]} to="/nosotros"><button className={styles.button}>Conócenos</button></Link>
+                        
+
                     </div>
                     <div className={styles.imagenorigenes}>
                         <img  src={local_0} alt="local_0" />
@@ -139,7 +142,9 @@ function HomePage() {
 
             <div className={styles.menu}>
                 <div className={styles.titulomenu}>
-                    <h1>Nuestro <span className={styles.colored}>Menú</span></h1>
+                    <h1>Nuestro <Link className={styles["nav-link"]} to="/menu"><span className={styles.colored}>Menú</span></Link></h1>
+                    
+
                 </div>
                 <div className={styles.cartasmenu}>
                     <div className={styles.cartamenu}>

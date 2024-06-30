@@ -48,9 +48,18 @@
   
 }
 
+.formularioay{
+  background-color: rgb(231, 147, 244);
+  padding: 1px;
+
+  
+}
 .formularioayuda {
+  font-family: font4;
    
 }
+
+
 .formularioInfo {
     display: flex;
     justify-content: center;
