@@ -73,13 +73,9 @@ function Nosotros() {
 
 
             <section className= {styles_.Inicio4}>
-                
                 <div>
                     <h2>Soporte Técnico</h2>
-                    
                 </div>
-
-
             </section>
 
             <section className= {styles_.Inicio5}>
@@ -89,76 +85,48 @@ function Nosotros() {
 
                     <h2>C. Contreras</h2>
                     <h3 className= {styles_.g}>Gerente</h3>
-                    <h3>
-                    Este miembro del equipo aporta su experiencia profesional y alegría al trabajo. Es difícil imaginar dónde estaríamos sin nuestro(a) Gerente
-                    </h3>
                 </div>
 
-                <div>
-                    
+                <div> 
                     <img  src={rep} alt="rep" />
-
-
                     <h2>A. Cifuentes</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
-                    <h3>
-                    Tenemos mucha suerte al contar con un excelente Representante de servicio al cliente. No cabe duda que tomamos la mejor decisión cuando incorporamos a A. Cifuentes a nuestro equipo de trabajo.
-                    </h3>
                 </div>
 
-                <div>
-                    
+                <div> 
                     <img  src={rep} alt="rep" />
-
-
                     <h2>A. Cifuentes</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
-                    <h3>
-                    Tenemos mucha suerte al contar con un excelente Representante de servicio al cliente. No cabe duda que tomamos la mejor decisión cuando incorporamos a A. Cifuentes a nuestro equipo de trabajo.
-                    </h3>
                 </div>
-
-
             </section>
 
+
             <section className= {styles_.Inicio6}>
+
+                <div>
+                    
+                    <img  src={rep} alt="rep" />
+                    <h2>A. Cifuentes</h2>
+                    <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
+                </div>        
                 
                 <div>
                     <img  src={ger} alt="ger" />
 
                     <h2>C. Contreras</h2>
                     <h3 className= {styles_.g}>Gerente</h3>
-                    <h3>
-                    Este miembro del equipo aporta su experiencia profesional y alegría al trabajo. Es difícil imaginar dónde estaríamos sin nuestro(a) Gerente
-                    </h3>
                 </div>
 
                 <div>
                     
                     <img  src={rep} alt="rep" />
-
-
                     <h2>A. Cifuentes</h2>
                     <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
-                    <h3>
-                    Tenemos mucha suerte al contar con un excelente Representante de servicio al cliente. No cabe duda que tomamos la mejor decisión cuando incorporamos a A. Cifuentes a nuestro equipo de trabajo.
-                    </h3>
                 </div>
-
-                <div>
-                    
-                    <img  src={rep} alt="rep" />
-
-
-                    <h2>A. Cifuentes</h2>
-                    <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
-                    <h3>
-                    Tenemos mucha suerte al contar con un excelente Representante de servicio al cliente. No cabe duda que tomamos la mejor decisión cuando incorporamos a A. Cifuentes a nuestro equipo de trabajo.
-                    </h3>
-                </div>
-
-
             </section>
+
+
+            
             
             <section className= {styles_.MV}>
                 <div className= {styles_.M}>

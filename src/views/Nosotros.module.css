@@ -103,6 +103,7 @@
 }
 
 .Inicio4 {
+  text-align: center;
   font-family: font3;
   display: flex;
   gap: 64px;
@@ -110,13 +111,20 @@
 
   
   background-color: rgb(8, 8, 46);
-  text-align: center;
   
   color: white;
   
 }
 
-.Inicio5 .Inicio6 {
+.Inicio5 {
+  font-family: font3;
+  display: flex;
+  gap: 64px;
+  padding: 32px;
+  
+}
+
+.Inicio6{
   font-family: font3;
   display: flex;
   gap: 64px;
@@ -125,9 +133,13 @@
 }
 
 
+.Inicio5 img{
+  max-width: 360px;
 
-.Inicio5 .Inicio6 img{
-  max-width: 500px;
+}
+
+.Inicio6 img{
+  max-width: 360px;
 
 }
 
