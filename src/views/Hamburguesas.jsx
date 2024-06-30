@@ -1,6 +1,6 @@
 import styles from './HomePage.module.css';
 
-function Nosotros() {
+function Hamburguesas() {
     return (
         <div>
             <div className= {styles.slogan}>
@@ -10,4 +10,4 @@ function Nosotros() {
     );
 }
 
-export default Nosotros
+export default Hamburguesas

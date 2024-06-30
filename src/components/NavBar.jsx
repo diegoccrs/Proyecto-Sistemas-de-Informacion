@@ -22,7 +22,7 @@ export default function NavBar() {
         })
     }, []);
 
-    const logOut = async () => {
+    const logout = async () => {
 
         await signOut(auth);
     };
@@ -62,7 +62,7 @@ export default function NavBar() {
 
             <div className={styles.line2}></div>
         </div>
-    );
+    )
 }
    
 

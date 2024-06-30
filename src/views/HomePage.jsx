@@ -1,10 +1,24 @@
 import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
 import { useState } from 'react';
-import c1 from '../img/View.png';
+//import c1 from '../img/View.png';
 import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
+import view from '../img/View.png';
+import local_0 from '../img/Local.png';
+import burger from '../img/Burger_0.png';
+import cachapa from '../img/Cachapa_0.png';
+import ch from '../img/ClubHouse_0.png';
+import parrilla from '../img/Parrilla_0.png';
+import cookie from '../img/Cookie.png';
+//import map from '../img/Map.png';
+//import view from '../img/View.png';
+//import view from '../img/View.png';
+
+
+
+import { Link } from "react-router-dom";
 
 function HomePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,37 +27,37 @@ function HomePage() {
         {
         title: 'Combo 1',
         description: 'Descripción del combo 1',
-        image: c1,
+        image: view,
         },
         {
     
         title: 'Combo 2',
         description: 'Descripción del combo 2',
-        image: c1,
+        image: view,
         },
         {
       
         title: 'Combo 3',
         description: 'Descripción del combo 3',
-        image: c1,
+        image: view,
         },
         {
         
         title: 'Combo 4',
         description: 'Descripción del combo 4',
-        image: c1,
+        image: view,
         },
         {
        
         title: 'Combo 5',
         description: 'Descripción del combo 5',
-        image: c1,
+        image: view,
         },
         {
         
         title: 'Combo 6',
         description: 'Descripción del combo 6',
-        image: c1,
+        image: view,
         },
     ];
 
@@ -102,7 +116,7 @@ function HomePage() {
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.titulo}>COMBOS</h1>
-                    <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.bold}>mejores precios</div>, donde cada bocado es un viaje de sabores.</h2>
+                    <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.bold}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
                     <button className={styles.button}>Explorar Combos</button>
                 </div>
                 
@@ -112,12 +126,12 @@ function HomePage() {
                 <div className={styles.containerOrigenes}>
                     <div className={styles.descripcionorigenes}>
                         <h1 className={styles.titulo}>Nuestros Orígenes</h1>
-                        <h2>Cómo llegamos aquí .</h2>
+                        <h2>Cómo llegamos aquí</h2>
                         <h3>Deli Pernil</h3>
                         <button className={styles.button}>Conócenos</button>
                     </div>
                     <div className={styles.imagenorigenes}>
-                        <img  src={local} alt="local" />
+                        <img  src={local_0} alt="local_0" />
                     </div>
                 </div>
             
@@ -125,27 +139,27 @@ function HomePage() {
 
             <div className={styles.menu}>
                 <div className={styles.titulomenu}>
-                    <h1>Nuestro Menú</h1>
+                    <h1>Nuestro <span className={styles.colored}>Menú</span></h1>
                 </div>
                 <div className={styles.cartasmenu}>
                     <div className={styles.cartamenu}>
-                        <img  src={local} alt="local" />
+                        <img  src={burger} alt="burger" />
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={local} alt="local" />
+                        <img  src={cachapa} alt="cachapa" />
                         <h1 className={styles.titulocarta}>Cachapas</h1>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={local} alt="local" />
+                        <img  src={ch} alt="ch" />
                         <h1 className={styles.titulocarta}>Club House</h1>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={local} alt="local" />
+                        <img  src={parrilla} alt="parrilla" />
                         <h1 className={styles.titulocarta}>Parrillas</h1>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={local} alt="local" />
+                        <img  src={cookie} alt="cookie" />
                         <h1 className={styles.titulocarta}>Más</h1>
                     </div>
                    
@@ -155,12 +169,12 @@ function HomePage() {
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
-                    <h2>Caracas 1073, Miranda, Universidad Metropolitana de Caracas</h2>
-                    <h2>delipernil@gmail.com</h2>
-                    <h2>0424-2285852</h2>
+                    <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
+                    <h2> <a href=""></a> delipernil@gmail.com</h2>
+                    <h2> <a href="tel:04242285852">0424-2285852</a></h2>
                     <div className={styles.redesSociales}>
-                        <img className={styles.social} src={iglogo} alt="Logo" />
-                        <img className={styles.social} src={xlogo} alt="Logo" />
+                        <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                        <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
                     </div>
                 </div>
             </div>

@@ -11,41 +11,9 @@
   
   }
 
-
-  
-  @font-face {
-    font-family: font1;
-    src: url(Marvel-Bold.ttf);
-  }
-  
-  @font-face {
-    font-family: font2;
-    src: url(AlegreyaSansSC-Thin.ttf);
-  }
-  
-  @font-face {
-    font-family: font3;
-    src: url(AlegreyaSansSC-Light.ttf);
-  }
-  
-  @font-face {
-    font-family: font4;
-    src: url(AlegreyaSansSC-Regular.ttf);
-  }
-
-  
-
-.slogan {
-  font-family: font4;
-  background-color: rgb(8, 8, 46);
-  text-align: center;
-  padding: 20px;
-  color: white;
-}
-
-.colored {
-  color: rgb(231, 147, 244);
-  
+.slogan{
+    height: 200px;
+    background-color: var(--clr-dark);
 }
 
 .formularioayuda {
@@ -108,7 +76,12 @@
     height: 30px;
 }
 
+.inputC{
+    width: 80%;
+    height: 90px;
 
+
+}
 
 
 
