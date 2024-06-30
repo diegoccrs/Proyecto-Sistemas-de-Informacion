@@ -1,4 +1,4 @@
-import styles from './Ayuda.module.css';
+import styles from './Comentarios.module.css';
 import c1 from '../img/View.png';
 import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
@@ -11,10 +11,10 @@ function Ayuda() {
     return (
         <div>
             <div className= {styles.slogan}>
-                <h1>Contacta a nuestro equipo de ayuda</h1>
+                <h1>¡Déjanos tu reseña!</h1>
             </div>
             <div className={styles.formularioayuda }>
-                <h2>¿Cómo podemos ayudarte?</h2>
+                <h2>Rellena las casillas con tus datos</h2>
                 <div className={styles.formulario}>
                     <div className={styles.formularioInfo}>
                         <div className={styles.formulario1}>
@@ -32,7 +32,7 @@ function Ayuda() {
                         </div>
                     </div>
                     
-                    <h3>Cuéntanos tus dudas o inquietudes</h3>
+                    <h3>Dinos lo que piensas</h3>
                         <input type="text"/>
                     
                 </div>
