@@ -48,19 +48,19 @@ export const routes = [
         ],
     },
     {
-        path: "/menuadmin",
-        name: "MenuAdmin",
-    },
-    {
         path: "/comentarios",
         name: "Comentarios",
+    },
+    {
+        path: "/menuadmin",
+        name: "MenuAdmin",
     },
     {
         path: "/historial",
         name: "Historial",
     },
     {
-        path: "/PedidosActuales",
+        path: "/pedidosactuales",
         name: "PedidosActuales",
     },
     {

@@ -13,6 +13,7 @@ import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
 import Hamburguesas from "./views/Hamburguesas.jsx";
 import Comentarios from "./views/Comentarios.jsx";
+import MenuAdmin from "./views/MenuAdmin.jsx"
 
 
 export const router = createBrowserRouter([
@@ -63,8 +64,12 @@ export const router = createBrowserRouter([
                 element: <EditarPerfil />,
               },
               {
-                path: routes[9].path,
+                path: routes[8].path,
                 element: <Comentarios />
+              },
+              {
+                path: routes[9].path,
+                element: <MenuAdmin />
               }
             ],
     }

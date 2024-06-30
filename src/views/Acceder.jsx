@@ -14,7 +14,7 @@ import facebooklogo from '../img/facebook.png';
 
 
 import {getAdditionalUserInfo} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
+import { doc, setDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
 import { db } from '../firebase';
 
 
@@ -27,14 +27,23 @@ function Acceder() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const [user, setUser] = useState({});
+  
     const navigate = useNavigate();
+
+    ////////////////!SECTION
+    const [user, setUser] = useState({});
+    
+
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         })
     }, []);
+
+
+    //////////
+
 
     const register = async () => {
         setLoading(true);
@@ -95,11 +104,19 @@ function Acceder() {
                 
             }
 
-            console.log(user);
+            const userRef = doc(db, "Usuario", id);
+            const userDoc = await getDoc(userRef);
+            if (userDoc.exists() && userDoc.data().admin) {
+                navigate("/menuadmin");
+            } else {
+                navigate("/");
+            }
+
+      
 
             setError(null);
             setLoading(false);
-            navigate("/");
+           
         } catch (error) {
             console.log(error.message);
 
@@ -130,11 +147,17 @@ function Acceder() {
                 
             }
 
-            console.log(user);
-
+        
+            const userRef = doc(db, "Usuario", id);
+            const userDoc = await getDoc(userRef);
+            if (userDoc.exists() && userDoc.data().admin) {
+                navigate("/menuadmin");
+            } else {
+                navigate("/");
+            }
             setError(null);
             setLoading(false);
-            navigate("/");
+            
         } catch (error) {
             console.log(error.message);
 

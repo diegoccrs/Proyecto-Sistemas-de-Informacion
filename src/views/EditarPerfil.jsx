@@ -102,7 +102,7 @@ function Perfil() {
                         <Link className={styles["nav-link"]} to="/perfil">Regresar</Link>
                         
                     
-                        <Link className={styles["nav-link"]} to="/">Eliminar</Link>
+                       
         
                     </div>
                 </div>
