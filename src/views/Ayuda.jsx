@@ -9,7 +9,8 @@ function Ayuda() {
     return (
         <div>
             <div className= {styles.slogan}>
-      
+                <h1>¿Necesitas ayuda? <span className={styles.colored}>¡Contáctanos!</span> </h1>
+                <h1>Estaremos encantados de atenderte</h1>
             </div>
             <div className={styles.formularioayuda}>
                 <h1>Contacta a nuestro equipo de ayuda</h1>
