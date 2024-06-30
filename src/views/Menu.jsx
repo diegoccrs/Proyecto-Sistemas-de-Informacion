@@ -189,9 +189,9 @@ function Menu() {
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
-                    <h2>Caracas</h2>
-                    <h2>delipernil</h2>
-                    <h2>0424</h2>
+                    <h2>Caracas 1073, Miranda, Universidad Metropolitana de Caracas</h2>
+                    <h2>delipernil@gmail.com</h2>
+                    <h2>0424-2285852</h2>
                     <div className={styles.redesSociales}>
                         <img className={styles.social} src={iglogo} alt="Logo" />
                         <img className={styles.social} src={xlogo} alt="Logo" />
