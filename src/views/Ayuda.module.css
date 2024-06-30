@@ -34,7 +34,20 @@
     grid-column: 2 / span 1;
 }
 
+.anonimo {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
 
+.anonimo input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.anonimo label {
+  font-size: 14px;
+  color: #666;
+}
 
 
 .button{
