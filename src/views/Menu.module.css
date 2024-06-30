@@ -172,8 +172,13 @@
    
   }
   
+  .cartamenu img{
+    min-width: 400px;
+  }
 
-  
+  .cartamenu img{
+    max-width: 400px;
+  }
   
   
   .contactos{
