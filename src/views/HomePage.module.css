@@ -265,6 +265,10 @@
     width:100%;
   
   }
+
+  .origenes img{
+    max-width: 278px;
+  }
   
   .menu{
     font-family: font4;
