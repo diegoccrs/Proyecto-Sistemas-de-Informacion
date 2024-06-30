@@ -64,8 +64,10 @@
 .container{
   margin-right: 200px;
   position: relative;
-  text-align: center;
+ 
   font-family: font2;
+  align-items: center;
+  
   
   top: 40px;
   left: 60px;
@@ -108,13 +110,19 @@
 }
 
 .button{
-  margin-bottom: 0;
+  
   background-color: var(--clr-lightorange);
-  font-family: font1;
-  font-size: 20px;
+  
   color: var(--clr-orange);
   border: none;
   border-radius: 15px;
+
+  color: var(--clr-orange) ;
+    font-size: 1.25rem;
+    font-family: font1;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 10px;
   
 }
 
@@ -204,7 +212,8 @@
 }
 
 .comboDescription{
- 
+ padding: 2rem;
+ align-items: center;
  flex: 1;
 }
 

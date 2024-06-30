@@ -6,6 +6,9 @@ import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 
+
+import { Link } from "react-router-dom";
+
 function HomePage() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -70,8 +73,8 @@ function HomePage() {
                         <h2 className={styles.parrafo}> Club House</h2>
                         <h2 className={styles.parrafo}> Y muho más</h2>
 
-                   
-                    <button className={styles.button}>Ver Productos</button>
+                    <Link className={styles.button}s to="/menu">Ver Productos</Link>    
+                    
                 </div>
             </div>
 
@@ -88,7 +91,8 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <button className={styles.button}>Comprar</button>
+                                <Link className={styles.button}s to="/acceder">Comprar</Link> 
+      
                             </div>
                         </div>
                     </div>
@@ -103,7 +107,8 @@ function HomePage() {
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.titulo}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.bold}>mejores precios</div>, donde cada bocado es un viaje de sabores.</h2>
-                    <button className={styles.button}>Explorar Combos</button>
+                    <Link className={styles.button}s to="/menu">Explorar Combos</Link> 
+
                 </div>
                 
             </div>
@@ -114,7 +119,8 @@ function HomePage() {
                         <h1 className={styles.titulo}>Nuestros Orígenes</h1>
                         <h2>Cómo llegamos aquí .</h2>
                         <h3>Deli Pernil</h3>
-                        <button className={styles.button}>Conócenos</button>
+                        <Link className={styles.button}s to="/nosotros">Conócenos</Link> 
+      
                     </div>
                     <div className={styles.imagenorigenes}>
                         <img  src={local} alt="local" />
@@ -128,26 +134,27 @@ function HomePage() {
                     <h1>Nuestro Menú</h1>
                 </div>
                 <div className={styles.cartasmenu}>
-                    <div className={styles.cartamenu}>
+                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Cachapas</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+                    <Link className={styles.cartamenu}s to="/menu">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Club House</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+                    <Link className={styles.cartamenu}s to="/menu">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Parrillas</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+                    <Link className={styles.cartamenu}s to="/menu">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Más</h1>
-                    </div>
+                    </Link> 
+             
                    
                 </div>
             </div>

@@ -12,6 +12,8 @@ import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
 import Hamburguesas from "./views/Hamburguesas.jsx";
+import Comentarios from "./views/Comentarios.jsx";
+
 
 export const router = createBrowserRouter([
     {
@@ -59,6 +61,10 @@ export const router = createBrowserRouter([
               {
                 path: routes[8].path,
                 element: <EditarPerfil />
+              },
+              {
+                path: routes[9].path,
+                element: <Comentarios />
               }
             ],
     }
