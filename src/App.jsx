@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth'
 /////////////////////////////////////////////////////////////////////////////////
 import { auth, firestoreDB } from './firebase-config.js'
-import { collection, getDoc, addDoc } from 'firebase/firestore'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 /////////////////////////////////////////////////////////////////////////////////
 import './App.css'
 
@@ -36,13 +36,14 @@ function App() {
                 regPassword);
 /////////////////////////////////////////////////////////////////////////////////
 
-                await addDoc(collection(firestoreDB, "Usuario"), {
-                    email: regEmail,
-                    password: regPassword,
-                });
+            const docRef = doc(firestoreDB, "Usuario", regEmail);
+            const payload = { email: regEmail, password: regPassword};
+            await setDoc(docRef, payload);
+            const docu = await getDoc(docRef);
 
 /////////////////////////////////////////////////////////////////////////////////
-                console.log(user);
+            console.log(user);
+            console.log(docu.data());
         } catch (error) {
             console.log(error.message);
         }
