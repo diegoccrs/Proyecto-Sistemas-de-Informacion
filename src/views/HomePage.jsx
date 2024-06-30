@@ -2,7 +2,7 @@ import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
 import { useState } from 'react';
 //import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
+//import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import view from '../img/View.png';
