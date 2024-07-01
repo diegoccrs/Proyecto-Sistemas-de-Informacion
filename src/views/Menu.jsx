@@ -109,7 +109,7 @@ function Menu() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <Link className={styles.button}s to="/menu">Comprar</Link> 
+                                <Link className={styles.button} to="/menu">Comprar</Link> 
                                 <button className={styles.button}>Comprar</button>
                             </div>
                         </div>
@@ -122,60 +122,60 @@ function Menu() {
                 <h1>MENU</h1>
                 <div className={styles.catalogo}>
                
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
                         <img src={local} alt="local" />
                       
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Cachapas</h1>
                         <img src={local} alt="local" />
       
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Club House</h1>
                         <img src={local} alt="local" />
                    
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Parrillas</h1>
                         <img src={local} alt="local" />
                      
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Pepitos</h1>
                         <img src={local} alt="local" />
                
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                         <h1 className={styles.titulocarta}>Sandwiches</h1>
                         <img src={local} alt="local" />           
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                         <h1 className={styles.titulocarta}>Arepas</h1>
                         <img src={local} alt="local" />
                         
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Ensaladas</h1>
                         <img src={local} alt="local" />
                      
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                 
                         <h1 className={styles.titulocarta}>Otros</h1>
                         <img src={local} alt="local" />

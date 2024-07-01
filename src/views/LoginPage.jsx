@@ -6,7 +6,8 @@ import {
     onAuthStateChanged,
     signInWithPopup
 } from 'firebase/auth'
-import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
@@ -34,12 +35,21 @@ function IniciarSesion() {
     const login = async () => {
         setLoading(true);
         try {
+            if(!logEmail || !logPassword) {
+                throw new Error("Input error: rellenar casillas");
+            }
+
             const user = await signInWithEmailAndPassword(
                 auth,
                 logEmail,
                 logPassword);
 
             console.log(user);
+
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            const docu = await getDoc(docRef);
+
+            console.log(docu.data());
 
             setError(null);
             setLoading(false);
@@ -60,6 +70,22 @@ function IniciarSesion() {
             const user = await signInWithPopup(auth, googleProvider);
 
             console.log(user);
+
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            let docu = await getDoc(docRef);
+            if(!docu.data()) {
+                const payload = { 
+                    nombreCompleto: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
+                    facultad: 'por definir',
+                    telefono: auth.currentUser.phoneNumber,
+                    admin: false
+                };
+                await setDoc(docRef, payload);
+            }
+            docu = await getDoc(docRef);
+
+            console.log(docu.data());
 
             setError(null);
             setLoading(false);
