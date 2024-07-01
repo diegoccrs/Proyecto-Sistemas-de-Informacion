@@ -81,10 +81,12 @@ function Menu() {
                 <div className={styles.botonMenu}> 
                     <h1 className={styles.tituloboton}>Club House</h1>
                 </div>
+
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Hamburguesas</h1>
                     
                 </div>
+                
                 <div className={styles.botonMenu}>     
                     <h1 className={styles.tituloboton}>Parrillas</h1>
                 </div>
