@@ -145,7 +145,9 @@ function HomePage() {
                 </div>
                 <div className={styles.cartasmenu}>
                     <div className={styles.cartamenu}>
-                        <img  src={burger} alt="burger" />
+                    <Link className={styles["nav-link"]} to="/menu/hamburguesas"><img  src={burger} alt="burger" /></Link>
+
+                        
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
                     </div>
                     <div className={styles.cartamenu}>

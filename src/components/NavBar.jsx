@@ -81,6 +81,9 @@ export default function NavBar() {
             <div className={styles.nav}>
                 <Link className={styles["nav-link"]} to="/">Inicio</Link>
                 <Link className={styles["nav-link"]} to="/menu">Menú</Link>
+
+                
+
                 <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
                 <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
                 <Link className={`${styles["nav-link"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>

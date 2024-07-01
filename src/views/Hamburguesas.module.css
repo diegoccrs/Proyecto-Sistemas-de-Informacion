@@ -56,7 +56,10 @@
     
   .botonMenu{
       width: 10%;
-      background-color: var(--clr-darkorange);
+      
+      background-color: var(--clr-darkpurple);
+      color: white;
+
       border-radius: 5px;
       border: solid 5px;
       border-color: var(--clr-lightorange);
@@ -194,7 +197,7 @@
   }
   
   .cartamenu{
-    width: 50;
+    width: 40%;
     background-color: var(--clr-white);
     border-radius: 10px;
     padding: 3px;
@@ -203,12 +206,12 @@
    
   }
   
-  .catalogo img{
-    min-width: 350px;
+  .cartamenu img{
+    min-width: 400px;
   }
 
-  .catalogo img{
-    max-width: 350px;
+  .cartamenu img{
+    max-width: 400px;
   }
   
   

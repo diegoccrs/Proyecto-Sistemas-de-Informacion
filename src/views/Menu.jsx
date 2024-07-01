@@ -12,7 +12,7 @@ import burger from '../img/Burger_0.png';
 import burger1 from '../img/Burger_1.jpg';
 import cachapa from '../img/Cachapa_1.png';
 import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.webp';
+import arepa from '../img/Arepa.png';
 import parrilla from '../img/Parrilla_1.jpg';
 import pepito from '../img/Pepito.jpg';
 import sandwich from '../img/Sandwich.jpg';
@@ -86,7 +86,7 @@ function Menu() {
                     <h1 className={styles.tituloboton}>Hamburguesas</h1>
                     
                 </div>
-                
+
                 <div className={styles.botonMenu}>     
                     <h1 className={styles.tituloboton}>Parrillas</h1>
                 </div>
@@ -129,7 +129,7 @@ function Menu() {
                     <button id="nextBtn" className={styles.buttonc} onClick={prevCombo}>&gt;</button>
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 </div>
-                <h1>MENU</h1>
+                <h1 className={styles.tm}>MENU</h1>
                 <div className={styles.catalogo}>
                     
                     <div className={styles.cartamenu}>
@@ -153,7 +153,7 @@ function Menu() {
                         </NavLink>
                     </div>
                     <div className={styles.cartamenu}>
-                    <NavLink to={routes[1]["children"][0].path}>
+                        <NavLink to={routes[1]["children"][0].path}>
                         <h1 className={styles.titulocarta}>Club House</h1>
                         <img src={ch} alt="ch" />
                         </NavLink>

@@ -13,6 +13,38 @@ export const routes = [
                 path: "/menu/hamburguesas",
                 name: "Hamburguesas",
             },
+            {
+                path: "/menu/cachapas",
+                name: "Cachapas",
+            },
+            {
+                path: "/menu/clubhouses",
+                name: "Club Houses",
+            },
+            {
+                path: "/menu/arepas",
+                name: "Arepas",
+            },
+            {
+                path: "/menu/parrillas",
+                name: "Parrillas",
+            },
+            {
+                path: "/menu/pepitos",
+                name: "Pepitos",
+            },
+            {
+                path: "/menu/ensaladas",
+                name: "Ensaladas",
+            },
+            {
+                path: "/menu/sandwiches",
+                name: "Sandwiches",
+            },
+            {
+                path: "/menu/otros",
+                name: "Otros",
+            },
 
         ],
     },

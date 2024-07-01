@@ -1,5 +1,5 @@
 
-import styles from './Menu.module.css';
+import styles from './Hamburguesas.module.css';
 import { useState } from 'react';
 //import c1 from '../img/View.png';
 //import local from '../img/iglogo.png';

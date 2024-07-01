@@ -55,6 +55,7 @@
   
 }
 .formularioayuda {
+  
   font-family: font4;
    
 }
@@ -90,6 +91,14 @@
     border-radius: 15px;
     
   }
+
+ 
+  
+
+.inputC{
+  margin-right: 50%;
+  
+}
 
 .contactos {
     align-content: center;
