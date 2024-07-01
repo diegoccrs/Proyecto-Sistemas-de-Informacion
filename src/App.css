@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+:root{
+  --clr-dark: #050929;
+  --clr-darkpurple: #5B19B0;
+  --clr-lightpurple: #F0D0FF;
+  --clr-darkorange: #FFAE50;
+  --clr-lightorange: #FFF0E9;
+  --clr-white: #ffffff;
+  --clr-gray: #c7c7c7;
+  
+
+}
+
+
+@font-face {
+  font-family: font1;
+  src: url(Marvel-Bold.ttf);
+}
