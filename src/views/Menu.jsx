@@ -82,7 +82,9 @@ function Menu() {
                     <h1 className={styles.tituloboton}>Club House</h1>
                 </div>
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Hamburguesas</h1>
+                    <Link className={styles["nav-link"]} to="/Hamburgesas"><h1 className={styles.tituloboton}>Hamburguesas</h1></Link>
+                    
+
                 </div>
                 <div className={styles.botonMenu}>     
                     <h1 className={styles.tituloboton}>Parrillas</h1>

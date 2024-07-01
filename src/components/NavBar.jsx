@@ -48,8 +48,8 @@ export default function NavBar() {
                 <img className={styles.tlogo} src={tlogo} alt="DeliPernil" />
                 <img className={styles.mlogo} src={mlogo} alt="Logo" />
                 <div className={styles.container}>
-                    <img className={styles.social} src={iglogo} alt="Logo" />
-                    <img className={styles.social} src={xlogo} alt="Logo" />
+                    <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                    <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
                 </div>
             </div>
 
