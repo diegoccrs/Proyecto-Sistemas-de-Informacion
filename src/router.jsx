@@ -13,16 +13,6 @@ import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
 import Hamburguesas from "./views/Hamburguesas.jsx";
-import Cachapas from "./views/Cachapas.jsx";
-import ClubHouses from "./views/ClubHouses.jsx";
-import Arepas from "./views/Arepas.jsx";
-import Parrillas from "./views/Parrillas.jsx";
-import Pepitos from "./views/Pepitos.jsx";
-import Sandwiches from "./views/Sandwiches.jsx";
-import Ensaladas from "./views/Ensaladas.jsx";
-import Postres from "./views/Postres.jsx";
-import Comentarios from "./views/Comentarios.jsx";
-import MenuAdmin from "./views/MenuAdmin.jsx";
 
 
 export const router = createBrowserRouter([
@@ -41,38 +31,6 @@ export const router = createBrowserRouter([
                     {
                       path: routes[1]["children"][0].path,
                       element: <Hamburguesas />,
-                    },
-                    {
-                      path: routes[1]["children"][1].path,
-                      element: <Cachapas />,
-                    },
-                    {
-                      path: routes[1]["children"][2].path,
-                      element: <ClubHouses />,
-                    },
-                    {
-                      path: routes[1]["children"][3].path,
-                      element: <Arepas />,
-                    },
-                    {
-                      path: routes[1]["children"][4].path,
-                      element: <Parrillas />,
-                    },
-                    {
-                      path: routes[1]["children"][5].path,
-                      element: <Pepitos />,
-                    },
-                    {
-                      path: routes[1]["children"][6].path,
-                      element: <Sandwiches />,
-                    },
-                    {
-                      path: routes[1]["children"][7].path,
-                      element: <Ensaladas />,
-                    },
-                    {
-                      path: routes[1]["children"][8].path,
-                      element: <Postres />,
                     },
                   ],
             },
@@ -101,16 +59,8 @@ export const router = createBrowserRouter([
                 element: <Perfil />
               },
               {
-                path: routes[7]["children"][0].path,
-                element: <EditarPerfil />,
-              },
-              {
                 path: routes[8].path,
-                element: <Comentarios />
-              },
-              {
-                path: routes[9].path,
-                element: <MenuAdmin />
+                element: <EditarPerfil />
               }
             ],
     }

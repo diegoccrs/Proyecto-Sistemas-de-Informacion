@@ -9,10 +9,10 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth'
-import { auth } from './firebase-config.js'
+import { auth } from './firebase.js'
+
 import './App.css'
 
-import PayPal from './components/PayPal.jsx';
 
 function App() {
 
@@ -60,8 +60,6 @@ function App() {
         await signOut(auth);
     };
 
-    const [checkout, setCheckout] = useState(false);
-
 
 
     return (
@@ -108,7 +106,7 @@ function App() {
                 <button onClick={logout}>Sign Out</button>
             </div>
 
-            <PayPal />
+        
 
         </div>
     </>
