@@ -55,8 +55,9 @@ function Acceder() {
 
     const loginPopupGoogle = async () => {
         setLoading(true);
+        googleProvider.setCustomParameters({ prompt: 'select_account' });
         try {
-            await signInWithPopup(auth, googleProvider);
+            const user = await signInWithPopup(auth, googleProvider);
 
             console.log(user);
 

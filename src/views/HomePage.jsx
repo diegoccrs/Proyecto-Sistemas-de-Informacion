@@ -64,7 +64,7 @@ function HomePage() {
             </div>
 
             <div className={styles.bienvenido} style={{ backgroundImage: `url(${fondo})` }}>
-                <image className={styles.fondo} src={fondo} alt="fondo" ></image>
+                <img className={styles.fondo} src={fondo} alt="fondo" ></img>
                 <div className={styles.container}>
                     <h1 className={styles.titulo}>Bienvenido</h1>
                     <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div>.</h2>
@@ -75,7 +75,7 @@ function HomePage() {
                         <h2 className={styles.parrafo}> Club House</h2>
                         <h2 className={styles.parrafo}> Y muho más</h2>
 
-                    <Link className={styles.button}s to="/menu">Ver Productos</Link>    
+                    <Link className={styles.button} to="/menu">Ver Productos</Link>    
                     
                 </div>
             </div>
@@ -93,7 +93,7 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <Link className={styles.button}s to="/acceder">Comprar</Link> 
+                                <Link className={styles.button} to="/acceder">Comprar</Link> 
       
                             </div>
                         </div>
@@ -109,7 +109,7 @@ function HomePage() {
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.titulo}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.bold}>mejores precios</div>, donde cada bocado es un viaje de sabores.</h2>
-                    <Link className={styles.button}s to="/menu">Explorar Combos</Link> 
+                    <Link className={styles.button} to="/menu">Explorar Combos</Link> 
 
                 </div>
                 
@@ -121,7 +121,7 @@ function HomePage() {
                         <h1 className={styles.titulo}>Nuestros Orígenes</h1>
                         <h2>Cómo llegamos aquí .</h2>
                         <h3>Deli Pernil</h3>
-                        <Link className={styles.button}s to="/nosotros">Conócenos</Link> 
+                        <Link className={styles.button} to="/nosotros">Conócenos</Link> 
       
                     </div>
                     <div className={styles.imagenorigenes}>
@@ -136,23 +136,23 @@ function HomePage() {
                     <h1>Nuestro Menú</h1>
                 </div>
                 <div className={styles.cartasmenu}>
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
                     </Link>
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Cachapas</h1>
                     </Link>
-                    <Link className={styles.cartamenu}s to="/menu">
+                    <Link className={styles.cartamenu} to="/menu">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Club House</h1>
                     </Link>
-                    <Link className={styles.cartamenu}s to="/menu">
+                    <Link className={styles.cartamenu} to="/menu">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Parrillas</h1>
                     </Link>
-                    <Link className={styles.cartamenu}s to="/menu">
+                    <Link className={styles.cartamenu} to="/menu">
                         <img  src={local} alt="local" />
                         <h1 className={styles.titulocarta}>Más</h1>
                     </Link> 
