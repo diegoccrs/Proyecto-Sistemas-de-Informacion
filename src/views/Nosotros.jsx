@@ -1,8 +1,8 @@
 import styles from './HomePage.module.css';
 import styles_ from './Nosotros.module.css';
 
-//import mision from '../img/Misión.png';
-//import vision from '../img/Visiónn.png';
+import mision from '../img/Misión.png';
+import vision from '../img/Visión.png';
 import nosotros from '../img/Nosotros.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
@@ -10,6 +10,17 @@ import fondo from '../img/fondo1.png';
 import ger from '../img/Gerente.png';
 import rep from '../img/Represent.png';
 import equipo from '../img/Equipo1.png';
+import st from '../img/ST.png';
+import st1 from '../img/ST1.png';
+import st3 from '../img/ST3.png';
+import st4 from '../img/ST4.png';
+import st5 from '../img/ST5.png';
+import st6 from '../img/ST6.png';
+import st7 from '../img/ST7.png';
+import st8 from '../img/ST8.png';
+
+
+
 
 
 
@@ -83,76 +94,95 @@ function Nosotros() {
 
 
             <section className= {styles_.Inicio4}>
+
+                <div>
+                    <img  src={st1} alt="st1" />
+                </div>
                 <div>
                     <h2>Soporte Técnico</h2>
                 </div>
+                <div>
+                    <img  src={st} alt="st" />
+                </div>
+
             </section>
 
             <section className= {styles_.Inicio5}>
                 
                 <div>
-                    <img  src={ger} alt="ger" />
+                    <img  src={st5} alt="st5" />
 
                     <h2>Diego Cáceres</h2>
                     <h3 className= {styles_.g}>Gerente</h3>
                 </div>
 
                 <div> 
-                    <img  src={rep} alt="rep" />
+                    <img  src={st4} alt="st4" />
                     <h2>Giselle Esclasans</h2>
-                    <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
+                    <h3 className= {styles_.g}>Líder de Proyecto</h3>
                 </div>
 
                 <div> 
-                    <img  src={rep} alt="rep" />
+                    <img  src={st7} alt="st7" />
                     <h2>Diego Goncalves</h2>
-                    <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
+                    <h3 className= {styles_.g}>Levantamiento de Información</h3>
                 </div>
-            </section>
-
-
-            <section className= {styles_.Inicio6}>
 
                 <div>
                     
-                    <img  src={rep} alt="rep" />
+                    <img  src={st3} alt="st3" />
                     <h2>Sebastian Hernandez</h2>
-                    <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
+                    <h3 className= {styles_.g}>Seguridad</h3>
                 </div>        
                 
                 <div>
-                    <img  src={ger} alt="ger" />
+                    <img  src={st8} alt="st8" />
 
                     <h2>Victor Martinez </h2>
-                    <h3 className= {styles_.g}>Gerente</h3>
+                    <h3 className= {styles_.g}>Mantenimiento</h3>
                 </div>
 
                 <div>
                     
-                    <img  src={rep} alt="rep" />
+                    <img  src={st6} alt="st6" />
                     <h2>Virginia Torrealba</h2>
-                    <h3 className= {styles_.g}>Representante de servicio al cliente</h3>
+                    <h3 className= {styles_.g}>Diseño</h3>
                 </div>
+
             </section>
 
-
-            
-            
+                    
             <section className= {styles_.MV}>
-                <div className= {styles_.M}>
-                    <h2>Misión</h2>
-                        
-                        <h3>
+
+
+                <div>
+                    <img  src={mision} alt="mision" />
+                </div>
+
+                <div>
+
+                    <h2>Misión</h2>                
+                    <h3>
                         Crecer como empresa y día a día, ser capaces de innovar en los platos que servimos sin disminuir la calidad que nos caracteriza desde hace años.
-                        </h3>
+                    </h3>
                         
                 </div>
-                <div className= {styles_.V}>
+
+                <div>
+                    <img  src={vision} alt="vision" />
+                </div>
+
+
+                <div>
                     <h2>Visión</h2>
                         <h3>Ofrecer a los miembros de la universidad metropolitana una alternativa de comida rápida, de calidad y de un precio accesible para que todos puedan disfrutar de nuestras delicias.</h3>
                 </div>
 
+            
+
+
             </section>
+
             
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
                 <div className={styles.containerContactos}>

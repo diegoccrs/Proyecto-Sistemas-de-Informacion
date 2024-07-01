@@ -64,7 +64,7 @@
 }
 
 .Inicio img{
-  max-width: 250px;
+  max-width: 200px;
 
 }
 
@@ -83,7 +83,7 @@
 }
 
 .Inicio2 img{
-  max-width: 150px;
+  max-width: 130px;
 
 }
 
@@ -113,15 +113,24 @@
 }
 
 
-
 .Inicio4 {
   font-family: font3;
+  align-items: center;
+  
+
   background-color: rgb(8, 8, 46);
-  text-align: center;
+  
   padding: 20px;
   color: white;
+  
 }
 
+.Inicio4 img{
+  max-width: 70px;
+  
+
+
+}
 
 .Inicio5{
   font-family: font3;
@@ -131,31 +140,19 @@
   
 }
 
-.Inicio6{
-  font-family: font3;
-  display: flex;
-  gap: 64px;
-  padding: 32px;
-  
-}
 
 .Inicio5 h2{
   color: blue
 }
 
-.Inicio6 h2{
-  color: blue
-}
+
 
 .Inicio5 img{
-  max-width: 360px;
+  max-width: 150px;
 
 }
 
-.Inicio6 img{
-  max-width: 360px;
 
-}
 
 .MV {
     font-family: font3;
@@ -165,5 +162,11 @@
     
 
     background-color: rgb(231, 147, 244);
+
+}
+
+
+.MV img{
+  max-width: 150px;
 
 }
