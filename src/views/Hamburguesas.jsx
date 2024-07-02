@@ -8,7 +8,7 @@ import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
 import { NavLink } from 'react-router-dom';
 import { routes } from "../constants/routes";
-import view from '../img/View.png';
+//import view from '../img/View.png';
 import burger from '../img/Burger_0.png';
 import burger1 from '../img/Burger_1.jpg';
 import cachapa from '../img/Cachapa_1.png';
@@ -60,33 +60,13 @@ function Hamburguesas() {
             </div>
 
             <div className={styles.menu}>
-                <h1>PROMOS</h1>
-                <div className={styles.promos}>
-                    <div className={styles.carrusel}>
-                    {combos.map((combo, index) => (
-                    <div className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`} key={index}>
-                        <div className={styles.combocontenido}>
-                            <div className={styles.imagencombobody}>
-                            <img className={styles.comboImage} src={combo.image} alt={combo.title} />
-                            </div>
-                            <div className={styles.comboDescription}>
-                                <h2 className={styles.comboTitle}>{combo.title}</h2>
-                                <p>{combo.description}</p>
-                                <button className={styles.button}>Comprar</button>
-                            </div>
-                        </div>
-                    </div>
-                    ))}        
-                    </div>
-                    <button id="nextBtn" className={styles.buttonc} onClick={prevCombo}>&gt;</button>
-                <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
-                </div>
+                
                 <h1>MENU</h1>
                 <div className={styles.catalogo}>
                     
                     <div className={styles.cartamenu}>
                        
-                        <NavLink to="/Hamburguesas">
+                        <NavLink to="/menu/hamburguesas">
                             <h1 className={styles.titulocarta}>Hamburguesa</h1>
                             <img src={burger} alt="burger" />
                         </NavLink>
