@@ -6,16 +6,12 @@ import {
     onAuthStateChanged,
     signInWithPopup
 } from 'firebase/auth'
-import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import styles from './Acceder.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
-
-
-import {getAdditionalUserInfo} from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
-import { db } from '../firebase';
 
 
 
@@ -23,17 +19,17 @@ function Acceder() {
 
     const [regEmail, setRegEmail] = useState('');
     const [regPassword, setRegPassword] = useState('');
+    const [nombre, setNombre] = useState('');
+    const [apellido, setApellido] = useState('');
+    const [telefono, setTelefono] = useState(0);
+    const [facultad, setFacultad] = useState('');
+
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-  
-    const navigate = useNavigate();
-
-    ////////////////!SECTION
     const [user, setUser] = useState({});
-    
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -41,38 +37,48 @@ function Acceder() {
         })
     }, []);
 
-
-    //////////
-
-
     const register = async () => {
         setLoading(true);
         try {
-            const userCredential = await createUserWithEmailAndPassword(
+            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0) {
+                throw new Error("Input error: rellenar casillas");
+            }
+
+            const user = await createUserWithEmailAndPassword(
                 auth,
                 regEmail,
                 regPassword);
 
-            console.log(userCredential); 
-            
-            const id = auth.currentUser.uid;
-            const docRef = doc(db, "Usuario", id);
-            const data = {
-                admin: false,
-                apellido: "",
+            console.log(user);
+
+            const docRef = doc(firestoreDB, "Usuario", regEmail);
+            const payload = {
+                nombreCompleto: nombre + " " + apellido,
                 email: regEmail,
-                facultad: "",
-                nombre: "",
-                telefono: "",
-            
-
-              
+                facultad: facultad,
+                telefono: telefono,
+                admin: false
             };
+            await setDoc(docRef, payload);
+            const docu = await getDoc(docRef);
 
-            await setDoc(docRef, data, { merge: true }), 
+            console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
+
             setError(null);
             setLoading(false);
-            navigate("/");
+
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
+            
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -84,39 +90,43 @@ function Acceder() {
 
     const loginPopupGoogle = async () => {
         setLoading(true);
+        googleProvider.setCustomParameters({ prompt: 'select_account' });
         try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const aditionalInfo = getAdditionalUserInfo(result);
-            const id = auth.currentUser.uid;
+            const user = await signInWithPopup(auth, googleProvider);
 
-            if(aditionalInfo.isNewUser){
-                const docRef = doc(db, "Usuario", id);
-                const data = {
-                    admin: false,
-                    apellido: "",
-                    email:result.user.email,
-                    facultad: "",
-                    nombre: result.user.displayName,
-                    telefono: result.user.phoneNumber,
+            console.log(user);
 
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            let docu = await getDoc(docRef);
+            if(!docu.data()) {
+                const payload = { 
+                    nombreCompleto: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
+                    facultad: 'por definir',
+                    telefono: auth.currentUser.phoneNumber,
+                    admin: false
                 };
-                await setDoc(docRef, data, { merge: true });
-                
-            }
+                await setDoc(docRef, payload);
 
-            const userRef = doc(db, "Usuario", id);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists() && userDoc.data().admin) {
-                navigate("/menuadmin");
-            } else {
-                navigate("/");
             }
+            docu = await getDoc(docRef);
+            
+            console.log(docu.data());
 
-      
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
 
             setError(null);
             setLoading(false);
-           
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -128,36 +138,15 @@ function Acceder() {
     const loginPopupFacebook = async () => {
         setLoading(true);
         try {
-            const result = await signInWithPopup(auth,facebookProvider);
-            const aditionalInfo = getAdditionalUserInfo(result);
-            const id = auth.currentUser.uid;
+            await signInWithPopup(auth, facebookProvider);
 
-            if(aditionalInfo.isNewUser){
-                const docRef = doc(db, "Usuario", id);
-                const data = {
-                    admin: false,
-                    apellido: "",
-                    email:result.user.email,
-                    facultad: "",
-                    nombre: result.user.displayName,
-                    telefono: result.user.phoneNumber,
+            console.log(user);
 
-                };
-                await setDoc(docRef, data, { merge: true });
-                
-            }
-
-        
-            const userRef = doc(db, "Usuario", id);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists() && userDoc.data().admin) {
-                navigate("/menuadmin");
-            } else {
-                navigate("/");
-            }
             setError(null);
             setLoading(false);
-            
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 
@@ -177,6 +166,31 @@ function Acceder() {
                 <div className={styles.container}>
                     <div className={styles.column}>
 
+                        <h2>Nombre</h2>
+                        <input type="text" placeholder='Nombre' onChange={(event) => {
+                            setNombre(event.target.value)
+                        }} />
+
+                        <h2>Apellido</h2>
+                        <input type="text" placeholder='Apellido' onChange={(event) => {
+                            setApellido(event.target.value)
+                        }} />
+
+                        <h2>Facultad</h2>
+                        <input type="text" placeholder='Facultad' onChange={(event) => {
+                            setFacultad(event.target.value)
+                        }} />
+
+                        <h2>Teléfono</h2>
+                        <input type="number" placeholder='Teléfono' onChange={(event) => {
+                            setTelefono(event.target.value)
+                        }} />
+                        
+                        <button className={loading? styles.buttonDisable : styles.button} onClick={register}>Registrarse</button>
+                        <p className='errorSignup'>{error}</p>
+                    </div>
+                    <div className={styles.column}>
+
                         <h2>Correo</h2>
                         <input type="email" placeholder='Correo electrónico' onChange={(event) => {
                             setRegEmail(event.target.value)
@@ -186,11 +200,7 @@ function Acceder() {
                         <input type="password" placeholder='Contraseña' onChange={(event) => {
                             setRegPassword(event.target.value)
                         }} />
-                        
-                        <button className={loading? styles.buttonDisable : styles.button} onClick={register}>Registrarse</button>
-                        <p className='errorSignup'>{error}</p>
-                    </div>
-                    <div className={styles.column}>
+
                         <div className={styles.center}>
                             <h3>¿Ya estás registrado?</h3>
 
@@ -210,6 +220,6 @@ function Acceder() {
             </div>
         </div>
     );
-}
+};
 
 export default Acceder

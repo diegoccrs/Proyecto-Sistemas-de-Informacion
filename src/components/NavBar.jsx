@@ -10,32 +10,14 @@ import xlogo from '../img/xlogo.png';
 import tlogo from '../img/tlogo.png'
 
 
-import { doc, getDoc } from 'firebase/firestore'; // Import Firestore functions
-
-import { db } from '../firebase';
-
 
 export default function NavBar() {
 
     const [user, setUser] = useState({});
-    const [isAdmin, setIsAdmin] = useState(false); 
-
 
     useEffect(() => {
-        onAuthStateChanged(auth, async (currentUser) => {
+        onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            if (currentUser) {
-               
-                const userRef = doc(db, "Usuario", currentUser.uid);
-                const userDoc = await getDoc(userRef);
-                if (userDoc.exists() && userDoc.data().admin) {
-                    setIsAdmin(true); 
-                } else {
-                    setIsAdmin(false); 
-                }
-            } else {
-                setIsAdmin(false);
-            }
         })
     }, []);
 
@@ -54,52 +36,33 @@ export default function NavBar() {
             </div>
 
             <div className={styles.line}>
-    <div className={styles.nav}>
-        {user ? (
-            isAdmin ? (
-                // Admin-specific links
                 <div className={styles.nav}>
-                    <Link className={styles["nav-link"]} to="/admin/dashboard">Menú</Link>
-                    <Link className={styles["nav-link"]} to="/admin/users">Historial</Link>
-                    <Link className={styles["nav-link"]} to="/admin/reports">Pedidos Actuales</Link>
-                    <Link className={styles["nav-link"]} to="/admin/settings">Clientes</Link>
-                    <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
-                </div>
-            ) : (
-                // Regular user links
-                <div className={styles.nav}>
-                    <Link className={styles["nav-link"]} to="/">Inicio</Link>
-                    <Link className={styles["nav-link"]} to="/menu">Menú</Link>
-                    <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
-                    <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
-                    <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
-                    <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
-                </div>
-            )
-        ) : (
-            // Links shown if no user is logged in
-            <div className={styles.nav}>
-                <Link className={styles["nav-link"]} to="/">Inicio</Link>
-                <Link className={styles["nav-link"]} to="/menu">Menú</Link>
-                <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
-                <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
-                <Link className={`${styles["nav-link"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>
-            </div>
-        )}
-    </div>
-</div>
+                    {user && localStorage.getItem("admin") === "true" ?
+                    <>
+                        {console.log(user)}
+                        {console.log(typeof localStorage.getItem("admin"))}
+                        <Link className={styles["nav-link"]} to="/menuadmin">Menú</Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                    </>
+                    : <>
+                        <Link className={styles["nav-link"]} to="/">Inicio</Link>
+                        <Link className={styles["nav-link"]} to="/menu">Menú</Link>
+                        <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
+                        <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
+                    
+                    {user ?
+                    <div>
+                        <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                    </div>
+                    : <Link className={`${styles["nav-link-access"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
+                    </>}
 
-            <div className={styles.line2}></div>
+                </div>
+            </div>
+
+            <div className={styles.line2} />
         </div>
     );
-}
+};
    
-
-/*  
-{user ?
-                        
-                        <span className={styles["nav-link"]}>Sesión iniciada con: {user.email}</span>
-                    : <></>}
-
-    <Link className={styles["nav-link"]} to="/" onClick={logout}>Cerrar sesión</Link>
-*/ 

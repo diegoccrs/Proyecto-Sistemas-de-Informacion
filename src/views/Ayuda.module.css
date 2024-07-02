@@ -1,114 +1,106 @@
 :root{
-    --clr-dark: #050929;
-    --clr-darkpurple: #5B19B0;
-    --clr-lightpurple: #F0D0FF;
-    --clr-darkorange: #FFAE50;
-    --clr-orange: #843F00;
-    --clr-lightorange: #FFF0E9;
-    --clr-white: #ffffff;
-    --clr-gray: #ece6f7;
-    
+  --clr-dark: #050929;
+  --clr-darkpurple: #5B19B0;
+  --clr-lightpurple: #F0D0FF;
+  --clr-darkorange: #FFAE50;
+  --clr-orange: #843F00;
+  --clr-lightorange: #FFF0E9;
+  --clr-white: #ffffff;
+  --clr-gray: #ece6f7;
   
-  }
+
+}
+
+
+
+@font-face {
+  font-family: font1;
+  src: url(../assets/Marvel-Bold.ttf);
+}
+
+@font-face {
+  font-family: font2;
+  src: url(../assets/AlegreyaSansSC-Thin.ttf);
+}
+
+@font-face {
+  font-family: font3;
+  src: url(../assets/AlegreyaSansSC-Light.ttf);
+}
+
+@font-face {
+  font-family: font4;
+  src: url(../assets/AlegreyaSansSC-Regular.ttf);
+}
 
 .slogan{
-    height: 200px;
-    background-color: var(--clr-dark);
+  height: 200px;
+  background-color: var(--clr-dark);
+  align-content: center;
+  font-family: font4;
+  color: var(--clr-lightpurple);
 }
 
 .formularioayuda {
-   
+  font-family: font3;
 }
+
 .formularioInfo {
-    display: flex;
-    justify-content: center;
-    gap: 5em;
+  display: flex;
+  justify-content: center;
+  gap: 5em;
 }
 
 
 .formulario1 {
-    grid-column: 1 / span 1;
+  grid-column: 1 / span 1;
 }
 
 .formulario2 {
-    grid-column: 2 / span 1;
+  grid-column: 2 / span 1;
 }
 
 
+.inputting {
+  width: 80%;
+}
 
 
 .button{
-    margin: 50px;
-    padding: 15px 60px;
+  margin: 50px;
+  padding: 15px 60px;
 
-    background-color: var(--clr-darkpurple);
-    font-family: font1;
-    font-size: 20px;
-    color: var(--clr-white);
-    border: none;
-    border-radius: 15px;
-    
-  }
+  background-color: var(--clr-darkpurple);
+  font-family: font1;
+  font-size: 20px;
+  color: var(--clr-white);
+  border: none;
+  border-radius: 15px;
+  
+}
 
 .contactos {
-    align-content: center;
-    height: 500px;
+  align-content: center;
+  height: 500px;
 }
 
 .containerContactos {
-    background-color: var(--clr-white);
-    border-radius: 25px;
-    margin-left: 40px;
-    padding: 40px;
-    width: 50%;
-    height: fit-content;
-    padding-top: 10px;
+  background-color: var(--clr-white);
+  border-radius: 25px;
+  margin-left: 40px;
+  padding: 40px;
+  width: 50%;
+  height: fit-content;
+  padding-top: 10px;
 }
 
 .redesSociales {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 
 .social {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
-
-
-
-
-
-
-
-
-
-
-.contactos{
-    align-content: center;
-    height: 500px;
-  
-  }
-  
-  .containerContactos{
-    background-color: var(--clr-white);
-    border-radius: 25px;
-    margin-left: 40px;
-    padding: 40px;
-    width:50%;
-    height: fit-content;
-    padding-top: 10px;
-  }
-  
-  .redesSociales{
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-  }
-  
-  .social{
-    width: 30px;
-    height: 30px;
-    
-  }

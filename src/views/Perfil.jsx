@@ -1,16 +1,20 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { auth } from '../firebase-config.js'
+import React from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import styles from "./Perfil.module.css"
-import iglogo from '../img/iglogo.png';
+import {
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithPopup,
+    signOut
+} from 'firebase/auth'
+import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import styles from './Acceder.module.css';
+//import styles from './Perfil.module.css';
+import googlelogo from '../img/google.png';
+import facebooklogo from '../img/facebook.png';
 
 
-import { doc, deleteDoc } from "firebase/firestore"; // Import Firestore functions
-import { db } from '../firebase';
-import { getAuth, deleteUser } from "firebase/auth";
-
-function Perfil() {
+function Nosotros() {
 
     const [user, setUser] = useState({});
 
@@ -19,94 +23,75 @@ function Perfil() {
             setUser(currentUser);
         })
     }, []);
-
-    const logout = async () => {
-
-        await signOut(auth);
-    };
-
-
-    async function handleDeleteAndSignOut() {
-        try {
-            await deleteClient(); 
     
-            const auth = getAuth();
-            await deleteUser(auth.currentUser).then(() => {
-           
-                console.log('User deleted');
-            }).catch((error) => {
-          
-                console.error("Error deleting user: ", error);
+    const logout = async () => {
+        
+        await signOut(auth);
 
-            });
-            await signOut(auth); 
-        } catch (error) {
-            console.error("Error in handleDeleteAndSignOut: ", error);
-        }
-    }
+        localStorage.removeItem("admin");
+        localStorage.removeItem("email");
+        localStorage.removeItem("nombreCompleto");
+        localStorage.removeItem("telefono");
+        localStorage.removeItem("facultad");
 
-    async function deleteClient(){
-        try {
-          const id = auth.currentUser.uid;
-          const docRef = doc(db, "Usuario", id);
-            
-          await deleteDoc(docRef);
+        navigate("/");
 
-        } catch (error) {
-          console.error("Error updating document: ", error);
-        }
-      }
-
+        scroll(0, 0);
+        location.reload();
+    };
+    
+    const navigate = useNavigate();
+    
 
 
     return (
-        <div className={styles.pageContainer}>
-            <div className={styles.boxContainer}>
-                <div className={styles.titleContainer}>
-                    <h2>Perfil del Usuario</h2>
-                </div>
-
-                <div className={styles.perfil}>
-                    <div className={styles.perfil1}>
-                        <h2>Nombre</h2>
-                        <input></input>
-
-                        <h2>Apellido</h2>
-                        <input></input>  
-
-                        <h2>Número de teléfono</h2>
-                        <input></input> 
-
-                        <h2>Email</h2>
-                        <input></input> 
-
-                        <h2>Facultad</h2>
-                        <input></input> 
+        <div>
+            {!user ?
+            navigate("/acceder")
+            : <div className={styles.pageContainer}>
+                <div className={styles.boxContainer}>
+                    <div className={styles.titleContainer}>
+                        <h2>Perfil</h2>
                     </div>
-                    
-                    <div className={styles.perfil2}>
-                        <h2>Foto de Perfil</h2>
-                        <img className={styles.perfil} src={iglogo} alt="Logo" />
-                        <h2>Preferencias Alimentarias</h2>
-                        <input></input> 
-                        
-                    
-                        <Link className={styles["nav-link"]} to="/">Regresar</Link>
-                        <Link className={styles["nav-link"]} to="/" onClick={logout}>Cerrar sesión</Link>
-                        <Link className={styles["nav-link"]} to="/perfil/editarperfil">Editar</Link>
-                        <Link className={styles["nav-link"]} to="/" onClick={handleDeleteAndSignOut}>Eliminar</Link>
-        
+                    <div className={styles.container}>
+                        <div className={styles.column}>
+
+                            <h2>Nombre</h2>
+                            <input type="text" placeholder='Nombre' onChange={(event) => {
+                                
+                            }} />
+
+                            <h2>Apellido</h2>
+                            <input type="text" placeholder='Apellido' onChange={(event) => {
+                                
+                            }} />
+
+                            <button className={styles.button} onClick={logout}>
+                                Cerrar Sesión
+                            </button>
+
+                        </div>
+                        <div className={styles.column}>
+
+                            <h2>Facultad</h2>
+                            <input type="text" placeholder='Facultad' onChange={(event) => {
+                                
+                            }} />
+
+                            <h2>Teléfono</h2>
+                            <input type="number" placeholder='Teléfono' onChange={(event) => {
+                                
+                            }} />
+
+                        </div>
                     </div>
                 </div>
-                
-                
-            
-                
             </div>
+            }
         </div>
     );
 }
 
 
 
-export default Perfil
+export default Nosotros

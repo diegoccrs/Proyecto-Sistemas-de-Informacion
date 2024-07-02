@@ -6,7 +6,8 @@ import {
     onAuthStateChanged,
     signInWithPopup
 } from 'firebase/auth'
-import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
@@ -14,13 +15,8 @@ import facebooklogo from '../img/facebook.png';
 
 
 
-import {getAdditionalUserInfo} from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
-import { db } from '../firebase';
-
-
 function IniciarSesion() {
-    
+
     const [logEmail, setLogEmail] = useState('');
     const [logPassword, setLogPassword] = useState('');
 
@@ -39,27 +35,36 @@ function IniciarSesion() {
     const login = async () => {
         setLoading(true);
         try {
+            if(!logEmail || !logPassword) {
+                throw new Error("Input error: rellenar casillas");
+            }
+
             const user = await signInWithEmailAndPassword(
                 auth,
                 logEmail,
                 logPassword);
 
             console.log(user);
-            
-            const id = auth.currentUser.uid;
-            const userRef = doc(db, "Usuario", id);
-            const userDoc = await getDoc(userRef);
-    
-            if (userDoc.exists() && userDoc.data().admin) {
-                navigate("/menuadmin");
-            } else {
-                navigate("/");
-            }
-            
+
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            const docu = await getDoc(docRef);
+
+            console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
 
             setError(null);
             setLoading(false);
-          
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -68,42 +73,46 @@ function IniciarSesion() {
         }
     };
 
-
+    
     const loginPopupGoogle = async () => {
         setLoading(true);
+        googleProvider.setCustomParameters({ prompt: 'select_account' });
         try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const aditionalInfo = getAdditionalUserInfo(result);
-            const id = auth.currentUser.uid;
-
-            if(aditionalInfo.isNewUser){
-                const docRef = doc(db, "Usuario", id);
-                const data = {
-                    admin: false,
-                    apellido: "",
-                    email:result.user.email,
-                    facultad: "",
-                    nombre: result.user.displayName,
-                    telefono: result.user.phoneNumber,
-
-                };
-                await setDoc(docRef, data, { merge: true });
-                
-            }
+            const user = await signInWithPopup(auth, googleProvider);
 
             console.log(user);
 
-            const userRef = doc(db, "Usuario", id);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists() && userDoc.data().admin) {
-                navigate("/menuadmin");
-            } else {
-                navigate("/");
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            let docu = await getDoc(docRef);
+            if(!docu.data()) {
+                const payload = { 
+                    nombreCompleto: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
+                    facultad: 'por definir',
+                    telefono: auth.currentUser.phoneNumber,
+                    admin: false
+                };
+                await setDoc(docRef, payload);
+                
             }
+            docu = await getDoc(docRef);
+
+            console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
 
             setError(null);
             setLoading(false);
-           
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -115,36 +124,15 @@ function IniciarSesion() {
     const loginPopupFacebook = async () => {
         setLoading(true);
         try {
-            const result = await signInWithPopup(auth,facebookProvider);
-            const aditionalInfo = getAdditionalUserInfo(result);
-            const id = auth.currentUser.uid;
-
-            if(aditionalInfo.isNewUser){
-                const docRef = doc(db, "Usuario", id);
-                const data = {
-                    admin: false,
-                    apellido: "",
-                    email:result.user.email,
-                    facultad: "",
-                    nombre: result.user.displayName,
-                    telefono: result.user.phoneNumber,
-
-                };
-                await setDoc(docRef, data, { merge: true });
-                
-            }
+            await signInWithPopup(auth, facebookProvider);
 
             console.log(user);
-            const userRef = doc(db, "Usuario", id);
-            const userDoc = await getDoc(userRef);
-            if (userDoc.exists() && userDoc.data().admin) {
-                navigate("/menuadmin");
-            } else {
-                navigate("/");
-            }
+
             setError(null);
             setLoading(false);
-        
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 
@@ -152,8 +140,6 @@ function IniciarSesion() {
             setLoading(false);
         }
     };
-
-   
 
 
 
@@ -190,6 +176,6 @@ function IniciarSesion() {
             </div>
         </div>
     );
-}
+};
 
 export default IniciarSesion

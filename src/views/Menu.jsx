@@ -6,49 +6,61 @@ import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
 
+import view from '../img/View.png';
+import burger from '../img/Burger_0.png';
+import burger1 from '../img/Burger_1.jpg';
+import cachapa from '../img/Cachapa_1.png';
+import ch from '../img/ClubHouse_1.webp';
+import arepa from '../img/Arepa.webp';
+import parrilla from '../img/Parrilla_1.jpg';
+import pepito from '../img/Pepito.jpg';
+import sandwich from '../img/Sandwich.jpg';
+import salad from '../img/Salad.png';
+import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
 
 
 
 function Menu() {
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const combos = [
         {
         title: 'Combo 1',
         description: 'Descripción del combo 1',
-        image: c1,
+        image: view,
         },
         {
     
         title: 'Combo 2',
         description: 'Descripción del combo 2',
-        image: c1,
+        image: view,
         },
         {
-      
+        
         title: 'Combo 3',
         description: 'Descripción del combo 3',
-        image: c1,
+        image: view,
         },
         {
         
         title: 'Combo 4',
         description: 'Descripción del combo 4',
-        image: c1,
+        image: view,
         },
         {
-       
+        
         title: 'Combo 5',
         description: 'Descripción del combo 5',
-        image: c1,
+        image: view,
         },
         {
         
         title: 'Combo 6',
         description: 'Descripción del combo 6',
-        image: c1,
+        image: view,
         },
     ];
 
@@ -60,38 +72,49 @@ function Menu() {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? combos.length - 1 : prevIndex - 1));
     };
 
+
+
     return (
         <div className={styles.pageContainer}>
             <div className={styles.botonesMenu}>
-
             
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Cachapas</h1>
                 </div>
+
                 <div className={styles.botonMenu}> 
                     <h1 className={styles.tituloboton}>Club House</h1>
                 </div>
+
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Hamburguesas</h1>
+                    <Link to="/menu/hamburguesas">
+                        <h1 className={styles.tituloboton}>Hamburguesas</h1>
+                    </Link>
                 </div>
+
                 <div className={styles.botonMenu}>     
                     <h1 className={styles.tituloboton}>Parrillas</h1>
                 </div>
+
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Pepitos</h1>
                 </div>
+
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Sandwiches</h1>
                 </div>
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Arepas</h1>
                 </div>
+
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Ensaladas</h1>
                 </div>
+
                 <div className={styles.botonMenu}>
                     <h1 className={styles.tituloboton}>Otros</h1>
-                </div>        
+                </div>
+
             </div>
 
             <div className={styles.menu}>
@@ -107,98 +130,96 @@ function Menu() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <Link className={styles.button}s to="/menu">Comprar</Link> 
+                                <Link className={styles.button} to="/menu">Comprar</Link> 
                                 <button className={styles.button}>Comprar</button>
                             </div>
                         </div>
                     </div>
                     ))}        
                     </div>
-                    <button id="nextBtn" className={styles.buttonc} onClick={prevCombo}>&gt;</button>
+                    <button id="nextBtn" className={styles.buttonc} onClick={prevCombo}>&lt;</button>
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 </div>
                 <h1>MENU</h1>
                 <div className={styles.catalogo}>
                
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
-
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                        <img src={local} alt="local" />
-                      
+                        <img src={burger} alt="burger" />
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Cachapas</h1>
-                        <img src={local} alt="local" />
+                        <img src={cachapa} alt="cachapa" />
       
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Club House</h1>
-                        <img src={local} alt="local" />
+                        <img src={ch} alt="ch" />
                    
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Parrillas</h1>
-                        <img src={local} alt="local" />
+                        <img src={parrilla} alt="parrilla" />
                      
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Pepitos</h1>
-                        <img src={local} alt="local" />
+                        <img src={pepito} alt="pepito" />
                
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Sandwiches</h1>
-                        <img src={local} alt="local" />           
+                        <img src={sandwich} alt="sandwich" />        
+
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Arepas</h1>
-                        <img src={local} alt="local" />
+                        <img src={arepa} alt="arepa" />
                         
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
                         <h1 className={styles.titulocarta}>Ensaladas</h1>
-                        <img src={local} alt="local" />
+                        <img src={salad} alt="salad" />
                      
                     </Link>
 
-                    <Link className={styles.cartamenu}s to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                 
                         <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={local} alt="local" />
+                        <img src={brookie} alt="brookie" />
                         
                     </Link>
                 </div>
-                
-                
-
             </div>
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
-                    <h2>Caracas</h2>
-                    <h2>delipernil</h2>
-                    <h2>0424</h2>
+                    <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
+                    <h2> <a href=""></a> delipernil@gmail.com</h2>
+                    <h2> <a href="tel:04242285852">0424-2285852</a></h2>
                     <div className={styles.redesSociales}>
-                        <img className={styles.social} src={iglogo} alt="Logo" />
-                        <img className={styles.social} src={xlogo} alt="Logo" />
+                        <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                        <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default Menu

@@ -10,11 +10,10 @@ import Acceder from "./views/Acceder.jsx";
 import IniciarSesion from "./views/LoginPage.jsx";
 import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
-import EditarPerfil from "./views/EditarPerfil.jsx";
+//import EditarPerfil from "./views/EditarPerfil.jsx";
+import MenuAdmin from "./views/MenuAdmin.jsx"
 import Hamburguesas from "./views/Hamburguesas.jsx";
 import Comentarios from "./views/Comentarios.jsx";
-import MenuAdmin from "./views/MenuAdmin.jsx"
-
 
 export const router = createBrowserRouter([
     {
@@ -28,50 +27,44 @@ export const router = createBrowserRouter([
             {
                 path: routes[1].path,
                 element: <Menu />,
-                children: [
-                    {
-                      path: routes[1]["children"][0].path,
-                      element: <Hamburguesas />,
-                    },
-                  ],
-            },
-              {
+            },////
+            {
+                path: routes[1]["children"][0].path,
+                element: <Hamburguesas />,
+            },////
+            {
                 path: routes[2].path,
                 element: <Nosotros />,
-              },
-              {
+            },
+            {
                 path: routes[3].path,
                 element: <Ayuda />,
-              },
-              {
+            },
+            {
                 path: routes[4].path,
                 element: <Acceder />,
-              },
-              {
+            },
+            {
                 path: routes[5].path,
                 element: <IniciarSesion />,
-              },
-              {
+            },
+            {
                 path: routes[6].path,
                 element: <Error />
-              },
-              {
+            },
+            {
                 path: routes[7].path,
-                element: <Perfil />,
-              },
-              {
-                path: routes[7]["children"][0].path,
-                element: <EditarPerfil />,
-              },
-              {
+                element: <Perfil />
+            },
+            {
                 path: routes[8].path,
                 element: <Comentarios />
-              },
-              {
+            },
+            {
                 path: routes[9].path,
                 element: <MenuAdmin />
-              }
-            ],
+            },
+        ],
     }
 
 
