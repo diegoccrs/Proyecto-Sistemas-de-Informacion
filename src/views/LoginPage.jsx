@@ -6,7 +6,8 @@ import {
     onAuthStateChanged,
     signInWithPopup
 } from 'firebase/auth'
-import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
@@ -34,6 +35,10 @@ function IniciarSesion() {
     const login = async () => {
         setLoading(true);
         try {
+            if(!logEmail || !logPassword) {
+                throw new Error("Input error: rellenar casillas");
+            }
+
             const user = await signInWithEmailAndPassword(
                 auth,
                 logEmail,
@@ -41,9 +46,25 @@ function IniciarSesion() {
 
             console.log(user);
 
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            const docu = await getDoc(docRef);
+
+            console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
+
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -55,14 +76,43 @@ function IniciarSesion() {
     
     const loginPopupGoogle = async () => {
         setLoading(true);
+        googleProvider.setCustomParameters({ prompt: 'select_account' });
         try {
-            await signInWithPopup(auth, googleProvider);
+            const user = await signInWithPopup(auth, googleProvider);
 
             console.log(user);
 
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            let docu = await getDoc(docRef);
+            if(!docu.data()) {
+                const payload = { 
+                    nombreCompleto: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
+                    facultad: 'por definir',
+                    telefono: auth.currentUser.phoneNumber,
+                    admin: false
+                };
+                await setDoc(docRef, payload);
+                
+            }
+            docu = await getDoc(docRef);
+
+            console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
+
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -80,7 +130,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 
@@ -124,6 +176,6 @@ function IniciarSesion() {
             </div>
         </div>
     );
-}
+};
 
 export default IniciarSesion

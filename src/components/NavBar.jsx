@@ -21,11 +21,6 @@ export default function NavBar() {
         })
     }, []);
 
-    const logout = async () => {
-
-        await signOut(auth);
-    };
-
 
 
     return(
@@ -42,34 +37,35 @@ export default function NavBar() {
 
             <div className={styles.line}>
                 <div className={styles.nav}>
-                    <Link className={styles["nav-link"]} to="/">Inicio</Link>
-                    <Link className={styles["nav-link"]} to="/menu">Menú</Link>
-                    <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
-                    <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
+                    {user && localStorage.getItem("admin") === "true" ?
+                    <>
+                        {console.log(user)}
+                        {console.log(typeof localStorage.getItem("admin"))}
+                        <Link className={styles["nav-link"]} to="/menuadmin">Menú</Link>
+                        <Link className={styles["nav-link"]} to="/menuadmin">Historial</Link>
+                        <Link className={styles["nav-link"]} to="/menuadmin">Pedidos Actuales</Link>
+                        <Link className={styles["nav-link"]} to="/menuadmin">Cliente</Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                    </>
+                    : <>
+                        <Link className={styles["nav-link"]} to="/">Inicio</Link>
+                        <Link className={styles["nav-link"]} to="/menu">Menú</Link>
+                        <Link className={styles["nav-link"]} to="/nosotros">Nosotros</Link>
+                        <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
+                    
                     {user ?
                     <div>
-                        <div className={styles.nav}>
                         <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
                         <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
-                        </div>
-                        
                     </div>
-                    : <Link className={`${styles["nav-link"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
-                    
+                    : <Link className={`${styles["nav-link-access"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
+                    </>}
+
                 </div>
             </div>
 
-            <div className={styles.line2}></div>
+            <div className={styles.line2} />
         </div>
     );
-}
+};
    
-
-/*  
-{user ?
-                        
-                        <span className={styles["nav-link"]}>Sesión iniciada con: {user.email}</span>
-                    : <></>}
-
-    <Link className={styles["nav-link"]} to="/" onClick={logout}>Cerrar sesión</Link>
-*/ 

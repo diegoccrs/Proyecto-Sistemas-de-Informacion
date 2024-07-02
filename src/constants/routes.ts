@@ -39,28 +39,33 @@ export const routes = [
     {
         path: "/perfil",
         name: "Perfil",
-    },
-    {
-        path: "/editarperfil",
-        name: "EditarPerfil",
+        children:[
+            {
+                path: "/perfil/editarperfil",
+                name: "EditarPerfil",
+            },
+        ],
     },
     {
         path: "/comentarios",
         name: "Comentarios",
     },
     {
+        path: "/menuadmin",
+        name: "MenuAdmin",
+    },
+    {
         path: "/historial",
         name: "Historial",
     },
     {
-        path: "/PedidosActuales",
+        path: "/pedidosactuales",
         name: "PedidosActuales",
     },
     {
         path: "/cliente",
         name: "Cliente",
     },
-
 ] as const
 
 
