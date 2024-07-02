@@ -41,18 +41,19 @@ function Ayuda() {
                 <button className={styles.button}>Contáctanos</button>
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${map})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${map})` }}>                            
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
-                    <h2> <a href=""> delipernil@gmail.com</a></h2>
+                    <h2> delipernil@gmail.com</h2>
                     <h2> <a href="tel:04242285852">0424-2285852</a></h2>
                     <div className={styles.redesSociales}>
                         <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
                         <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
-                    </div>
-                </div>
+                    </div>                
+                </div>                                    
             </div>
+            
         </div>
     );
 }

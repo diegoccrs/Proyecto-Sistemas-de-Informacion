@@ -23,53 +23,7 @@ import brookie from '../img/Brookies.webp';
 import { Link } from "react-router-dom";
 
 function Hamburguesas() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const combos = [
-        {
-        title: 'Combo 1',
-        description: 'Descripción del combo 1',
-        image: view,
-        },
-        {
     
-        title: 'Combo 2',
-        description: 'Descripción del combo 2',
-        image: view,
-        },
-        {
-      
-        title: 'Combo 3',
-        description: 'Descripción del combo 3',
-        image: view,
-        },
-        {
-        
-        title: 'Combo 4',
-        description: 'Descripción del combo 4',
-        image: view,
-        },
-        {
-       
-        title: 'Combo 5',
-        description: 'Descripción del combo 5',
-        image: view,
-        },
-        {
-        
-        title: 'Combo 6',
-        description: 'Descripción del combo 6',
-        image: view,
-        },
-    ];
-
-    const nextCombo = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === combos.length - 1 ? 0 : prevIndex + 1));
-    };
-
-    const prevCombo = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? combos.length - 1 : prevIndex - 1));
-    };
 
     return (
         <div className={styles.pageContainer}>

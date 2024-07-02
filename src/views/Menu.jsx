@@ -19,6 +19,9 @@ import sandwich from '../img/Sandwich.jpg';
 import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 
+//import { routes } from "../constants/routes";
+
+
 import { Link } from "react-router-dom";
 
 function Menu() {
@@ -108,7 +111,7 @@ function Menu() {
             </div>
 
             <div className={styles.menu}>
-                <h1>PROMOS</h1>
+                <h1 className={styles.tm}>PROMOS</h1>
                 <div className={styles.promos}>
                     <div className={styles.carrusel}>
                     {combos.map((combo, index) => (
@@ -140,12 +143,17 @@ function Menu() {
                         </NavLink>
                        
                     </div>
+
+                    
+
                     <div className={styles.cartamenu}>
                         <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
+                        <h1 className={styles.titulocarta}>Hamburguesas</h1>
                         <img src={burger1} alt="burger1" />
                         </NavLink>
                     </div>
+
+
                     <div className={styles.cartamenu}>
                         <NavLink to={routes[1]["children"][0].path}>
                         <h1 className={styles.titulocarta}>Cachapas</h1>
