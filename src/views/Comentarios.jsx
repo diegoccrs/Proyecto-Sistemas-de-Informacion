@@ -33,7 +33,7 @@ function Ayuda() {
                     </div>
                     
                     <h3>Dinos lo que piensas</h3>
-                        <input type="text"/>
+                        <input className={styles.inputting} type="text"/>
                     
                 </div>
                 <button className={styles.button}>Contáctame</button>
@@ -42,12 +42,12 @@ function Ayuda() {
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
-                    <h2>Caracas</h2>
-                    <h2>delipernil</h2>
-                    <h2>0424</h2>
+                    <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
+                    <h2> <a href=""></a> delipernil@gmail.com</h2>
+                    <h2> <a href="tel:04242285852">0424-2285852</a></h2>
                     <div className={styles.redesSociales}>
-                        <img className={styles.social} src={iglogo} alt="Logo" />
-                        <img className={styles.social} src={xlogo} alt="Logo" />
+                        <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                        <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
                     </div>
                 </div>
             </div>

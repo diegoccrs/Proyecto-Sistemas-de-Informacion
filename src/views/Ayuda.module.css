@@ -11,6 +11,8 @@
 
 }
 
+
+
 @font-face {
   font-family: font1;
   src: url(../assets/Marvel-Bold.ttf);
@@ -59,6 +61,9 @@
 }
 
 
+.inputting {
+  width: 80%;
+}
 
 
 .button{

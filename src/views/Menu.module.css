@@ -11,25 +11,27 @@
 
 }
 
+
 @font-face {
   font-family: font1;
-  src: url(../assets/Marvel-Bold.ttf);
+  src: url(Marvel-Bold.ttf);
 }
 
 @font-face {
   font-family: font2;
-  src: url(../assets/AlegreyaSansSC-Thin.ttf);
+  src: url(AlegreyaSansSC-Thin.ttf);
 }
 
 @font-face {
   font-family: font3;
-  src: url(../assets/AlegreyaSansSC-Light.ttf);
+  src: url(AlegreyaSansSC-Light.ttf);
 }
 
 @font-face {
   font-family: font4;
-  src: url(../assets/AlegreyaSansSC-Regular.ttf);
+  src: url(AlegreyaSansSC-Regular.ttf);
 }
+
 
 .botonesMenu{
     display: flex;
@@ -37,9 +39,8 @@
     align-content:flex-start;
     gap: 1em;
     justify-content: center;
-    
     padding: 15px;
-  
+    font-family: font1;
   }
   
 .botonMenu{
@@ -55,8 +56,7 @@
   }
 
 .tituloboton{
-  font-size: 15px;
-  font-family: font4;
+  font-size: 20px;
 }
 
 
@@ -87,6 +87,8 @@
   grid-row: 1 / 4;
   grid-column: 8/12;
   padding: 32px;
+
+  
 
 }
 
@@ -165,7 +167,7 @@
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   padding: 30px;
-  font-family: font3;
+  font-family: font2;
 }
 
 .titulomenu{
@@ -183,12 +185,17 @@
 
 .cartamenu{
   width: 40%;
+  /*height: fit-content;*/
   background-color: var(--clr-white);
   border-radius: 10px;
   padding: 3px;
+  padding-bottom: 50px;
+ 
 }
 
-
+.cartamenu img{
+  width: 400px;
+}
 
 
 .contactos{
@@ -218,4 +225,3 @@
   height: 30px;
   
 }
-

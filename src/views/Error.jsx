@@ -13,7 +13,23 @@ function Error() {
             </div>
 
             <div className={styles.errorMessage}>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <h1>Intente ingresar dentro de unos momentos o acceda a otra sección del sistema</h1>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>

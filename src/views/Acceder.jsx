@@ -64,9 +64,18 @@ function Acceder() {
 
             console.log(docu.data());
 
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
+
             setError(null);
             setLoading(false);
             navigate("/");
+            
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -95,15 +104,24 @@ function Acceder() {
                     admin: false
                 };
                 await setDoc(docRef, payload);
+
             }
             docu = await getDoc(docRef);
             
-
             console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
 
             setError(null);
             setLoading(false);
             navigate("/");
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 

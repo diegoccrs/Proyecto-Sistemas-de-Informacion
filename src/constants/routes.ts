@@ -41,12 +41,12 @@ export const routes = [
         name: "Perfil",
     },
     {
-        path: "/editarperfil",
-        name: "EditarPerfil",
-    },
-    {
         path: "/comentarios",
         name: "Comentarios",
+    },
+    {
+        path: "/menuadmin",
+        name: "MenuAdmin",
     },
     {
         path: "/historial",
