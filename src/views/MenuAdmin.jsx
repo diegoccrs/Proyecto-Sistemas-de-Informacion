@@ -1,7 +1,8 @@
-import styles from './HomePage.module.css';
+import styles from './MenuAdmin.module.css';
 import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { useState } from 'react';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+
 
 
 
@@ -12,6 +13,14 @@ function MenuAdmin() {
     const [platilloPrice, setPlatilloPrice] = useState(0);
     const [disponibleC, setDisponibleC] = useState(false);
     const [disponibleP, setDisponibleP] = useState(false);
+
+
+    const [categorias, setCategorias] = useState([]);
+    const [platillos, setPlatillos] = useState([]);
+
+    const handleClickCategoriaContainer = (categoriaId) => {
+      renderPlatillos(categoriaId);
+    };
 
     async function addCategoria() {
         if (!categoriaName.trim()) {
@@ -91,15 +100,15 @@ function MenuAdmin() {
         } catch (error) {
           console.error("Error updating document: ", error);
         }
-      };
+      }
       
 
-      const updateDisponibleP = async (categoriaId) => {
+      const updateDisponibleP = async (categoriaId, platilloId) => {
         try {
           const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
           const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
   
-          await updateDoc(doc(platillosCollectionRef, platilloName), {
+          await updateDoc(doc(platillosCollectionRef, platilloId), {
             disponible: !disponibleP
           });
           console.log("Document successfully updated!");
@@ -126,19 +135,114 @@ function MenuAdmin() {
         } catch (error) {
           console.error("Error updating document: ", error);
         }
-      };
+      }
       
-      async function deleteCategoria() {
+      async function deleteCategoria(categoriaId) {
         try {
-          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaName);
+          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
           await deleteDoc(categoriaDocRef);
           console.log("Categoria successfully deleted!");
         } catch (error) {
           console.error("Error deleting categoria: ", error);
         }
+      }
+
+      async function deletePlatillo(categoriaId, platilloId) {
+        try {
+          const categoriaDocRef = doc(firestoreDB, 'Categoria', categoriaId);
+          const platilloDocRef = doc(collection(categoriaDocRef, 'Platillos'), platilloId);
+          
+          await deleteDoc(platilloDocRef);
+          console.log('Platillo successfully deleted!');
+          fetchPlatillosByCategoriaId(categoriaId);
+        } catch (error) {
+          console.error('Error deleting platillo: ', error);
+        }
+      
+      }
+
+      useEffect(() => {
+        const unsubscribe = onSnapshot(collection(firestoreDB, 'Categoria'), (snapshot) => {
+          const categoriasData = [];
+          snapshot.forEach((doc) => {
+            categoriasData.push({ id: doc.id, data: doc.data() });
+          });
+          setCategorias(categoriasData);
+        });
+    
+        return () => unsubscribe();
+      }, []);
+
+      const renderCategorias = () => {
+        return categorias.map((categoria) => (
+          
+          <div key={categoria.id} className={styles.categoriaContainer} onClick={() => handleClickCategoriaContainer(categoria.id)} >
+            <h2>{categoria.data.Categoria}</h2>
+            <button onClick={() => deleteCategoria(categoria.id)}>Borrar Categoria</button>
+            <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
+            <button onClick={() => updateDisponibleC(categoria.id)}>
+            {disponibleC ? "Encendido" : "Apagado"}
+            </button>
+
+            
+          </div>
+        ));
       };
 
+      async function getPlatillosByCategoriaId(categoriaId) {
+        const platillosQuery = query(collection(firestoreDB, 'Categoria', categoriaId, 'Platillos'));
+    
+        try {
+          const platillosSnapshot = await getDocs(platillosQuery);
+          const platillosData = [];
+    
+          platillosSnapshot.forEach((doc) => {
+            platillosData.push({ id: doc.id, data: doc.data() });
+          });
+    
+          return platillosData;
+        } catch (error) {
+          console.error("Error getting platillos: ", error);
+          return [];
+        }
+      }
 
+      async function fetchPlatillosByCategoriaId(categoriaId) {
+        const platillosData = await getPlatillosByCategoriaId(categoriaId);
+        setPlatillos(platillosData);
+      }
+    
+      useEffect(() => {
+        // Llamada inicial para obtener los platillos de la primera categoría
+        if (categorias.length > 0) {
+          fetchPlatillosByCategoriaId(categorias[0].id);
+        }
+      }, [categorias]);
+
+
+      const renderPlatillos = (categoriaId) => {
+        const platillosCategoria = platillos.filter((platillo) => platillo.data.tipo === categoriaId);
+    
+        return platillosCategoria.map((platillo) => (
+          <div key={platillo.id} className={styles.platilloContainer}>
+            <h3>{platillo.data.nombre}</h3>
+            <button onClick={() => deletePlatillo(categoriaId, platillo.id)}>Borrar Platillo</button>
+            <p>{platillo.data.descripcion}</p>
+            <p>Precio: {platillo.data.precio}</p>
+            
+            <button onClick={() => updateDisponibleP(categoriaId, platillo.id)}>
+              {disponibleP ? 'Apagar' : 'Encender'}
+            </button>
+
+      
+
+           
+           
+          </div>
+        ));
+      };
+
+  
       return (
         <div>
           <div className={styles.slogan}>
@@ -152,7 +256,7 @@ function MenuAdmin() {
           />
           <button onClick={addCategoria}>Add Categoria</button>
 
-          <button onClick={deleteCategoria}>Borrar Categoria</button>
+          
     
           <input
             type="text"
@@ -162,17 +266,8 @@ function MenuAdmin() {
           />
           <button onClick={addPlatilloHandler}>Add Platillo</button>
 
-          <button onClick={addPlatilloHandler}>Borrar Platillo</button>
+          
 
-          <h1>Disponibilidad de Una Categoría</h1>
-          <button onClick={() => updateDisponibleC(categoriaName)}>
-          {disponibleC ? "Encendido" : "Apagado"}
-          </button>
-
-          <h1>Disponibilidad de Un Platillo</h1>
-          <button onClick={() => updateDisponibleP(categoriaName)}>
-          {disponibleP ? "Encendido" : "Apagado"}
-          </button>
 
 
           <input
@@ -193,6 +288,9 @@ function MenuAdmin() {
 
           <button onClick={editP}>Editar Platillo</button>
 
+          
+          <div className={styles.menu}>{renderCategorias()}</div>
+          <div className={styles.menu}>{renderPlatillos("Hamburguesas")}</div>
 
           
         </div>

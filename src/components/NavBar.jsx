@@ -42,6 +42,9 @@ export default function NavBar() {
                         {console.log(user)}
                         {console.log(typeof localStorage.getItem("admin"))}
                         <Link className={styles["nav-link"]} to="/menuadmin">Menú</Link>
+                        <Link className={styles["nav-link"]} to="/menuadmin">Historial</Link>
+                        <Link className={styles["nav-link"]} to="/menuadmin">Pedidos Actuales</Link>
+                        <Link className={styles["nav-link"]} to="/menuadmin">Cliente</Link>
                         <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
                     </>
                     : <>

@@ -39,6 +39,12 @@ export const routes = [
     {
         path: "/perfil",
         name: "Perfil",
+        children:[
+            {
+                path: "/perfil/editarperfil",
+                name: "EditarPerfil",
+            },
+        ],
     },
     {
         path: "/comentarios",

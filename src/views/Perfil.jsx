@@ -5,13 +5,19 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signInWithPopup,
-    signOut
+    signOut,
+    getAuth,
+    deleteUser
 } from 'firebase/auth'
 import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
-import styles from './Acceder.module.css';
+import styles from './Perfil.module.css';
 //import styles from './Perfil.module.css';
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
+
+
+import { db } from '../firebase';
+import { doc, deleteDoc } from "firebase/firestore";
 
 
 function Nosotros() {
@@ -41,6 +47,39 @@ function Nosotros() {
     };
     
     const navigate = useNavigate();
+
+
+    async function handleDeleteAndSignOut() {
+        try {
+            await deleteClient(); 
+    
+            const auth = getAuth();
+            await deleteUser(auth.currentUser).then(() => {
+           
+                console.log('User deleted');
+            }).catch((error) => {
+          
+                console.error("Error deleting user: ", error);
+
+            });
+            await signOut(auth); 
+        } catch (error) {
+            console.error("Error in handleDeleteAndSignOut: ", error);
+        }
+    }
+
+    async function deleteClient(){
+        try {
+          const id = auth.currentUser.uid;
+          const docRef = doc(db, "Usuario", id);
+            
+          await deleteDoc(docRef);
+
+        } catch (error) {
+          console.error("Error updating document: ", error);
+        }
+      }
+
     
 
 
@@ -80,9 +119,14 @@ function Nosotros() {
 
                             <h2>Teléfono</h2>
                             <input type="number" placeholder='Teléfono' onChange={(event) => {
-                                
+                              
+                              
+                             
                             }} />
 
+                            <Link className={styles["nav-link"]} to="/">Regresar</Link>
+                              <Link className={styles["nav-link"]} to="/perfil/editarperfil">Editar</Link>
+                              <Link className={styles["nav-link"]} to="/" onClick={handleDeleteAndSignOut}>Eliminar</Link>  
                         </div>
                     </div>
                 </div>

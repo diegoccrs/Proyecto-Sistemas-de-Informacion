@@ -10,6 +10,7 @@ import Acceder from "./views/Acceder.jsx";
 import IniciarSesion from "./views/LoginPage.jsx";
 import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
+import EditarPerfil from "./views/EditarPerfil.jsx";
 //import EditarPerfil from "./views/EditarPerfil.jsx";
 import MenuAdmin from "./views/MenuAdmin.jsx"
 import Hamburguesas from "./views/Hamburguesas.jsx";
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
                 path: routes[7].path,
                 element: <Perfil />
             },
+            {
+                path: routes[7]["children"][0].path,
+                element: <EditarPerfil />,
+              },
             {
                 path: routes[8].path,
                 element: <Comentarios />
