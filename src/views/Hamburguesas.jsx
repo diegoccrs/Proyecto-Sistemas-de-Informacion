@@ -66,7 +66,7 @@ function Hamburguesas() {
                     
                     <div className={styles.cartamenu}>
                        
-                        <NavLink to="/menu/hamburguesas">
+                        <NavLink to="/Hamburguesas">
                             <h1 className={styles.titulocarta}>Hamburguesa</h1>
                             <img src={burger} alt="burger" />
                         </NavLink>
@@ -74,7 +74,7 @@ function Hamburguesas() {
                     </div>
                     <div className={styles.cartamenu}>
                         <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
+                        <h1 className={styles.titulocarta}>Hamburguesas</h1>
                         <img src={burger1} alt="burger1" />
                         </NavLink>
                     </div>

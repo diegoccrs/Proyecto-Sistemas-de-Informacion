@@ -90,6 +90,16 @@
     padding: 3px;
 
   }
+
+  .nav-link-access {
+    color: var(--clr-dark) ;
+    font-size: 1.3rem;
+    font-family: font1;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 3px;
+
+  }
   
   .nav-link:hover {
     color:var(--clr-darkpurple);

@@ -86,7 +86,9 @@ function Menu() {
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Hamburguesas</h1>
+                    <Link to="/menu/hamburguesas">
+                        <h1 className={styles.tituloboton}>Hamburguesas</h1>
+                    </Link>
                     
                 </div>
 
@@ -123,6 +125,7 @@ function Menu() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
+                                <Link className={styles.button} to="/menu">Comprar</Link> 
                                 <button className={styles.button}>Comprar</button>
                             </div>
                         </div>
@@ -132,76 +135,76 @@ function Menu() {
                     <button id="nextBtn" className={styles.buttonc} onClick={prevCombo}>&gt;</button>
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 </div>
+
+
                 <h1 className={styles.tm}>MENU</h1>
                 <div className={styles.catalogo}>
                     
-                    <div className={styles.cartamenu}>
+                    
                        
-                        <NavLink to="/Hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
                             <h1 className={styles.titulocarta}>Hamburguesa</h1>
                             <img src={burger} alt="burger" />
-                        </NavLink>
+                    </Link>
                        
-                    </div>
+                
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
 
-                    
-
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesas</h1>
-                        <img src={burger1} alt="burger1" />
-                        </NavLink>
-                    </div>
-
-
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
                         <h1 className={styles.titulocarta}>Cachapas</h1>
                         <img src={cachapa} alt="cachapa" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
+      
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Club House</h1>
                         <img src={ch} alt="ch" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                    <NavLink to={routes[1]["children"][0].path}>
+                   
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Parrillas</h1>
                         <img src={parrilla} alt="parrilla" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                    <NavLink to={routes[1]["children"][0].path}>
+                     
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Pepitos</h1>
                         <img src={pepito} alt="pepito" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                    <NavLink to={routes[1]["children"][0].path}>
+               
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Sandwiches</h1>
-                        <img src={sandwich} alt="sandwich" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                    <NavLink to={routes[1]["children"][0].path}>
+                        <img src={sandwich} alt="sandwich" />        
+
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Arepas</h1>
                         <img src={arepa} alt="arepa" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                    <NavLink to={routes[1]["children"][0].path}>
+                        
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <h1 className={styles.titulocarta}>Ensaladas</h1>
                         <img src={salad} alt="salad" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
+                     
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                
                         <h1 className={styles.titulocarta}>Otros</h1>
                         <img src={brookie} alt="brookie" />
-                        </NavLink>
-                    </div>
+                        
+                    </Link>
+
+                    
                 </div>
                 
                 

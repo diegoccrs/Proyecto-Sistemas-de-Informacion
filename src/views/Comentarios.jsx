@@ -10,17 +10,17 @@ function Ayuda() {
     return (
         <div>
 
-            
+
             <div className= {styles.slogan}>
+                <h1>¡Déjanos tu reseña!</h1>
       
             </div>
             <div className={styles.formularioayuda}>
-                <h1>Contacta a nuestro equipo de ayuda</h1>
-                <h2>¿Cómo podemos ayudarte?</h2>
+                <h2>Rellena las casillas con tus datos</h2>
                 <div className={styles.formulario}>
                     <div className={styles.formularioInfo}>
                         <div className={styles.formulario1}>
-                            <h3 className={styles.input}>Nombre</h3>
+                            <h3>Nombre</h3>
                             <input type="text" />
                             <h3>Apellido</h3>
                             <input type="text"/>
@@ -33,10 +33,10 @@ function Ayuda() {
                             <input type="text"  />
                         </div>
                     </div>
-                    <div className={styles.formularioProb}>
-                        <h3>¿Cuéntanos tu experiencia?</h3>
-                        <input className={styles.inputC} type="text"/>
-                    </div>
+                    
+                    <h3>Cuéntanos tu experiencia</h3>
+                        <input className={styles.inputting} type="text"/>
+                    
                     
                 </div>
                 <button className={styles.button}>Contáctanos</button>
