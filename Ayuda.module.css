@@ -1,0 +1,120 @@
+:root{
+  --clr-dark: #050929;
+  --clr-darkpurple: #5B19B0;
+  --clr-lightpurple: #F0D0FF;
+  --clr-darkorange: #FFAE50;
+  --clr-orange: #843F00;
+  --clr-lightorange: #FFF0E9;
+  --clr-white: #ffffff;
+  --clr-gray: #ece6f7;
+  
+
+}
+
+
+
+@font-face {
+  font-family: font1;
+  src: url(../assets/Marvel-Bold.ttf);
+}
+
+@font-face {
+  font-family: font2;
+  src: url(../assets/AlegreyaSansSC-Thin.ttf);
+}
+
+@font-face {
+  font-family: font3;
+  src: url(../assets/AlegreyaSansSC-Light.ttf);
+}
+
+@font-face {
+  font-family: font4;
+  src: url(../assets/AlegreyaSansSC-Regular.ttf);
+}
+.colored {
+  color: #5B19AF;
+}
+
+.slogan h1{
+  font-family: font2;
+  text-align: center;
+
+}
+
+.slogan{
+  
+  height: 125px;
+  background-color: var(--clr-dark);
+  align-content: center;
+  font-family: font4;
+  color: var(--clr-white);
+}
+
+.formularioayuda {
+  text-align: center;
+
+  font-family: font3;
+}
+
+.formularioInfo {
+  display: flex;
+  justify-content: center;
+  gap: 5em;
+}
+
+
+.formulario1 {
+  grid-column: 1 / span 1;
+}
+
+.formulario2 {
+  grid-column: 2 / span 1;
+}
+
+
+.inputting {
+  width: 33%;
+}
+
+
+.button{
+  margin: 50px;
+  padding: 15px 60px;
+
+  background-color: var(--clr-darkpurple);
+  font-family: font1;
+  font-size: 20px;
+  color: var(--clr-white);
+  border: none;
+  border-radius: 15px;
+  
+}
+
+.contactos {
+  align-content: center;
+  height: 500px;
+}
+
+.containerContactos {
+  text-align: center;
+  background-color: var(--clr-white);
+  border-radius: 25px;
+  margin-left: 40px;
+  padding: 40px;
+  width: 50%;
+  height: fit-content;
+  padding-top: 10px;
+}
+
+.redesSociales {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.social {
+  width: 30px;
+  height: 30px;
+}
+
