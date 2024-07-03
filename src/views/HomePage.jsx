@@ -75,7 +75,7 @@ function HomePage() {
                 <img className={styles.fondo} src={fondo} alt="fondo" ></img>
                 <div className={styles.container}>
                     <h1 className={styles.titulo}>Bienvenido</h1>
-                    <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div>.</h2>
+                    <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div></h2>
                     
                         <h2 className={styles.parrafo}> Hamburguesas con carne crispy</h2>
                         <h2 className={styles.parrafo}> Cachapas</h2>

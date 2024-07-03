@@ -88,7 +88,8 @@ function IniciarSesion() {
                     email: auth.currentUser.email,
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
-                    admin: false
+                    admin: false,
+                    pedidos: []
                 };
                 await setDoc(docRef, payload);
                 

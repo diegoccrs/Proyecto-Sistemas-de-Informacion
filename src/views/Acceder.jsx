@@ -57,7 +57,8 @@ function Acceder() {
                 email: regEmail,
                 facultad: facultad,
                 telefono: telefono,
-                admin: false
+                admin: false,
+                pedidos: []
             };
             await setDoc(docRef, payload);
             const docu = await getDoc(docRef);
@@ -101,7 +102,8 @@ function Acceder() {
                     email: auth.currentUser.email,
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
-                    admin: false
+                    admin: false,
+                    pedidos: []
                 };
                 await setDoc(docRef, payload);
 
