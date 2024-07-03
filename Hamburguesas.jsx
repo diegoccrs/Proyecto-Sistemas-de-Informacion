@@ -7,16 +7,13 @@ import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
 
 //import view from '../img/View.png';
-import burger from '../img/Burger_0.png';
-//import burger1 from '../img/Burger_1.jpg';
-import cachapa from '../img/Cachapa_1.png';
-import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.png';
-import parrilla from '../img/Parrilla_1.jpg';
-import pepito from '../img/Pepito.jpg';
-import sandwich from '../img/Sandwich.jpg';
-import salad from '../img/Salad.png';
-import brookie from '../img/Brookies.webp';
+//import burger from '../img/Burger_0.png';
+import burger1 from '../img/Burger_1.jpg';
+import burger2 from '../img/Burger_2.webp';
+import burger3 from '../img/Burger_3.png';
+import burger4 from '../img/Burger_4.jfif';
+
+
 
 import { Link } from "react-router-dom";
 
@@ -65,73 +62,94 @@ function Hamburguesas() {
 
             </div>
 
-            <div className={styles.menu}>
+            <div className={styles.categoria}>
                 
-                <h1>MENU</h1>
-                <div className={styles.catalogo}>
-               
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                        <img src={burger} alt="burger" />
-                    </Link>
+                <h1 className={styles.titulo_categoria}>Hamburguesas</h1>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                <div className={styles.platillos}>
 
-                        <h1 className={styles.titulocarta}>Cachapas</h1>
-                        <img src={cachapa} alt="cachapa" />
-      
-                    </Link>
+                    <div className={styles.platillos_impar}>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                        <div className={styles.imagen_plantillo_impar}>                        
+                            <img src={burger1} alt="burger1" />
+                        </div>                        
 
-                        <h1 className={styles.titulocarta}>Club House</h1>
-                        <img src={ch} alt="ch" />
-                   
-                    </Link>
+                        <div className={styles.Description_platillo_impar}>                            
+                            <h1 className={styles.titulo_platillo}>Hamburguesa de carne clásica</h1>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                            <p>{styles.description}Descripción del Platillo</p>
+                            <Link  to="/menu">
+                                <button className={styles.button}>Comprar</button>
+                            </Link> 
+                        </div>
 
-                        <h1 className={styles.titulocarta}>Parrillas</h1>
-                        <img src={parrilla} alt="parrilla" />
-                     
-                    </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    </div>
 
-                        <h1 className={styles.titulocarta}>Pepitos</h1>
-                        <img src={pepito} alt="pepito" />
-               
-                    </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <div className={styles.platillos_par}>
+                                       
 
-                        <h1 className={styles.titulocarta}>Sandwiches</h1>
-                        <img src={sandwich} alt="sandwich" />        
+                        <div className={styles.Description_platillo_par}>                            
+                            <h1 className={styles.titulo_platillo}>Hamburguesa de carne salmón</h1>
 
-                    </Link>
+                            <p>{styles.description}Descripción del Platillo</p>
+                            <Link  to="/menu">
+                                <button className={styles.button}>Comprar</button>
+                            </Link> 
+                        </div>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                        <div className={styles.imagen_plantillo_par}>                        
+                            <img src={burger2} alt="burger2" />
+                        </div> 
 
-                        <h1 className={styles.titulocarta}>Arepas</h1>
-                        <img src={arepa} alt="arepa" />
-                        
-                    </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    </div>
 
-                        <h1 className={styles.titulocarta}>Ensaladas</h1>
-                        <img src={salad} alt="salad" />
-                     
-                    </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        
-                    </Link>
+                    <div className={styles.platillos_impar}>
+
+                        <div className={styles.imagen_plantillo_impar}>                        
+                            <img src={burger3} alt="burger3" />
+                        </div>                        
+
+                        <div className={styles.Description_platillo_impar}>                            
+                            <h1 className={styles.titulo_platillo}>Hamburguesa de carne clásica con bacon</h1>
+
+                            <p>{styles.description}Descripción del Platillo</p>
+                            <Link  to="/menu">
+                                <button className={styles.button}>Comprar</button>
+                            </Link> 
+                        </div>
+
+
+                    </div>
+
+
+                    <div className={styles.platillos_par}>                                           
+
+                        <div className={styles.Description_platillo_par}>                            
+                            <h1 className={styles.titulo_platillo}>Hamburguesa de dos carnes clásica</h1>
+
+                            <p>{styles.description}Descripción del Platillo</p>
+                            <Link  to="/menu">
+                                <button className={styles.button}>Comprar</button>
+                            </Link> 
+                        </div>
+
+                        <div className={styles.imagen_plantillo_par}>                        
+                            <img src={burger4} alt="burger4" />
+                        </div> 
+
+
+                    </div>
+                           
+
                 </div>
+
             </div>
+
+
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
                 <div className={styles.containerContactos}>
