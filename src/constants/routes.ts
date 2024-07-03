@@ -1,5 +1,5 @@
-//import { Children } from "react";
-
+//import { Children } from "react"; 
+ 
 export const routes = [
     {
         path: "/",
@@ -67,5 +67,3 @@ export const routes = [
         name: "Cliente",
     },
 ] as const
-
-

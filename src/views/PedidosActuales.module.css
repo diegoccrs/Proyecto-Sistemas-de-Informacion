@@ -1,0 +1,44 @@
+.pedidosActualesContainer {
+    background-color: #2d0461;
+    padding: 20px;
+  }
+
+  @font-face {
+    font-family: 'Marvel';
+    src: url(../assets/Marvel-Bold.ttf);
+  }
+
+  .pedidosActualesTitle {
+    font-family: 'Marvel', sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 6.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .pedidoCard {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .pedidoNumber {
+    background-color: #2d0461;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .pedidoInfo {
+    display: flex;
+    flex-direction: column;
+  }
