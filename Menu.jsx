@@ -167,9 +167,8 @@ function Menu() {
                                     <div className={styles.comboDescription}>
                                         <h2 className={styles.comboTitle}>{combo.title}</h2>
                                         <p>{combo.description}</p>
-                                        <Link  to="/menu">
-                                            <button className={styles.button}>Comprar</button>
-                                        </Link> 
+                                        <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
+ 
                                     </div>
                                 </div>
                             </div>                    

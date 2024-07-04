@@ -103,9 +103,8 @@ function Sandwiches() {
                             <h1 className={styles.titulo_platillo}>Título del Platillo</h1>
 
                             <p>{styles.description}Descripción del Platillo</p>
-                            <Link  to="/menu">
-                                <button className={styles.button}>Comprar</button>
-                            </Link> 
+                            <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
+
                         </div>
 
 
@@ -120,9 +119,8 @@ function Sandwiches() {
 
 
                             <p>{styles.description}Descripción del Platillo</p>
-                            <Link  to="/menu">
-                                <button className={styles.button}>Comprar</button>
-                            </Link> 
+                            <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
+ 
                         </div>
 
                         <div className={styles.imagen_plantillo_par}>                        
@@ -144,9 +142,8 @@ function Sandwiches() {
 
 
                             <p>{styles.description}Descripción del Platillo</p>
-                            <Link  to="/menu">
-                                <button className={styles.button}>Comprar</button>
-                            </Link> 
+                            <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
+
                         </div>
 
 
@@ -160,9 +157,8 @@ function Sandwiches() {
 
 
                             <p>{styles.description}Descripción del Platillo</p>
-                            <Link  to="/menu">
-                                <button className={styles.button}>Comprar</button>
-                            </Link> 
+                            <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
+
                         </div>
 
                         <div className={styles.imagen_plantillo_par}>                        
