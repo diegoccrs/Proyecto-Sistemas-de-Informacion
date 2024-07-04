@@ -4,7 +4,7 @@ import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
 import c1 from '../img/View.png';
 import local from '../img/iglogo.png';
-
+import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import view from '../img/View.png';
@@ -167,7 +167,7 @@ function HomePage() {
                 </div>
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>

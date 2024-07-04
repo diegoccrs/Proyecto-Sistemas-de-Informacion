@@ -7,7 +7,7 @@ import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
-
+import Map from '../img/Map.png';
 import view from '../img/View.png';
 import burger from '../img/Burger_0.png';
 import burger1 from '../img/Burger_1.jpg';
@@ -172,7 +172,7 @@ function Menu() {
                 </div>
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>

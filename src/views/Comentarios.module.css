@@ -11,6 +11,8 @@
 
 }
 
+
+
 @font-face {
   font-family: font1;
   src: url(../assets/Marvel-Bold.ttf);
@@ -31,33 +33,36 @@
   src: url(../assets/AlegreyaSansSC-Regular.ttf);
 }
 
-.slogan{
+.slogan {
   height: 200px;
   background-color: var(--clr-dark);
-  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: font4;
   color: var(--clr-lightpurple);
 }
 
 .formularioayuda {
   font-family: font3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .formularioInfo {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 5em;
 }
 
-
-.formulario1 {
-  grid-column: 1 / span 1;
-}
-
+.formulario1,
 .formulario2 {
-  grid-column: 2 / span 1;
+  grid-column: auto / span 1;
 }
-
 
 .inputting {
   width: 80%;
@@ -77,28 +82,30 @@
   
 }
 
-.contactos {
+.contactos{
   align-content: center;
   height: 500px;
+
 }
 
-.containerContactos {
+.containerContactos{
   background-color: var(--clr-white);
   border-radius: 25px;
   margin-left: 40px;
   padding: 40px;
-  width: 50%;
+  width:50%;
   height: fit-content;
   padding-top: 10px;
 }
 
-.redesSociales {
+.redesSociales{
   display: flex;
   justify-content: center;
   gap: 1em;
 }
 
-.social {
+.social{
   width: 30px;
   height: 30px;
+  
 }

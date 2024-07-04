@@ -18,6 +18,7 @@ import st5 from '../img/ST5.png';
 import st6 from '../img/ST6.png';
 import st7 from '../img/ST7.png';
 import st8 from '../img/ST8.png';
+import Map from '../img/Map.png';
 
 function Nosotros() {
     return (
@@ -179,7 +180,7 @@ function Nosotros() {
             </section>
 
             
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>

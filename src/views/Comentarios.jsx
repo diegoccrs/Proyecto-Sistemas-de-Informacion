@@ -3,7 +3,7 @@ import c1 from '../img/View.png';
 import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
+import Map from '../img/Map.png';
 
 function Ayuda() {
     
@@ -11,10 +11,10 @@ function Ayuda() {
     return (
         <div>
             <div className= {styles.slogan}>
-                <h1>¡Déjanos tu reseña!</h1>
+                <h1>Dejanos tu reseña</h1>
             </div>
             <div className={styles.formularioayuda }>
-                <h2>Rellena las casillas con tus datos</h2>
+                <h2>RELLENA LAS CASILLAS CON TUS DATOS</h2>
                 <div className={styles.formulario}>
                     <div className={styles.formularioInfo}>
                         <div className={styles.formulario1}>
@@ -32,14 +32,14 @@ function Ayuda() {
                         </div>
                     </div>
                     
-                    <h3>Dinos lo que piensas</h3>
+                    <h3>DINOS LO QUE PIENSAS</h3>
                         <input className={styles.inputting} type="text"/>
                     
                 </div>
-                <button className={styles.button}>Contáctame</button>
+                <button className={styles.button}>Enviar</button>
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
