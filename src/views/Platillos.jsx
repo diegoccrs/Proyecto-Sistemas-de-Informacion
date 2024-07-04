@@ -18,6 +18,7 @@ import pepito from '../img/Pepito.jpg';
 import sandwich from '../img/Sandwich.jpg';
 import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
+import Map from '../img/Map.png';
 
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
@@ -62,11 +63,16 @@ function Platillos() {
       const renderPlatillos = () => {
        
         return platillos.map((platillo) => (
-          <div key={platillo.id} className={styles.cartamenu}>
-            <h3 className={styles.titulocarta}>{platillo.data.nombre}</h3>
-            <p>{platillo.data.descripcion}</p>
+          <div key={platillo.id} className={styles.platillos_impar}>
+            <div className={styles.platillos_descripcion}>
+            <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
+            <p>{styles.description}{platillo.data.descripcion}</p>
             <p>{platillo.data.precio}</p>
-            {/* Renderiza otros datos del platillo en la interfaz */}
+            <button className={styles.button}>Comprar</button>
+            </div>
+            <div></div>
+            
+        
           </div>
         ));
       };
@@ -112,26 +118,26 @@ function Platillos() {
             <div className={styles.botonesMenu}>{renderCategorias2()}</div>
             
 
-            <div className={styles.menu}>
+            <div className={styles.categoria}>
                 
-                <h1>MENU</h1>
-                <div className={styles.catalogo}>
+                <h1 className={styles.titulo_categoria} >Platillos</h1>
+                <div className={styles.platillos}>
                     <div className={styles.catalogo}>{renderPlatillos()}</div>
                     
-                 
+                </div>
                     <div className={styles.cartamenu}>
                         <NavLink to={routes[1]["children"][0].path}>
                         <h1 className={styles.titulocarta}>Otros</h1>
                         <img src={brookie} alt="brookie" />
                         </NavLink>
                     </div>
-                </div>
+               
                 
                 
 
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>

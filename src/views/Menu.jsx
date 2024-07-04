@@ -136,29 +136,45 @@ function Menu() {
 
 
             <div className={styles.menu}>
-                <h1>PROMOS</h1>
-                <div className={styles.promos}>
-                    <div className={styles.carrusel}>
-                    {combos.map((combo, index) => (
-                    <div className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`} key={index}>
-                        <div className={styles.combocontenido}>
-                            <div className={styles.imagencombobody}>
-                            <img className={styles.comboImage} src={combo.image} alt={combo.title} />
-                            </div>
-                            <div className={styles.comboDescription}>
-                                <h2 className={styles.comboTitle}>{combo.title}</h2>
-                                <p>{combo.description}</p>
-                                <Link className={styles.button} to="/menu">Comprar</Link> 
-                                <button className={styles.button}>Comprar</button>
-                            </div>
-                        </div>
+                <h1 className={styles.menut}>PROMOS</h1>
+                <div className={styles.promo}>                   
+
+                    
+                    <div className={styles.promos}>       
+
+                        <button id="nextBtn" className={styles.buttonc1} onClick={prevCombo}>&lt;</button>
+                        
+                        <div className={styles.zonapromos}>                              
+                            <div className={styles.carrusel}>
+                            {combos.map((combo, index) => (
+                            <div className={`${styles.slide} ${index === currentIndex ? styles.active : ''}`} key={index}>
+                                <div className={styles.combocontenido}>
+                                    <div className={styles.imagencombobody}>
+                                    <img className={styles.comboImage} src={combo.image} alt={combo.title} />
+                                    </div>
+                                    <div className={styles.comboDescription}>
+                                        <h2 className={styles.comboTitle}>{combo.title}</h2>
+                                        <p>{combo.description}</p>
+                                        <Link  to="/menu">
+                                            <button className={styles.button}>Comprar</button>
+                                        </Link> 
+                                    </div>
+                                </div>
+                            </div>                    
+                            ))}  
+
+                            </div>                    
+                        </div>        
+
+                        <button id="nextBtn" className={styles.buttonc2} onClick={nextCombo}>&gt;</button>
+
                     </div>
-                    ))}        
-                    </div>
-                    <button id="nextBtn" className={styles.buttonc} onClick={prevCombo}>&lt;</button>
-                <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 </div>
-                <h1>MENU</h1>
+
+
+
+
+                <h1 className={styles.menut}>MENU</h1>
                 <div className={styles.catalogo}>{renderCategorias()}</div>
                 <div className={styles.catalogo}>
                

@@ -34,15 +34,22 @@
 }
 
 .slogan {
-  height: 200px;
+  height: 125px;
   background-color: var(--clr-dark);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: font4;
-  color: var(--clr-lightpurple);
+ 
+  color: var(--clr-white);
 }
+
+.slogant{
+  font-family: font1;
+
+}
+
+
 
 .formularioayuda {
   font-family: font3;
