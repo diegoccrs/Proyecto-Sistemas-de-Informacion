@@ -48,6 +48,11 @@
   padding: 20px;
   color: var(--clr-white);  
 }
+.errorMessage {
+  text-align: center;
+  color: red;
+
+}
 
 .bienvenido{
   position: relative;

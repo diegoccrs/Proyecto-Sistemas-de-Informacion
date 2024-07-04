@@ -1,4 +1,4 @@
-import styles from './Hamburguesas.module.css';
+import styles from './PlatillosGral.module.css';
 import { useState } from 'react';
 //import c1 from '../img/View.png';
 //import local from '../img/iglogo.png';
@@ -8,10 +8,12 @@ import fondo from '../img/fondo1.png';
 
 //import view from '../img/View.png';
 //import burger from '../img/Burger_0.png';
-import burger1 from '../img/Burger_1.jpg';
-import burger2 from '../img/Burger_2.webp';
-import burger3 from '../img/Burger_3.png';
-import burger4 from '../img/Burger_4.jfif';
+//import burger1 from '../img/Burger_1.jpg';
+//import burger2 from '../img/Burger_2.webp';
+//import burger3 from '../img/Burger_3.png';
+//import burger4 from '../img/Burger_4.jfif';
+
+import platillo from '../img/Platillo.png';
 
 
 
@@ -26,11 +28,19 @@ function Hamburguesas() {
             <div className={styles.botonesMenu}>
             
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Cachapas</h1>
+
+                    <Link to="/menu/cachapas">
+                        <h1 className={styles.tituloboton}>Cachapas</h1>
+                    </Link> 
+
                 </div>
 
                 <div className={styles.botonMenu}> 
-                    <h1 className={styles.tituloboton}>Club House</h1>
+
+                    <Link to="/menu/clubhouses">
+    <                   h1 className={styles.tituloboton}>Club Houses</h1>
+                    </Link> 
+
                 </div>
 
                 <div className={styles.botonMenuC}>                    
@@ -38,26 +48,38 @@ function Hamburguesas() {
                 </div>
 
                 <div className={styles.botonMenu}>     
-                    <h1 className={styles.tituloboton}>Parrillas</h1>
+                    <Link to="/menu/parrillas">
+                        <h1 className={styles.tituloboton}>Parrillas</h1>
+                    </Link> 
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Pepitos</h1>
+                    <Link to="/menu/pepitos">
+                        <h1 className={styles.tituloboton}>Pepitos</h1>
+                    </Link>
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Sandwiches</h1>
+                    <Link to="/menu/sandwiches">
+                        <h1 className={styles.tituloboton}>Sandwiches</h1>
+                    </Link> 
                 </div>
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Arepas</h1>
+                    <Link to="/menu/arepas">
+                        <h1 className={styles.tituloboton}>Arepas</h1>
+                    </Link>
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Ensaladas</h1>
+                    <Link to="/menu/ensaladas">
+                        <h1 className={styles.tituloboton}>Ensaladas</h1>
+                    </Link> 
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Otros</h1>
+                    <Link to="/menu/otros">
+                        <h1 className={styles.tituloboton}>Otros</h1>
+                    </Link> 
                 </div>
 
             </div>
@@ -71,11 +93,11 @@ function Hamburguesas() {
                     <div className={styles.platillos_impar}>
 
                         <div className={styles.imagen_plantillo_impar}>                        
-                            <img src={burger1} alt="burger1" />
+                            <img src={platillo} alt="platillo" />
                         </div>                        
 
                         <div className={styles.Description_platillo_impar}>                            
-                            <h1 className={styles.titulo_platillo}>Hamburguesa de carne clásica</h1>
+                            <h1 className={styles.titulo_platillo}>Título del Platillo</h1>
 
                             <p>{styles.description}Descripción del Platillo</p>
                             <Link  to="/menu">
@@ -91,7 +113,8 @@ function Hamburguesas() {
                                        
 
                         <div className={styles.Description_platillo_par}>                            
-                            <h1 className={styles.titulo_platillo}>Hamburguesa de carne salmón</h1>
+                            <h1 className={styles.titulo_platillo}>Título del Platillo</h1>
+
 
                             <p>{styles.description}Descripción del Platillo</p>
                             <Link  to="/menu">
@@ -100,7 +123,7 @@ function Hamburguesas() {
                         </div>
 
                         <div className={styles.imagen_plantillo_par}>                        
-                            <img src={burger2} alt="burger2" />
+                            <img src={platillo} alt="platillo" />
                         </div> 
 
 
@@ -110,11 +133,12 @@ function Hamburguesas() {
                     <div className={styles.platillos_impar}>
 
                         <div className={styles.imagen_plantillo_impar}>                        
-                            <img src={burger3} alt="burger3" />
+                            <img src={platillo} alt="platillo" />
                         </div>                        
 
                         <div className={styles.Description_platillo_impar}>                            
-                            <h1 className={styles.titulo_platillo}>Hamburguesa de carne clásica con bacon</h1>
+                            <h1 className={styles.titulo_platillo}>Título del Platillo</h1>
+
 
                             <p>{styles.description}Descripción del Platillo</p>
                             <Link  to="/menu">
@@ -129,7 +153,8 @@ function Hamburguesas() {
                     <div className={styles.platillos_par}>                                           
 
                         <div className={styles.Description_platillo_par}>                            
-                            <h1 className={styles.titulo_platillo}>Hamburguesa de dos carnes clásica</h1>
+                            <h1 className={styles.titulo_platillo}>Título del Platillo</h1>
+
 
                             <p>{styles.description}Descripción del Platillo</p>
                             <Link  to="/menu">
@@ -138,7 +163,7 @@ function Hamburguesas() {
                         </div>
 
                         <div className={styles.imagen_plantillo_par}>                        
-                            <img src={burger4} alt="burger4" />
+                            <img src={platillo} alt="platillo" />
                         </div> 
 
 

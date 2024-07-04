@@ -146,26 +146,35 @@ function HomePage() {
 
                 </div>
                 <div className={styles.cartasmenu}>
-                    <div className={styles.cartamenu}>
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+
                         <img  src={burger} alt="burger" />
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/cachapas">
+
                         <img  src={cachapa} alt="cachapa" />
                         <h1 className={styles.titulocarta}>Cachapas</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+
+                    <Link className={styles.cartamenu} to="/menu/clubhouses">
+
                         <img  src={ch} alt="ch" />
                         <h1 className={styles.titulocarta}>Club House</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+                    
+                    <Link className={styles.cartamenu} to="/menu/parrillas">
+
                         <img  src={parrilla} alt="parrilla" />
                         <h1 className={styles.titulocarta}>Parrillas</h1>
-                    </div>
-                    <div className={styles.cartamenu}>
+                    </Link>
+                    
+                    <Link className={styles.cartamenu} to="/menu/otros">
+
                         <img  src={cookie} alt="cookie" />
                         <h1 className={styles.titulocarta}>Más</h1>
-                    </div>
+                    </Link>
                    
                 </div>
             </div>

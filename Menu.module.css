@@ -115,7 +115,7 @@
   z-index: 1;
   position: relative;
   top: 42%;
-  right: 700%;
+  right: 582%;
   
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
@@ -132,6 +132,7 @@
   z-index: 1;
   position: relative;
   top: 42%;
+  right: 160%;
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
   border-radius: 100%;

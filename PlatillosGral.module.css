@@ -1,0 +1,232 @@
+:root{
+    --clr-dark: #050929;
+    --clr-darkpurple: #5B19B0;
+    --clr-lightpurple: #F0D0FF;
+    --clr-darkorange: #FFAE50;
+    --clr-orange: #843F00;
+    --clr-lightorange: #FFF0E9;
+    --clr-white: #ffffff;
+    --clr-gray: #ece6f7;
+    
+  
+  }
+  
+  
+  @font-face {
+    font-family: font1;
+    src: url(Marvel-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: font2;
+    src: url(AlegreyaSansSC-Thin.ttf);
+  }
+  
+  @font-face {
+    font-family: font3;
+    src: url(AlegreyaSansSC-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: font4;
+    src: url(AlegreyaSansSC-Regular.ttf);
+  }
+  
+  
+  
+  .colored{
+    color: var(--clr-darkpurple) ;
+  
+  }
+  
+  .Link {
+    color: var(--clr-lightpurple);
+  }
+  
+  .botonesMenu{
+      color: var(--clr-white);
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-content:flex-start;
+      gap: 1em;
+      justify-content: center;
+      padding: 15px;
+      font-family: font1;
+      
+  
+    }
+    
+  .botonMenu{
+      
+      background-color: rgb(252, 117, 252);
+      border-radius: 5px;
+      border: solid 5px;
+      border-color: var(--clr-lightorange);
+    
+      padding: 5px;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  
+  
+  .botonMenuC {
+      background-color: var(--clr-lightpurple);
+      border-radius: 5px;
+      border: solid 5px;
+      border-color: var(--clr-darkpurple);
+    
+      padding: 5px;
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+  
+  
+  .tituloboton{
+    font-size: 20px;
+  }
+  
+  
+  
+  .titulo_categoria {
+    font-family: font4;
+    color: var(--clr-darkpurple);
+  }
+  
+  .categoria h1{
+    text-align: center;
+  
+  }
+  
+  .categoria{
+    text-align: center;
+    justify-content: center;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding: 30px;
+    font-family: font2;
+  }
+  
+  
+  .platillos{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+  
+  }
+  
+  .Description_platillo_impar {
+    text-align: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--clr-white);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+  
+  
+  }
+  
+  
+  .Description_platillo_par {
+    text-align: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--clr-white);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
+  
+  
+  }
+  
+  .titulo_platillo {
+    font-family: font1;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .imagen_plantillo_impar img{
+    max-width: 80%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  
+    
+  }
+      
+  .imagen_plantillo_par img{
+    max-width: 80%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  
+    
+  }
+  
+  .button{
+    background-color: var(--clr-lightpurple);
+    border: none;
+    border-radius: 15px;
+    color: #5B19AF ;
+    font-size: 1.25rem;
+    font-family: font1;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 10px;  
+  }
+  
+  .platillos_impar {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 30px;
+    background-color: var(--clr-lightpurple);  
+    border-radius: 30px;
+    grid-row: 1 / 4;
+    grid-column: 1/8; 
+    
+  }
+  
+  .platillos_par {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 30px;
+    background-color: var(--clr-lightpurple);   
+    border-radius: 30px;
+    grid-row: 1 / 4;
+    grid-column: 1/8; 
+    
+  }
+  
+  .contactos{
+    align-content: center;
+    height: 500px;
+  
+  }
+  
+  .containerContactos{
+    text-align: center;
+    background-color: var(--clr-white);
+    border-radius: 25px;
+    margin-left: 40px;
+    padding: 40px;
+    width:50%;
+    height: fit-content;
+    padding-top: 10px;
+    justify-content: center;
+  
+  }
+  
+  .redesSociales{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .social{
+    width: 30px;
+    height: 30px;
+    
+  }

@@ -16,7 +16,7 @@ import parrilla from '../img/Parrilla_1.jpg';
 import pepito from '../img/Pepito.jpg';
 import sandwich from '../img/Sandwich.jpg';
 import salad from '../img/Salad.png';
-import brookie from '../img/Brookies.webp';
+import otros from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
 
@@ -79,11 +79,19 @@ function Menu() {
             <div className={styles.botonesMenu}>
             
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Cachapas</h1>
+
+                    <Link to="/menu/cachapas">
+                        <h1 className={styles.tituloboton}>Cachapas</h1>
+                    </Link> 
+                    
                 </div>
 
                 <div className={styles.botonMenu}> 
-                    <h1 className={styles.tituloboton}>Club House</h1>
+
+                    <Link to="/menu/clubhouses">
+                        <h1 className={styles.tituloboton}>Club Houses</h1>
+                    </Link> 
+                    
                 </div>
 
                 <div className={styles.botonMenu}>
@@ -92,27 +100,48 @@ function Menu() {
                     </Link>
                 </div>
 
-                <div className={styles.botonMenu}>     
-                    <h1 className={styles.tituloboton}>Parrillas</h1>
+                <div className={styles.botonMenu}>
+                    <Link to="/menu/parrillas">
+                        <h1 className={styles.tituloboton}>Parrillas</h1>
+                    </Link>     
+                    
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Pepitos</h1>
+                    <Link to="/menu/pepitos">
+                        <h1 className={styles.tituloboton}>Pepitos</h1>
+                    </Link> 
+                    
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Sandwiches</h1>
-                </div>
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Arepas</h1>
+
+                    <Link to="/menu/sandwiches">
+                        <h1 className={styles.tituloboton}>Sandwiches</h1>
+                    </Link> 
+                    
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Ensaladas</h1>
+                    <Link to="/menu/arepas">
+                        <h1 className={styles.tituloboton}>Arepas</h1>
+                    </Link> 
+                    
                 </div>
 
                 <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Otros</h1>
+
+                    <Link to="/menu/ensaladas">
+                        <h1 className={styles.tituloboton}>Ensaladas</h1>
+                    </Link> 
+                    
+                </div>
+
+                <div className={styles.botonMenu}>
+                    <Link to="/menu/otros">
+                        <h1 className={styles.tituloboton}>Otros</h1>
+                    </Link> 
+                    
                 </div>
 
             </div>
@@ -161,14 +190,14 @@ function Menu() {
                
                     
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/cachapas">
 
                         <h1 className={styles.titulocarta}>Cachapas</h1>
                         <img src={cachapa} alt="cachapa" />
       
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/clubhouses">
 
                         <h1 className={styles.titulocarta}>Club House</h1>
                         <img src={ch} alt="ch" />
@@ -180,45 +209,45 @@ function Menu() {
                         <img src={burger} alt="burger" />
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/parrillas">
 
                         <h1 className={styles.titulocarta}>Parrillas</h1>
                         <img src={parrilla} alt="parrilla" />
                      
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/pepitos">
 
                         <h1 className={styles.titulocarta}>Pepitos</h1>
                         <img src={pepito} alt="pepito" />
                
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/sandwiches">
 
                         <h1 className={styles.titulocarta}>Sandwiches</h1>
                         <img src={sandwich} alt="sandwich" />        
 
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/arepas">
 
                         <h1 className={styles.titulocarta}>Arepas</h1>
                         <img src={arepa} alt="arepa" />
                         
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/ensaladas">
 
                         <h1 className={styles.titulocarta}>Ensaladas</h1>
                         <img src={salad} alt="salad" />
                      
                     </Link>
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="/menu/otros">
                 
                         <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
+                        <img src={otros} alt="otros" />
                         
                     </Link>
                 </div>
