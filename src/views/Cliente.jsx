@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './Cliente.module.css';
-import burger1 from '../img/Burger_1.png';
-import burger2 from '../img/Burger_2.png';
-import burger3 from '../img/Burger_3.png';
+
 
 function Cliente() {
   const products = [
