@@ -27,6 +27,9 @@ import Sandwiches from "./views/Sandwiches.jsx";
 import Ensaladas from "./views/Ensaladas.jsx";
 import Otros from "./views/Otros.jsx";
 
+import Comprar from "./views/Comprar.jsx";
+
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -114,6 +117,11 @@ export const router = createBrowserRouter([
             {
                 path: routes[9].path,
                 element: <MenuAdmin />
+            },
+            
+            {
+                path: routes[10].path,
+                element: <Comprar />
             },
         ],
     }

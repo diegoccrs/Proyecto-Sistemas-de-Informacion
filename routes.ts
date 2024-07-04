@@ -95,6 +95,11 @@ export const routes = [
         path: "/menuadmin",
         name: "MenuAdmin",
     },
+    
+    {
+        path: "/comprar",
+        name: "Comprar",
+    },
     {
         path: "/historial",
         name: "Historial",
