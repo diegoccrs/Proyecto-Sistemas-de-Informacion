@@ -1,0 +1,51 @@
+.container {
+  background-color: #2d0461; /* Fondo morado */
+  padding: 2rem;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Marvel';
+  src: url(../assets/Marvel-Bold.ttf);
+}
+
+.title {
+  font-family: 'Marvel', sans-serif;
+  font-size: 6.5rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.table {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.tableHeader > div {
+  flex: 1;
+  text-align: center;
+}
+
+.tableRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.tableRow > div {
+  flex: 1;
+  text-align: center;
+}

@@ -1,5 +1,7 @@
 import styles from './Menu.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { firestoreDB } from '../firebase-config';
 import c1 from '../img/View.png';
 import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
@@ -19,12 +21,63 @@ import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 
 function Menu() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [categorias, setCategorias] = useState([]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(firestoreDB, 'Categoria'), (snapshot) => {
+          const categoriasData = [];
+          snapshot.forEach((doc) => {
+            categoriasData.push({ id: doc.id, data: doc.data() });
+          });
+          setCategorias(categoriasData);
+        });
+    
+        return () => unsubscribe();
+      }, []);
+
+    const renderCategorias = () => {
+        return categorias.map((categoria) => (
+          
+            <Link
+                    key={categoria.id}
+                    to={{
+                    pathname: "/menu/platillos",
+                    state: { categoriaId: categoria.id }
+                        }}
+                    className={styles.cartamenu}
+                >
+                <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
+                <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
+
+            </Link>
+        ));
+      };
+
+    const renderCategorias2 = () => {
+        return categorias.map((categoria) => (
+          
+            <Link
+                    key={categoria.id}
+                    to={{
+                    pathname: "/menu/platillos",
+                    state: { categoriaId: categoria.id }
+                        }}
+                    className={styles.botonMenu}
+                >
+                <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
+            
+
+            </Link>
+        ));
+      };
+
 
     const combos = [
         {
@@ -76,46 +129,11 @@ function Menu() {
 
     return (
         <div className={styles.pageContainer}>
-            <div className={styles.botonesMenu}>
+          
+            <div className={styles.botonesMenu}>{renderCategorias2()}</div>
             
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Cachapas</h1>
-                </div>
+               
 
-                <div className={styles.botonMenu}> 
-                    <h1 className={styles.tituloboton}>Club House</h1>
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <Link to="/menu/hamburguesas">
-                        <h1 className={styles.tituloboton}>Hamburguesas</h1>
-                    </Link>
-                </div>
-
-                <div className={styles.botonMenu}>     
-                    <h1 className={styles.tituloboton}>Parrillas</h1>
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Pepitos</h1>
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Sandwiches</h1>
-                </div>
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Arepas</h1>
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Ensaladas</h1>
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <h1 className={styles.tituloboton}>Otros</h1>
-                </div>
-
-            </div>
 
             <div className={styles.menu}>
                 <h1>PROMOS</h1>
@@ -141,61 +159,9 @@ function Menu() {
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
                 </div>
                 <h1>MENU</h1>
+                <div className={styles.catalogo}>{renderCategorias()}</div>
                 <div className={styles.catalogo}>
                
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                        <img src={burger} alt="burger" />
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Cachapas</h1>
-                        <img src={cachapa} alt="cachapa" />
-      
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Club House</h1>
-                        <img src={ch} alt="ch" />
-                   
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Parrillas</h1>
-                        <img src={parrilla} alt="parrilla" />
-                     
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Pepitos</h1>
-                        <img src={pepito} alt="pepito" />
-               
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Sandwiches</h1>
-                        <img src={sandwich} alt="sandwich" />        
-
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Arepas</h1>
-                        <img src={arepa} alt="arepa" />
-                        
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
-                        <h1 className={styles.titulocarta}>Ensaladas</h1>
-                        <img src={salad} alt="salad" />
-                     
-                    </Link>
 
                     <Link className={styles.cartamenu} to="/menu/hamburguesas">
                 
@@ -220,6 +186,6 @@ function Menu() {
             </div>
         </div>
     );
-};
+}
 
 export default Menu

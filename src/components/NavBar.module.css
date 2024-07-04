@@ -45,6 +45,9 @@
     height: 80px;
     margin-right: 10px;
   }
+  .adminLogoContainer {
+    background-color: #420f84; /* Color morado para el contenedor del logo cuando el usuario es administrador */
+  }
 
   .mlogo {
     position: relative;
@@ -121,6 +124,11 @@
     border-top: 5px solid var(--clr-gray);
   }
 
+  .lineadmin{
+    border-top: 5px solid var(--clr-darkpurple);
+
+  }
+
   .purpleLink {
     background-color: var(--clr-lightpurple); 
     border-radius: 10px;
@@ -138,4 +146,20 @@
     border-radius: 50%;
     padding: 0px;
     margin: 0px 20px;
+  }
+
+  .adminNav {
+    background-color: #420f84; 
+  }
+  
+  .adminNav .nav-link {
+    color: #fff; 
+  }
+
+  .adminNav .nav-link:hover {
+    color: #f0f0f0; 
+  }
+  
+  .adminLink {
+    color: #fff; 
   }

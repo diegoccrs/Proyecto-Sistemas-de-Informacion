@@ -1,0 +1,48 @@
+.container {
+    background-color: #2d0461; /* Color morado de fondo */
+    padding: 2rem;
+    text-align: center;
+  }
+
+  @font-face {
+    font-family: 'Marvel';
+    src: url(../assets/Marvel-Bold.ttf);
+  }
+  
+  .title {
+    font-family: 'Marvel', sans-serif;
+    color: white; /* Letras blancas */
+    font-size: 6.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    width: 250px;
+    margin: 1rem;
+    display: inline-block;
+  }
+  
+  .cardImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0; /* Elimina el borde redondeado */
+    margin-bottom: 1rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cardOrders {
+    color: #888;
+    font-size: 0.9rem;
+  }
+   

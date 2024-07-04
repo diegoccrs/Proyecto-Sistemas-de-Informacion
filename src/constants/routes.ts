@@ -10,8 +10,8 @@ export const routes = [
         name: "Menu",
         children:[
             {
-                path: "/menu/hamburguesas",
-                name: "Hamburguesas",
+                path: "/menu/platillos",
+                name: "Platillos",
             },
 
         ],

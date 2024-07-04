@@ -13,8 +13,13 @@ import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
 //import EditarPerfil from "./views/EditarPerfil.jsx";
 import MenuAdmin from "./views/MenuAdmin.jsx"
-import Hamburguesas from "./views/Hamburguesas.jsx";
+import Platillos from "./views/Platillos.jsx";
 import Comentarios from "./views/Comentarios.jsx";
+
+import Historial from "./views/Historial.jsx";
+import PedidosActuales from "./views/PedidosActuales.jsx";
+import Cliente from "./views/Cliente.jsx";
+
 
 export const router = createBrowserRouter([
     {
@@ -31,7 +36,7 @@ export const router = createBrowserRouter([
             },////
             {
                 path: routes[1]["children"][0].path,
-                element: <Hamburguesas />,
+                element: <Platillos />,
             },////
             {
                 path: routes[2].path,
@@ -68,6 +73,18 @@ export const router = createBrowserRouter([
             {
                 path: routes[9].path,
                 element: <MenuAdmin />
+            },
+            {
+                path: routes[10].path,
+                element: <Historial />
+            },
+            {
+                path: routes[11].path,
+                element: <PedidosActuales />
+            },
+            {
+                path: routes[12].path,
+                element: <Cliente />
             },
         ],
     }
