@@ -1,5 +1,5 @@
 //import { Children } from "react"; 
- 
+   
 export const routes = [
     {
         path: "/",
@@ -12,6 +12,38 @@ export const routes = [
             {
                 path: "/menu/hamburguesas",
                 name: "Hamburguesas",
+            },
+            {
+                path: "/menu/cachapas",
+                name: "Cachapas",
+            },
+            {
+                path: "/menu/clubhouse",
+                name: "Club House",
+            },
+            {
+                path: "/menu/parrillas",
+                name: "Parrillas",
+            },
+            {
+                path: "/menu/pepitos",
+                name: "Pepitos",
+            },
+            {
+                path: "/menu/sandwiches",
+                name: "Sandwiches",
+            },
+            {
+                path: "/menu/arepas",
+                name: "Arepas",
+            },
+            {
+                path: "/menu/ensaladas",
+                name: "Ensaladas",
+            },
+            {
+                path: "/menu/otros",
+                name: "Otros",
             },
 
         ],

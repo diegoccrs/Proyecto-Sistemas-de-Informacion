@@ -10,8 +10,9 @@ import burger1 from '../img/Burger_1.jpg';
 import burger2 from '../img/Burger_2.png';
 import burger3 from '../img/Burger_3.png';
 import burger4 from '../img/Burger_4.png';
+import pepitos from '../img/Pepito.png';
 
-function Hamburguesas() {
+function Pepitos() {
      
     return (
         <div className={styles.pageContainer}>
@@ -52,35 +53,11 @@ function Hamburguesas() {
                 <div className={styles.catalogo}>
                     
                     <div className={styles.cartamenu}>
-                        <NavLink to="/Hamburguesas">
-                            <h1 className={styles.titulocarta}>Hamburguesa Tradicional</h1>
-                            <img src={burger} alt="burger" />
+                        <NavLink to="/Pepitos">
+                            <h1 className={styles.titulocarta}>Full Queso</h1>
+                            <img src={pepitos} alt="pepitos" />
                         </NavLink>
                        
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa Deli Pernil</h1> 
-                        <img src={burger1} alt="burger1" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa de Salmon</h1> 
-                        <img src={burger2} alt="burger2" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa con Tocineta</h1> 
-                        <img src={burger3} alt="burger3" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa Doble</h1> 
-                        <img src={burger4} alt="burger4" />
-                        </NavLink>
                     </div>
                 </div>
                 
@@ -104,4 +81,4 @@ function Hamburguesas() {
     );
 }
 
-export default Hamburguesas
+export default Pepitos

@@ -5,13 +5,9 @@ import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
 import { NavLink } from 'react-router-dom';
 import { routes } from "../constants/routes";
-import burger from '../img/Burger_0.png';
-import burger1 from '../img/Burger_1.jpg';
-import burger2 from '../img/Burger_2.png';
-import burger3 from '../img/Burger_3.png';
-import burger4 from '../img/Burger_4.png';
+import sandwich from '../img/Sandwich.png';
 
-function Hamburguesas() {
+function Sandwiches() {
      
     return (
         <div className={styles.pageContainer}>
@@ -52,35 +48,11 @@ function Hamburguesas() {
                 <div className={styles.catalogo}>
                     
                     <div className={styles.cartamenu}>
-                        <NavLink to="/Hamburguesas">
-                            <h1 className={styles.titulocarta}>Hamburguesa Tradicional</h1>
-                            <img src={burger} alt="burger" />
+                        <NavLink to="/Sandwiches">
+                            <h1 className={styles.titulocarta}>Sandwich de Pollo</h1>
+                            <img src={sandwich} alt="sandwich" />
                         </NavLink>
                        
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa Deli Pernil</h1> 
-                        <img src={burger1} alt="burger1" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa de Salmon</h1> 
-                        <img src={burger2} alt="burger2" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa con Tocineta</h1> 
-                        <img src={burger3} alt="burger3" />
-                        </NavLink>
-                    </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Hamburguesa Doble</h1> 
-                        <img src={burger4} alt="burger4" />
-                        </NavLink>
                     </div>
                 </div>
                 
@@ -104,4 +76,4 @@ function Hamburguesas() {
     );
 }
 
-export default Hamburguesas
+export default Sandwiches

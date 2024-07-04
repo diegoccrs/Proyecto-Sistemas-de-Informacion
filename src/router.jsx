@@ -17,6 +17,14 @@ import MenuAdmin from "./views/MenuAdmin.jsx";
 import Historial from "./views/Historial.jsx";
 import PedidosActuales from "./views/PedidosActuales.jsx";
 import Cliente from "./views/Cliente.jsx";
+import Cachapas from  "./views/Cachapas.jsx";
+import ClubHouse from   "./views/ClubHouse.jsx";
+import Parrillas from  "./views/Parrillas.jsx";
+import Pepitos from  "./views/Pepitos.jsx";
+import Sandwiches from  "./views/Sandwiches.jsx";
+import Arepas from  "./views/Arepas.jsx";
+import Ensaladas from  "./views/Ensaladas.jsx";
+import Otros from  "./views/Otros.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -30,11 +38,43 @@ export const router = createBrowserRouter([
             {
                 path: routes[1].path,
                 element: <Menu />,
-            },////
+            },
             {
                 path: routes[1]["children"][0].path,
                 element: <Hamburguesas />,
-            },////
+            },
+            {
+                path: routes[1]["children"][1].path,
+                element: <Cachapas />,
+            },
+            {
+                path: routes[1]["children"][2].path,
+                element: <ClubHouse />,
+            },
+            {
+                path: routes[1]["children"][3].path,
+                element: <Parrillas />,
+            },
+            {
+                path: routes[1]["children"][4].path,
+                element: <Pepitos />,
+            },
+            {
+                path: routes[1]["children"][5].path,
+                element: <Sandwiches />,
+            },
+            {
+                path: routes[1]["children"][6].path,
+                element: <Arepas />,
+            },
+            {
+                path: routes[1]["children"][7].path,
+                element: <Ensaladas />,
+            },
+            {
+                path: routes[1]["children"][8].path,
+                element: <Otros />,
+            },
             {
                 path: routes[2].path,
                 element: <Nosotros />,

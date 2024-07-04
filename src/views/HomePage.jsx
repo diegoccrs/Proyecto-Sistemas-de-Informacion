@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import styles from './HomePage.module.css';
 import Map from '../img/Map.png';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
 import fondo from '../img/fondo1.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
@@ -15,19 +13,17 @@ import ch from '../img/ClubHouse_0.png';
 import parrilla from '../img/Parrilla_0.png';
 import cookie from '../img/Cookie.png';
 
-
 function HomePage() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const combos = [
         {
-        title: 'Combo 1',
-        description: 'Descripción del combo 1',
-        image: view,
+        title: 'Promo 5',
+        description: 'La Vegana: Trae Carne de Garbanzos y Rucula',
+        image: view ,
         },
         {
-    
         title: 'Combo 2',
         description: 'Descripción del combo 2',
         image: view,
@@ -117,7 +113,7 @@ function HomePage() {
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.colored}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
-                    <button className={styles.button}>Explorar Combos</button>
+                    <Link className={styles["nav-link"]} to="/menu"><button className={styles.button}>Explorar Combos</button></Link>
                 </div>                
             </div>
 
@@ -144,24 +140,42 @@ function HomePage() {
                 </div>
                 <div className={styles.cartasmenu}>
                     <div className={styles.cartamenu}>
-                        <img  src={burger} alt="burger" />
-                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
+                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                        <h1 className={styles.titulocarta}>Hamburguesas</h1>
+                        <img src={burger} alt="burger" />
+                    </Link>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={cachapa} alt="cachapa" />
-                        <h1 className={styles.titulocarta}>Cachapas</h1>
+                    <Link className={styles.cartamenu} to="/menu/cachapas">
+
+                    <h1 className={styles.titulocarta}>Cachapas</h1>
+                    <img src={cachapa} alt="cachapa" />
+
+                    </Link>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={ch} alt="ch" />
-                        <h1 className={styles.titulocarta}>Club House</h1>
+                    <Link className={styles.cartamenu} to="/menu/clubhouse">
+
+                    <h1 className={styles.titulocarta}>Club House</h1>
+                    <img src={ch} alt="ch" />
+
+                    </Link>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={parrilla} alt="parrilla" />
-                        <h1 className={styles.titulocarta}>Parrillas</h1>
+                    <Link className={styles.cartamenu} to="/menu/parrillas">
+
+                    <h1 className={styles.titulocarta}>Parrillas</h1>
+                    <img src={parrilla} alt="parrilla" />
+
+                    </Link>
                     </div>
                     <div className={styles.cartamenu}>
-                        <img  src={cookie} alt="cookie" />
-                        <h1 className={styles.titulocarta}>Más</h1>
+                    <Link className={styles.cartamenu} to="/menu/otros">
+                
+                    <h1 className={styles.titulocarta}>Otros</h1>
+                    <img src={cookie} alt="cookie" />
+                
+                    </Link>
                     </div>
                    
                 </div>

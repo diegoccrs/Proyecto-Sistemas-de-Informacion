@@ -246,7 +246,7 @@ function MenuAdmin() {
       return (
         <div>
           <div className={styles.slogan}>
-            <h1>ADMIN <span className={styles.colored}>conmovedora</span> de nuestro local</h1>
+            <h1>ADMINISTRACIÓN</h1>
           </div>
           <input
             type="text"
