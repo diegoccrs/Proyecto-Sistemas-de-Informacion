@@ -40,8 +40,17 @@ function Acceder() {
     const register = async () => {
         setLoading(true);
         try {
-            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0) {
-                throw new Error("Input error: rellenar casillas");
+            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0 || !telefono) {
+                throw new Error("Rellene las casillas");
+            }
+            if(!regEmail.includes("@correo.unimet.edu.ve", -21) && !regEmail.includes("@unimet.edu.ve", -14)) {
+                throw new Error("Dominio de correo incorrecto");
+            }
+            if(regPassword.length < 8) {
+                throw new Error("Contraseña menor a 8 caractéres");
+            }
+            if(telefono.length < 11 || telefono.length > 13) {
+                throw new Error("Teléfono inválido");
             }
 
             const user = await createUserWithEmailAndPassword(
@@ -49,7 +58,7 @@ function Acceder() {
                 regEmail,
                 regPassword);
 
-            console.log(user);
+            // console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", regEmail);
             const payload = {
@@ -63,7 +72,7 @@ function Acceder() {
             await setDoc(docRef, payload);
             const docu = await getDoc(docRef);
 
-            console.log(docu.data());
+            // console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
@@ -92,7 +101,7 @@ function Acceder() {
         try {
             const user = await signInWithPopup(auth, googleProvider);
 
-            console.log(user);
+            // console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             let docu = await getDoc(docRef);
@@ -110,7 +119,7 @@ function Acceder() {
             }
             docu = await getDoc(docRef);
             
-            console.log(docu.data());
+            // console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
@@ -137,7 +146,7 @@ function Acceder() {
         try {
             await signInWithPopup(auth, facebookProvider);
 
-            console.log(user);
+            // console.log(user);
 
             setError(null);
             setLoading(false);
@@ -177,7 +186,7 @@ function Acceder() {
                         }} />
 
                         <h2>Teléfono</h2>
-                        <input type="number" placeholder='Teléfono' onChange={(event) => {
+                        <input type="text" placeholder='Teléfono (XXXX-XXX-XXXX)' onChange={(event) => {
                             setTelefono(event.target.value)
                         }} />
                         

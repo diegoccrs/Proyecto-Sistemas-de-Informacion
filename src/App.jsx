@@ -12,6 +12,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 import './App.css'
 
 import PayPal from './components/PayPal.jsx';
+import PedidosFunciones from './components/PedidosFunciones.jsx';
 
 function App() {
 
@@ -114,6 +115,8 @@ function App() {
 
                 <button onClick={logout}>Sign Out</button>
             </div>
+
+            <PedidosFunciones />
 
             <PayPal />
 
