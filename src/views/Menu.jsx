@@ -133,7 +133,7 @@ function Menu() {
             </div>
 
             <div className={styles.menu}> 
-                <h1>PROMOS</h1>
+                <h1>PROMOS</h1> 
                 <div className={styles.promos}>
                     <div className={styles.carrusel}>
                     {combos.map((combo, index) => (

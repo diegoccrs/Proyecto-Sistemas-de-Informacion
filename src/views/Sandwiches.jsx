@@ -1,5 +1,5 @@
+import styles2 from './Platillos.module.css';
 import styles from './MenuGeneral.module.css';
-import { useState } from 'react';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
@@ -7,7 +7,90 @@ import { NavLink } from 'react-router-dom';
 import { routes } from "../constants/routes";
 import sandwich from '../img/Sandwich.png';
 
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+import { firestoreDB } from '../firebase-config';
+import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+
 function Sandwiches() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [categorias, setCategorias] = useState([]);
+    const [platillos, setPlatillos] = useState([]); 
+    const location = useLocation();
+    const categoriaId = location.state?.categoriaId;
+
+    console.log("categoriaId", categoriaId);
+
+    useEffect(() => {
+        const fetchPlatillos = async () => {
+          try {
+            const categoriaId = "Hamburguesas"; // ID de la categoría "Hamburguesas"
+            const platillosRef = collection(firestoreDB, 'Categoria', categoriaId, 'Platillos');
+            const querySnapshot = await getDocs(platillosRef);
+
+           
+            const platillosData = querySnapshot.docs.map((doc) => ({
+                
+              id: doc.id,
+              data: doc.data()
+            }));
+            setPlatillos(platillosData);
+             
+          } catch (error) {
+            console.error("Error fetching platillos:", error);
+          }
+        };
+    
+        fetchPlatillos();
+      }, []);
+    
+      const renderPlatillos = () => {
+       
+        return platillos.map((platillo) => (
+          <div key={platillo.id} className={styles2.cartamenu}>
+            <h3 className={styles2.titulocarta}>{platillo.data.nombre}</h3>
+            <p>{platillo.data.descripcion}</p>
+            <p>{platillo.data.precio}</p>
+            {/* Renderiza otros datos del platillo en la interfaz */}
+          </div>
+        ));
+      };
+    
+
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(firestoreDB, 'Categoria'), (snapshot) => {
+          const categoriasData = [];
+          snapshot.forEach((doc) => {
+            categoriasData.push({ id: doc.id, data: doc.data() });
+          });
+          setCategorias(categoriasData);
+        });
+    
+        return () => unsubscribe();
+      }, []);
+
+
+
+      
+    const renderCategorias2 = () => {
+        return categorias.map((categoria) => (
+          
+            <Link
+                    key={categoria.id}
+                    to={{
+                    pathname: "/menu/platillos",
+                    state: { categoriaId: categoria.id }
+                        }}
+                    className={styles2.botonMenu}
+                >
+                <h2 className={styles2.tituloboton}>{categoria.data.Categoria}</h2>
+            
+
+            </Link>
+        ));
+      };
      
     return (
         <div className={styles.pageContainer}>
@@ -53,6 +136,9 @@ function Sandwiches() {
                             <img src={sandwich} alt="sandwich" />
                         </NavLink>
                        
+                    </div>
+                    <div className={styles2.catalogo}>
+                        <div className={styles2.catalogo}>{renderPlatillos()}</div>
                     </div>
                 </div>
                 
