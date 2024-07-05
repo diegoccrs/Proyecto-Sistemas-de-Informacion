@@ -32,13 +32,34 @@
 }
 
 
+.slogan .colored{
+  color: #C38BEE;
+  font-family: font4;
+}
+
+.slogan h1{
+  font-family: font2;
+}
+
+.slogan {
+  font-family: font1;
+  background-color: var(--clr-dark);
+  text-align: center;
+  padding: 20px;
+  color: var(--clr-white);  
+}
+.errorMessage {
+  text-align: center;
+  color: red;
+
+}
+
 .bienvenido{
   position: relative;
   background-color: var(--clr-lightpurple);
   background-size: cover;
   background-position: center;
   padding-bottom: 40px;
-
 }
 
 .bienvenido::before {
@@ -51,52 +72,41 @@
   background-color: rgba(0, 0, 0, 0.5); /* Ajusta el valor de 0.5 para controlar la opacidad del oscurecimiento */
 }
 
-.titulo{
-  font-family: font4;
-  margin-top: 0;
 
+.titulo h2{
+  font-family: font3;
 }
 
 .bold{
-  font-family: font3;
+  font-family: font4;
+}
+
+.titulo{
+  font-family: font4;
+  margin-top: 0;
+}
+
+.container h2{
+  font-family: font2;
 }
 
 .container{
   margin-right: 200px;
-  position: relative;
-
-  font-family: font2;
+  position: relative;  
   text-align: center;
-  
-
   top: 40px;
   left: 60px;
   width: 40%;
-  
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   padding: 22px;
   background-color: var(--clr-white);
-  
-  color: var(--clr-orange);
-  
-  
-
+  color: var(--clr-orange);  
 }
 
-.slogan {
-    background-color: var(--clr-dark);
-    text-align: center;
-    padding: 20px;
-    color: var(--clr-white);
-    font-family: font3;
-  }
-
 .colored {
-    color: rgb(231, 147, 244);
-  }
-
-
+  color: #5B19AF;
+}
 
 .fondo{
   position: absolute;
@@ -110,36 +120,34 @@
   margin: 0%;
 }
 
-.button{
-
-  background-color: var(--clr-lightorange);
-  
-  color: var(--clr-orange);
-  border: none;
-  border-radius: 15px;
-
-  color: var(--clr-orange) ;
-    font-size: 1.25rem;
-    font-family: font1;
-    text-decoration: none;
-    transition: color 0.3s;
-    padding: 10px;
-  
+.combocontenido{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.combos{
-  
+.button{
+  background-color: var(--clr-lightpurple);
+  border: none;
+  border-radius: 15px;
+  color: #5B19AF ;
+  font-size: 1.25rem;
+  font-family: font1;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding: 10px;  
+}
+
+.combos{  
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(10%, 1fr));
   height:max-content;
-  position: relative;
-  
-
-  
- 
-
+  position: relative;  
 }
+
 
 .zonacombos{
   grid-row: 1 / 5;
@@ -148,62 +156,50 @@
   border-bottom-right-radius: 30px;
   justify-content: center;
   align-content: center;
-  padding: 20px;
- 
-
+  padding: 20px; 
 }
 
 .descripcioncombos{
+  justify-content: center;
+
   grid-row: 1 / 4;
   grid-column: 8/12;
-  padding: 32px;
-
-  
-
+  padding: 32px;  
 }
 
 .buttonc{
   position: relative;
   left: 600%;
-  bottom: 250%;
+  bottom: 290%;
   z-index: 1;
-
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
   border-radius: 100%;
   width: 80px;
   height: 80px;
   font-size: 40px;
-  
   border-color: var(--clr-darkpurple);
 }
 
 
 /*CARRUSEL*/
 .carrusel {
-  margin: 2%;
-  
-
+  margin: 2%;  
 }
 
 .slide {
   background-color: var(--clr-white);
-  display: none;
-  
-
+  display: none;  
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px, 0px, 5px 0px var(--clr-gray);
- 
 }
 
 .combocontenido{
   display: flex;
   align-items:flex-start;
-
- border-radius: 20px;
- overflow: hidden;
- 
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .comboImage{
@@ -212,18 +208,25 @@
   display: block;
   object-fit: cover;
   justify-self: left;
-
 }
 
-.descripcioncombos h1 h2{
-  color: rgb(231, 147, 244);
+
+.colored{
+  font-family: font4;
+}
+
+.descripcioncombos h2{
+  font-family: font2;
+}
+
+.descripcioncombos{
+  text-align: center;
 }
 
 .comboDescription{
   padding: 2rem;
   align-items: center;
   flex: 1;
-  
 }
 
 .slide.active {
@@ -237,14 +240,9 @@
   text-align: center;
 }
 
-
-
-
 .origenes{
   display: flex;
   justify-content: flex-end;
-  
-  
 }
 
 .containerOrigenes{
@@ -254,13 +252,9 @@
   height: 250px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-
   display:  flex;
   margin: 30px;
-
   font-family: font3;
-  
-
 }
 
 .descripcionorigenes{
@@ -268,68 +262,86 @@
   position: relative;
   color: var(--clr-white);
   padding:  20px;
+  text-align: center;
 }
-
 
 .imagenorigenes{
   flex: 1;
   display: block;
   width:100%;
-
 }
 
 .origenes img{
   max-width: 278px;
 }
 
+.menu .colored{
+  color: #C38BEE;
+}
+
 .menu{
+  justify-content: center;
   font-family: font4;
   padding: 20px;
   background-color: var(--clr-dark); 
   border-top-left-radius: 50px;
-  border-top-right-radius: 50px; 
+  border-top-right-radius: 50px;     
+}
 
-  
+.titulomenu h1{
+  align-items: center;
+}
 
-  
+.titulomenu h1{
+  font-family: font4;    
 }
 
 .titulomenu{
+  text-align: center;
   margin: 50px;
   color: var(--clr-white);
-
+  font-family: font4;
 }
+
 .cartasmenu{
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
-  align-content:flex-start;
   gap: 1em;
   justify-content: center;
-
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
 .cartasmenu img{
   max-width: 350px;
-  padding: 15px;
-  
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;    
+}
+
+.titulocarta {
+  justify-content: center;
 }
 
 .cartamenu{
+  justify-content: center;
   width: 50;
   background-color: var(--clr-white);
   border-radius: 10px;
-  padding: 3px;
+  padding: 3px;   
 }
 
-
+.containerContactos .colored{
+  font-family: font1;
+}
 
 .contactos{
   align-content: center;
   height: 500px;
-
 }
 
 .containerContactos{
+  text-align: center;
   background-color: var(--clr-white);
   border-radius: 25px;
   margin-left: 40px;
@@ -337,6 +349,7 @@
   width:50%;
   height: fit-content;
   padding-top: 10px;
+  justify-content: center;
 }
 
 .redesSociales{
@@ -348,5 +361,4 @@
 .social{
   width: 30px;
   height: 30px;
-  
 }

@@ -7,8 +7,10 @@
     --clr-lightorange: #FFF0E9;
     --clr-white: #ffffff;
     --clr-gray: #ece6f7;
-  }
+    
   
+  }
+
   @font-face {
     font-family: font1;
     src: url(Marvel-Bold.ttf);
@@ -240,3 +242,4 @@
     height: 30px;
     
   }
+  

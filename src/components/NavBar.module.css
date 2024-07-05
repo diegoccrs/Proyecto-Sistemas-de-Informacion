@@ -1,329 +1,171 @@
-:root{
-  --clr-dark: #050929;
-  --clr-darkpurple: #5B19B0;
-  --clr-lightpurple: #F0D0FF;
-  --clr-darkorange: #FFAE50;
-  --clr-lightorange: #FFF0E9;
-  --clr-white: #ffffff;
-  --clr-gray: #c7c7c7;
-  
 
-}
-
-
-@font-face {
-  font-family: font1;
-  src: url(../assets/Marvel-Bold.ttf);
-}
-
-.tlogo{
-  width: 70%;
-  height: 70;
-  position: relative;
-  left: 1%;
- 
-}
-
-.header {
-    
-    display: block;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1;
-   
-    background-color: var(--clr-white);
-   
-  }
-  
-  .logoContainer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
-  }
-  .adminLogoContainer {
-    background-color: #420f84; /* Color morado para el contenedor del logo cuando el usuario es administrador */
-  }
 
   .mlogo {
     position: relative;
-    top: 30px;
+    
     width: 12px;
     height: 32px;
     margin-left: 20px;
+    align-self: flex-end;
 
   }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-left: auto;
-  }
-
-  .social {
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-    align-items: end;
+  :root{
+    --clr-dark: #050929;
+    --clr-darkpurple: #5B19B0;
+    --clr-lightpurple: #F0D0FF;
+    --clr-darkorange: #FFAE50;
+    --clr-lightorange: #FFF0E9;
+    --clr-white: #ffffff;
+    --clr-gray: #c7c7c7;
     
+  
   }
   
-
   
-  .nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1.5rem;
-    margin: 10px;
-    padding: auto;
-  }
-  
-  .nav-link {
-    color: var(--clr-dark) ;
-    font-size: 1.3rem;
+  @font-face {
     font-family: font1;
-    text-decoration: none;
-    transition: color 0.3s;
-    padding: 3px;
-    margin: 10px 0px;
-
-  }
-
-  .nav-link-access {
-    color: var(--clr-dark) ;
-    font-size: 1.3rem;
-    font-family: font1;
-    text-decoration: none;
-    transition: color 0.3s;
-    padding: 3px;
-
+    src: url(../assets/Marvel-Bold.ttf);
   }
   
-  .nav-link:hover {
-    color:var(--clr-darkpurple);
-  }
-  
-  .nav-link.active {
-    color:var(--clr-white);
-  }
-
-  .line {
-    border: none;
-    border-top: 3px solid var(--clr-darkpurple);
-    margin: 10px 0;
-  }
-
-  .line2 {
-
-    border-top: 5px solid var(--clr-gray);
-  }
-
-  .lineadmin{
-    border-top: 5px solid var(--clr-darkpurple);
-
-  }
-
-  .purpleLink {
-    background-color: var(--clr-lightpurple); 
-    border-radius: 10px;
-    padding: 0.5rem 3rem; 
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-  }
-
-  .perfil{
-    width: 20px;
-    border-radius: 50%;
-    padding: 0px;
-    margin: 0px 20px;
-  }
-
-  .adminNav {
-    background-color: #420f84; 
-  }
-  
-  .adminNav .nav-link {
-    color: #fff; 
-  }
-
-  .adminNav .nav-link:hover {
-    color: #f0f0f0; 
-  }
-  
-  .adminLink {
-    color: #fff; 
-  }
-
-/*:root{
-  --clr-dark: #050929;
-  --clr-darkpurple: #5B19B0;
-  --clr-lightpurple: #F0D0FF;
-  --clr-darkorange: #FFAE50;
-  --clr-lightorange: #FFF0E9;
-  --clr-white: #ffffff;
-  --clr-gray: #c7c7c7;
-  
-
-}
-
- 
-@font-face {
-  font-family: font1;
-  src: url(../assets/Marvel-Bold.ttf);
-}
-
-.tlogo{
-  width: 70%;
-  height: 70;
-  position: relative;
-  left: 1%;
- 
-}
-
-.header {
-    
-    display: block;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1;
-   
-    background-color: var(--clr-white);
-   
-  }
-  
-  .logoContainer {
-    display: flex;
-    align-items: center;
-  }
-
-  .adminLogoContainer {
-    background-color: #420f84; /* Color morado para el contenedor del logo cuando el usuario es administrador 
-  }
-  
-  
-  .logo {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
-  }
-
-  .mlogo {
+  .tlogo{
+    width: 70%;
+    height: 70%;
     position: relative;
-    top: 30px;
-    width: 12px;
-    height: 32px;
-    margin-left: 20px;
-
-  }
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    margin-left: auto;
-  }
-
-  .social {
-    width: 20px;
-    height: 20px;
-    margin-left: 10px;
-    align-items: end;
     
   }
   
+  .header {
+      
+      display: block;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1;
+     
+      background-color: var(--clr-white);
+     
+    }
+    
+    .logoContainer {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo {
+      justify-content: center;
+      width: 80px;
+      position: relative;
+      margin-left: 10px;
+      
+      
+    }
+  
 
   
-  .nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1.5rem;
-    margin: 10px;
-    padding: auto;
-  }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      margin-left: auto;
+      margin-top: auto;
+      margin-right: 10px;
+    }
   
-  .nav-link {
-    color: var(--clr-dark) ;
-    font-size: 1.3rem;
-    font-family: font1;
-    text-decoration: none;
-    transition: color 0.3s;
-    padding: 3px;
-    margin: 10px 0px;
-
-  }
-
-  .nav-link-access {
-    color: var(--clr-dark) ;
-    font-size: 1.3rem;
-    font-family: font1;
-    text-decoration: none;
-    transition: color 0.3s;
-    padding: 3px;
-
-  }
+    .social {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      align-items: end;
+      
+    }
+    
   
-  .nav-link:hover {
-    color:var(--clr-darkpurple);
-  }
+    
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 10px;
+      padding: auto;
+    }
+    
+    .nav-link {
+      color: var(--clr-dark) ;
+      font-size: 1.3rem;
+      font-family: font1;
+      text-decoration: none;
+      transition: color 0.3s;
+      padding: 3px;
+      margin: 10px 0px;
   
-  .nav-link.active {
-    color:var(--clr-white);
-  }
-
-  .line {
-    border: none;
-    border-top: 3px solid var(--clr-darkpurple);
-    margin: 10px 0;
-  }
-
-  .line2 {
-
-    border-top: 5px solid var(--clr-gray);
-  }
-
-  .purpleLink {
-    background-color: var(--clr-lightpurple); 
-    border-radius: 10px;
-    padding: 0.5rem 3rem; 
-  }
-
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-  }
-
-  .perfil{
-    width: 20px;
-    border-radius: 50%;
-    padding: 0px;
-    margin: 0px 20px;
-  }
-
-  .adminNav {
-    background-color: #420f84; /* Color morado para la barra de navegación 
-  }
+    }
   
-  .adminNav .nav-link {
-    color: #fff; /* Color blanco para las letras 
-  }
-
-  .adminNav .nav-link:hover {
-    color: #f0f0f0; /* Color de las letras al pasar el mouse 
-  }
+    .nav-link-access {
+      color: var(--clr-dark) ;
+      font-size: 1.3rem;
+      font-family: font1;
+      text-decoration: none;
+      transition: color 0.3s;
+      padding: 3px;
   
-  .adminLink {
-    composes: nav-link;
-    color: #fff; /* Color blanco para las letras de los enlaces de administrador 
-  } */
+    }
+    
+    .nav-link:hover {
+      color:var(--clr-lightpurple);
+      
+    }
+    
+    .nav-link.active {
+      color:var(--clr-white);
+    }
+  
+    .line {
+      border: none;
+      border-top: 3px solid var(--clr-darkpurple);
+      margin: 10px 0;
+    }
+  
+    .line2 {
+  
+      border-top: 5px solid var(--clr-gray);
+    }
+  
+    .purpleLink {
+      background-color: var(--clr-lightpurple); 
+      border-radius: 10px;
+      padding: 0.5rem 3rem; 
+    }
+  
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; 
+    }
+  
+    .perfil{
+      width: 20px;
+      border-radius: 50%;
+      padding: 0px;
+      margin: 0px 20px;
+    }
+
+
+    .adminNav {
+      background-color: #420f84; 
+    }
+    
+    .adminNav .nav-link {
+      color: #fff; 
+    }
+  
+    .adminNav .nav-link:hover {
+      color: #f0f0f0; 
+    }
+    
+    .adminLink {
+      color: #fff; 
+    }
+  
+    .adminLogoContainer{
+      background-color: #420f84;
+    }

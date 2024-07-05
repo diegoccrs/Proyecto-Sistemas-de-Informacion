@@ -6,7 +6,7 @@ import vision from '../img/Visión.png';
 import nosotros from '../img/Nosotros.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import Map from '../img/Map.png';
+import fondo from '../img/fondo1.png';
 import ger from '../img/Gerente.png';
 import rep from '../img/Represent.png';
 import equipo from '../img/Equipo1.png';
@@ -18,6 +18,7 @@ import st5 from '../img/ST5.png';
 import st6 from '../img/ST6.png';
 import st7 from '../img/ST7.png';
 import st8 from '../img/ST8.png';
+import Map from '../img/Map.png';
 
 function Nosotros() {
     return (

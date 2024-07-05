@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './Cliente.module.css';
-import burger1 from '../img/Burger_1.png';
-import burger2 from '../img/Burger_2.png';
-import burger3 from '../img/Burger_3.png';
+
 
 function Cliente() {
   const products = [
@@ -10,19 +8,19 @@ function Cliente() {
       id: 1,
       name: 'Hamburguesa Carne Clasica',
       orders: 150,
-      image: burger1 ,
+     
     },
     {
       id: 2,
       name: 'Hamburguesa Carne Salmon',
       orders: 120,
-      image: burger2 ,
+      
     },
     {
       id: 3,
       name: 'Hamburguesa Carne Clasica con Bacon',
       orders: 100,
-      image: burger3 ,
+      
     },
   ];
 
