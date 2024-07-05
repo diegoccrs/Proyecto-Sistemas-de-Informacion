@@ -7,7 +7,14 @@ export const routes = [
     },
     {
         path: "/menu",
-        name: "Menú",
+        name: "Menu",
+        children:[
+            {
+                path: "/menu/platillos",
+                name: "Platillos",
+            },
+
+        ],
     },
     {
         path: "/nosotros",
@@ -28,6 +35,40 @@ export const routes = [
     {
         path: "/*",
         name: "Error"
+    },
+    {
+        path: "/perfil",
+        name: "Perfil",
+        children:[
+            {
+                path: "/perfil/editarperfil",
+                name: "EditarPerfil",
+            },
+        ],
+    },
+    {
+        path: "/comentarios",
+        name: "Comentarios",
+    },
+    {
+        path: "/menuadmin",
+        name: "MenuAdmin",
+    },
+    {
+        path: "/historial",
+        name: "Historial",
+    },
+    {
+        path: "/pedidosactuales",
+        name: "PedidosActuales",
+    },
+    {
+        path: "/cliente",
+        name: "Cliente",
+    },
+    {
+        path: "/compra",
+        name: "Compra",
     },
 ] as const
 

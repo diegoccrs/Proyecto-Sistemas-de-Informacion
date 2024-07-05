@@ -6,11 +6,13 @@ import {
     onAuthStateChanged,
     signInWithPopup
 } from 'firebase/auth'
-import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
+import { v4 } from 'uuid';
 
 
 
@@ -34,16 +36,41 @@ function IniciarSesion() {
     const login = async () => {
         setLoading(true);
         try {
+            if(!logEmail || !logPassword) {
+                throw new Error("Rellene las casillas");
+            }
+            if(!logEmail.includes("@correo.unimet.edu.ve", -21) && !logEmail.includes("@unimet.edu.ve", -14)) {
+                throw new Error("Dominio de correo incorrecto");
+            }
+            if(logPassword.length < 8) {
+                throw new Error("Contraseña menor a 8 caractéres");
+            }
+
             const user = await signInWithEmailAndPassword(
                 auth,
                 logEmail,
                 logPassword);
 
-            console.log(user);
+            // console.log(user);
+
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            const docu = await getDoc(docRef);
+
+            // console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
             navigate("/");
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -55,14 +82,44 @@ function IniciarSesion() {
     
     const loginPopupGoogle = async () => {
         setLoading(true);
+        googleProvider.setCustomParameters({ prompt: 'select_account' });
         try {
-            await signInWithPopup(auth, googleProvider);
+            const user = await signInWithPopup(auth, googleProvider);
 
-            console.log(user);
+            // console.log(user);
+
+            const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
+            let docu = await getDoc(docRef);
+            if(!docu.data()) {
+                const payload = { 
+                    nombreCompleto: auth.currentUser.displayName,
+                    email: auth.currentUser.email,
+                    facultad: 'por definir',
+                    telefono: auth.currentUser.phoneNumber,
+                    admin: false,
+                    pedidos: [],
+                    imageRef: v4()
+                };
+                await setDoc(docRef, payload);
+                
+            }
+            docu = await getDoc(docRef);
+
+            // console.log(docu.data());
+
+            localStorage.setItem("admin", docu.data().admin);
+            localStorage.setItem("email", docu.data().email);
+            localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
+            localStorage.setItem("telefono", docu.data().telefono);
+            localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
             navigate("/");
+
+            scroll(0, 0);
+            location.reload();
         } catch (error) {
             console.log(error.message);
 
@@ -76,7 +133,7 @@ function IniciarSesion() {
         try {
             await signInWithPopup(auth, facebookProvider);
 
-            console.log(user);
+            // console.log(user);
 
             setError(null);
             setLoading(false);
