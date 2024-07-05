@@ -89,7 +89,7 @@
 }
 
 
-.loginButton {
+.paypalButton {
   font-family: font4;
   display: inline-block;
   color:var(--clr-darkpurple);
@@ -110,6 +110,27 @@
   color: rgb(192, 150, 211);
 
    
+}
+
+.rp {
+  padding: 100px;
+  display: inline-block;
+  color:var(--clr-darkpurple);
+  border: var(--clr-darkpurple);
+  border-color: var(--clr-darkpurple);
+  margin-left: 20px;
+  border: 4px solid var(--clr-darkpurple) ;
+  padding: 20px 40px;
+}
+
+
+.rp h1 {
+  font-family: font1;
+}
+
+.rp h2 {
+  font-family: font2;
+
 }
 
 .contactos {

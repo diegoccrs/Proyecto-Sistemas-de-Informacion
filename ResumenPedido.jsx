@@ -4,6 +4,8 @@ import styles from './Compra.module.css';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
+import pyp from '../img/PyP.png';
+
 
 import { Link } from "react-router-dom";
 
@@ -20,23 +22,28 @@ function ResumenPedido() {
             <div className={styles.pasos}>
 
                 <div className={styles.uno}>
-                    <h1>1.  Registrarse</h1>
-                    <h2>Para comprar este plan y utilizar sus beneficios en el futuro,</h2>
-                    <h2>inicia sesión en tu cuenta o regístrate.</h2>
-
-
-                    <Link className={`${styles["nav-link"]} ${styles.purpleLink}`} to="/acceder">Registrarse</Link>
-
-                    <Link to="/login" className={styles.loginButton}>Iniciar Sesion</Link>
-
-
-
+                    <h1>1.  Registrarse</h1>     
                 </div>
 
                 <div className={styles.dos}>
-                    <h1>2. Pago</h1>                    
-                </div>              
+                    <h1>2. Pago</h1>  
+                    <h2>Ingrese Método de Pago</h2> 
 
+                    <Link to="/efectivo" className={styles.purple}>Efectivo</Link>                    
+                    <Link to="/paypal" className={styles.paypalButton}>Paypal</Link>
+                    <img src={pyp} alt="pyp" />
+                    
+                    <div className={styles.rp}>
+
+                        <h1>Resumen del Pedido</h1>
+                        <h2>Combo 1</h2>
+                        <h2>Combo Bs</h2>
+                        <h1 >Total</h1>
+                        <h1>Total Bs</h1>
+                
+                    </div>
+
+                </div>              
             </div>
 
 
