@@ -135,10 +135,16 @@ max-width: 70px;
 }
 
 .Inicio5{
-font-family: font3;
-display: flex;
-gap: 64px;
-padding: 32px;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  font-family: font3;
+  display: flex;
+  gap: 64px;
+  padding: 32px;
 
 }
 
@@ -170,5 +176,5 @@ max-width: 100px;
 
 .MV img{
 max-width: 150px;
-
+max-width: 60%;
 }

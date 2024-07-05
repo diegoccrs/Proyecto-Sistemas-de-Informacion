@@ -10,8 +10,8 @@ export const routes = [
         name: "Menu",
         children:[
             {
-                path: "/menu/hamburguesas",
-                name: "Hamburguesas",
+                path: "/menu/platillos",
+                name: "Platillos",
             },
 
         ],
@@ -39,6 +39,12 @@ export const routes = [
     {
         path: "/perfil",
         name: "Perfil",
+        children:[
+            {
+                path: "/perfil/editarperfil",
+                name: "EditarPerfil",
+            },
+        ],
     },
     {
         path: "/comentarios",

@@ -24,25 +24,29 @@ export default function NavBar() {
 
 
     return(
-        <div className={styles.header}>
-            <div className={styles.logoContainer}>
+        <div className={`${styles.header} ${user && localStorage.getItem("admin") === "true" ? styles.adminLogoContainer : ""}`}>
+            <div  className={`${styles.logoContainer} ${user && localStorage.getItem("admin") === "true" ? styles.adminLogoContainer : ""}`}>
                 <img className={styles.logo} src={logo} alt="DeliPernil" />
                 <img className={styles.tlogo} src={tlogo} alt="DeliPernil" />
                 <img className={styles.mlogo} src={mlogo} alt="Logo" />
                 <div className={styles.container}>
-                    <img className={styles.social} src={iglogo} alt="Logo" />
-                    <img className={styles.social} src={xlogo} alt="Logo" />
+                    <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                    <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
+
                 </div>
             </div>
 
-            <div className={styles.line}>
+            <div className={`${styles.line} ${user && localStorage.getItem("admin") === "true" ? styles.adminNav : ""}`}>
                 <div className={styles.nav}>
                     {user && localStorage.getItem("admin") === "true" ?
                     <>
                         {console.log(user)}
                         {console.log(typeof localStorage.getItem("admin"))}
-                        <Link className={styles["nav-link"]} to="/menuadmin">Menú</Link>
-                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/menuadmin">Menú</Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/historial">Historial</Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/pedidosactuales">Pedidos Actuales</Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/cliente">Cliente</Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
                     </>
                     : <>
                         <Link className={styles["nav-link"]} to="/">Inicio</Link>
@@ -61,7 +65,7 @@ export default function NavBar() {
                 </div>
             </div>
 
-            <div className={styles.line2} />
+            <div className={`${styles.line2} ${user && localStorage.getItem("admin") === "true" ? styles.lineadmin : ""}`}/>
         </div>
     );
 };

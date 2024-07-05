@@ -32,11 +32,24 @@
   src: url(AlegreyaSansSC-Regular.ttf);
 }
 
+.colored {
+  color: #5B19AF;
+}
+
+.pageContainer .botonesMenu {
+  text-align: center;
+}
+
+.botonMenu h1{
+  text-align: center;
+  justify-content: center;
+}
 
 .botonesMenu{
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
-    align-content:flex-start;
+    align-content: center;
     gap: 1em;
     justify-content: center;
     padding: 15px;
@@ -44,7 +57,7 @@
   }
   
 .botonMenu{
-    width: 10%;
+    
     background-color: var(--clr-darkorange);
     border-radius: 5px;
     border: solid 5px;
@@ -55,47 +68,71 @@
     padding-right: 50px;
   }
 
+.tituloboton h1 {
+  text-align: center;
+}
+
 .tituloboton{
   font-size: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.botonMenu h1{
+  
+  text-align: center;
+  justify-content: center;
 }
 
 
-.combos{
+.promos {
   
+  justify-content: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(10%, 1fr));
   height:max-content;
-  position: relative;
- 
-
+  position: relative; 
 }
 
-.zonacombos{
+
+.zonapromos{
   grid-row: 1 / 4;
-  grid-column: 1/8;
-  background-color:var(--clr-gray);   
+  grid-column: 1/8;    
   border-bottom-right-radius: 30px;
   justify-content: center;
   align-content: center;
-  padding: 20px;
- 
-
+  padding: 5px;
+  margin-left: 200px;
 }
 
 .descripcioncombos{
-  grid-row: 1 / 4;
-  grid-column: 8/12;
-  padding: 32px;
-
-  
-
+  justify-content: center;
 }
 
-.buttonc{
+.buttonc1{
   
   z-index: 1;
+  position: relative;
+  top: 42%;
+  right: 582%;
+  
+  color: var(--clr-white);
+  background-color: var(--clr-darkpurple);
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  
+  border-color: var(--clr-darkpurple);
+}
 
+.buttonc2{
+  
+  z-index: 1;
+  position: relative;
+  top: 42%;
+  right: 160%;
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
   border-radius: 100%;
@@ -107,6 +144,8 @@
 }
 
 
+
+
 /*CARRUSEL*/
 .carrusel {
   margin: 2%;
@@ -114,11 +153,15 @@
 
 }
 
+.menut {
+  font-family: font4;
+}
+
+
+
 .slide {
   background-color: var(--clr-white);
   display: none;
-  
-
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px, 0px, 5px 0px var(--clr-gray);
@@ -127,10 +170,9 @@
 
 .combocontenido{
   display: flex;
-  align-items:flex-start;
-
- border-radius: 20px;
- overflow: hidden;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
  
 }
 
@@ -140,12 +182,35 @@
   display: block;
   object-fit: cover;
   justify-self:left;
+  
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 
+  overflow: hidden;
+  margin-left: auto;
+ 
+}
+
+.comboDescription {
+  text-align: center;
 }
 
 .comboDescription{
- 
- flex: 1;
+  padding: 2rem;
+  align-items: center;
+  flex: 1;
+}
+
+.button{
+  background-color: var(--clr-lightpurple);
+  border: none;
+  border-radius: 15px;
+  color: #5B19AF ;
+  font-size: 1.25rem;
+  font-family: font1;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding: 10px;  
 }
 
 .slide.active {
@@ -159,7 +224,10 @@
   text-align: center;
 }
 
+.menu h1{
+  text-align: center;
 
+}
 
 
 .menu{
@@ -170,32 +238,55 @@
   font-family: font2;
 }
 
-.titulomenu{
-  margin: 50px;
+
+
+.promo h1{
+  text-align: center;
 
 }
+
+
+.promo{
+  
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  padding: 30px;
+  font-family: font2;
+}
+
+
+.titulomenu{
+  margin: 50px;  
+}
+
 .catalogo{
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
-  align-content:flex-start;
   gap: 1em;
   justify-content: center;
 
 }
 
 .cartamenu{
-  width: 40%;
+  justify-content: center;
+
+  width: 50;
   /*height: fit-content;*/
   background-color: var(--clr-white);
   border-radius: 10px;
   padding: 3px;
-  padding-bottom: 50px;
  
 }
 
 .cartamenu img{
-  width: 400px;
+  width: 450px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  
 }
+
 
 
 .contactos{
@@ -205,6 +296,7 @@
 }
 
 .containerContactos{
+  text-align: center;
   background-color: var(--clr-white);
   border-radius: 25px;
   margin-left: 40px;
@@ -212,6 +304,8 @@
   width:50%;
   height: fit-content;
   padding-top: 10px;
+  justify-content: center;
+
 }
 
 .redesSociales{
