@@ -1,11 +1,12 @@
-import { getDoc, doc, setDoc, collection, updateDoc } from 'firebase/firestore';
+import { getDoc, doc, setDoc, collection, updateDoc, documentId } from 'firebase/firestore';
 import { useEffect, useRef, useState } from 'react'
 import { firestoreDB } from '../firebase-config';
 
 function PedidosFunciones() {
 
-    /*             Funciones de Pedidos             */
-    /* Añadir y eliminar pedidos de Usuario.pedidos */
+    /*              Funciones de Pedidos              */
+    /*  Añadir y eliminar pedidos de Usuario.pedidos  */
+    /*         NOTA:  Funciones en desarrollo         */
 
     // Parámetros de prueba //
     const platillo = {
@@ -22,12 +23,12 @@ function PedidosFunciones() {
 
     const addPedido = async () => {
         try {
-            const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
+            const docRef = documentIdc(firestoreDB, "Usuario", localStorage.getItem("email"));
             const docu = await getDoc(docRef);
             const data = docu.data().pedidos;
 
             await updateDoc(docRef, {
-                pedidos: [...data, platillo]
+                pedidos: [...data, /**/platillo/**/]
             });
         } catch (error) {
             console.log(error)
@@ -39,7 +40,7 @@ function PedidosFunciones() {
             const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
             const docu = await getDoc(docRef);
             const data = docu.data().pedidos;
-            data.splice(indexPlatillo, 1);
+            data.splice(/**/indexPlatillo/**/, 1);
             console.log(data);
             
             await updateDoc(docRef, {

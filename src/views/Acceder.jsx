@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth'
 import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { v4 } from 'uuid';
 import styles from './Acceder.module.css';
 
 import googlelogo from '../img/google.png';
@@ -67,7 +68,8 @@ function Acceder() {
                 facultad: facultad,
                 telefono: telefono,
                 admin: false,
-                pedidos: []
+                pedidos: [],
+                imageRef: v4()
             };
             await setDoc(docRef, payload);
             const docu = await getDoc(docRef);
@@ -79,6 +81,7 @@ function Acceder() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
@@ -112,7 +115,8 @@ function Acceder() {
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
                     admin: false,
-                    pedidos: []
+                    pedidos: [],
+                    imageRef: v4()
                 };
                 await setDoc(docRef, payload);
 
@@ -126,6 +130,7 @@ function Acceder() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);

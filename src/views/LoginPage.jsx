@@ -12,6 +12,7 @@ import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
+import { v4 } from 'uuid';
 
 
 
@@ -62,6 +63,7 @@ function IniciarSesion() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
@@ -95,7 +97,8 @@ function IniciarSesion() {
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
                     admin: false,
-                    pedidos: []
+                    pedidos: [],
+                    imageRef: v4()
                 };
                 await setDoc(docRef, payload);
                 
@@ -109,6 +112,7 @@ function IniciarSesion() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
