@@ -1,9 +1,9 @@
-import styles from './Compra.module.css';
+import styles from './Comprar.module.css';
 //import c1 from '../img/View.png';
 //import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
+import Map from '../img/Map.png';
 import pyp from '../img/PyP.png';
 
 
@@ -21,7 +21,7 @@ function ResumenPedido() {
 
             <div className={styles.pasos}>
 
-                <div className={styles.uno}>
+            <div className={styles.uno}>
                     <h1>1.  Registrarse</h1>     
                 </div>
 
@@ -32,22 +32,24 @@ function ResumenPedido() {
                     <Link to="/efectivo" className={styles.purple}>Efectivo</Link>                    
                     <Link to="/paypal" className={styles.paypalButton}>Paypal</Link>
                     <img src={pyp} alt="pyp" />
+                
+                
                     
                     <div className={styles.rp}>
 
-                        <h1>Resumen del Pedido</h1>
-                        <h2>Combo 1</h2>
-                        <h2>Combo Bs</h2>
-                        <h1 >Total</h1>
-                        <h1>Total Bs</h1>
-                
+                        <h1 className={styles.titulo_rp}>Resumen del Pedido</h1>
+                        <h2>Combo 1..........Combo Bs</h2>
+                        <h1 >Total..........Total Bs</h1>
+                    
                     </div>
+                </div> 
 
-                </div>              
+                            
+
             </div>
 
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>                            
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>                            
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
