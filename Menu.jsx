@@ -1,30 +1,83 @@
 import styles from './Menu.module.css';
-import { useState } from 'react';
-//import c1 from '../img/View.png';
-//import local from '../img/iglogo.png';
+import { useState, useEffect } from 'react';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { firestoreDB } from '../firebase-config';
+import c1 from '../img/View.png';
+import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import fondo from '../img/fondo1.png';
-
+import Map from '../img/Map.png';
 import view from '../img/View.png';
 import burger from '../img/Burger_0.png';
-//import burger1 from '../img/Burger_1.jpg';
+import burger1 from '../img/Burger_1.jpg';
 import cachapa from '../img/Cachapa_1.png';
 import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.png';
+import arepa from '../img/Arepa.webp';
 import parrilla from '../img/Parrilla_1.jpg';
 import pepito from '../img/Pepito.jpg';
 import sandwich from '../img/Sandwich.jpg';
 import salad from '../img/Salad.png';
-import otros from '../img/Brookies.webp';
+import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 
 function Menu() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [categorias, setCategorias] = useState([]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(firestoreDB, 'Categoria'), (snapshot) => {
+          const categoriasData = [];
+          snapshot.forEach((doc) => {
+            categoriasData.push({ id: doc.id, data: doc.data() });
+          });
+          setCategorias(categoriasData);
+        });
+    
+        return () => unsubscribe();
+      }, []);
+
+    const renderCategorias = () => {
+        return categorias.map((categoria) => (
+          
+            <Link
+                    key={categoria.id}
+                    to={{
+                    pathname: "/menu/platillos",
+                    state: { categoriaId: categoria.id }
+                        }}
+                    className={styles.cartamenu}
+                >
+                <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
+                <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
+
+            </Link>
+        ));
+      };
+
+    const renderCategorias2 = () => {
+        return categorias.map((categoria) => (
+          
+            <Link
+                    key={categoria.id}
+                    to={{
+                    pathname: "/menu/platillos",
+                    state: { categoriaId: categoria.id }
+                        }}
+                    className={styles.botonMenu}
+                >
+                <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
+            
+
+            </Link>
+        ));
+      };
+
 
     const combos = [
         {
@@ -76,79 +129,14 @@ function Menu() {
 
     return (
         <div className={styles.pageContainer}>
-            <div className={styles.botonesMenu}>
+          
+            <div className={styles.botonesMenu}>{renderCategorias2()}</div>
             
-                <div className={styles.botonMenu}>
+               
 
-                    <Link to="/menu/cachapas">
-                        <h1 className={styles.tituloboton}>Cachapas</h1>
-                    </Link> 
-                    
-                </div>
-
-                <div className={styles.botonMenu}> 
-
-                    <Link to="/menu/clubhouses">
-                        <h1 className={styles.tituloboton}>Club Houses</h1>
-                    </Link> 
-                    
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <Link to="/menu/hamburguesas">
-                        <h1 className={styles.tituloboton}>Hamburguesas</h1>
-                    </Link>
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <Link to="/menu/parrillas">
-                        <h1 className={styles.tituloboton}>Parrillas</h1>
-                    </Link>     
-                    
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <Link to="/menu/pepitos">
-                        <h1 className={styles.tituloboton}>Pepitos</h1>
-                    </Link> 
-                    
-                </div>
-
-                <div className={styles.botonMenu}>
-
-                    <Link to="/menu/sandwiches">
-                        <h1 className={styles.tituloboton}>Sandwiches</h1>
-                    </Link> 
-                    
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <Link to="/menu/arepas">
-                        <h1 className={styles.tituloboton}>Arepas</h1>
-                    </Link> 
-                    
-                </div>
-
-                <div className={styles.botonMenu}>
-
-                    <Link to="/menu/ensaladas">
-                        <h1 className={styles.tituloboton}>Ensaladas</h1>
-                    </Link> 
-                    
-                </div>
-
-                <div className={styles.botonMenu}>
-                    <Link to="/menu/otros">
-                        <h1 className={styles.tituloboton}>Otros</h1>
-                    </Link> 
-                    
-                </div>
-
-            </div>
 
             <div className={styles.menu}>
                 <h1 className={styles.menut}>PROMOS</h1>
-
                 <div className={styles.promo}>                   
 
                     
@@ -167,8 +155,9 @@ function Menu() {
                                     <div className={styles.comboDescription}>
                                         <h2 className={styles.comboTitle}>{combo.title}</h2>
                                         <p>{combo.description}</p>
+                                        
                                         <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
- 
+                                        
                                     </div>
                                 </div>
                             </div>                    
@@ -181,80 +170,27 @@ function Menu() {
 
                     </div>
                 </div>
-                
+
+
 
 
                 <h1 className={styles.menut}>MENU</h1>
+                <div className={styles.catalogo}>{renderCategorias()}</div>
                 <div className={styles.catalogo}>
                
-                    
-
-                    <Link className={styles.cartamenu} to="/menu/cachapas">
-
-                        <h1 className={styles.titulocarta}>Cachapas</h1>
-                        <img src={cachapa} alt="cachapa" />
-      
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/clubhouses">
-
-                        <h1 className={styles.titulocarta}>Club House</h1>
-                        <img src={ch} alt="ch" />
-                   
-                    </Link>
 
                     <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                        <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                        <img src={burger} alt="burger" />
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/parrillas">
-
-                        <h1 className={styles.titulocarta}>Parrillas</h1>
-                        <img src={parrilla} alt="parrilla" />
-                     
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/pepitos">
-
-                        <h1 className={styles.titulocarta}>Pepitos</h1>
-                        <img src={pepito} alt="pepito" />
-               
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/sandwiches">
-
-                        <h1 className={styles.titulocarta}>Sandwiches</h1>
-                        <img src={sandwich} alt="sandwich" />        
-
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/arepas">
-
-                        <h1 className={styles.titulocarta}>Arepas</h1>
-                        <img src={arepa} alt="arepa" />
-                        
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/ensaladas">
-
-                        <h1 className={styles.titulocarta}>Ensaladas</h1>
-                        <img src={salad} alt="salad" />
-                     
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/otros">
                 
                         <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={otros} alt="otros" />
+                        <img src={brookie} alt="brookie" />
                         
                     </Link>
                 </div>
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
-                    <h1><span className={styles.colored}>Llámanos</span></h1>
+                    <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
                     <h2> <a href=""></a> delipernil@gmail.com</h2>
                     <h2> <a href="tel:04242285852">0424-2285852</a></h2>

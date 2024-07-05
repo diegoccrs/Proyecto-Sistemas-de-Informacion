@@ -1,4 +1,4 @@
-import styles from './Comprar.module.css';
+import styles from './Compra.module.css';
 //import c1 from '../img/View.png';
 //import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
@@ -8,7 +8,7 @@ import fondo from '../img/fondo1.png';
 import { Link } from "react-router-dom";
 
 
-function Comprar() {
+function ResumenPedido() {
     return (
         <div>
             <div className= {styles.slogan}>
@@ -57,4 +57,4 @@ function Comprar() {
     );
 }
 
-export default Comprar;
+export default ResumenPedido;

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
-//import c1 from '../img/View.png';
-//import local from '../img/iglogo.png';
-
+import c1 from '../img/View.png';
+import local from '../img/iglogo.png';
+import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import view from '../img/View.png';
@@ -75,7 +75,7 @@ function HomePage() {
                 <img className={styles.fondo} src={fondo} alt="fondo" ></img>
                 <div className={styles.container}>
                     <h1 className={styles.titulo}>Bienvenido</h1>
-                    <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div></h2>
+                    <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div>.</h2>
                     
                         <h2 className={styles.parrafo}> Hamburguesas con carne crispy</h2>
                         <h2 className={styles.parrafo}> Cachapas</h2>
@@ -103,10 +103,6 @@ function HomePage() {
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
                                 <Link className={styles["nav-link"]} to="/comprar"><button className={styles.button}>Comprar</button></Link>
-
-                                
-                                
-                                
                             </div>
                         </div>
                     </div>
@@ -118,17 +114,10 @@ function HomePage() {
 
 
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
-
-                
                 <div className={styles.descripcioncombos}>
-                    
                     <h1 className={styles.colored}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
-                        <Link className={styles.cartamenu} to="/menu">        
-                            <button className={styles.button}>Explorar Combos</button>                
-                        </Link>
-                                                
-
+                    <button className={styles.button}>Explorar Combos</button>
                 </div>                
             </div>
 
@@ -154,42 +143,33 @@ function HomePage() {
 
                 </div>
                 <div className={styles.cartasmenu}>
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-
+                    <div className={styles.cartamenu}>
                         <img  src={burger} alt="burger" />
                         <h1 className={styles.titulocarta}>Hamburguesa</h1>
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/cachapas">
-
+                    </div>
+                    <div className={styles.cartamenu}>
                         <img  src={cachapa} alt="cachapa" />
                         <h1 className={styles.titulocarta}>Cachapas</h1>
-                    </Link>
-
-                    <Link className={styles.cartamenu} to="/menu/clubhouses">
-
+                    </div>
+                    <div className={styles.cartamenu}>
                         <img  src={ch} alt="ch" />
                         <h1 className={styles.titulocarta}>Club House</h1>
-                    </Link>
-                    
-                    <Link className={styles.cartamenu} to="/menu/parrillas">
-
+                    </div>
+                    <div className={styles.cartamenu}>
                         <img  src={parrilla} alt="parrilla" />
                         <h1 className={styles.titulocarta}>Parrillas</h1>
-                    </Link>
-                    
-                    <Link className={styles.cartamenu} to="/menu/otros">
-
+                    </div>
+                    <div className={styles.cartamenu}>
                         <img  src={cookie} alt="cookie" />
                         <h1 className={styles.titulocarta}>Más</h1>
-                    </Link>
+                    </div>
                    
                 </div>
             </div>
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
                 <div className={styles.containerContactos}>
-                    <h1><span className={styles.colored}>Llámanos</span></h1>
+                    <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
                     <h2> <a href=""></a> delipernil@gmail.com</h2>
                     <h2> <a href="tel:04242285852">0424-2285852</a></h2>
@@ -201,6 +181,6 @@ function HomePage() {
             </div>
         </div>
     );
-}
+};
 
 export default HomePage

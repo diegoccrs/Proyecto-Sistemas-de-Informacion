@@ -1,4 +1,4 @@
-import { Children } from "react";
+//import { Children } from "react";
 
 export const routes = [
     {
@@ -10,49 +10,8 @@ export const routes = [
         name: "Menu",
         children:[
             {
-                path: "/menu/hamburguesas",
-                name: "Hamburguesas",
-            },
-            
-            {
-                path: "/menu/cachapas",
-                name: "Cachapas",
-            },
-
-            {
-                path: "/menu/arepas",
-                name: "Arepas",
-            },
-
-            
-            {
-                path: "/menu/clubhouses",
-                name: "ClubHouses",
-            },
-            
-            {
-                path: "/menu/pepitos",
-                name: "Pepitos",
-            },
-
-            {
-                path: "/menu/sandwiches",
-                name: "Sandwiches",
-            },
-
-            {
-                path: "/menu/parrillas",
-                name: "Parrillas",
-            },
-
-            {
-                path: "/menu/ensaladas",
-                name: "Ensaladas",
-            },
-
-            {
-                path: "/menu/otros",
-                name: "Otros",
+                path: "/menu/platillos",
+                name: "Platillos",
             },
 
         ],
@@ -95,11 +54,6 @@ export const routes = [
         path: "/menuadmin",
         name: "MenuAdmin",
     },
-    
-    {
-        path: "/comprar",
-        name: "Comprar",
-    },
     {
         path: "/historial",
         name: "Historial",
@@ -111,6 +65,14 @@ export const routes = [
     {
         path: "/cliente",
         name: "Cliente",
+    },
+    {
+        path: "/comprar",
+        name: "Comprar",
+    },
+    {
+        path: "/resumenpedido",
+        name: "ResumenPedido",
     },
 ] as const
 

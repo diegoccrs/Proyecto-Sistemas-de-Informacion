@@ -13,21 +13,16 @@ import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
 //import EditarPerfil from "./views/EditarPerfil.jsx";
 import MenuAdmin from "./views/MenuAdmin.jsx"
-
+import Platillos from "./views/Platillos.jsx";
 import Comentarios from "./views/Comentarios.jsx";
 
-import Hamburguesas from "./views/Hamburguesas.jsx";
-
-import Cachapas from "./views/Cachapas.jsx";
-import ClubHouses from "./views/ClubHouses.jsx";
-import Arepas from "./views/Arepas.jsx";
-import Pepitos from "./views/Pepitos.jsx";
-import Parrillas from "./views/Parrillas.jsx";
-import Sandwiches from "./views/Sandwiches.jsx";
-import Ensaladas from "./views/Ensaladas.jsx";
-import Otros from "./views/Otros.jsx";
+import Historial from "./views/Historial.jsx";
+import PedidosActuales from "./views/PedidosActuales.jsx";
+import Cliente from "./views/Cliente.jsx";
 
 import Comprar from "./views/Comprar.jsx";
+//import ResumenPedido from "./views/ResumenPedido.jsx";
+
 
 
 export const router = createBrowserRouter([
@@ -42,46 +37,11 @@ export const router = createBrowserRouter([
             {
                 path: routes[1].path,
                 element: <Menu />,
-            },///
+            },////
             {
                 path: routes[1]["children"][0].path,
-                element: <Hamburguesas />,
-            },/////           
-            {
-                path: routes[1]["children"][1].path,
-                element: <Cachapas />,
-            },
-            {
-                path: routes[1]["children"][2].path,
-                element: <Arepas />,
-            },
-            ///
-            {
-                path: routes[1]["children"][3].path,
-                element: <ClubHouses />,
-            },
-            {
-                path: routes[1]["children"][4].path,
-                element: <Pepitos />,
-            },
-            ///
-            {
-                path: routes[1]["children"][5].path,
-                element: <Sandwiches />,
-            },
-            {
-                path: routes[1]["children"][6].path,
-                element: <Parrillas />,
-            },
-
-            {
-                path: routes[1]["children"][7].path,
-                element: <Ensaladas />,
-            },
-            {
-                path: routes[1]["children"][8].path,
-                element: <Otros />,
-            },
+                element: <Platillos />,
+            },////
             {
                 path: routes[2].path,
                 element: <Nosotros />,
@@ -118,11 +78,23 @@ export const router = createBrowserRouter([
                 path: routes[9].path,
                 element: <MenuAdmin />
             },
-            
             {
                 path: routes[10].path,
+                element: <Historial />
+            },
+            {
+                path: routes[11].path,
+                element: <PedidosActuales />
+            },
+            {
+                path: routes[12].path,
+                element: <Cliente />
+            },
+            {
+                path: routes[13].path,
                 element: <Comprar />
             },
+            
         ],
     }
 

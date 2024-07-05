@@ -12,7 +12,6 @@ import pa from '../img/PA.png';
 
 
 
-
 export default function NavBar() {
 
     const [user, setUser] = useState({});
@@ -70,5 +69,5 @@ export default function NavBar() {
             <div className={`${styles.line2} ${user && localStorage.getItem("admin") === "true" ? styles.lineadmin : ""}`}/>
         </div>
     );
-}
+};
    
