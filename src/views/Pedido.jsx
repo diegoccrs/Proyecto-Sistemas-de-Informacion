@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config.js';
 import { useState, useEffect } from 'react';
-import { getDoc, doc, setDoc } from 'firebase/firestore';
+import { getDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
 import PayPal from '../components/PayPal.jsx';
 import styles from './Pedido.module.css';
@@ -32,6 +32,20 @@ function ResumenPedido() {
 
     const handlePedidos = (data) => {
         setPedidos(data);
+    };
+
+
+    const deletePedidos = async () => {
+        try {
+            const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
+
+            await updateDoc(docRef, {
+                pedidos: []
+            });
+            location.reload();
+        } catch (error) {
+            console.log(error)
+        }
     };
 
 
@@ -83,6 +97,12 @@ function ResumenPedido() {
                             0
                             :
                             totalidad}</h1>
+
+                            <div>
+                                <button className={styles.paypalButton} onClick={() => {
+                                    deletePedidos();
+                                }}>Vaciar pedido</button>
+                            </div>
                         </div>
                     </>}
                     
