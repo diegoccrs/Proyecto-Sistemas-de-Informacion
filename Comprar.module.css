@@ -146,6 +146,7 @@
   }
   
   .containerContactos{
+    text-align: center;
     background-color: var(--clr-white);
     border-radius: 25px;
     margin-left: 40px;
