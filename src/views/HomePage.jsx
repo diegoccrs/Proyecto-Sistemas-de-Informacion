@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
@@ -19,6 +20,8 @@ import cookie from '../img/Cookie.png';
 function HomePage() {
 
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const navigate = useNavigate();
 
     const combos = [
         {
@@ -81,9 +84,13 @@ function HomePage() {
                         <h2 className={styles.parrafo}> Cachapas</h2>
                         <h2 className={styles.parrafo}> Sándwich</h2>
                         <h2 className={styles.parrafo}> Club House</h2>
-                        <h2 className={styles.parrafo}> Y muho más</h2>
+                        <h2 className={styles.parrafo}> Y mucho más</h2>
 
-                    <Link className={styles["nav-link"]} to="/menu"><button className={styles.button}>Ver Productos</button></Link>
+                    <Link onClick={() => {
+                        scroll(0, 0);
+                    }} className={styles["nav-link"]} to="/menu">
+                        <button className={styles.button}>Ver Productos</button>
+                    </Link>
 
                     
                 </div>
@@ -127,7 +134,11 @@ function HomePage() {
                         <h1 className={styles.titulo}>Nuestros Orígenes</h1>
                         <h2>Cómo llegamos aquí</h2>
                         <h3>Deli Pernil</h3>
-                        <Link className={styles["nav-link"]} to="/nosotros"><button className={styles.button}>Conócenos</button></Link>        
+                        <Link onClick={() => {
+                            scroll(0, 0);
+                        }} className={styles["nav-link"]} to="/nosotros">
+                            <button className={styles.button}>Conócenos</button>
+                        </Link>        
                     </div>
                     <div className={styles.imagenorigenes}>
                         <img  src={local_0} alt="local_0" />
@@ -138,7 +149,11 @@ function HomePage() {
 
             <div className={styles.menu}>
                 <div className={styles.titulomenu}>
-                    <h1>Nuestro <Link className={styles["nav-link"]} to="/menu"><span className={styles.colored}>Menú</span></Link></h1>
+                    <h1>Nuestro <Link onClick={() => {
+                        scroll(0, 0);
+                    }} className={styles["nav-link"]} to="/menu">
+                        <span className={styles.colored}>Menú</span>
+                    </Link></h1>
                     
 
                 </div>

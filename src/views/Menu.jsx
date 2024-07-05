@@ -45,9 +45,10 @@ function Menu() {
         return categorias.map((categoria) => (
           
             <Link
+                    onClick={() => {scroll(0, 0);}}
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.cartamenu}
@@ -63,9 +64,10 @@ function Menu() {
         return categorias.map((categoria) => (
           
             <Link
+                    onClick={() => {scroll(0, 0);}}
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.botonMenu}
@@ -175,16 +177,6 @@ function Menu() {
 
                 <h1 className={styles.menut}>MENU</h1>
                 <div className={styles.catalogo}>{renderCategorias()}</div>
-                <div className={styles.catalogo}>
-               
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        
-                    </Link>
-                </div>
             </div>
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>

@@ -3,6 +3,7 @@ import { firestoreDB } from '../firebase-config';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 } from 'uuid';
 
 
 
@@ -36,8 +37,9 @@ function MenuAdmin() {
         try {
             const docRef = doc(firestoreDB, "Categoria", categoriaName); 
             await setDoc(docRef, {
-                Categoria: categoriaName, 
+                Categoria: categoriaName,
                 disponible: true,
+                imgRef: v4(),
             });
             console.log("Document written with ID: ", categoriaName);
             setCategoriaName('');
@@ -57,6 +59,7 @@ function MenuAdmin() {
             descripcion: "Descripcion del platillo",
             precio: 0,
             disponible: true,
+            imgRef: v4(),
           });
       
           console.log("Platillo added to 'Platillos' subcollection with ID: ", platilloName);

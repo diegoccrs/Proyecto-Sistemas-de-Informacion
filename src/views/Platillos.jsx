@@ -25,7 +25,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
 import { firestoreDB } from '../firebase-config';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 
 
@@ -39,6 +39,8 @@ function Platillos() {
 
     const navigate = useNavigate();
 
+    const { categoId } = useParams();
+
 
     const [user, setUser] = useState({});
 
@@ -51,7 +53,7 @@ function Platillos() {
     useEffect(() => {
         const fetchPlatillos = async () => {
           try {
-            const categoriaId = "Hamburguesas"; // ID de la categoría "Hamburguesas"
+            const categoriaId = categoId; // ID de la categoría "Hamburguesas"
             const platillosRef = collection(firestoreDB, 'Categoria', categoriaId, 'Platillos');
             const querySnapshot = await getDocs(platillosRef);
 
@@ -79,11 +81,10 @@ function Platillos() {
                 <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
                 <p>{styles.description}{platillo.data.descripcion}</p>
                 <p>{platillo.data.precio}</p>
-                {!user ?
-                <button onClick={() => {navigate("/acceder")}} className={styles.button}>Iniciar Sesión</button>
-                :
-                <button onClick={() => {addPedido(platillo.data)}} className={styles.button}>Comprar</button>
-                }
+                
+                <button onClick={user ?
+                            () => {addPedido(platillo.data)}
+                            : () => {navigate("/compra"); scroll(0, 0);}} className={styles.button}>Comprar</button>
                 </div>
                 <div></div>
             
@@ -111,15 +112,15 @@ function Platillos() {
       
     const renderCategorias2 = () => {
         return categorias.map((categoria) => (
-          
+
             <Link
+                    
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
-                    className={styles.botonMenu}
-                >
+                    className={styles.botonMenu} onClick={() => {location.reload(); scroll(0, 0)}}>
                 <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
             
 
@@ -138,6 +139,8 @@ function Platillos() {
               await updateDoc(docRef, {
                   pedidos: [...data, /**/platillo/**/]
               });
+              navigate("/compra");
+              scroll(0, 0);
           } catch (error) {
               console.log(error)
           }
@@ -157,12 +160,7 @@ function Platillos() {
                     <div className={styles.catalogo}>{renderPlatillos()}</div>
                     
                 </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        </NavLink>
-                    </div>
+                    
                
                 
                 
