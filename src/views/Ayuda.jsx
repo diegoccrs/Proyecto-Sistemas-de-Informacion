@@ -1,11 +1,8 @@
 import styles from './Ayuda.module.css';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
 import Map from '../img/Map.png';
-
+  
 function Ayuda() {
     return (
       <div>
@@ -34,7 +31,7 @@ function Ayuda() {
             <h3>Cuéntanos tus dudas o inquietudes</h3>
             <input className={styles.inputting} type="text" name="subject"/>
 
-            <input type="submit" value="Contáctame" className={styles.button}/>
+            <input type="submit" value="Enviar" className={styles.button}/>
 
        
             <input type="hidden" name="_captcha" value="false"/>

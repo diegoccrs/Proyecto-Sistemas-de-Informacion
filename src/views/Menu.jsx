@@ -178,13 +178,6 @@ function Menu() {
                 <div className={styles.catalogo}>{renderCategorias()}</div>
                 <div className={styles.catalogo}>
                
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        
-                    </Link>
                 </div>
             </div>
 

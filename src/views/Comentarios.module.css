@@ -10,8 +10,8 @@
   
 
 }
-
-
+ 
+ 
 
 @font-face {
   font-family: font1;
@@ -116,3 +116,11 @@
   height: 30px;
   
 }
+
+.anonimo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
