@@ -14,6 +14,9 @@
     color: white; /* Letras blancas */
     font-size: 6.5rem;
     margin-bottom: 1.5rem;
+    text-align: center;
+    
+
   }
   
   .card {
@@ -44,5 +47,37 @@
   .cardOrders {
     color: #888;
     font-size: 0.9rem;
+  }
+
+  .pagcontainer{
+    background-color: #2d0461;
+    justify-content: center;
+
+  }
+
+  .comentarioContainer{
+    background-color: white;
+    font-size: auto;
+    width: 40%;
+    border-radius: 8px;
+    padding: 20px;
+
+  }
+
+  .containerC{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 20px;
+    justify-content: center;
+
+  }
+
+  .comentarioinfo{
+    border: solid 5px #2d0461;
+    border-radius: 8px;
+    padding: 10px;
+
+
   }
    
