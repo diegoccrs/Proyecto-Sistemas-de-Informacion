@@ -17,9 +17,11 @@ function MenuAdmin() {
 
     const [categorias, setCategorias] = useState([]);
     const [platillos, setPlatillos] = useState([]);
+    const [platillosCategoria, setPlatillosCategoria] = useState([]);
 
     const handleClickCategoriaContainer = (categoriaId) => {
-      renderPlatillos(categoriaId);
+      const platillosData = getPlatillosByCategoriaId(categoriaId);
+      setPlatillosCategoria(platillosData);
     };
 
     async function addCategoria() {
@@ -209,7 +211,7 @@ function MenuAdmin() {
 
       async function fetchPlatillosByCategoriaId(categoriaId) {
         const platillosData = await getPlatillosByCategoriaId(categoriaId);
-        setPlatillos(platillosData);
+        setPlatillosCategoria(platillosData); // Cambio en esta línea
       }
     
       useEffect(() => {
