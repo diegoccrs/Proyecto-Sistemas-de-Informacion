@@ -8,11 +8,11 @@ import {
 } from 'firebase/auth'
 import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { v4 } from 'uuid';
 import styles from './Acceder.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
-import { v4 } from 'uuid';
 
 
 
@@ -31,16 +31,6 @@ function Acceder() {
 
     const [user, setUser] = useState({});
     const navigate = useNavigate();
-
-
-    const facultadOptions = [
-        'Ingeniería',
-        'FACES',
-        'Idiomas Modernos',
-        'Derecho',
-        
-      ];
-
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -69,7 +59,7 @@ function Acceder() {
                 regEmail,
                 regPassword);
 
-            console.log(user);
+            // console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", regEmail);
             const payload = {
@@ -84,7 +74,7 @@ function Acceder() {
             await setDoc(docRef, payload);
             const docu = await getDoc(docRef);
 
-            console.log(docu.data());
+            // console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
@@ -95,10 +85,7 @@ function Acceder() {
 
             setError(null);
             setLoading(false);
-
-            if (localStorage.getItem("admin") === "true") {
-                navigate("/menuadmin");} 
-            else {navigate("/")}
+            navigate("/");
             
             scroll(0, 0);
             location.reload();
@@ -117,7 +104,7 @@ function Acceder() {
         try {
             const user = await signInWithPopup(auth, googleProvider);
 
-            console.log(user);
+            // console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             let docu = await getDoc(docRef);
@@ -136,7 +123,7 @@ function Acceder() {
             }
             docu = await getDoc(docRef);
             
-            console.log(docu.data());
+            // console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
@@ -147,9 +134,7 @@ function Acceder() {
 
             setError(null);
             setLoading(false);
-            if (localStorage.getItem("admin") === "true") {
-                navigate("/menuadmin");} 
-            else {navigate("/")}
+            navigate("/");
 
             scroll(0, 0);
             location.reload();
@@ -166,13 +151,11 @@ function Acceder() {
         try {
             await signInWithPopup(auth, facebookProvider);
 
-            console.log(user);
+            // console.log(user);
 
             setError(null);
             setLoading(false);
-            if (localStorage.getItem("admin") === "true") {
-                navigate("/menuadmin");} 
-            else {navigate("/")}
+            navigate("/");
         } catch (error) {
             console.log(error.message);
 
@@ -203,23 +186,12 @@ function Acceder() {
                         }} />
 
                         <h2>Facultad</h2>
-                        <input
-                            type="text"
-                            placeholder="Facultad"
-                            list="facultadOptions"
-                            onChange={(event) => {
-                                setFacultad(event.target.value);
-                            }}
-                            />
-
-                        <datalist id="facultadOptions">
-                        {facultadOptions.map((option) => (
-                            <option key={option} value={option} />
-                        ))}
-                        </datalist>
+                        <input type="text" placeholder='Facultad' onChange={(event) => {
+                            setFacultad(event.target.value)
+                        }} />
 
                         <h2>Teléfono</h2>
-                        <input type="number" placeholder='Teléfono' onChange={(event) => {
+                        <input type="text" placeholder='Teléfono (XXXX-XXX-XXXX)' onChange={(event) => {
                             setTelefono(event.target.value)
                         }} />
                         

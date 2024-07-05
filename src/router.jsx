@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import { routes } from "./constants/routes";
 import Root from './layout/Roots.jsx';
 
-
 import Home from "./views/HomePage.jsx";
 import Menu from "./views/Menu.jsx";
 import Nosotros from "./views/Nosotros.jsx";
@@ -12,15 +11,13 @@ import IniciarSesion from "./views/LoginPage.jsx";
 import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
-//import EditarPerfil from "./views/EditarPerfil.jsx";
 import MenuAdmin from "./views/MenuAdmin.jsx"
 import Platillos from "./views/Platillos.jsx";
 import Comentarios from "./views/Comentarios.jsx";
-
 import Historial from "./views/Historial.jsx";
 import PedidosActuales from "./views/PedidosActuales.jsx";
 import Cliente from "./views/Cliente.jsx";
-
+import Pedido from "./views/Pedido.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -66,7 +63,7 @@ export const router = createBrowserRouter([
             {
                 path: routes[7]["children"][0].path,
                 element: <EditarPerfil />,
-              },
+            },
             {
                 path: routes[8].path,
                 element: <Comentarios />
@@ -86,6 +83,10 @@ export const router = createBrowserRouter([
             {
                 path: routes[12].path,
                 element: <Cliente />
+            },
+            {
+                path: routes[13].path,
+                element: <Pedido />
             },
         ],
     }

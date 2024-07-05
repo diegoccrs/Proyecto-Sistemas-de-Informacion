@@ -3,9 +3,12 @@ import styles from './Cliente.module.css';
 import { firestoreDB } from '../firebase-config';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Cliente() {
   const [comentarios, setComentarios] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchComentarios = async () => {
@@ -70,6 +73,10 @@ function Cliente() {
 
   return (
     <div className={styles.pagcontainer}>
+      {localStorage.getItem("admin") != "true" ?
+      navigate("/acceder")
+      :
+      <>
       <div className={styles.container}>
         <h2 className={styles.title}>Producto Más Vendido</h2>
         <div>
@@ -86,7 +93,7 @@ function Cliente() {
       <h2 className={styles.title}>Comentarios</h2>
      
       <div className={styles.containerC}>{renderComentarios()}</div>
-     
+      </>}
     </div>
   );
 };

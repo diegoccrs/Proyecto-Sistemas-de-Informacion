@@ -14,7 +14,7 @@ function Ayuda() {
         </div>
         <div className={styles.formularioayuda}>
           <h2>¿Cómo podemos ayudarte?</h2>
-          <form action="https://formsubmit.co/4d0cdf48d1eea5fccba12bf350e720ce" method="POST">
+          <form action="https://formsubmit.co/giselle.esclasans@correo.unimet.edu.ve" method="POST">
             <div className={styles.formularioInfo}>
               <div className={styles.formulario1}>
                 <h3>Nombre</h3>
@@ -34,7 +34,7 @@ function Ayuda() {
             <h3>Cuéntanos tus dudas o inquietudes</h3>
             <input className={styles.inputting} type="text" name="subject"/>
 
-            <input type="submit" value="Contáctame" className={styles.button}/>
+            <input type="submit" value="Contáctanos" className={styles.button}/>
 
        
             <input type="hidden" name="_captcha" value="false"/>
