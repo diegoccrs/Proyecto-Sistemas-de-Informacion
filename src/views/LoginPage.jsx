@@ -51,12 +51,12 @@ function IniciarSesion() {
                 logEmail,
                 logPassword);
 
-            console.log(user);
+            // console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             const docu = await getDoc(docRef);
 
-            console.log(docu.data());
+            // console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
@@ -67,9 +67,7 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            if (localStorage.getItem("admin") === "true") {
-                navigate("/menuadmin");} 
-            else {navigate("/")}
+            navigate("/");
 
             scroll(0, 0);
             location.reload();
@@ -88,7 +86,7 @@ function IniciarSesion() {
         try {
             const user = await signInWithPopup(auth, googleProvider);
 
-            console.log(user);
+            // console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             let docu = await getDoc(docRef);
@@ -107,7 +105,7 @@ function IniciarSesion() {
             }
             docu = await getDoc(docRef);
 
-            console.log(docu.data());
+            // console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
@@ -118,9 +116,7 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            if (localStorage.getItem("admin") === "true") {
-                navigate("/menuadmin");} 
-            else {navigate("/")}
+            navigate("/");
 
             scroll(0, 0);
             location.reload();
@@ -137,13 +133,11 @@ function IniciarSesion() {
         try {
             await signInWithPopup(auth, facebookProvider);
 
-            console.log(user);
+            // console.log(user);
 
             setError(null);
             setLoading(false);
-            if (localStorage.getItem("admin") === "true") {
-                navigate("/menuadmin");} 
-            else {navigate("/")}
+            navigate("/");
         } catch (error) {
             console.log(error.message);
 

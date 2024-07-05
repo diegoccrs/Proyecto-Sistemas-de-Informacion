@@ -2,8 +2,7 @@ import styles from './MenuAdmin.module.css';
 import { firestoreDB } from '../firebase-config';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
-import { v4 } from 'uuid';
-import { getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -21,18 +20,12 @@ function MenuAdmin() {
     const [platillos, setPlatillos] = useState([]);
     const [platillosCategoria, setPlatillosCategoria] = useState([]);
 
+    const navigate = useNavigate();
+
     const handleClickCategoriaContainer = (categoriaId) => {
       const platillosData = getPlatillosByCategoriaId(categoriaId);
       setPlatillosCategoria(platillosData);
     };
-
-    //////////////////////!SECTION
-
-
-    ////////////////////
-
-
-
 
     async function addCategoria() {
         if (!categoriaName.trim()) {
@@ -45,7 +38,6 @@ function MenuAdmin() {
             await setDoc(docRef, {
                 Categoria: categoriaName, 
                 disponible: true,
-                imgRef: "",
             });
             console.log("Document written with ID: ", categoriaName);
             setCategoriaName('');
@@ -258,6 +250,10 @@ function MenuAdmin() {
   
       return (
         <div>
+          {localStorage.getItem("admin") != "true" ?
+          navigate("/acceder")
+          :
+          <>
           <div className={styles.slogan}>
             <h1>ADMIN <span className={styles.colored}>conmovedora</span> de nuestro local</h1>
           </div>
@@ -305,7 +301,7 @@ function MenuAdmin() {
           <div className={styles.menu}>{renderCategorias()}</div>
           <div className={styles.menu}>{renderPlatillos("Hamburguesas")}</div>
 
-          
+          </>}
         </div>
       );
     }
