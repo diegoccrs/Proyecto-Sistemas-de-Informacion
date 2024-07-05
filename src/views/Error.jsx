@@ -6,6 +6,38 @@ import xlogo from '../img/xlogo.png';
 
 
 function Error() {
+     /*     TODO EL CÓDIGO COMENTADO SON PRUEBAS      */
+
+    /*
+    const [image, setImage] = useState('');
+    const [imUp, setImUp] = useState(null);
+
+
+    const getImg = async () => {
+        const reference = ref(fireStorage, `profileImages/${imUp.name + v4()}`);
+        const url = await getDownloadURL(reference);
+        setImage(url);
+    };
+
+    const uploadImage = () => {
+        if(imUp === null) return;
+        const imgRef = ref(fireStorage, `profileImages/${imUp.name + v4()}`);
+        uploadBytes(imgRef, imUp).then(() => {
+            console.log('Image uploaded!')
+        })
+    }
+
+    getImg()
+    */
+
+
+    /*
+    <input type="file" onChange={() => {setImUp(event.target.files[0])}} />
+    <button onClick={uploadImage}>Submit</button>
+    <button onClick={() => {}}>Display</button>
+    */
+
+
     return (
         <div>
             <div className= {styles.slogan}>

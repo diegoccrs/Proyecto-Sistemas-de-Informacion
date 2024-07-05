@@ -12,6 +12,7 @@ import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
+import { v4 } from 'uuid';
 
 
 
@@ -36,7 +37,13 @@ function IniciarSesion() {
         setLoading(true);
         try {
             if(!logEmail || !logPassword) {
-                throw new Error("Input error: rellenar casillas");
+                throw new Error("Rellene las casillas");
+            }
+            if(!logEmail.includes("@correo.unimet.edu.ve", -21) && !logEmail.includes("@unimet.edu.ve", -14)) {
+                throw new Error("Dominio de correo incorrecto");
+            }
+            if(logPassword.length < 8) {
+                throw new Error("Contraseña menor a 8 caractéres");
             }
 
             const user = await signInWithEmailAndPassword(
@@ -56,6 +63,7 @@ function IniciarSesion() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
@@ -90,7 +98,9 @@ function IniciarSesion() {
                     email: auth.currentUser.email,
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
-                    admin: false
+                    admin: false,
+                    pedidos: [],
+                    imageRef: v4()
                 };
                 await setDoc(docRef, payload);
                 
@@ -104,6 +114,7 @@ function IniciarSesion() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);

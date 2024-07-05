@@ -12,6 +12,7 @@ import styles from './Acceder.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
+import { v4 } from 'uuid';
 
 
 
@@ -50,8 +51,17 @@ function Acceder() {
     const register = async () => {
         setLoading(true);
         try {
-            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0) {
-                throw new Error("Input error: rellenar casillas");
+            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0 || !telefono) {
+                throw new Error("Rellene las casillas");
+            }
+            if(!regEmail.includes("@correo.unimet.edu.ve", -21) && !regEmail.includes("@unimet.edu.ve", -14)) {
+                throw new Error("Dominio de correo incorrecto");
+            }
+            if(regPassword.length < 8) {
+                throw new Error("Contraseña menor a 8 caractéres");
+            }
+            if(telefono.length < 11 || telefono.length > 13) {
+                throw new Error("Teléfono inválido");
             }
 
             const user = await createUserWithEmailAndPassword(
@@ -67,7 +77,9 @@ function Acceder() {
                 email: regEmail,
                 facultad: facultad,
                 telefono: telefono,
-                admin: false
+                admin: false,
+                pedidos: [],
+                imageRef: v4()
             };
             await setDoc(docRef, payload);
             const docu = await getDoc(docRef);
@@ -79,6 +91,7 @@ function Acceder() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
@@ -114,7 +127,9 @@ function Acceder() {
                     email: auth.currentUser.email,
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
-                    admin: false
+                    admin: false,
+                    pedidos: [],
+                    imageRef: v4()
                 };
                 await setDoc(docRef, payload);
 
@@ -128,6 +143,7 @@ function Acceder() {
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
+            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);

@@ -5,10 +5,14 @@ import {
     signInWithEmailAndPassword,
     signOut
 } from 'firebase/auth'
-import { auth } from './firebase-config.js'
+/////////////////////////////////////////////////////////////////////////////////
+import { auth, firestoreDB } from './firebase-config.js'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
+/////////////////////////////////////////////////////////////////////////////////
 import './App.css'
 
 import PayPal from './components/PayPal.jsx';
+import PedidosFunciones from './components/PedidosFunciones.jsx';
 
 function App() {
 
@@ -31,8 +35,16 @@ function App() {
                 auth,
                 regEmail,
                 regPassword);
+/////////////////////////////////////////////////////////////////////////////////
 
+            const docRef = doc(firestoreDB, "Usuario", regEmail);
+            const payload = { email: regEmail, password: regPassword};
+            await setDoc(docRef, payload);
+            const docu = await getDoc(docRef);
+
+/////////////////////////////////////////////////////////////////////////////////
             console.log(user);
+            console.log(docu.data());
         } catch (error) {
             console.log(error.message);
         }
@@ -103,6 +115,8 @@ function App() {
 
                 <button onClick={logout}>Sign Out</button>
             </div>
+
+            <PedidosFunciones />
 
             <PayPal />
 
