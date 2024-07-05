@@ -56,6 +56,7 @@ export default function NavBar() {
                     
                     {user ?
                     <div>
+                        <Link className={styles["nav-link"]} to="/compra">Compra     </Link>
                         <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
                         <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
                     </div>

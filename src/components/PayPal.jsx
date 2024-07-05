@@ -1,10 +1,14 @@
 import { getDoc, doc, setDoc } from 'firebase/firestore';
 import { useEffect, useRef, useState } from 'react'
 import { firestoreDB } from '../firebase-config';
+import { useNavigate } from 'react-router-dom';
+import { v4 } from 'uuid';
+import style from './Pyp.module.css';
 
-export default function PayPal() {
+export default function PayPal(props) {
 
     const paypal = useRef();
+    const navigate = useNavigate();
 
     let pedidosClient = [];
 
@@ -23,6 +27,9 @@ export default function PayPal() {
         };
     
         pedidos.forEach(totalAmount);
+
+        props.totalPago(total);
+        props.platillosCliente(pedidosClient);
     };
 
 
@@ -54,23 +61,22 @@ export default function PayPal() {
                     facultad: localStorage.getItem("facultad"),
                     telefono: localStorage.getItem("telefono"),
                     admin: localStorage.getItem("admin"),
-                    pedidos: [{}],
+                    pedidos: [],
+                    imageRef: localStorage.getItem("imageRef")
                 };
                 await setDoc(docRef1, payload1);
 
 
-                const docRef2 = doc(firestoreDB, "Pedidos");
+                const docRef2 = doc(firestoreDB, "Pedidos", v4());
                 const payload2 = { 
                     emailCliente: localStorage.getItem("email"),
                     pedidos: pedidosClient,
-                    activo: true,
+                    activo: true
                 };
                 await setDoc(docRef2, payload2);
-
-
-                pedidosClient = [];
                 
                 console.log("Successful order");
+                navigate("/");
             },
             onError: (err) => {
                 console.log(err);
@@ -81,7 +87,7 @@ export default function PayPal() {
     }, []);
 
     return (
-        <div>
+        <div className={style.margin}>
             <div className='payButtons' ref={paypal}></div>
         </div>
     )

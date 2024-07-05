@@ -20,11 +20,13 @@ import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 import Map from '../img/Map.png';
 
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
 import { firestoreDB } from '../firebase-config';
 import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
@@ -35,7 +37,16 @@ function Platillos() {
     const location = useLocation();
     const categoriaId = location.state?.categoriaId;
 
-    console.log("categoriaId", categoriaId);
+    const navigate = useNavigate();
+
+
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        })
+    }, []);
 
     useEffect(() => {
         const fetchPlatillos = async () => {
@@ -63,14 +74,18 @@ function Platillos() {
       const renderPlatillos = () => {
        
         return platillos.map((platillo) => (
-          <div key={platillo.id} className={styles.platillos_impar}>
-            <div className={styles.platillos_descripcion}>
-            <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
-            <p>{styles.description}{platillo.data.descripcion}</p>
-            <p>{platillo.data.precio}</p>
-            <button className={styles.button}>Comprar</button>
-            </div>
-            <div></div>
+            <div key={platillo.id} className={styles.platillos_impar}>
+                <div className={styles.platillos_descripcion}>
+                <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
+                <p>{styles.description}{platillo.data.descripcion}</p>
+                <p>{platillo.data.precio}</p>
+                {!user ?
+                <button onClick={() => {navigate("/acceder")}} className={styles.button}>Iniciar Sesión</button>
+                :
+                <button onClick={() => {addPedido(platillo.data)}} className={styles.button}>Comprar</button>
+                }
+                </div>
+                <div></div>
             
         
           </div>
@@ -111,6 +126,23 @@ function Platillos() {
             </Link>
         ));
       };
+
+
+      const addPedido = async (platillo) => {
+          try {
+              const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
+              const docu = await getDoc(docRef);
+              const data = docu.data().pedidos;
+              console.log(platillos)
+
+              await updateDoc(docRef, {
+                  pedidos: [...data, /**/platillo/**/]
+              });
+          } catch (error) {
+              console.log(error)
+          }
+      };
+
 
     return (
         

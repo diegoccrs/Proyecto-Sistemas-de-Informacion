@@ -66,6 +66,10 @@ export const routes = [
         path: "/cliente",
         name: "Cliente",
     },
+    {
+        path: "/compra",
+        name: "Compra",
+    },
 ] as const
 
 

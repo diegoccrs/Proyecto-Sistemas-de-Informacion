@@ -1,8 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './Historial.module.css';
 
 function Historial() {
+
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
+      {localStorage.getItem("admin") != "true" ?
+      navigate("/acceder")
+      :
+      <>
       <h2 className={styles.title}>Historial</h2>
       <div className={styles.table}>
         <div className={styles.tableHeader}>
@@ -30,6 +38,7 @@ function Historial() {
         </div>
         {/* Agrega más filas según tus datos */}
       </div>
+      </>}
     </div>
   );
 };

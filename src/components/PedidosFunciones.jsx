@@ -23,7 +23,7 @@ function PedidosFunciones() {
 
     const addPedido = async () => {
         try {
-            const docRef = documentIdc(firestoreDB, "Usuario", localStorage.getItem("email"));
+            const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
             const docu = await getDoc(docRef);
             const data = docu.data().pedidos;
 

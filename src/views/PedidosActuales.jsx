@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './PedidosActuales.module.css';
 
 function PedidosActuales() {
@@ -7,8 +8,14 @@ function PedidosActuales() {
     { id: 3, nombre: 'Carlos', apellido: 'Rodríguez', fecha: '2023-07-03' },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div className={styles.pedidosActualesContainer}>
+      {localStorage.getItem("admin") != "true" ?
+      navigate("/acceder")
+      :
+      <>
       <h2 className={styles.pedidosActualesTitle}>Pedidos Actuales</h2>
       {pedidos.map((pedido) => (
         <div key={pedido.id} className={styles.pedidoCard}>
@@ -20,6 +27,7 @@ function PedidosActuales() {
           </div>
         </div>
       ))}
+      </>}
     </div>
   );
 };

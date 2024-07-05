@@ -11,14 +11,13 @@ import IniciarSesion from "./views/LoginPage.jsx";
 import Error from "./views/Error.jsx";
 import Perfil from "./views/Perfil.jsx";
 import EditarPerfil from "./views/EditarPerfil.jsx";
-//import EditarPerfil from "./views/EditarPerfil.jsx";
 import MenuAdmin from "./views/MenuAdmin.jsx"
 import Platillos from "./views/Platillos.jsx";
 import Comentarios from "./views/Comentarios.jsx";
-
 import Historial from "./views/Historial.jsx";
 import PedidosActuales from "./views/PedidosActuales.jsx";
 import Cliente from "./views/Cliente.jsx";
+import Pedido from "./views/Pedido.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -84,6 +83,10 @@ export const router = createBrowserRouter([
             {
                 path: routes[12].path,
                 element: <Cliente />
+            },
+            {
+                path: routes[13].path,
+                element: <Pedido />
             },
         ],
     }

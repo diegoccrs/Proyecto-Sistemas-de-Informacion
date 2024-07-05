@@ -2,6 +2,7 @@ import styles from './MenuAdmin.module.css';
 import { firestoreDB } from '../firebase-config';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -18,6 +19,8 @@ function MenuAdmin() {
     const [categorias, setCategorias] = useState([]);
     const [platillos, setPlatillos] = useState([]);
     const [platillosCategoria, setPlatillosCategoria] = useState([]);
+
+    const navigate = useNavigate();
 
     const handleClickCategoriaContainer = (categoriaId) => {
       const platillosData = getPlatillosByCategoriaId(categoriaId);
@@ -247,6 +250,10 @@ function MenuAdmin() {
   
       return (
         <div>
+          {localStorage.getItem("admin") != "true" ?
+          navigate("/acceder")
+          :
+          <>
           <div className={styles.slogan}>
             <h1>ADMIN <span className={styles.colored}>conmovedora</span> de nuestro local</h1>
           </div>
@@ -294,7 +301,7 @@ function MenuAdmin() {
           <div className={styles.menu}>{renderCategorias()}</div>
           <div className={styles.menu}>{renderPlatillos("Hamburguesas")}</div>
 
-          
+          </>}
         </div>
       );
     }
