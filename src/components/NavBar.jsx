@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css"
 import logo from '../img/Logo.png'
 import mlogo from '../img/LogoMonigotech.png';
-import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import tlogo from '../img/tlogo.png'
-
+import tlogo from '../img/tlogo.png';
+import pa from '../img/PA.png';
+import logoig from '../img/logotipo-de-instagram.png';
+import pc from '../img/PC.png';
+import va from '../img/VA.png';
 
 
 export default function NavBar() {
@@ -30,7 +32,7 @@ export default function NavBar() {
                 <img className={styles.tlogo} src={tlogo} alt="DeliPernil" />
                 <img className={styles.mlogo} src={mlogo} alt="Logo" />
                 <div className={styles.container}>
-                    <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                    <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={logoig} alt="Logo" /></a>
                     <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
 
                 </div>
@@ -46,7 +48,7 @@ export default function NavBar() {
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/historial">Historial</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/pedidosactuales">Pedidos Actuales</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/cliente">Cliente</Link>
-                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={pa} alt="Logo" /></Link>
                     </>
                     : <>
                         <Link className={styles["nav-link"]} to="/">Inicio</Link>
@@ -57,7 +59,7 @@ export default function NavBar() {
                     {user ?
                     <div>
                         <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
-                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={pc} alt="Logo" /></Link>
                     </div>
                     : <Link className={`${styles["nav-link-access"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
                     </>}

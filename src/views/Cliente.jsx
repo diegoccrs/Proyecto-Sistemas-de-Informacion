@@ -18,7 +18,7 @@ function Cliente() {
     },
     {
       id: 3,
-      name: 'Hamburguesa Carne Clasica con Bacon',
+      name: 'Hamburguesa con Bacon',
       orders: 100,
       
     },

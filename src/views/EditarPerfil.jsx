@@ -3,7 +3,7 @@ import { auth } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styles from "./Perfil.module.css"
-import iglogo from '../img/iglogo.png';
+import perfil from '../img/Perfil.png';
 
 import {getAdditionalUserInfo} from "firebase/auth";
 import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
@@ -120,7 +120,7 @@ function Perfil() {
                     
                     <div className={styles.perfil2}>
                         <h2>Foto de Perfil</h2>
-                        <img className={styles.perfil} src={iglogo} alt="Logo" />
+                        <img className={styles.perfil} src={perfil} alt="Perfil" />
                         <h2>Preferencias Alimentarias</h2>
                         <input></input> 
                         <button onClick={modificarClient}>Actualizar</button>
