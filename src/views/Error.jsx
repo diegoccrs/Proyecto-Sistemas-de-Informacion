@@ -3,39 +3,17 @@ import fondo from '../img/fondo1.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { fireStorage } from '../firebase-config';
+import { firestoreDB } from '../firebase-config';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+import { v4 } from 'uuid';
+
 
 
 function Error() {
-     /*     TODO EL CÓDIGO COMENTADO SON PRUEBAS      */
-
-    /*
-    const [image, setImage] = useState('');
-    const [imUp, setImUp] = useState(null);
-
-
-    const getImg = async () => {
-        const reference = ref(fireStorage, `profileImages/${imUp.name + v4()}`);
-        const url = await getDownloadURL(reference);
-        setImage(url);
-    };
-
-    const uploadImage = () => {
-        if(imUp === null) return;
-        const imgRef = ref(fireStorage, `profileImages/${imUp.name + v4()}`);
-        uploadBytes(imgRef, imUp).then(() => {
-            console.log('Image uploaded!')
-        })
-    }
-
-    getImg()
-    */
-
-
-    /*
-    <input type="file" onChange={() => {setImUp(event.target.files[0])}} />
-    <button onClick={uploadImage}>Submit</button>
-    <button onClick={() => {}}>Display</button>
-    */
+   
 
 
     return (
@@ -44,6 +22,9 @@ function Error() {
                 <h1>La página no se ha <span className={styles.colored}>encontrado</span> o no está disponible</h1>
             </div>
 
+           
+            
+            
             <div className={styles.errorMessage}>
                 <br />
                 <br />

@@ -2,6 +2,8 @@ import styles from './MenuAdmin.module.css';
 import { firestoreDB } from '../firebase-config';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import { v4 } from 'uuid';
+import { getDownloadURL } from 'firebase/storage';
 
 
 
@@ -23,6 +25,14 @@ function MenuAdmin() {
       const platillosData = getPlatillosByCategoriaId(categoriaId);
       setPlatillosCategoria(platillosData);
     };
+
+    //////////////////////!SECTION
+
+
+    ////////////////////
+
+
+
 
     async function addCategoria() {
         if (!categoriaName.trim()) {

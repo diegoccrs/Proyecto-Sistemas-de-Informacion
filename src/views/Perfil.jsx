@@ -1,5 +1,5 @@
 import React from 'react'
-import iglogo from '../img/iglogo.png';
+
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
@@ -15,9 +15,10 @@ import styles from './Perfil.module.css';
 //import styles from './Perfil.module.css';
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
+import perfil from '../img/Perfil.png';
 
+import { firestoreDB } from '../firebase-config.js'
 
-import { db } from '../firebase';
 import { doc, deleteDoc } from "firebase/firestore";
 
 
@@ -66,7 +67,7 @@ function Perfil() {
     async function deleteClient() {
       try {
         const id = auth.currentUser.uid;
-        const docRef = doc(db, "Usuario", id);
+        const docRef = doc(firestoreDB, "Usuario", id);
   
         await deleteDoc(docRef);
       } catch (error) {
@@ -113,7 +114,8 @@ function Perfil() {
                   )}
   
                   {!isAdmin && (
-                    <>
+                    <div className={styles.container}>
+                    <div className={styles.column}>
                       <h2>Nombre</h2>
                       <input
                         type="text"
@@ -149,16 +151,17 @@ function Perfil() {
                           
                         }}
                       />
+                      </div>
 
-                       
+                      <div className={styles.column}>
                         
-                        <img className={styles.perfil} src={iglogo} alt="Logo" />
+                        <img className={styles.perfil} src={perfil} alt="Logo" />
                         <h2>Foto de Perfil</h2>
 
                         <Link className={styles['nav-link']} to="/">
                             Regresar
                         </Link>
-                        <Link className={styles['nav-link']} to="/perfil/editarperfil">
+                        <Link className={`${styles["nav-link"]} ${styles.button}`} to="/perfil/editarperfil">
                             Editar
                         </Link>
                         <Link
@@ -168,8 +171,9 @@ function Perfil() {
                         >
                             Eliminar
                         </Link>
+                        </div>
 
-                    </>
+                    </div>
                   )}
   
                   <button className={styles.button} onClick={logout}>
