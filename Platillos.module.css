@@ -1,0 +1,374 @@
+:root{
+    --clr-dark: #050929;
+    --clr-darkpurple: #5B19B0;
+    --clr-lightpurple: #F0D0FF;
+    --clr-darkorange: #FFAE50;
+    --clr-orange: #843F00;
+    --clr-lightorange: #FFF0E9;
+    --clr-white: #ffffff;
+    --clr-gray: #ece6f7;
+    
+  
+  }
+
+  @font-face {
+    font-family: font1;
+    src: url(Marvel-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: font2;
+    src: url(AlegreyaSansSC-Thin.ttf);
+  }
+  
+  @font-face {
+    font-family: font3;
+    src: url(AlegreyaSansSC-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: font4;
+    src: url(AlegreyaSansSC-Regular.ttf);
+  }
+
+  
+  .tm{
+    color: white;
+    font-family: font4;
+    background-color: #050929;
+    padding: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+    border-radius: 10px;
+
+  }
+  
+  .botonesMenu{
+    color: var(--clr-white);
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    gap: 1em;
+    justify-content: center;
+    padding: 15px;
+    font-family: font1;
+    }
+    
+  .botonMenu{
+    background-color: var(--clr-lightpurple);
+    border-radius: 5px;
+    border: solid 5px;
+    border-color: var(--clr-darkpurple);
+  
+    padding: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    }
+
+    .botonMenuC {
+      background-color: var(--clr-lightpurple);
+      border-radius: 5px;
+      border: solid 5px;
+      border-color: var(--clr-darkpurple);
+    
+      padding: 5px;
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+  
+  
+  .tituloboton{
+    font-size: 20px;
+  }
+
+  .titulo_categoria {
+    font-family: font4;
+    color: var(--clr-darkpurple);
+  }
+
+  .categoria h1{
+    text-align: center;
+   
+  
+  }
+
+  .categoria{
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding: 30px;
+    font-family: font2;
+  }
+
+  .platillos{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+  
+  }
+
+  .titulo_platillo {
+    font-family: font1;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .button{
+    background-color: var(--clr-lightpurple);
+    border: none;
+    border-radius: 15px;
+    color: #5B19AF ;
+    font-size: 1.25rem;
+    font-family: font1;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 10px;  
+  }
+
+  .Description_platillo {
+    text-align: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: var(--clr-white);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+  
+  
+  }
+
+  .platillos_impar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 30px;
+    background-color: var(--clr-lightpurple);  
+    border-radius: 30px;
+    border: var(--clr-lightpurple) 10px;
+  }
+
+  .platillos_descripcion{
+    text-align: center;
+    background-color: var(--clr-white);
+    border-radius: 25px;
+    margin-left: 40px;
+    padding: 40px;
+    width:50%;
+    height: fit-content;
+    padding-top: 10px;
+    justify-content: center;
+
+  }
+
+  .titulo_platillo {
+    font-family: font1;
+    text-align: center;
+    margin-top: 40px;
+
+  }
+  
+  
+  
+  .combos{
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(10%, 1fr));
+    height:max-content;
+    position: relative;
+   
+  
+  }
+  
+  .zonacombos{
+    grid-row: 1 / 4;
+    grid-column: 1/8;
+    background-color:var(--clr-gray);   
+    border-bottom-right-radius: 30px;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+   
+  
+  }
+  
+  .descripcioncombos{
+    grid-row: 1 / 4;
+    grid-column: 8/12;
+    padding: 32px;
+  
+    
+  
+  }
+  
+  .buttonc{
+    
+    z-index: 1;
+  
+    color: var(--clr-white);
+    background-color: var(--clr-darkpurple);
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    
+    border-color: var(--clr-darkpurple);
+  }
+  
+  
+  /*CARRUSEL*/
+  .carrusel {
+    margin: 2%;
+    
+  
+  }
+  
+  .slide {
+    background-color: var(--clr-white);
+    display: none;
+    
+  
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px, 0px, 5px 0px var(--clr-gray);
+   
+  }
+  
+  .combocontenido{
+    display: flex;
+    align-items:flex-start;
+  
+   border-radius: 20px;
+   overflow: hidden;
+   
+  }
+  
+  .comboImage{
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    justify-self:left;
+  
+  }
+  
+  .comboDescription{
+   
+   flex: 1;
+  }
+  
+  .slide.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slide-content {
+    text-align: center;
+  }
+  
+  
+  
+  
+  .menu{
+    background: linear-gradient(#FFAE50 10%, #24064b 90%);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    padding: 30px;
+  }
+  
+  .titulomenu{
+    margin: 50px;
+    
+  
+  }
+
+  .titulocarta{
+    text-align: center;
+  }
+
+  .catalogo{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    margin-top: 30px;
+  
+  }
+
+.plamenu {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  margin-top: 30px;
+
+}
+  
+  .cartamenu{
+    
+    justify-content: center;
+    text-align: center;    
+  
+    width: 50;
+    /*height: fit-content;*/
+    background-color: var(--clr-lightpurple);
+    border-radius: 10px;
+    padding: 3px
+   
+  }
+  
+  .cartamenu img{
+    
+    justify-content: center;
+    width: 450px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  
+    
+  }
+  
+  
+  .contactos{
+    align-content: center;
+    height: 500px;
+  
+  }
+  
+  .containerContactos{
+    text-align: center;
+    background-color: var(--clr-white);
+    border-radius: 25px;
+    margin-left: 40px;
+    padding: 40px;
+    width:50%;
+    height: fit-content;
+    padding-top: 10px;
+  }
+  
+  .redesSociales{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
+  
+  .social{
+    width: 30px;
+    height: 30px;
+    
+  }
+  
+  .platilloContainer{
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    margin: 20px;
+    border-radius: 20px;
+
+
+}

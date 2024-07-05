@@ -114,6 +114,8 @@ function HomePage() {
 
 
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
+
+                
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.colored}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>

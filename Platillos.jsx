@@ -125,12 +125,18 @@ function Platillos() {
                     <div className={styles.catalogo}>{renderPlatillos()}</div>
                     
                 </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
+
+                <div className={styles.plamenu}>                  
+                  <div className={styles.cartamenu}>
+                      <NavLink to={routes[1]["children"][0].path}>
                         <h1 className={styles.titulocarta}>Otros</h1>
                         <img src={brookie} alt="brookie" />
-                        </NavLink>
-                    </div>
+                      </NavLink>
+                  </div>
+
+
+                </div>
+                    
                
                 
                 
