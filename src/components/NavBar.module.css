@@ -148,3 +148,24 @@
       padding: 0px;
       margin: 0px 20px;
     }
+
+
+    .adminNav {
+      background-color: #420f84; 
+    }
+    
+    .adminNav .nav-link {
+      color: #fff; 
+    }
+  
+    .adminNav .nav-link:hover {
+      color: #f0f0f0; 
+    }
+    
+    .adminLink {
+      color: #fff; 
+    }
+  
+    .adminLogoContainer{
+      background-color: #420f84;
+    }

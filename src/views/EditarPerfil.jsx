@@ -6,8 +6,8 @@ import styles from "./Perfil.module.css"
 import iglogo from '../img/iglogo.png';
 
 import {getAdditionalUserInfo} from "firebase/auth";
-import { doc, setDoc, updateDoc, deleteDoc } from "firebase/firestore"; // Import Firestore functions
-import { db } from '../firebase';
+import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
+//import { db } from '../firebase';
 
 function Perfil() {
 
@@ -18,9 +18,22 @@ function Perfil() {
     const [facultad, setFaculty] = useState('');
     const [telefono, setPhone] = useState('');
 
-  
-   
+    const [nombrePlaceholder, setNombrePlaceholder] = useState('');
+    const [apellidoPlaceholder, setApellidoPlaceholder] = useState('');
+    const [emailPlaceholder, setEmailPlaceholder] = useState('');
+    const [facultadPlaceholder, setFacultadPlaceholder] = useState('');
+    const [telefonoPlaceholder, setTelefonoPlaceholder] = useState('');
 
+  
+    const facultadOptions = [
+      'Ingeniería',
+      'FACES',
+      'Idiomas Modernos',
+      'Derecho',
+      
+    ];
+
+    
 
 
     async function modificarClient(){
@@ -29,8 +42,8 @@ function Perfil() {
           const docRef = doc(db, "Usuario", id);
       
           await updateDoc(docRef, {
-            nombre: nombre, // New value for the 'name' field
-            apellido: apellido, // New value for the 'age' field
+            nombre: nombre, 
+            apellido: apellido, 
             email: email,
             facultad: facultad,
             telefono: telefono,
@@ -41,7 +54,8 @@ function Perfil() {
         }
       }
 
-  
+    
+
 
 
 
@@ -75,19 +89,33 @@ function Perfil() {
                 <div className={styles.perfil}>
                     <div className={styles.perfil1}>
                         <h2>Nombre</h2>
-                        <input value={nombre} onChange={handleNameChange}></input>
+                        <input value={nombre} onChange={handleNameChange}  placeholder={nombrePlaceholder}></input>
 
                         <h2>Apellido</h2>
-                        <input value={apellido} onChange={handleLastNameChange}></input>
+                        <input value={apellido} onChange={handleLastNameChange} placeholder={apellidoPlaceholder}></input>
 
                         <h2>Número de teléfono</h2>
-                        <input value={telefono} onChange={handlePhoneChange}></input>
+                        <input value={telefono} onChange={handlePhoneChange} placeholder={telefonoPlaceholder}></input>
 
                         <h2>Email</h2>
-                        <input value={email} onChange={handleEmailChange}></input> 
+                        <input value={email} onChange={handleEmailChange}  placeholder={emailPlaceholder}></input> 
 
                         <h2>Facultad</h2>
-                        <input value={facultad} onChange={handleFacultyChange}></input>
+                        <input
+                            type="text"
+                            placeholder={facultadPlaceholder}
+                            list="facultadOptions"
+                            onChange={(event) => {
+                                setFacultad(event.target.value);
+                            }}
+                            />
+
+                        <datalist id="facultadOptions">
+                        {facultadOptions.map((option) => (
+                            <option key={option} value={option} />
+                        ))}
+                        </datalist>
+
                     </div>
                     
                     <div className={styles.perfil2}>

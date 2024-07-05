@@ -31,6 +31,16 @@ function Acceder() {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
 
+
+    const facultadOptions = [
+        'Ingeniería',
+        'FACES',
+        'Idiomas Modernos',
+        'Derecho',
+        
+      ];
+
+
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
@@ -177,9 +187,20 @@ function Acceder() {
                         }} />
 
                         <h2>Facultad</h2>
-                        <input type="text" placeholder='Facultad' onChange={(event) => {
-                            setFacultad(event.target.value)
-                        }} />
+                        <input
+                            type="text"
+                            placeholder="Facultad"
+                            list="facultadOptions"
+                            onChange={(event) => {
+                                setFacultad(event.target.value);
+                            }}
+                            />
+
+                        <datalist id="facultadOptions">
+                        {facultadOptions.map((option) => (
+                            <option key={option} value={option} />
+                        ))}
+                        </datalist>
 
                         <h2>Teléfono</h2>
                         <input type="number" placeholder='Teléfono' onChange={(event) => {
