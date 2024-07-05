@@ -3,26 +3,94 @@ import fondo from '../img/fondo1.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { fireStorage } from '../firebase-config';
-import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
+import { fireStorage } from '../firebase-config';
+import { ref, getDownloadURL, uploadBytes, getMetadata  } from 'firebase/storage';
 import { v4 } from 'uuid';
+
+import { firestoreDB } from '../firebase-config';
+import { doc, setDoc } from 'firebase/firestore';
+
 
 
 
 function Error() {
+    const [categoriaName, setCategoriaName] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+//almacena archivo de imagen seleccionado al usuario
+    const [imUp, setImUp] = useState(null);
+    
+
+    //almacenar url de imagen
+    const [image, setImage] = useState('');
+    console.log(image);
+
+    
+
+
+    //función para obtener la url de descarga de la imagen
+    const getImg = async () => {
+        const reference = ref(fireStorage, `profileImages/${v4()}`);
+        
+        const url = await getDownloadURL(reference);
+        console.log(url);
+        setImage(url);
+    };
+
+    //función para subir la imagen
+    const uploadImage = () => {
+        if (imUp === null) return;
+        const imgRef = ref(fireStorage, `profileImages/${v4()}`);
+        
+        
+        uploadBytes(imgRef, imUp)
+          .then(() => {
+            
+            console.log('Image uploaded!');
+            return getDownloadURL(imgRef);
+          })
+          .then(() => {
+            
+            const categoriaRef = doc(firestoreDB, 'Categoria', categoriaName);
+            return setDoc(categoriaRef, { imgRef: v4() }, { merge: true });
+          })
+          .catch((error) => {
+            console.error('Error uploading image:', error);
+          });
+      };
+    
+      
+      useEffect(() => {
+        getImg();
+      }, []);
+    
+    
+    //función para obtener la url de descarga de la imagen
    
 
 
+
+
+    ///////////////
+      
+    ////////////////
     return (
         <div>
             <div className= {styles.slogan}>
                 <h1>La página no se ha <span className={styles.colored}>encontrado</span> o no está disponible</h1>
             </div>
 
-           
+            <input type="file" onChange={(event) => setImUp(event.target.files[0])} ></input>
+            <button onClick={uploadImage}>Submit</button>
+            <button onClick={() => {}}>Mostrar Imagen</button>
+            <input
+            type="text"
+            value={categoriaName}
+            onChange={(e) => setCategoriaName(e.target.value)}
+            placeholder="Enter Category Name"
+          />
+
+      
             
             
             <div className={styles.errorMessage}>

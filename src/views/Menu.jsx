@@ -1,5 +1,5 @@
 import styles from './Menu.module.css';
-import { useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
 import c1 from '../img/View.png';
@@ -20,13 +20,15 @@ import sandwich from '../img/Sandwich.jpg';
 import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 
+
+
 import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+const IdMenuContext = createContext();
 
-
-function Menu() {
-
+export function Menu() {
+    const [idMenu, setIdMenu] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [categorias, setCategorias] = useState([]);
 
@@ -52,6 +54,7 @@ function Menu() {
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.cartamenu}
+                    onClick={() => setIdMenu(categoria.id)}
                 >
                 <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
                 <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
@@ -70,7 +73,10 @@ function Menu() {
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.botonMenu}
+                    onClick={() => setIdMenu(categoria.id)}
+                    
                 >
+                
                 <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
             
 
@@ -202,6 +208,10 @@ function Menu() {
             </div>
         </div>
     );
+}
+
+export function useIdMenu() {
+    return useContext(IdMenuContext);
 }
 
 export default Menu

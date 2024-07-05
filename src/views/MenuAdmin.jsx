@@ -45,6 +45,7 @@ function MenuAdmin() {
             await setDoc(docRef, {
                 Categoria: categoriaName, 
                 disponible: true,
+                imgRef: "",
             });
             console.log("Document written with ID: ", categoriaName);
             setCategoriaName('');

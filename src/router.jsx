@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { routes } from "./constants/routes";
 import Root from './layout/Roots.jsx';
 
+
 import Home from "./views/HomePage.jsx";
 import Menu from "./views/Menu.jsx";
 import Nosotros from "./views/Nosotros.jsx";

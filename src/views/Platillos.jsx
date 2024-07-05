@@ -25,17 +25,22 @@ import { useState, useEffect } from 'react';
 import { firestoreDB } from '../firebase-config';
 import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
+import { useIdMenu } from './Menu';
 
 
 
-function Platillos() {
+
+
+export function Platillos() {
+    const idMenu = useIdMenu();
+    console.log(idMenu);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [categorias, setCategorias] = useState([]);
     const [platillos, setPlatillos] = useState([]); 
     const location = useLocation();
-    const categoriaId = location.state?.categoriaId;
+    const categoriaId = location.state ? location.state.categoriaId : null;
+    console.log("location", categoriaId);
 
-    console.log("categoriaId", categoriaId);
 
     useEffect(() => {
         const fetchPlatillos = async () => {
