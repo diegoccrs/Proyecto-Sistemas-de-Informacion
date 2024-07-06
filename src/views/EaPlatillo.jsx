@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './PedidosActuales.module.css';
 import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc,  deleteDoc,  getDocs, query } from 'firebase/firestore';
-import { useState } from 'react';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 
 function PedidosActuales() {
@@ -10,6 +10,8 @@ function PedidosActuales() {
   const navigate = useNavigate();
   const [platilloName, setPlatilloName] = useState('');
   const [platillosCategoria, setPlatillosCategoria] = useState([]);
+  const [comboDescripcion, setPlatilloDecripcion] = useState('');
+  const [comboPrecio, setPlatilloPrecio] = useState(0);
 
   async function addPlatillo(categoriaId) {
     try {
@@ -19,8 +21,8 @@ function PedidosActuales() {
       await setDoc(doc(platillosCollectionRef, platilloName), {
         nombre: platilloName,
         tipo: categoriaName,
-        descripcion: "Descripcion del platillo",
-        precio: 0,
+        descripcion: comboDescripcion,
+        precio: comboPrecio,
         disponible: true,
         imgRef: v4(),
       });
@@ -104,6 +106,24 @@ async function addPlatilloHandler() {
             onChange={(e) => setPlatilloName(e.target.value)}
             placeholder="Enter Platillo Name"
           />
+
+
+          
+        <input
+            type="text"
+            value={comboDescripcion}
+            onChange={(e) => setPlatilloDecripcion(e.target.value)}
+            placeholder="Enter Combo Descripcion"
+          />
+
+        <input
+            type="number"
+            value={comboPrecio}
+            onChange={(e) => setPlatilloPrecio(e.target.value)}
+            placeholder="Enter Combo Precio"
+          />
+     
+          
           <button onClick={addPlatilloHandler}>Add Platillo</button>
           <button onClick={deletePlatillo}>Delete Platillo</button>
 

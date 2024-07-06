@@ -4,7 +4,7 @@ import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 
-import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { collection, doc, getDoc,updateDoc, onSnapshot, getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
@@ -58,24 +58,33 @@ function Platillos() {
       }, []);
     
       const renderPlatillos = () => {
-       
-        return platillos.map((platillo) => (
+        return platillos.map((platillo) => {
+          if (!platillo.data.disponible) {
+            return null; // No renderizar el platillo si no está disponible
+          }
+      
+          return (
             <div key={platillo.id} className={styles.platillos_impar}>
-                <div className={styles.platillos_descripcion}>
+              <div className={styles.platillos_descripcion}>
                 <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
                 <p>{styles.description}{platillo.data.descripcion}</p>
                 <p>{platillo.data.precio}</p>
                 
-                <button onClick={user ?
-                            () => {addPedido(platillo.data)}
-                            : () => {navigate("/compra"); scroll(0, 0);}} className={styles.button}>Comprar</button>
-                </div>
-                <div></div>
-            
-        
-          </div>
-        ));
+                <button
+                  onClick={user ?
+                    () => {addPedido(platillo.data)}
+                    : () => {navigate("/compra"); scroll(0, 0);}}
+                  className={styles.button}
+                >
+                  Comprar
+                </button>
+              </div>
+              <div></div>
+            </div>
+          );
+        });
       };
+    
     
 
 
@@ -94,23 +103,26 @@ function Platillos() {
 
 
       
-    const renderCategorias2 = () => {
-        return categorias.map((categoria) => (
-
-            <Link
-                    
-                    key={categoria.id}
-                    to={{
-                    pathname: `/menu/platillos/${categoria.id}`,
-                    state: { categoriaId: categoria.id }
-                        }}
-                    className={styles.botonMenu} onClick={() => {location.reload(); scroll(0, 0)}}>
-                <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
-            
-
-            </Link>
-        ));
-      };
+      const renderCategorias2 = () => {
+        const categoriasDisponibles = categorias.filter((categoria) => categoria.data.disponible);
+          
+        return categoriasDisponibles.map((categoria) => (
+  
+              <Link
+                      
+                      key={categoria.id}
+                      to={{
+                      pathname: `/menu/platillos/${categoria.id}`,
+                      state: { categoriaId: categoria.id }
+                          }}
+                      className={styles.botonMenu} onClick={() => {location.reload(); scroll(0, 0)}}>
+                  <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
+              
+  
+              </Link>
+          ));
+        };
+  
 
 
       const addPedido = async (platillo) => {

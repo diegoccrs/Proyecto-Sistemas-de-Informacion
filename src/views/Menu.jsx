@@ -1,6 +1,6 @@
 import styles from './Menu.module.css';
 import { useState, useEffect } from 'react';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
@@ -30,28 +30,26 @@ function Menu() {
 
     const renderCategorias = () => {
         const categoriasDisponibles = categorias.filter((categoria) => categoria.data.disponible);
-
+        
         return categoriasDisponibles.map((categoria) => (
-          
-            <Link
-                    onClick={() => {scroll(0, 0);}}
-                    key={categoria.id}
-                    to={{
-                    pathname: `/menu/platillos/${categoria.id}`,
-                    state: { categoriaId: categoria.id }
-                        }}
-                    className={styles.cartamenu}
-                >
-                <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
-                <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
-
-            </Link>
+          <Link
+            onClick={() => {scroll(0, 0);}}
+            key={categoria.id}
+            to={{
+              pathname: `/menu/platillos/${categoria.id}`,
+              state: { categoriaId: categoria.id }
+            }}
+            className={styles.cartamenu}
+          >
+            <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
+            <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
+          </Link>
         ));
-    };
+      };
 
     const renderCategorias2 = () => {
         const categoriasDisponibles = categorias.filter((categoria) => categoria.data.disponible);
-
+        
         return categoriasDisponibles.map((categoria) => (
           
             <Link
@@ -184,6 +182,6 @@ function Menu() {
             </div>
         </div>
     );
-};
+}
 
 export default Menu
