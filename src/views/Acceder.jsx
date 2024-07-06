@@ -8,7 +8,6 @@ import {
 } from 'firebase/auth'
 import { auth, firestoreDB, googleProvider, facebookProvider } from '../firebase-config.js'
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { v4 } from 'uuid';
 import styles from './Acceder.module.css';
 
 import googlelogo from '../img/google.png';
@@ -41,17 +40,8 @@ function Acceder() {
     const register = async () => {
         setLoading(true);
         try {
-            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0 || !telefono) {
-                throw new Error("Rellene las casillas");
-            }
-            if(!regEmail.includes("@correo.unimet.edu.ve", -21) && !regEmail.includes("@unimet.edu.ve", -14)) {
-                throw new Error("Dominio de correo incorrecto");
-            }
-            if(regPassword.length < 8) {
-                throw new Error("Contraseña menor a 8 caractéres");
-            }
-            if(telefono.length < 11 || telefono.length > 13) {
-                throw new Error("Teléfono inválido");
+            if(!regEmail || !regPassword || !nombre || !apellido || !facultad || telefono === 0) {
+                throw new Error("Input error: rellenar casillas");
             }
 
             const user = await createUserWithEmailAndPassword(
@@ -59,7 +49,7 @@ function Acceder() {
                 regEmail,
                 regPassword);
 
-            // console.log(user);
+            console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", regEmail);
             const payload = {
@@ -67,25 +57,25 @@ function Acceder() {
                 email: regEmail,
                 facultad: facultad,
                 telefono: telefono,
-                admin: false,
-                pedidos: [],
-                imageRef: v4()
+                admin: false
             };
             await setDoc(docRef, payload);
             const docu = await getDoc(docRef);
 
-            // console.log(docu.data());
+            console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
-            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
-            navigate("/");
+
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
             
             scroll(0, 0);
             location.reload();
@@ -104,7 +94,7 @@ function Acceder() {
         try {
             const user = await signInWithPopup(auth, googleProvider);
 
-            // console.log(user);
+            console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             let docu = await getDoc(docRef);
@@ -114,27 +104,26 @@ function Acceder() {
                     email: auth.currentUser.email,
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
-                    admin: false,
-                    pedidos: [],
-                    imageRef: v4()
+                    admin: false
                 };
                 await setDoc(docRef, payload);
 
             }
             docu = await getDoc(docRef);
             
-            // console.log(docu.data());
+            console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
-            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -151,11 +140,13 @@ function Acceder() {
         try {
             await signInWithPopup(auth, facebookProvider);
 
-            // console.log(user);
+            console.log(user);
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 
@@ -191,7 +182,7 @@ function Acceder() {
                         }} />
 
                         <h2>Teléfono</h2>
-                        <input type="text" placeholder='Teléfono (XXXX-XXX-XXXX)' onChange={(event) => {
+                        <input type="number" placeholder='Teléfono' onChange={(event) => {
                             setTelefono(event.target.value)
                         }} />
                         

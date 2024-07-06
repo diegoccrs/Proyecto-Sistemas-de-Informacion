@@ -12,7 +12,6 @@ import styles from './LoginPage.module.css';
 
 import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
-import { v4 } from 'uuid';
 
 
 
@@ -37,13 +36,7 @@ function IniciarSesion() {
         setLoading(true);
         try {
             if(!logEmail || !logPassword) {
-                throw new Error("Rellene las casillas");
-            }
-            if(!logEmail.includes("@correo.unimet.edu.ve", -21) && !logEmail.includes("@unimet.edu.ve", -14)) {
-                throw new Error("Dominio de correo incorrecto");
-            }
-            if(logPassword.length < 8) {
-                throw new Error("Contraseña menor a 8 caractéres");
+                throw new Error("Input error: rellenar casillas");
             }
 
             const user = await signInWithEmailAndPassword(
@@ -51,23 +44,24 @@ function IniciarSesion() {
                 logEmail,
                 logPassword);
 
-            // console.log(user);
+            console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             const docu = await getDoc(docRef);
 
-            // console.log(docu.data());
+            console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
-            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -86,7 +80,7 @@ function IniciarSesion() {
         try {
             const user = await signInWithPopup(auth, googleProvider);
 
-            // console.log(user);
+            console.log(user);
 
             const docRef = doc(firestoreDB, "Usuario", auth.currentUser.email);
             let docu = await getDoc(docRef);
@@ -96,27 +90,26 @@ function IniciarSesion() {
                     email: auth.currentUser.email,
                     facultad: 'por definir',
                     telefono: auth.currentUser.phoneNumber,
-                    admin: false,
-                    pedidos: [],
-                    imageRef: v4()
+                    admin: false
                 };
                 await setDoc(docRef, payload);
                 
             }
             docu = await getDoc(docRef);
 
-            // console.log(docu.data());
+            console.log(docu.data());
 
             localStorage.setItem("admin", docu.data().admin);
             localStorage.setItem("email", docu.data().email);
             localStorage.setItem("nombreCompleto", docu.data().nombreCompleto);
             localStorage.setItem("telefono", docu.data().telefono);
             localStorage.setItem("facultad", docu.data().facultad);
-            localStorage.setItem("imageRef", docu.data().imageRef);
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -133,11 +126,13 @@ function IniciarSesion() {
         try {
             await signInWithPopup(auth, facebookProvider);
 
-            // console.log(user);
+            console.log(user);
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 

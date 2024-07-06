@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 .mlogo {
@@ -9,6 +10,8 @@
   align-self: flex-end;
 
 }
+=======
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
 :root{
   --clr-dark: #050929;
   --clr-darkpurple: #5B19B0;
@@ -24,14 +27,25 @@
 
 @font-face {
   font-family: font1;
+<<<<<<< HEAD
   src: url(../assets/Marvel-Bold.ttf);
+=======
+  src: url(Marvel-Bold.ttf);
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
 }
 
 .tlogo{
   width: 70%;
+<<<<<<< HEAD
   height: 70%;
   position: relative;
   
+=======
+  height: 70;
+  position: relative;
+  left: 1%;
+ 
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
 }
 
 .header {
@@ -51,6 +65,7 @@
   }
   
   .logo {
+<<<<<<< HEAD
     justify-content: center;
     width: 80px;
     position: relative;
@@ -60,20 +75,42 @@
   }
 
 
+=======
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+  }
+
+  .mlogo {
+    position: relative;
+    top: 30px;
+    width: 12px;
+    height: 32px;
+    margin-left: 20px;
+
+  }
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
 
   .container {
     display: flex;
     justify-content: center;
     align-items: end;
     margin-left: auto;
+<<<<<<< HEAD
     margin-top: auto;
     margin-right: 10px;
+=======
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
   }
 
   .social {
     width: 20px;
     height: 20px;
+<<<<<<< HEAD
     margin-right: 10px;
+=======
+    margin-left: 10px;
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
     align-items: end;
     
   }
@@ -82,15 +119,23 @@
   
   .nav {
     display: flex;
+<<<<<<< HEAD
     justify-content: space-around;
     align-items: center;
     gap: 1.5rem;
+=======
+    justify-content: space-evenly;
+  
+    gap: 1.5rem;
+    width: 100%;
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
     margin: 10px;
     padding: auto;
   }
   
   .nav-link {
     color: var(--clr-dark) ;
+<<<<<<< HEAD
     font-size: 1.3rem;
     font-family: font1;
     text-decoration: none;
@@ -103,6 +148,9 @@
   .nav-link-access {
     color: var(--clr-dark) ;
     font-size: 1.3rem;
+=======
+    font-size: 1.25rem;
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
     font-family: font1;
     text-decoration: none;
     transition: color 0.3s;
@@ -111,8 +159,12 @@
   }
   
   .nav-link:hover {
+<<<<<<< HEAD
     color:var(--clr-lightpurple);
     
+=======
+    color:var(--clr-darkpurple);
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
   }
   
   .nav-link.active {
@@ -143,6 +195,7 @@
   }
 
   .perfil{
+<<<<<<< HEAD
     width: 20px;
     border-radius: 50%;
     padding: 0px;
@@ -168,4 +221,10 @@
 
   .adminLogoContainer{
     background-color: #420f84;
+=======
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+>>>>>>> 4e166552e8fa91b3969ca7918f9ef4e6913d76bd
   }

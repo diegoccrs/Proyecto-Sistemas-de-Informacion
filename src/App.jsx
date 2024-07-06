@@ -1,3 +1,7 @@
+//import { useState } from 'react'
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
+
 import { useState, useEffect } from 'react';
 import {
     createUserWithEmailAndPassword,
@@ -11,8 +15,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore'
 /////////////////////////////////////////////////////////////////////////////////
 import './App.css'
 
-import PayPal from './components/PayPal.jsx';
-import PedidosFunciones from './components/PedidosFunciones.jsx';
+
 
 function App() {
 
@@ -115,8 +118,6 @@ function App() {
 
                 <button onClick={logout}>Sign Out</button>
             </div>
-
-            <PedidosFunciones />
 
             <PayPal />
 

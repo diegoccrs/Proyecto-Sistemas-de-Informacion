@@ -1,4 +1,4 @@
-import iglogo from '../img/iglogo.png';
+import React from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
@@ -16,9 +16,12 @@ import googlelogo from '../img/google.png';
 import facebooklogo from '../img/facebook.png';
 
 
+import { db } from '../firebase';
+import { doc, deleteDoc } from "firebase/firestore";
+
+
 function Nosotros() {
 
-    const isAdmin = localStorage.getItem('admin') === 'true' ? true : false;
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -36,7 +39,6 @@ function Nosotros() {
         localStorage.removeItem("nombreCompleto");
         localStorage.removeItem("telefono");
         localStorage.removeItem("facultad");
-        localStorage.removeItem("imageRef");
 
         navigate("/");
 
@@ -45,34 +47,40 @@ function Nosotros() {
     };
     
     const navigate = useNavigate();
-    
+
 
     async function handleDeleteAndSignOut() {
         try {
-          await deleteClient();
+            await deleteClient(); 
     
-          const authInstance = getAuth();
-          await deleteUser(authInstance.currentUser).then(() => {
-            console.log('User deleted');
-          }).catch((error) => {
-            console.error("Error deleting user: ", error);
-          });
-          await signOut(authInstance);
-        } catch (error) {
-          console.error("Error in handleDeleteAndSignOut: ", error);
-        }
-    };
+            const auth = getAuth();
+            await deleteUser(auth.currentUser).then(() => {
+           
+                console.log('User deleted');
+            }).catch((error) => {
+          
+                console.error("Error deleting user: ", error);
 
-    async function deleteClient() {
+            });
+            await signOut(auth); 
+        } catch (error) {
+            console.error("Error in handleDeleteAndSignOut: ", error);
+        }
+    }
+
+    async function deleteClient(){
         try {
           const id = auth.currentUser.uid;
           const docRef = doc(db, "Usuario", id);
-    
+            
           await deleteDoc(docRef);
+
         } catch (error) {
           console.error("Error updating document: ", error);
         }
-    };
+      }
+
+    
 
 
     return (
@@ -87,86 +95,38 @@ function Nosotros() {
                     <div className={styles.container}>
                         <div className={styles.column}>
 
-                            {isAdmin && (
-                            <>
-                                <h2>Nombre</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Nombre"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-            
-                                <h2>Apellido</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Apellido"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-
-                                <Link className={styles['nav-link']} to="/menuadmin">
-                                    Regresar
-                                </Link>
-                            </>
-                            )}
-
-                            {!isAdmin && (
-                            <>
-                                <h2>Nombre</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Nombre"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-            
-                                <h2>Apellido</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Apellido"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-            
-                                <h2>Facultad</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Facultad"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-            
-                                <h2>Teléfono</h2>
-                                <input
-                                    type="number"
-                                    placeholder="Teléfono"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-
-                            
+                            <h2>Nombre</h2>
+                            <input type="text" placeholder='Nombre' onChange={(event) => {
                                 
-                                <img className={styles.perfil} src={iglogo} alt="Logo" />
-                                <h2>Foto de Perfil</h2>
+                            }} />
 
-                                <Link className={styles['nav-link']} to="/">
-                                    Regresar
-                                </Link>
-                                <Link className={styles['nav-link']} to="/perfil/editarperfil">
-                                    Editar
-                                </Link>
-                                <Link className={styles['nav-link']} to="/" onClick={handleDeleteAndSignOut}>
-                                    Eliminar
-                                </Link>
-
-                            </>
-                            )}
+                            <h2>Apellido</h2>
+                            <input type="text" placeholder='Apellido' onChange={(event) => {
+                                
+                            }} />
 
                             <button className={styles.button} onClick={logout}>
                                 Cerrar Sesión
                             </button>
 
+                        </div>
+                        <div className={styles.column}>
+
+                            <h2>Facultad</h2>
+                            <input type="text" placeholder='Facultad' onChange={(event) => {
+                                
+                            }} />
+
+                            <h2>Teléfono</h2>
+                            <input type="number" placeholder='Teléfono' onChange={(event) => {
+                              
+                              
+                             
+                            }} />
+
+                            <Link className={styles["nav-link"]} to="/">Regresar</Link>
+                              <Link className={styles["nav-link"]} to="/perfil/editarperfil">Editar</Link>
+                              <Link className={styles["nav-link"]} to="/" onClick={handleDeleteAndSignOut}>Eliminar</Link>  
                         </div>
                     </div>
                 </div>
