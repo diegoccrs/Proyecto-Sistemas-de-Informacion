@@ -21,7 +21,6 @@ import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
-import Platillos from './Platillos';
 
 
 
@@ -46,13 +45,13 @@ function Menu() {
         return categorias.map((categoria) => (
           
             <Link
+                    onClick={() => {scroll(0, 0);}}
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.cartamenu}
-                    onClick={() => <Platillos categoriaid= {categoria.id}/>}
                 >
                 <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
                 <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
@@ -65,13 +64,13 @@ function Menu() {
         return categorias.map((categoria) => (
           
             <Link
+                    onClick={() => {scroll(0, 0);}}
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.botonMenu}
-                    onClick={() => <Platillos categoriaid= {categoria.id}/>}
                 >
                 <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
             
@@ -178,16 +177,6 @@ function Menu() {
 
                 <h1 className={styles.menut}>MENU</h1>
                 <div className={styles.catalogo}>{renderCategorias()}</div>
-                <div className={styles.catalogo}>
-               
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        
-                    </Link>
-                </div>
             </div>
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
@@ -204,6 +193,6 @@ function Menu() {
             </div>
         </div>
     );
-}
+};
 
 export default Menu

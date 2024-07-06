@@ -14,7 +14,7 @@ function Ayuda() {
         </div>
         <div className={styles.formularioayuda}>
           <h2>¿Cómo podemos ayudarte?</h2>
-          <form action="https://formsubmit.co/giselle.esclasans@correo.unimet.edu.ve" method="POST">
+          <form action="https://formsubmit.co/4d0cdf48d1eea5fccba12bf350e720ce" method="POST">
             <div className={styles.formularioInfo}>
               <div className={styles.formulario1}>
                 <h3>Nombre</h3>

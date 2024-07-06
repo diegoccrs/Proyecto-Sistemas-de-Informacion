@@ -67,7 +67,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -116,7 +118,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -137,7 +141,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 

@@ -10,7 +10,7 @@ export const routes = [
         name: "Menu",
         children:[
             {
-                path: "/menu/platillos",
+                path: "/menu/platillos/:categoId",
                 name: "Platillos",
             },
 
@@ -53,6 +53,28 @@ export const routes = [
     {
         path: "/menuadmin",
         name: "MenuAdmin",
+        children:[
+            {
+                path: "/menuadmin/editarmenu",
+                name: "EditarMenu",
+            },
+            {
+                path: "/menuadmin/editarplatillo",
+                name: "EditarPlatillo",
+            },
+            {
+                path: "/menuadmin/eamenu",
+                name: "EaMenu",
+            },
+            {
+                path: "/menuadmin/eaplatillo",
+                name: "EaPlatillo",
+            },
+            {
+                path: "/menuadmin/adminplatillos/:categoId",
+                name: "AdminPlatillos",
+            },
+        ],
     },
     {
         path: "/historial",
