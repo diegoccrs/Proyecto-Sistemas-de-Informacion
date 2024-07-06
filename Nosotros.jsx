@@ -172,10 +172,7 @@ function Nosotros() {
                 <div>
                     <h2>Visión</h2>
                         <h3>Ofrecer a los miembros de la universidad metropolitana una alternativa de comida rápida, de calidad y de un precio accesible para que todos puedan disfrutar de nuestras delicias.</h3>
-                </div>
-
-            
-
+                </div>        
 
             </section>
 
