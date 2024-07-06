@@ -9,6 +9,7 @@ import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import tlogo from '../img/tlogo.png';
 import pa from '../img/PA.png';
+import pc from '../img/PC.png';
 
 
 
@@ -58,7 +59,7 @@ export default function NavBar() {
                     {user ?
                     <div>
                         <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
-                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={pc} alt="Logo" /></Link>
                     </div>
                     : <Link className={`${styles["nav-link-access"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
                     </>}
