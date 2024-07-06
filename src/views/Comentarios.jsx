@@ -5,87 +5,48 @@ import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import Map from '../img/Map.png';
 
-
-import { useState, useEffect } from 'react';
-import {  doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
-
-import {  firestoreDB  } from '../firebase-config.js'
-
-
 function Ayuda() {
-    const [nombre, setNombre] = useState('');
-    const [apellido, setApellido] = useState('');
-    const [correo, setCorreo] = useState('');
-    const [telefono, setTelefono] = useState('');
-    const [opinion, setOpinion] = useState('');
-    const [esAnonimo, setEsAnonimo] = useState(false);
-
-
-    async function enviarFeedback() {
-        try {
-            let correoValor = correo;
-            
-             if (esAnonimo) {
-            correoValor = "anonimo";
-            }
-            const docRef = doc(firestoreDB, "FeedBack", correoValor); 
-            await setDoc(docRef, {
-                nombreCompleto: nombre + " " + apellido,
-                email: correoValor,
-                comentario: opinion,
-                telefono: telefono,
-                anonimo: esAnonimo,
-            });
-            console.log("Document written with ID: ", correo);
-            setNombre('');
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
-
- 
+    
 
     return (
         <div>
             <div className= {styles.slogan}>
-                <h1 className= {styles.slogant}>Dejanos tu reseña</h1>
+                <h1>Dejanos tu reseña</h1>
             </div>
             <div className={styles.formularioayuda }>
-                <h2>RELLENA LAS CASILLAS CON TUS DATOS</h2>
+                <h2>Rellena las casillas con tus datos</h2>
                 <div className={styles.formulario}>
                     <div className={styles.formularioInfo}>
                         <div className={styles.formulario1}>
                             <h3>Nombre</h3>
-                            <input type="text" value={nombre} onChange={e => setNombre(e.target.value)}/>
+                            <input type="text" placeholder='Nombre'onChange={(event) => {
+                            setNombre(event.target.value)
+                            }}/>
                             <h3>Apellido</h3>
-                            <input type="text"value={apellido} onChange={e => setApellido(e.target.value)}/>
+                            <input type="text" placeholder='Apellido' onChange={(event) => {
+                            setApellido(event.target.value)
+                            }}/>
                         </div>
                             
                         <div className={styles.formulario2}>
                             <h3>Correo</h3>
-                            <input type="text" value={correo} onChange={e => setCorreo(e.target.value)} />
+                            <input type="text" placeholder='Correo electrónico' onChange={(event) => {
+                            setRegEmail(event.target.value)
+                        }} />
                             <h3>Teléfono</h3>
-                            <input type="text" value={telefono} onChange={e => setTelefono(e.target.value)}  />
-                            
-
+                            <input type="text"  placeholder='Teléfono' onChange={(event) => {
+                            setTelefono(event.target.value)
+                        }} />
                         </div>
-                        
-                       
                     </div>
-                    <div className={styles.anonimo}>
-                                <h3>Anónimo?</h3>
-                                <input
-                                type="checkbox"
-                                checked={esAnonimo}
-                                onChange={(e) => setEsAnonimo(e.target.checked)}
-                                />
-                            </div>
                     
-                    <h3>DINOS LO QUE PIENSAS</h3>
-                        <input className={styles.inputting} type="text"alue={opinion} onChange={e => setOpinion(e.target.value)} />
+                    <h3>Dinos lo que piensas</h3>
+                        <input className={styles.inputting} type="text" placeholder='Dinos lo que piensas' onChange={(event) => {
+                            setOpinion(event.target.value)
+                            }}/>
                     
                 </div>
-                <button className={styles.button} onClick={enviarFeedback}>Enviar</button>
+                <button className={styles.button}>Enviar</button>
             </div>
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
@@ -102,6 +63,6 @@ function Ayuda() {
             </div>
         </div>
     );
-};
+}
 
 export default Ayuda

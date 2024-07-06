@@ -229,6 +229,6 @@ function Acceder() {
             </div>
         </div>
     );
-};
+}
 
 export default Acceder

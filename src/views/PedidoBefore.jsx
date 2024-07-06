@@ -30,7 +30,6 @@ function PedidoBefore() {
                     <Link to="/login" className={styles.loginButton}>Iniciar Sesion</Link>
 
 
-
                 </div>
 
                 <div className={styles.dos}>

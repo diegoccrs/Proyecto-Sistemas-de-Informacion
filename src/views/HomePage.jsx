@@ -102,7 +102,7 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <Link className={styles["nav-link"]} to="/beforecompra"><button className={styles.button}>Comprar</button></Link>
+                                <Link className={styles["nav-link"]} to="/compra"><button className={styles.button}>Comprar</button></Link>
                             </div>
                         </div>
                     </div>

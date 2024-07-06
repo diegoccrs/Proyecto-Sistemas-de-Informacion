@@ -2,22 +2,22 @@ import styles from './Menu.module.css';
 import { useState, useEffect } from 'react';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
+//import c1 from '../img/View.png';
+//import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
+//import fondo from '../img/fondo1.png';
 import Map from '../img/Map.png';
 import view from '../img/View.png';
-import burger from '../img/Burger_0.png';
-import burger1 from '../img/Burger_1.jpg';
-import cachapa from '../img/Cachapa_1.png';
-import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.webp';
-import parrilla from '../img/Parrilla_1.jpg';
-import pepito from '../img/Pepito.jpg';
-import sandwich from '../img/Sandwich.jpg';
-import salad from '../img/Salad.png';
+//import burger from '../img/Burger_0.png';
+//import burger1 from '../img/Burger_1.jpg';
+//import cachapa from '../img/Cachapa_1.png';
+//import ch from '../img/ClubHouse_1.webp';
+//import arepa from '../img/Arepa.webp';
+//import parrilla from '../img/Parrilla_1.jpg';
+//import pepito from '../img/Pepito.jpg';
+//import sandwich from '../img/Sandwich.jpg';
+//import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
@@ -156,7 +156,7 @@ function Menu() {
                                         <h2 className={styles.comboTitle}>{combo.title}</h2>
                                         <p>{combo.description}</p>
                                         
-                                        <Link className={styles["nav-link"]} to="/beforecompra"><button className={styles.button}>Comprar</button></Link>
+                                        <Link className={styles["nav-link"]} to="/compra"><button className={styles.button}>Comprar</button></Link>
                                         
                                     </div>
                                 </div>
@@ -179,7 +179,7 @@ function Menu() {
                 <div className={styles.catalogo}>
                
 
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
+                    <Link className={styles.cartamenu} to="">
                 
                         <h1 className={styles.titulocarta}>Otros</h1>
                         <img src={brookie} alt="brookie" />
