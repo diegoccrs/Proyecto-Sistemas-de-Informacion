@@ -48,11 +48,26 @@ function Perfil() {
 
     getImgRef();
 
-   
+   /*
     const [nombreCompleto, setNombreCompleto] = useState('');
     const [facultad, setFacultad] = useState('');
-    const [telefono, setTelefono] = useState('');
+    const [telefono, setTelefono] = useState('');*/
 
+    let nombreCompleto = '';
+    let facultad = '';
+    let telefono = '';
+
+    const setNombreCompleto = (data) => {
+        nombreCompleto = data
+    }
+
+    const setFacultad = (data) => {
+        facultad = data
+    }
+
+    const setTelefono = (data) => {
+        telefono = data
+    }
   
     const facultadOptions = [
       'Ingeniería',
@@ -65,16 +80,18 @@ function Perfil() {
 
     async function modificarClient() {
         try {
-            if(nombreCompleto === '') {
+            if(nombreCompleto.length === 0) {
                 setNombreCompleto(localStorage.getItem("nombreCompleto"))
             }
-            if(telefono === '') {
+            if(telefono.length === 0) {
                 setTelefono(localStorage.getItem("telefono"))
             }
-            if(facultad === '') {
+            if(facultad.length === 0) {
                 setFacultad(localStorage.getItem("facultad"))
             }
 
+
+            
             const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
         
             await updateDoc(docRef, {
@@ -88,7 +105,6 @@ function Perfil() {
             scroll(0, 0);
             navigate("/perfil");
             location.reload();
-            console.log(nombreCompleto)
 
         } catch (error) {
             console.error("Error updating document: ", error);
@@ -109,12 +125,12 @@ function Perfil() {
                 <div className={styles.perfil}>
                     <div className={styles.perfil1}>
                         <h2>Nombre Completo</h2>
-                        <input onChange={(event) => {
+                        <input type='text' onChange={(event) => {
                             setNombreCompleto(event.target.value)
                         }} />
 
                         <h2>Teléfono</h2>
-                        <input onChange={(event) => {
+                        <input type='text' onChange={(event) => {
                             setTelefono(event.target.value)
                         }} />
 

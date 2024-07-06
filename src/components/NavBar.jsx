@@ -31,11 +31,13 @@ export default function NavBar() {
             const url = await getDownloadURL(reference);
             setUserImage(url);
         } catch (error) {
-
+            
         }
     };
 
-    getImgRef();
+    if(localStorage.getItem("admin") == "false" && user) {
+        getImgRef();
+    }
 
     return(
         <div className={`${styles.header} ${user && localStorage.getItem("admin") === "true" ? styles.adminLogoContainer : ""}`}>
@@ -54,8 +56,6 @@ export default function NavBar() {
                 <div className={styles.nav}>
                     {user && localStorage.getItem("admin") === "true" ?
                     <>
-                        {console.log(user)}
-                        {console.log(typeof localStorage.getItem("admin"))}
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/menuadmin">Menú</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/historial">Historial</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/pedidosactuales">Pedidos Actuales</Link>
