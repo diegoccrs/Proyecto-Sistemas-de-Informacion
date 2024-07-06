@@ -10,6 +10,7 @@ import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import tlogo from '../img/tlogo.png'
 import PC from '../img/PC.png'
+import PA from '../img/PA.png'
 
 
 
@@ -59,7 +60,7 @@ export default function NavBar() {
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/historial">Historial</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/pedidosactuales">Pedidos Actuales</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/cliente">Cliente</Link>
-                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={userImage || PA} alt="Logo" /></Link>
                     </>
                     : <>
                         <Link className={styles["nav-link"]} to="/">Inicio</Link>
