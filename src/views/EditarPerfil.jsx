@@ -36,13 +36,15 @@ function Perfil() {
         }
     };
 
-    const uploadImage = () => {
-        if(imUp === null) return;
+    const uploadImage = async () => {
+        if(imUp == null) return;
         const imgRef = ref(fireStorage, `profileImages/${localStorage.getItem("imageRef")}`);
 
         uploadBytes(imgRef, imUp).then(() => {
             console.log('Image uploaded!')
-
+            scroll(0, 0);
+            navigate("/perfil");
+            location.reload();
         });
     };
 
@@ -102,10 +104,6 @@ function Perfil() {
 
             uploadImage();
 
-            scroll(0, 0);
-            navigate("/perfil");
-            location.reload();
-
         } catch (error) {
             console.error("Error updating document: ", error);
         }
@@ -153,7 +151,7 @@ function Perfil() {
                     <div className={styles.perfil2}>
                         <h2>Foto de Perfil</h2>
                         <img className={styles.perfil} src={userImage} alt="Logo" />
-                        <input type="file" accept="image/*" onChange={() => {setImUp(event.target.files[0])}} />
+                        <input type="file" accept="image/*" onChange={(event) => {setImUp(event.target.files[0])}} />
                         <button onClick={() => {modificarClient()}}>Actualizar</button>
             
                         
