@@ -1,5 +1,6 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { auth } from '../firebase-config.js'
+import { onAuthStateChanged } from 'firebase/auth'
+import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { auth, fireStorage } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css"
@@ -8,12 +9,14 @@ import mlogo from '../img/LogoMonigotech.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import tlogo from '../img/tlogo.png'
+import PC from '../img/PC.png'
 
 
 
 export default function NavBar() {
 
     const [user, setUser] = useState({});
+    const [userImage, setUserImage] = useState('');
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
@@ -21,7 +24,17 @@ export default function NavBar() {
         })
     }, []);
 
+    const getImgRef = async () => {
+        try {
+            const reference = ref(fireStorage, `profileImages/${localStorage.getItem("imageRef")}`);
+            const url = await getDownloadURL(reference);
+            setUserImage(url);
+        } catch (error) {
 
+        }
+    };
+
+    getImgRef();
 
     return(
         <div className={`${styles.header} ${user && localStorage.getItem("admin") === "true" ? styles.adminLogoContainer : ""}`}>
@@ -55,11 +68,11 @@ export default function NavBar() {
                         <Link className={styles["nav-link"]} to="/ayuda">Ayuda</Link>
                     
                     {user ?
-                    <div>
-                        <Link className={styles["nav-link"]} to="/compra">Compra     </Link>
+                    <>
+                        <Link className={styles["nav-link"]} to="/compra">Compra</Link>
                         <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
-                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
-                    </div>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={userImage || PC} alt="Logo" /></Link>
+                    </>
                     : <Link className={`${styles["nav-link-access"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
                     </>}
 

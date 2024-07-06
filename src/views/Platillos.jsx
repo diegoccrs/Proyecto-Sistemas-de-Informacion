@@ -1,24 +1,7 @@
 import styles from './Platillos.module.css';
 
-//import c1 from '../img/View.png';
-//import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
-import { NavLink } from 'react-router-dom';
-import { routes } from "../constants/routes";
-import view from '../img/View.png';
-import burger from '../img/Burger_0.png';
-import burger1 from '../img/Burger_1.jpg';
-import cachapa from '../img/Cachapa_1.png';
-import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.webp';
-import parrilla from '../img/Parrilla_1.jpg';
-import pepito from '../img/Pepito.jpg';
-import sandwich from '../img/Sandwich.jpg';
-import salad from '../img/Salad.png';
-import brookie from '../img/Brookies.webp';
-import Map from '../img/Map.png';
 
 import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';

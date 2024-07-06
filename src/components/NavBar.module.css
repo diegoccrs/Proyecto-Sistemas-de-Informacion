@@ -97,7 +97,8 @@
     transition: color 0.3s;
     padding: 3px;
     margin: 10px 0px;
-
+    max-height: 30px;
+    min-height: 30px;
   }
 
   .nav-link-access {
@@ -143,10 +144,10 @@
   }
 
   .perfil{
-    width: 20px;
+    width: 40px;
     border-radius: 50%;
     padding: 0px;
-    margin: 0px 20px;
+    margin: 0px;
   }
 
 

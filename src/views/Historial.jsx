@@ -1,9 +1,60 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './Historial.module.css';
 
+import { firestoreDB } from '../firebase-config';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+
 function Historial() {
 
   const navigate = useNavigate();
+
+
+  const [pedidos, setPedidos] = useState([]);
+  const [usuarios, setUsuarios] = useState({});
+
+  useEffect(() => {
+    const obtenerPedidos = async () => {
+      const querySnapshot = await getDocs(collection(firestoreDB, 'Pedidos'));
+      const pedidosData = querySnapshot.docs.map((doc) => doc.data());
+      setPedidos(pedidosData);
+    };
+
+    const obtenerUsuarios = async () => {
+      const querySnapshot = await getDocs(collection(firestoreDB, 'Usuario'));
+      const usuariosData = {};
+      querySnapshot.forEach((doc) => {
+        usuariosData[doc.id] = doc.data();
+      });
+      setUsuarios(usuariosData);
+    };
+
+    obtenerPedidos();
+    obtenerUsuarios();
+  }, []);
+
+
+  const renderPedidos = () => {
+    const pedidosActivos = pedidos.filter((pedido) => !pedido.activo);
+    console.log(pedidosActivos);
+    if (pedidosActivos.length === 0) {
+      return <p>No hay pedidos finalizados.</p>;
+    }
+  
+    return pedidosActivos.map((pedido) => (
+
+      <div key={pedido.id} className={styles.tableRow} >
+        <p>{usuarios[pedido.emailCliente]?.nombreCompleto}</p>
+        <p>{usuarios[pedido.emailCliente]?.email}</p>
+        <p>{usuarios[pedido.emailCliente]?.facultad}</p>
+        <p>{usuarios[pedido.emailCliente]?.telefono}</p>
+
+      </div>
+      
+    ));
+  };
+
+
 
   return (
     <div className={styles.container}>
@@ -14,33 +65,30 @@ function Historial() {
       <h2 className={styles.title}>Historial</h2>
       <div className={styles.table}>
         <div className={styles.tableHeader}>
-          <div>Número</div>
-          <div>CI</div>
-          <div>Nombre</div>
-          <div>Apellido</div>
+         
+          <div>Nombre Completo</div>
           <div>Email</div>
           <div>Facultad</div>
-          <div>Método Pago</div>
-          <div>Fecha</div>
-          <div>Factura</div>
+          <div>Teléfono</div>
+    
         </div>
-        {/* Aquí puedes agregar las filas de la tabla */}
-        <div className={styles.tableRow}>
-          <div>1</div>
-          <div>12345678</div>
-          <div>John</div>
-          <div>Doe</div>
-          <div>john@example.com</div>
-          <div>Ingeniería</div>
-          <div>Tarjeta de Crédito</div>
-          <div>2023-06-01</div>
-          <div>123456</div>
-        </div>
-        {/* Agrega más filas según tus datos */}
+      
+        {pedidos.length > 0 ? (
+            <div>{renderPedidos()}</div>
+           
+          ) : (
+            <p>No hay pedidos finalizados.</p>  )}
+      
       </div>
+
+
+      
+ 
       </>}
+
+      
     </div>
   );
-};
+}
 
 export default Historial;
