@@ -1,9 +1,10 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { auth } from '../firebase-config.js'
+import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
+import { auth, fireStorage, firestoreDB } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import styles from "./Perfil.module.css"
-import iglogo from '../img/iglogo.png';
+import styles from "./Perfil.module.css";
 
 import {getAdditionalUserInfo} from "firebase/auth";
 import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
@@ -11,18 +12,46 @@ import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore"; 
 
 function Perfil() {
 
-   
-    const [nombre, setName] = useState('');
-    const [apellido, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [facultad, setFaculty] = useState('');
-    const [telefono, setPhone] = useState('');
+    const [user, setUser] = useState({});
 
-    const [nombrePlaceholder, setNombrePlaceholder] = useState('');
-    const [apellidoPlaceholder, setApellidoPlaceholder] = useState('');
-    const [emailPlaceholder, setEmailPlaceholder] = useState('');
-    const [facultadPlaceholder, setFacultadPlaceholder] = useState('');
-    const [telefonoPlaceholder, setTelefonoPlaceholder] = useState('');
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        })
+    }, []);
+
+    const navigate = useNavigate();
+
+
+    const [userImage, setUserImage] = useState('');
+    const [imUp, setImUp] = useState(null);
+
+    const getImgRef = async () => {
+        try {
+            const reference = ref(fireStorage, `profileImages/${localStorage.getItem("imageRef")}`);
+            const url = await getDownloadURL(reference);
+            setUserImage(url);
+        } catch (error) {
+
+        }
+    };
+
+    const uploadImage = () => {
+        if(imUp === null) return;
+        const imgRef = ref(fireStorage, `profileImages/${localStorage.getItem("imageRef")}`);
+
+        uploadBytes(imgRef, imUp).then(() => {
+            console.log('Image uploaded!')
+
+        });
+    };
+
+    getImgRef();
+
+   
+    const [nombreCompleto, setNombreCompleto] = useState('');
+    const [facultad, setFacultad] = useState('');
+    const [telefono, setTelefono] = useState('');
 
   
     const facultadOptions = [
@@ -33,54 +62,45 @@ function Perfil() {
       
     ];
 
-    
 
-
-    async function modificarClient(){
+    async function modificarClient() {
         try {
-          const id = auth.currentUser.uid;
-          const docRef = doc(db, "Usuario", id);
-      
-          await updateDoc(docRef, {
-            nombre: nombre, 
-            apellido: apellido, 
-            email: email,
-            facultad: facultad,
-            telefono: telefono,
+            if(nombreCompleto === '') {
+                setNombreCompleto(localStorage.getItem("nombreCompleto"))
+            }
+            if(telefono === '') {
+                setTelefono(localStorage.getItem("telefono"))
+            }
+            if(facultad === '') {
+                setFacultad(localStorage.getItem("facultad"))
+            }
+
+            const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
+        
+            await updateDoc(docRef, {
+                nombreCompleto: nombreCompleto,
+                facultad: facultad,
+                telefono: telefono,
             });
 
+            uploadImage();
+
+            scroll(0, 0);
+            navigate("/perfil");
+            location.reload();
+            console.log(nombreCompleto)
+
         } catch (error) {
-          console.error("Error updating document: ", error);
+            console.error("Error updating document: ", error);
         }
-      }
+    }
 
-    
-
-
-
-
-      const handleNameChange = (event) => {
-        setName(event.target.value);
-      };
-    
-      const handleLastNameChange = (event) => {
-        setLastName(event.target.value);
-      };
-
-      const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-      };
-
-      const handleFacultyChange = (event) => {
-        setFaculty(event.target.value);
-      };
-
-      const handlePhoneChange = (event) => {
-        setPhone(event.target.value);
-      };
 
     return (
         <div className={styles.pageContainer}>
+            {!user ?
+            navigate("/acceder")
+            :
             <div className={styles.boxContainer}>
                 <div className={styles.titleContainer}>
                     <h2>Perfil del Usuario</h2>
@@ -88,27 +108,23 @@ function Perfil() {
 
                 <div className={styles.perfil}>
                     <div className={styles.perfil1}>
-                        <h2>Nombre</h2>
-                        <input value={nombre} onChange={handleNameChange}  placeholder={nombrePlaceholder}></input>
+                        <h2>Nombre Completo</h2>
+                        <input onChange={(event) => {
+                            setNombreCompleto(event.target.value)
+                        }} />
 
-                        <h2>Apellido</h2>
-                        <input value={apellido} onChange={handleLastNameChange} placeholder={apellidoPlaceholder}></input>
-
-                        <h2>Número de teléfono</h2>
-                        <input value={telefono} onChange={handlePhoneChange} placeholder={telefonoPlaceholder}></input>
-
-                        <h2>Email</h2>
-                        <input value={email} onChange={handleEmailChange}  placeholder={emailPlaceholder}></input> 
+                        <h2>Teléfono</h2>
+                        <input onChange={(event) => {
+                            setTelefono(event.target.value)
+                        }} />
 
                         <h2>Facultad</h2>
                         <input
                             type="text"
-                            placeholder={facultadPlaceholder}
                             list="facultadOptions"
                             onChange={(event) => {
                                 setFacultad(event.target.value);
-                            }}
-                            />
+                            }} />
 
                         <datalist id="facultadOptions">
                         {facultadOptions.map((option) => (
@@ -120,14 +136,15 @@ function Perfil() {
                     
                     <div className={styles.perfil2}>
                         <h2>Foto de Perfil</h2>
-                        <img className={styles.perfil} src={iglogo} alt="Logo" />
-                        <h2>Preferencias Alimentarias</h2>
-                        <input></input> 
-                        <button onClick={modificarClient}>Actualizar</button>
+                        <img className={styles.perfil} src={userImage} alt="Logo" />
+                        <input type="file" accept="image/*" onChange={() => {setImUp(event.target.files[0])}} />
+                        <button onClick={() => {modificarClient()}}>Actualizar</button>
             
                         
                     
-                        <Link className={styles["nav-link"]} to="/perfil">Regresar</Link>
+                        <Link className={styles["nav-link"]} onClick={() => {
+                            scroll(0, 0);
+                        }} to="/perfil">Regresar</Link>
                         
                     
                        
@@ -138,7 +155,7 @@ function Perfil() {
                 
             
                 
-            </div>
+            </div>}
         </div>
     );
 }
