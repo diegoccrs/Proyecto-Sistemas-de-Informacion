@@ -60,15 +60,11 @@ font-size: 12px;
   align-content:flex-start;
   gap: 3em;
   justify-content: center;
+  max-width: 300px;
 }
 
 .perfil2{
   align-items: center;
   justify-content: center;
-
-}
-
-.column{
-  padding: 20px;
 
 }

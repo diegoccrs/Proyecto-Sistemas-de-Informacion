@@ -19,7 +19,7 @@ function PedidosActuales() {
       const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
 
       await updateDoc(doc(platillosCollectionRef, platilloName), {
-        disponible: platilloDescription,
+        descripcion: platilloDescription,
         nombre: platilloName,
         precio: platilloPrice,
         

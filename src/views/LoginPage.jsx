@@ -39,9 +39,6 @@ function IniciarSesion() {
             if(!logEmail || !logPassword) {
                 throw new Error("Rellene las casillas");
             }
-            if(!logEmail.includes("@correo.unimet.edu.ve", -21) && !logEmail.includes("@unimet.edu.ve", -14)) {
-                throw new Error("Dominio de correo incorrecto");
-            }
             if(logPassword.length < 8) {
                 throw new Error("Contraseña menor a 8 caractéres");
             }

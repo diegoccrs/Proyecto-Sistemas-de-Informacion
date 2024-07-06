@@ -2,146 +2,180 @@ import styles from './MenuAdmin.module.css';
 import { firestoreDB } from '../firebase-config';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 
 
 
 function MenuAdmin() {
-    const [categoriaName, setCategoriaName] = useState('');
-    const [platilloName, setPlatilloName] = useState('');
-    const [platilloDescription, setPlatilloDescription] = useState('');
-    const [platilloPrice, setPlatilloPrice] = useState(0);
     const [disponibleC, setDisponibleC] = useState(false);
-    const [disponibleP, setDisponibleP] = useState(false);
-
-
     const [categorias, setCategorias] = useState([]);
-    const [platillos, setPlatillos] = useState([]);
-    const [platillosCategoria, setPlatillosCategoria] = useState([]);
+    const [combos, setCombos] = useState([]);
+  
+    useEffect(() => {
+      const unsubscribe = onSnapshot(collection(firestoreDB, 'Pedidos'), (snapshot) => {
+        snapshot.forEach((doc) => {
+          const pedidoData = doc.data();
+          if (pedidoData.activo) {
+            alert("¡Un pedido está activo!");
+            navigate("/historial"); 
+          }
+        });
+      });
+  
+      return () => unsubscribe();
+    }, []);
+
+
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(collection(firestoreDB, 'Categoria'), (snapshot) => {
+          const categoriasData = [];
+          snapshot.forEach((doc) => {
+            categoriasData.push({ id: doc.id, data: doc.data() });
+          });
+          setCategorias(categoriasData);
+        });
+    
+        return () => unsubscribe();
+    }, []);
+
+    /////////////////
+
+    useEffect(() => {
+      const unsubscribe = onSnapshot(collection(firestoreDB, 'Combos'), (snapshot) => {
+        const combosData = [];
+        snapshot.forEach((doc) => {
+          combosData.push({ id: doc.id, data: doc.data() });
+        });
+        setCombos(combosData);
+      });
+  
+      return () => unsubscribe();
+  }, []);
+
+    
+  const updateDisponibleCo = async (comboId) => {
+    try {
+      const comboDocRef = doc(firestoreDB, "Combos", comboId);
+      console.log(comboId);
+      const updatedCombos = combos.map((combo) => {
+        if (combo.id === comboId) {
+          return {
+            ...combo,
+            data: {
+              ...combo.data,
+              disponible: !combo.data.disponible
+            }
+          };
+        }
+        return combo;
+      });
+  
+      await updateDoc(comboDocRef, {
+        disponible: !combos.find((combo) => combo.id === comboId).data.disponible
+      });
+  
+      console.log("Document successfully updated!");
+      setCategorias(updatedCombos);
+    } catch (error) {
+      console.error("Error updating document: ", error);
+    }
+  };
+
+    async function deleteCombo(comboId) {
+      try {
+        const combosDocRef = doc(firestoreDB, "Combos", comboId);
+        await deleteDoc(combosDocRef);
+        console.log("Categoria successfully deleted!");
+      } catch (error) {
+        console.error("Error deleting categoria: ", error);
+      }
+    }
+
+
+
+    ///////////
+
+    const renderCategorias = () => {
+      return categorias.map((categoria) => (
+        <div key={categoria.id} className={styles.categoriaContainer}>
+          <Link
+            onClick={() => {scroll(0, 0);}}
+            to={{
+              pathname: `/menuadmin/adminplatillos/${categoria.id}`,
+              state: { categoriaId: categoria.id }
+            }}
+            className={styles.linkCategoria}
+          >
+            <h2 className={styles.titulocarta}>{categoria.data.Categoria}</h2>
+            <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
+          </Link>
+    
+          <button onClick={() => updateDisponibleC(categoria.id)}>
+            Actualizar Disponible
+          </button>
+    
+          <button onClick={() => deleteCategoria(categoria.id)}>
+            Eliminar Categoría
+          </button>
+        </div>
+      ));
+    };
+
+    const renderCombos = () => {
+      return combos.map((combo) => (
+        <div key={combo.id} className={styles.categoriaContainer}>
+          <div className={styles.color_descripcion}>
+            <h1 className={styles.titulocombo}>{combo.data.combo}</h1>
+            <p className={styles.description}>{combo.data.descripcion}</p>
+            <p>{combo.data.precio}</p>
+            <button onClick={() => deleteCombo(combo.id)}>Eliminar</button>
+            <p className={styles.description}>Disponible: {combo.data.disponible ? 'Sí' : 'No'}</p>
+            
+            <button onClick={() => updateDisponibleCo(combo.id)}>
+              Actualizar Disponible
+              </button>
+          </div>
+          <div></div>
+        </div>
+      ));
+    };
+
+    
 
     const navigate = useNavigate();
 
-    const handleClickCategoriaContainer = (categoriaId) => {
-      const platillosData = getPlatillosByCategoriaId(categoriaId);
-      setPlatillosCategoria(platillosData);
+
+    const updateDisponibleC = async (categoriaId) => {
+      try {
+        const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
+    
+        const updatedCategorias = categorias.map((categoria) => {
+          if (categoria.id === categoriaId) {
+            return {
+              ...categoria,
+              data: {
+                ...categoria.data,
+                disponible: !categoria.data.disponible
+              }
+            };
+          }
+          return categoria;
+        });
+    
+        await updateDoc(categoriaDocRef, {
+          disponible: !categorias.find((categoria) => categoria.id === categoriaId).data.disponible
+        });
+    
+        console.log("Document successfully updated!");
+        setCategorias(updatedCategorias);
+      } catch (error) {
+        console.error("Error updating document: ", error);
+      }
     };
 
-    async function addCategoria() {
-        if (!categoriaName.trim()) {
-            console.error("The category name cannot be empty");
-            return;
-        }
-
-        try {
-            const docRef = doc(firestoreDB, "Categoria", categoriaName); 
-            await setDoc(docRef, {
-                Categoria: categoriaName, 
-                disponible: true,
-            });
-            console.log("Document written with ID: ", categoriaName);
-            setCategoriaName('');
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
-    
-    async function addPlatillo(categoriaId) {
-        try {
-          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
-          const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
-      
-          await setDoc(doc(platillosCollectionRef, platilloName), {
-            nombre: platilloName,
-            tipo: categoriaName,
-            descripcion: "Descripcion del platillo",
-            precio: 0,
-            disponible: true,
-          });
-      
-          console.log("Platillo added to 'Platillos' subcollection with ID: ", platilloName);
-          setPlatilloName('');
-        } catch (e) {
-          console.error("Error adding platillo: ", e);
-        }
-      }
-
-    async function addPlatilloHandler() {
-        try {
-          await addPlatillo(categoriaName); 
-          console.log("Platillo added successfully");
-        } catch (e) {
-          console.error("Error adding platillo: ", e);
-        }
-      }
-
-    
-      const updateDisponibleC = async (categoriaId) => {
-        try {
-          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
-          
-  
-          await updateDoc(categoriaDocRef, {
-            disponible: !disponibleC
-          });
-          console.log("Document successfully updated!");
-          setDisponibleC(!disponibleC); 
-        } catch (error) {
-          console.error("Error updating document: ", error);
-        }
-      };
-
-
-      async function editC() {
-        try {
-          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaName);
-          
-  
-          await updateDoc(categoriaDocRef, {
-            Categoria: categoriaName,
-          });
-          console.log("Document successfully updated!");
-          
-        } catch (error) {
-          console.error("Error updating document: ", error);
-        }
-      }
-      
-
-      const updateDisponibleP = async (categoriaId, platilloId) => {
-        try {
-          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
-          const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
-  
-          await updateDoc(doc(platillosCollectionRef, platilloId), {
-            disponible: !disponibleP
-          });
-          console.log("Document successfully updated!");
-          setDisponibleP(!disponibleP); 
-        } catch (error) {
-          console.error("Error updating document: ", error);
-        }
-      };
-
-
-      async function editP() {
-        try {
-          const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaName);
-          const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
-  
-          await updateDoc(doc(platillosCollectionRef, platilloName), {
-            disponible: platilloDescription,
-            nombre: platilloName,
-            precio: platilloPrice,
-            
-          });
-          console.log("Document successfully updated!");
-          
-        } catch (error) {
-          console.error("Error updating document: ", error);
-        }
-      }
-      
       async function deleteCategoria(categoriaId) {
         try {
           const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
@@ -152,154 +186,55 @@ function MenuAdmin() {
         }
       }
 
-      async function deletePlatillo(categoriaId, platilloId) {
-        try {
-          const categoriaDocRef = doc(firestoreDB, 'Categoria', categoriaId);
-          const platilloDocRef = doc(collection(categoriaDocRef, 'Platillos'), platilloId);
-          
-          await deleteDoc(platilloDocRef);
-          console.log('Platillo successfully deleted!');
-          fetchPlatillosByCategoriaId(categoriaId);
-        } catch (error) {
-          console.error('Error deleting platillo: ', error);
-        }
       
-      }
 
-      useEffect(() => {
-        const unsubscribe = onSnapshot(collection(firestoreDB, 'Categoria'), (snapshot) => {
-          const categoriasData = [];
-          snapshot.forEach((doc) => {
-            categoriasData.push({ id: doc.id, data: doc.data() });
-          });
-          setCategorias(categoriasData);
-        });
-    
-        return () => unsubscribe();
-      }, []);
-
-      const renderCategorias = () => {
+      const renderCategorias2 = () => {
         return categorias.map((categoria) => (
           
-          <div key={categoria.id} className={styles.categoriaContainer} onClick={() => handleClickCategoriaContainer(categoria.id)} >
-            <h2>{categoria.data.Categoria}</h2>
-            <button onClick={() => deleteCategoria(categoria.id)}>Borrar Categoria</button>
-            <p>Disponible: {categoria.data.disponible ? 'Sí' : 'No'}</p>
-            <button onClick={() => updateDisponibleC(categoria.id)}>
-            {disponibleC ? "Encendido" : "Apagado"}
-            </button>
-
+            <Link
+                    onClick={() => {scroll(0, 0);}}
+                    key={categoria.id}
+                    to={{
+                    pathname: `/menuadmin/adminplatillos/${categoria.id}`,
+                    state: { categoriaId: categoria.id }
+                        }}
+                    className={styles.botonMenu}
+                >
+                <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
             
-          </div>
+
+            </Link>
         ));
-      };
-
-      async function getPlatillosByCategoriaId(categoriaId) {
-        const platillosQuery = query(collection(firestoreDB, 'Categoria', categoriaId, 'Platillos'));
-    
-        try {
-          const platillosSnapshot = await getDocs(platillosQuery);
-          const platillosData = [];
-    
-          platillosSnapshot.forEach((doc) => {
-            platillosData.push({ id: doc.id, data: doc.data() });
-          });
-    
-          return platillosData;
-        } catch (error) {
-          console.error("Error getting platillos: ", error);
-          return [];
-        }
-      }
-
-      async function fetchPlatillosByCategoriaId(categoriaId) {
-        const platillosData = await getPlatillosByCategoriaId(categoriaId);
-        setPlatillosCategoria(platillosData); // Cambio en esta línea
-      }
-    
-      useEffect(() => {
-        // Llamada inicial para obtener los platillos de la primera categoría
-        if (categorias.length > 0) {
-          fetchPlatillosByCategoriaId(categorias[0].id);
-        }
-      }, [categorias]);
+    };
 
 
-      const renderPlatillos = (categoriaId) => {
-        const platillosCategoria = platillos.filter((platillo) => platillo.data.tipo === categoriaId);
-    
-        return platillosCategoria.map((platillo) => (
-          <div key={platillo.id} className={styles.platilloContainer}>
-            <h3>{platillo.data.nombre}</h3>
-            <button onClick={() => deletePlatillo(categoriaId, platillo.id)}>Borrar Platillo</button>
-            <p>{platillo.data.descripcion}</p>
-            <p>Precio: {platillo.data.precio}</p>
-            
-            <button onClick={() => updateDisponibleP(categoriaId, platillo.id)}>
-              {disponibleP ? 'Apagar' : 'Encender'}
-            </button>
-
-      
-
-           
-           
-          </div>
-        ));
-      };
-
-  
       return (
-        <div>
+        <div className={styles.app}>
           {localStorage.getItem("admin") != "true" ?
           navigate("/acceder")
           :
           <>
           <div className={styles.slogan}>
-            <h1>ADMIN <span className={styles.colored}>conmovedora</span> de nuestro local</h1>
+            <h1 className={styles.slogant}>ADMIN</h1>
+           
+
           </div>
-          <input
-            type="text"
-            value={categoriaName}
-            onChange={(e) => setCategoriaName(e.target.value)}
-            placeholder="Enter Category Name"
-          />
-          <button onClick={addCategoria}>Add Categoria</button>
 
-          
-    
-          <input
-            type="text"
-            value={platilloName}
-            onChange={(e) => setPlatilloName(e.target.value)}
-            placeholder="Enter Platillo Name"
-          />
-          <button onClick={addPlatilloHandler}>Add Platillo</button>
-
-          
+          <div className={styles.botonesMenu}>{renderCategorias2()}</div>
 
 
-
-          <input
-            type="text"
-            value={platilloDescription}
-            onChange={(e) => setPlatilloDescription(e.target.value)}
-            placeholder="Enter Platillo Description"
-          />
-
-          <input
-            type="number"
-            value={platilloPrice}
-            onChange={(e) => setPlatilloPrice(e.target.value)}
-            placeholder="Enter Platillo Price"
-          />
-
-          <button onClick={editC}>Editar Categoria</button>
-
-          <button onClick={editP}>Editar Platillo</button>
-
-          
+          <div className={styles.botonesMenu}>
+          <Link className={`${styles["nav-link"]} ${styles.botonMenu}`}to="/menuadmin/editarmenu">Editar Menu</Link>
+          <Link className={`${styles["nav-link"]} ${styles.botonMenu}`} to="/menuadmin/eamenu">Agregar o Eliminar Menu</Link>
+          <Link className={`${styles["nav-link"]} ${styles.botonMenu}`}to="/menuadmin/editarcombo">Editar Combo</Link>
+          <Link className={`${styles["nav-link"]} ${styles.botonMenu}`} to="/menuadmin/eacombo">Agregar o Eliminar Combo</Link>
+     
+            </div>
+          <h1>Combos</h1>
+          <div className={styles.combo}>{renderCombos()}</div>
+          <h1>Menu</h1>
           <div className={styles.menu}>{renderCategorias()}</div>
-          <div className={styles.menu}>{renderPlatillos("Hamburguesas")}</div>
+          
 
           </>}
         </div>

@@ -1,51 +1,43 @@
 import styles from './Platillos.module.css';
 
-//import c1 from '../img/View.png';
-//import local from '../img/iglogo.png';
+import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
-import { NavLink } from 'react-router-dom';
-import { routes } from "../constants/routes";
-import view from '../img/View.png';
-import burger from '../img/Burger_0.png';
-import burger1 from '../img/Burger_1.jpg';
-import cachapa from '../img/Cachapa_1.png';
-import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.webp';
-import parrilla from '../img/Parrilla_1.jpg';
-import pepito from '../img/Pepito.jpg';
-import sandwich from '../img/Sandwich.jpg';
-import salad from '../img/Salad.png';
-import brookie from '../img/Brookies.webp';
-import Map from '../img/Map.png';
 
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
 import { firestoreDB } from '../firebase-config';
-import { Link } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
-import { useIdMenu } from './Menu';
+import { Link, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
-
-
-export function Platillos() {
-    const idMenu = useIdMenu();
-    console.log(idMenu);
+function Platillos() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [categorias, setCategorias] = useState([]);
     const [platillos, setPlatillos] = useState([]); 
     const location = useLocation();
-    const categoriaId = location.state ? location.state.categoriaId : null;
-    console.log("location", categoriaId);
+    const categoriaId = location.state?.categoriaId;
 
+    const navigate = useNavigate();
+
+    const { categoId } = useParams();
+
+
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        })
+    }, []);
 
     useEffect(() => {
         const fetchPlatillos = async () => {
           try {
-            const categoriaId = "Hamburguesas"; // ID de la categoría "Hamburguesas"
+            const categoriaId = categoId; // ID de la categoría "Hamburguesas"
             const platillosRef = collection(firestoreDB, 'Categoria', categoriaId, 'Platillos');
             const querySnapshot = await getDocs(platillosRef);
 
@@ -66,21 +58,33 @@ export function Platillos() {
       }, []);
     
       const renderPlatillos = () => {
-       
-        return platillos.map((platillo) => (
-          <div key={platillo.id} className={styles.platillos_impar}>
-            <div className={styles.platillos_descripcion}>
-            <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
-            <p>{styles.description}{platillo.data.descripcion}</p>
-            <p>{platillo.data.precio}</p>
-            <button className={styles.button}>Comprar</button>
+        return platillos.map((platillo) => {
+          if (!platillo.data.disponible) {
+            return null; // No renderizar el platillo si no está disponible
+          }
+      
+          return (
+            <div key={platillo.id} className={styles.platillos_impar}>
+              <div className={styles.platillos_descripcion}>
+                <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
+                <p>{styles.description}{platillo.data.descripcion}</p>
+                <p>{platillo.data.precio}</p>
+                
+                <button
+                  onClick={user ?
+                    () => {addPedido(platillo.data)}
+                    : () => {navigate("/compra"); scroll(0, 0);}}
+                  className={styles.button}
+                >
+                  Comprar
+                </button>
+              </div>
+              <div></div>
             </div>
-            <div></div>
-            
-        
-          </div>
-        ));
+          );
+        });
       };
+    
     
 
 
@@ -99,23 +103,45 @@ export function Platillos() {
 
 
       
-    const renderCategorias2 = () => {
-        return categorias.map((categoria) => (
+      const renderCategorias2 = () => {
+        const categoriasDisponibles = categorias.filter((categoria) => categoria.data.disponible);
           
-            <Link
-                    key={categoria.id}
-                    to={{
-                    pathname: "/menu/platillos",
-                    state: { categoriaId: categoria.id }
-                        }}
-                    className={styles.botonMenu}
-                >
-                <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
-            
+        return categoriasDisponibles.map((categoria) => (
+  
+              <Link
+                      
+                      key={categoria.id}
+                      to={{
+                      pathname: `/menu/platillos/${categoria.id}`,
+                      state: { categoriaId: categoria.id }
+                          }}
+                      className={styles.botonMenu} onClick={() => {location.reload(); scroll(0, 0)}}>
+                  <h2 className={styles.tituloboton}>{categoria.data.Categoria}</h2>
+              
+  
+              </Link>
+          ));
+        };
+  
 
-            </Link>
-        ));
+
+      const addPedido = async (platillo) => {
+          try {
+              const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
+              const docu = await getDoc(docRef);
+              const data = docu.data().pedidos;
+              console.log(platillos)
+
+              await updateDoc(docRef, {
+                  pedidos: [...data, /**/platillo/**/]
+              });
+              navigate("/compra");
+              scroll(0, 0);
+          } catch (error) {
+              console.log(error)
+          }
       };
+
 
     return (
         
@@ -130,12 +156,7 @@ export function Platillos() {
                     <div className={styles.catalogo}>{renderPlatillos()}</div>
                     
                 </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        </NavLink>
-                    </div>
+                    
                
                 
                 
