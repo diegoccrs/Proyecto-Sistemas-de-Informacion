@@ -76,6 +76,17 @@
   width: 80%;
 }
 
+.anonimo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 180px;
+
+}
+
+.anonimo input {
+  margin-right: 170px;
+}
 
 .button{
   margin: 50px;
@@ -97,6 +108,7 @@
 }
 
 .containerContactos{
+  text-align: center;
   background-color: var(--clr-white);
   border-radius: 25px;
   margin-left: 40px;
