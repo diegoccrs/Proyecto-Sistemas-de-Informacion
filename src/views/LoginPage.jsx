@@ -39,9 +39,6 @@ function IniciarSesion() {
             if(!logEmail || !logPassword) {
                 throw new Error("Rellene las casillas");
             }
-            if(!logEmail.includes("@correo.unimet.edu.ve", -21) && !logEmail.includes("@unimet.edu.ve", -14)) {
-                throw new Error("Dominio de correo incorrecto");
-            }
             if(logPassword.length < 8) {
                 throw new Error("Contraseña menor a 8 caractéres");
             }
@@ -67,7 +64,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -116,7 +115,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -137,7 +138,9 @@ function IniciarSesion() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 

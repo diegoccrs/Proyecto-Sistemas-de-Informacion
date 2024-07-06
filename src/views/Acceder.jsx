@@ -85,7 +85,9 @@ function Acceder() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
             
             scroll(0, 0);
             location.reload();
@@ -134,7 +136,9 @@ function Acceder() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
 
             scroll(0, 0);
             location.reload();
@@ -155,7 +159,9 @@ function Acceder() {
 
             setError(null);
             setLoading(false);
-            navigate("/");
+            if (localStorage.getItem("admin") === "true") {
+                navigate("/menuadmin");} 
+            else {navigate("/")}
         } catch (error) {
             console.log(error.message);
 
@@ -168,6 +174,9 @@ function Acceder() {
 
     return (
         <div className={styles.pageContainer}>
+            {user ?
+            navigate("/")
+            :
             <div className={styles.boxContainer}>
                 <div className={styles.titleContainer}>
                     <h2>Registrarse</h2>
@@ -213,7 +222,7 @@ function Acceder() {
                         <div className={styles.center}>
                             <h3>¿Ya estás registrado?</h3>
 
-                            <Link to="/login" className={styles.loginButton}>Iniciar Sesion</Link>
+                            <Link to="/login" className={styles.loginButton}>Iniciar Sesión</Link>
                             <div className={styles.imageButtonsContainer}>
                                 <button className={styles.imageButton} onClick={() => loginPopupGoogle()}>
                                     <img src={googlelogo} alt="google" />
@@ -226,9 +235,9 @@ function Acceder() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     );
-}
+};
 
 export default Acceder
