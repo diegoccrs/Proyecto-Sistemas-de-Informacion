@@ -14,9 +14,8 @@ import fondo from '../img/fondo1.png';
 //import burger3 from '../img/Burger_3.png';
 //import burger4 from '../img/Burger_4.jfif';
 
+
 import platillo from '../img/Platillo.png';
-
-
 
 import { Link } from "react-router-dom";
 
