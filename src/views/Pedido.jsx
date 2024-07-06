@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config.js';
 import { useState, useEffect } from 'react';
-import { getDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
+import {  doc,  updateDoc } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
 import PayPal from '../components/PayPal.jsx';
 import styles from './Pedido.module.css';

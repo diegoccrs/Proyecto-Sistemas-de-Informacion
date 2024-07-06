@@ -6,7 +6,7 @@ import vision from '../img/Visión.png';
 import nosotros from '../img/Nosotros.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
+
 import ger from '../img/Gerente.png';
 import rep from '../img/Represent.png';
 import equipo from '../img/Equipo1.png';
@@ -194,6 +194,6 @@ function Nosotros() {
             </div>
         </div>
     );
-};
+}
 
 export default Nosotros

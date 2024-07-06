@@ -1,5 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { doc,   deleteDoc } from 'firebase/firestore';
+import { firestoreDB } from '../firebase-config';
 import {
     signInWithEmailAndPassword,
     onAuthStateChanged,
@@ -62,18 +64,18 @@ function Nosotros() {
         } catch (error) {
           console.error("Error in handleDeleteAndSignOut: ", error);
         }
-    };
+    }
 
     async function deleteClient() {
         try {
           const id = auth.currentUser.uid;
-          const docRef = doc(db, "Usuario", id);
+          const docRef = doc(firestoreDB, "Usuario", id);
     
           await deleteDoc(docRef);
         } catch (error) {
           console.error("Error updating document: ", error);
         }
-    };
+    }
 
 
     return (

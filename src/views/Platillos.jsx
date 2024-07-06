@@ -4,7 +4,7 @@ import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 
-import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
+import { collection, doc, getDoc,updateDoc, onSnapshot, getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';

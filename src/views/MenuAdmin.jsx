@@ -1,6 +1,6 @@
 import styles from './MenuAdmin.module.css';
 import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { collection, doc,  updateDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import styles from './Menu.module.css';
 import { useState, useEffect } from 'react';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
@@ -182,6 +182,6 @@ function Menu() {
             </div>
         </div>
     );
-};
+}
 
 export default Menu
