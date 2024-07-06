@@ -184,6 +184,6 @@ function IniciarSesion() {
             </div>
         </div>
     );
-};
+}
 
 export default IniciarSesion

@@ -68,8 +68,7 @@ function App() {
         await signOut(auth);
     };
 
-    const [checkout, setCheckout] = useState(false);
-
+   
 
 
     return (

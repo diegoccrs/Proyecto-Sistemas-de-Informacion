@@ -1,13 +1,13 @@
-import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
+import { onAuthStateChanged } from 'firebase/auth'
+import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import { auth, fireStorage, firestoreDB } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import styles from "./Perfil.module.css";
 
-import {getAdditionalUserInfo} from "firebase/auth";
-import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
+//import {getAdditionalUserInfo} from "firebase/auth";
+import { doc,updateDoc} from "firebase/firestore"; s
 //import { db } from '../firebase';
 
 function Perfil() {

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Historial.module.css';
 
 import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 
 function Historial() {

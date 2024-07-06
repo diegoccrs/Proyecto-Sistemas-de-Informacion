@@ -2,9 +2,9 @@ import styles from './HomePage.module.css';
 import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import { useState } from 'react';
-import { fireStorage } from '../firebase-config';
-import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+//import { useState } from 'react';
+//import { fireStorage } from '../firebase-config';
+//import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 //import { v4 } from 'uuid';
 
 
@@ -82,6 +82,6 @@ function Error() {
             </div>
         </div>
     );
-};
+}
 
 export default Error

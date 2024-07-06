@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
 import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
@@ -196,6 +194,6 @@ function HomePage() {
             </div>
         </div>
     );
-};
+}
 
 export default HomePage
