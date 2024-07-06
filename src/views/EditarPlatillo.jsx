@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './PedidosActuales.module.css';
 import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
-import { v4 } from 'uuid';
+import { collection, doc, updateDoc} from 'firebase/firestore';
+import { useState } from 'react';
+//import { v4 } from 'uuid';
 
 
 function PedidosActuales() {
@@ -19,7 +19,7 @@ function PedidosActuales() {
       const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
 
       await updateDoc(doc(platillosCollectionRef, platilloName), {
-        disponible: platilloDescription,
+        descripcion: platilloDescription,
         nombre: platilloName,
         precio: platilloPrice,
         
@@ -85,5 +85,4 @@ function PedidosActuales() {
 }
 
 export default PedidosActuales
-
 

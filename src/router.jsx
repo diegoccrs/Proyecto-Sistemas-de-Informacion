@@ -23,6 +23,8 @@ import EaMenu from "./views/EaMenu.jsx";
 import EditarPlatillo from "./views/EditarPlatillo.jsx";
 import EaPlatillo from "./views/EaPlatillo.jsx";
 import AdminPlatillos from "./views/AdminPlatillos.jsx";
+import EaCombo from "./views/EaCombo.jsx";
+import EditarCombo from "./views/EditarCombo.jsx";  
 
 export const router = createBrowserRouter([
     {
@@ -96,6 +98,14 @@ export const router = createBrowserRouter([
             {
                 path: routes[9]["children"][4].path,
                 element: <AdminPlatillos />,
+            },
+            {
+                path: routes[9]["children"][5].path,
+                element: <EaCombo />,
+            },
+            {
+                path: routes[9]["children"][6].path,
+                element: <EditarCombo />,
             },
             {
                 path: routes[10].path,

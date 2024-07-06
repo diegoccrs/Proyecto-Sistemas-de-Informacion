@@ -1,13 +1,11 @@
 import styles from './Comentarios.module.css';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import Map from '../img/Map.png';
 
 
-import { useState, useEffect } from 'react';
-import {  doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { useState } from 'react';
+import {  doc, setDoc} from 'firebase/firestore';
 
 import {  firestoreDB  } from '../firebase-config.js'
 
@@ -82,7 +80,7 @@ function Ayuda() {
                             </div>
                     
                     <h3>DINOS LO QUE PIENSAS</h3>
-                        <input className={styles.inputting} type="text"alue={opinion} onChange={e => setOpinion(e.target.value)} />
+                        <input className={styles.inputting} type="text"value={opinion} onChange={e => setOpinion(e.target.value)} />
                     
                 </div>
                 <button className={styles.button} onClick={enviarFeedback}>Enviar</button>
@@ -102,6 +100,6 @@ function Ayuda() {
             </div>
         </div>
     );
-};
+}
 
 export default Ayuda

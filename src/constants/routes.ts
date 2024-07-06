@@ -74,6 +74,15 @@ export const routes = [
                 path: "/menuadmin/adminplatillos/:categoId",
                 name: "AdminPlatillos",
             },
+            {
+                path: "/menuadmin/eacombo",
+                name: "EaCombo",
+            },
+            {
+                path: "/menuadmin/editarcombo",
+                name: "EditarCombo",
+            },
+
         ],
     },
     {
@@ -93,5 +102,3 @@ export const routes = [
         name: "Compra",
     },
 ] as const
-
-
