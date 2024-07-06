@@ -70,6 +70,10 @@ export const routes = [
         path: "/compra",
         name: "Compra",
     },
+    {
+        path: "/beforecompra",
+        name: "BeforeCompra",
+    },
 ] as const
 
 

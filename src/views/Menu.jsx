@@ -21,6 +21,7 @@ import salad from '../img/Salad.png';
 import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 
@@ -39,7 +40,7 @@ function Menu() {
         });
     
         return () => unsubscribe();
-    }, []);
+      }, []);
 
     const renderCategorias = () => {
         return categorias.map((categoria) => (
@@ -57,7 +58,7 @@ function Menu() {
 
             </Link>
         ));
-    };
+      };
 
     const renderCategorias2 = () => {
         return categorias.map((categoria) => (
@@ -75,7 +76,7 @@ function Menu() {
 
             </Link>
         ));
-    };
+      };
 
 
     const combos = [
@@ -154,9 +155,9 @@ function Menu() {
                                     <div className={styles.comboDescription}>
                                         <h2 className={styles.comboTitle}>{combo.title}</h2>
                                         <p>{combo.description}</p>
-                                        <Link  to="/menu">
-                                            <button className={styles.button}>Comprar</button>
-                                        </Link> 
+                                        
+                                        <Link className={styles["nav-link"]} to="/beforecompra"><button className={styles.button}>Comprar</button></Link>
+                                        
                                     </div>
                                 </div>
                             </div>                    
@@ -201,6 +202,6 @@ function Menu() {
             </div>
         </div>
     );
-};
+}
 
 export default Menu

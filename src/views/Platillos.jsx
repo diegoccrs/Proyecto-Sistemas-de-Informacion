@@ -79,11 +79,11 @@ function Platillos() {
                 <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
                 <p>{styles.description}{platillo.data.descripcion}</p>
                 <p>{platillo.data.precio}</p>
-                {!user ?
-                <button onClick={() => {navigate("/acceder")}} className={styles.button}>Iniciar Sesión</button>
-                :
-                <button onClick={() => {addPedido(platillo.data)}} className={styles.button}>Comprar</button>
-                }
+
+                <button onClick={user ?
+                            () => {addPedido(platillo.data)}
+                            : () => {navigate("/compra"); scroll(0, 0);}} className={styles.button}>Comprar</button>
+                            
                 </div>
                 <div></div>
             
@@ -157,12 +157,17 @@ function Platillos() {
                     <div className={styles.catalogo}>{renderPlatillos()}</div>
                     
                 </div>
-                    <div className={styles.cartamenu}>
-                        <NavLink to={routes[1]["children"][0].path}>
+
+                <div className={styles.plamenu}>                  
+                  <div className={styles.cartamenu}>
+                      <NavLink to={routes[1]["children"][0].path}>
                         <h1 className={styles.titulocarta}>Otros</h1>
                         <img src={brookie} alt="brookie" />
-                        </NavLink>
-                    </div>
+                      </NavLink>
+                  </div>
+
+
+                </div>
                
                 
                 

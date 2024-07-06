@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import styles from './HomePage.module.css';
 import fondo from '../img/fondo1.png';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
+//import c1 from '../img/View.png';
+//import local from '../img/iglogo.png';
 import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
@@ -75,7 +75,7 @@ function HomePage() {
                 <img className={styles.fondo} src={fondo} alt="fondo" ></img>
                 <div className={styles.container}>
                     <h1 className={styles.titulo}>Bienvenido</h1>
-                    <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div>.</h2>
+                    <h2>Conoce todo el menú y ofertas que ofrece Deli Pernil. Rica comida hecha en base al buen comer <div className={styles.bold}>unimetano</div></h2>
                     
                         <h2 className={styles.parrafo}> Hamburguesas con carne crispy</h2>
                         <h2 className={styles.parrafo}> Cachapas</h2>
@@ -102,7 +102,7 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <button className={styles.button}>Comprar</button>
+                                <Link className={styles["nav-link"]} to="/beforecompra"><button className={styles.button}>Comprar</button></Link>
                             </div>
                         </div>
                     </div>
@@ -114,10 +114,15 @@ function HomePage() {
 
 
                 <button id="nextBtn" className={styles.buttonc} onClick={nextCombo}>&gt;</button>
+
+                
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.colored}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
-                    <button className={styles.button}>Explorar Combos</button>
+                    
+                    <Link className={styles["nav-link"]} to="/menu"><button className={styles.button}>Explorar Combos</button></Link>
+                    
+                    
                 </div>                
             </div>
 

@@ -150,7 +150,7 @@
 
 
 .zonacombos{
-  grid-row: 1 / 4;
+  grid-row: 1 / 5;
   grid-column: 1/8;
   background-color:var(--clr-gray);   
   border-bottom-right-radius: 30px;
@@ -169,8 +169,8 @@
 
 .buttonc{
   position: relative;
-  left: 600%;
-  bottom: 290%;
+  right: 60%;
+  bottom: 180%;
   z-index: 1;
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
@@ -220,6 +220,10 @@
 }
 
 .descripcioncombos{
+  text-align: center;
+}
+
+.comboDescription {
   text-align: center;
 }
 

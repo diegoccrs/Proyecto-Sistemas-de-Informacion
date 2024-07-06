@@ -7,7 +7,10 @@ import logo from '../img/Logo.png'
 import mlogo from '../img/LogoMonigotech.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import tlogo from '../img/tlogo.png'
+import tlogo from '../img/tlogo.png';
+//import ig_2 from '../img/ig_2.png';
+import pa from '../img/PA.png';
+import pc from '../img/PC.png';
 
 
 
@@ -46,7 +49,7 @@ export default function NavBar() {
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/historial">Historial</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/pedidosactuales">Pedidos Actuales</Link>
                         <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/cliente">Cliente</Link>
-                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={`${styles["nav-link"]} ${styles.adminLink}`} to="/perfil"><img className={styles.perfil} src={pa} alt="pa" /></Link>
                     </>
                     : <>
                         <Link className={styles["nav-link"]} to="/">Inicio</Link>
@@ -56,9 +59,9 @@ export default function NavBar() {
                     
                     {user ?
                     <div>
-                        <Link className={styles["nav-link"]} to="/compra">Compra     </Link>
+                        <Link className={styles["nav-link"]} to="/compra">Compra</Link>
                         <Link className={styles["nav-link"]} to="/comentarios">Comentarios</Link>
-                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={iglogo} alt="Logo" /></Link>
+                        <Link className={styles["nav-link"]} to="/perfil"><img className={styles.perfil} src={pc} alt="Logo" /></Link>
                     </div>
                     : <Link className={`${styles["nav-link-access"]} ${styles.purpleLink}`} to="/acceder">Acceder</Link>}
                     </>}

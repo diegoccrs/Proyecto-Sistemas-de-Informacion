@@ -79,10 +79,8 @@
 
 
 .button{
-  margin-top: 50px;
-  margin-bottom: 50px;
- 
-  padding: 15px 10%;
+  margin: 50px;
+  padding: 15px 60px;
 
   background-color: var(--clr-darkpurple);
   font-family: font1;
