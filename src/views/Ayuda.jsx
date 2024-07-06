@@ -1,9 +1,6 @@
 import styles from './Ayuda.module.css';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
 import Map from '../img/Map.png';
 
 function Ayuda() {

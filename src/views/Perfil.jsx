@@ -1,4 +1,3 @@
-import iglogo from '../img/iglogo.png';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
@@ -9,16 +8,17 @@ import {
     getAuth,
     deleteUser
 } from 'firebase/auth'
-import { auth, googleProvider, facebookProvider } from '../firebase-config.js'
+import { auth, fireStorage } from '../firebase-config.js'
 import styles from './Perfil.module.css';
 //import styles from './Perfil.module.css';
-import googlelogo from '../img/google.png';
-import facebooklogo from '../img/facebook.png';
+//import googlelogo from '../img/google.png';
+//import facebooklogo from '../img/facebook.png';
 
 
 function Nosotros() {
 
     const isAdmin = localStorage.getItem('admin') === 'true' ? true : false;
+
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -26,6 +26,7 @@ function Nosotros() {
             setUser(currentUser);
         })
     }, []);
+
     
     const logout = async () => {
         
@@ -113,51 +114,44 @@ function Nosotros() {
 
                             {!isAdmin && (
                             <>
-                                <h2>Nombre</h2>
+                                <h2>Nombre Completo</h2>
                                 <input
+                                    disabled
                                     type="text"
                                     placeholder="Nombre"
-                                    onChange={(event) => {
-                                    
-                                    }} />
-            
-                                <h2>Apellido</h2>
-                                <input
-                                    type="text"
-                                    placeholder="Apellido"
+                                    value={localStorage.getItem("nombreCompleto")}
                                     onChange={(event) => {
                                     
                                     }} />
             
                                 <h2>Facultad</h2>
                                 <input
+                                    disabled
                                     type="text"
                                     placeholder="Facultad"
+                                    value={localStorage.getItem("facultad")}
                                     onChange={(event) => {
                                     
                                     }} />
             
                                 <h2>Teléfono</h2>
                                 <input
+                                    disabled
                                     type="number"
                                     placeholder="Teléfono"
+                                    value={localStorage.getItem("telefono")}
                                     onChange={(event) => {
                                     
                                     }} />
 
-                            
-                                
-                                <img className={styles.perfil} src={iglogo} alt="Logo" />
-                                <h2>Foto de Perfil</h2>
-
-                                <Link className={styles['nav-link']} to="/">
-                                    Regresar
+                                <Link className={styles['nav-link']} onClick={() => {scroll(0, 0)}} to="/">
+                                    <p>Regresar</p>
                                 </Link>
-                                <Link className={styles['nav-link']} to="/perfil/editarperfil">
-                                    Editar
+                                <Link className={styles['nav-link']} onClick={() => {scroll(0, 0)}} to="/perfil/editarperfil">
+                                    <p>Editar</p>
                                 </Link>
                                 <Link className={styles['nav-link']} to="/" onClick={handleDeleteAndSignOut}>
-                                    Eliminar
+                                    <p>Eliminar</p>
                                 </Link>
 
                             </>

@@ -16,20 +16,24 @@ export default function PayPal(props) {
     let total = 0;
 
     const pedidos = async () => {
-        const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
-        const docu = await getDoc(docRef);
-        const pedidos = docu.data().pedidos;
+        try {
+            const docRef = doc(firestoreDB, "Usuario", localStorage.getItem("email"));
+            const docu = await getDoc(docRef);
+            const pedidos = docu.data().pedidos;
+            
+            pedidosClient = pedidos;
         
-        pedidosClient = pedidos;
+            const totalAmount = (value) => {
+                total += value.precio;
+            };
+        
+            pedidos.forEach(totalAmount);
     
-        const totalAmount = (value) => {
-            total += value.precio;
-        };
-    
-        pedidos.forEach(totalAmount);
-
-        props.totalPago(total);
-        props.platillosCliente(pedidosClient);
+            props.totalPago(total);
+            props.platillosCliente(pedidosClient);
+        } catch (error) {
+            // console.log(error);
+        }
     };
 
 

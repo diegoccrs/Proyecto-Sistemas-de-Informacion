@@ -2,23 +2,10 @@ import styles from './Menu.module.css';
 import { useState, useEffect } from 'react';
 import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
 import { firestoreDB } from '../firebase-config';
-import c1 from '../img/View.png';
-import local from '../img/iglogo.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
 import Map from '../img/Map.png';
 import view from '../img/View.png';
-import burger from '../img/Burger_0.png';
-import burger1 from '../img/Burger_1.jpg';
-import cachapa from '../img/Cachapa_1.png';
-import ch from '../img/ClubHouse_1.webp';
-import arepa from '../img/Arepa.webp';
-import parrilla from '../img/Parrilla_1.jpg';
-import pepito from '../img/Pepito.jpg';
-import sandwich from '../img/Sandwich.jpg';
-import salad from '../img/Salad.png';
-import brookie from '../img/Brookies.webp';
 
 import { Link } from "react-router-dom";
 
@@ -42,12 +29,15 @@ function Menu() {
     }, []);
 
     const renderCategorias = () => {
-        return categorias.map((categoria) => (
+        const categoriasDisponibles = categorias.filter((categoria) => categoria.data.disponible);
+
+        return categoriasDisponibles.map((categoria) => (
           
             <Link
+                    onClick={() => {scroll(0, 0);}}
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.cartamenu}
@@ -60,12 +50,15 @@ function Menu() {
     };
 
     const renderCategorias2 = () => {
-        return categorias.map((categoria) => (
+        const categoriasDisponibles = categorias.filter((categoria) => categoria.data.disponible);
+
+        return categoriasDisponibles.map((categoria) => (
           
             <Link
+                    onClick={() => {scroll(0, 0);}}
                     key={categoria.id}
                     to={{
-                    pathname: "/menu/platillos",
+                    pathname: `/menu/platillos/${categoria.id}`,
                     state: { categoriaId: categoria.id }
                         }}
                     className={styles.botonMenu}
@@ -175,16 +168,6 @@ function Menu() {
 
                 <h1 className={styles.menut}>MENU</h1>
                 <div className={styles.catalogo}>{renderCategorias()}</div>
-                <div className={styles.catalogo}>
-               
-
-                    <Link className={styles.cartamenu} to="/menu/hamburguesas">
-                
-                        <h1 className={styles.titulocarta}>Otros</h1>
-                        <img src={brookie} alt="brookie" />
-                        
-                    </Link>
-                </div>
             </div>
 
             <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>

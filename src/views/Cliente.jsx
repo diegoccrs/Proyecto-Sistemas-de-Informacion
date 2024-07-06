@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './Cliente.module.css';
 import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, getDocs } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Cliente() {
   const [comentarios, setComentarios] = useState([]);
+  const [nombresOrdenados, setNombresOrdenados] = useState([]);
 
   const navigate = useNavigate();
 
@@ -19,7 +20,6 @@ function Cliente() {
 
     fetchComentarios();
   }, []);
-
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(firestoreDB, 'FeedBack'), (snapshot) => {
@@ -49,27 +49,35 @@ function Cliente() {
     ));
   };
 
-  
-  const products = [
-    {
-      id: 1,
-      name: 'Hamburguesa Carne Clasica',
-      orders: 150,
-     
-    },
-    {
-      id: 2,
-      name: 'Hamburguesa Carne Salmon',
-      orders: 120,
+  useEffect(() => {
+    const obtenerPedidos = async () => {
+      const pedidosCollection = collection(firestoreDB, "Pedidos");
+      const querySnapshot = await getDocs(pedidosCollection);
+      const contadorNombres = {};
       
-    },
-    {
-      id: 3,
-      name: 'Hamburguesa Carne Clasica con Bacon',
-      orders: 100,
       
-    },
-  ];
+      querySnapshot.forEach((doc) => {
+        const pedidosArray = doc.data().pedidos;
+        pedidosArray.forEach((pedido) => {
+         
+          const nombrePedido = pedido.nombre;
+
+          contadorNombres[nombrePedido] = contadorNombres[nombrePedido]
+            ? contadorNombres[nombrePedido] + 1
+            : 1;
+          });
+      
+      });
+      const nombresArray = Object.entries(contadorNombres);
+      const nombresOrdenados = nombresArray.sort((a, b) => b[1] - a[1]);
+      console.log(nombresOrdenados);
+      setNombresOrdenados(nombresOrdenados);
+    };
+    
+    obtenerPedidos();
+  }, []);
+
+
 
   return (
     <div className={styles.pagcontainer}>
@@ -80,13 +88,12 @@ function Cliente() {
       <div className={styles.container}>
         <h2 className={styles.title}>Producto Más Vendido</h2>
         <div>
-          {products.map((product) => (
-            <div key={product.id} className={styles.card}>
-              <img src={product.image} alt={product.name} className={styles.cardImage} />
-              <h3 className={styles.cardTitle}>{product.name}</h3>
-              <p className={styles.cardOrders}>Número de pedidos: {product.orders}</p>
-            </div>
-          ))}
+          {nombresOrdenados.map((nombre) => (
+                <div key={nombre[0]} className={styles.card}>
+                  <p className={styles.cardTitle}>{nombre[0]}</p>
+                  <p className={styles.cardOrders}>Número de pedidos: {nombre[1]}</p>
+                </div>
+              ))}
         </div>
       </div>
       
@@ -96,6 +103,6 @@ function Cliente() {
       </>}
     </div>
   );
-};
+}
 
 export default Cliente
