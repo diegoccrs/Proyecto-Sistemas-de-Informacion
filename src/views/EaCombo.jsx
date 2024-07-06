@@ -8,7 +8,7 @@ import { v4 } from 'uuid';
 function PedidosActuales() {
     const [comboName, setComboName] = useState('');
     const [comboDescripcion, setComboDecripcion] = useState('');
-    const [comboPrecio, setComboPrecio] = useState('');
+    const [comboPrecio, setComboPrecio] = useState(0);
   const navigate = useNavigate();
 
   async function addCombo() {
@@ -71,7 +71,7 @@ async function deleteCombo() {
           />
 
 <input
-            type="text"
+            type="number"
             value={comboPrecio}
             onChange={(e) => setComboPrecio(e.target.value)}
             placeholder="Enter Combo Precio"

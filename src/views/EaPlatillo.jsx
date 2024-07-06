@@ -10,6 +10,8 @@ function PedidosActuales() {
   const navigate = useNavigate();
   const [platilloName, setPlatilloName] = useState('');
   const [platillosCategoria, setPlatillosCategoria] = useState([]);
+  const [comboDescripcion, setPlatilloDecripcion] = useState('');
+  const [comboPrecio, setPlatilloPrecio] = useState(0);
 
   async function addPlatillo(categoriaId) {
     try {
@@ -19,8 +21,8 @@ function PedidosActuales() {
       await setDoc(doc(platillosCollectionRef, platilloName), {
         nombre: platilloName,
         tipo: categoriaName,
-        descripcion: "Descripcion del platillo",
-        precio: 0,
+        descripcion: comboDescripcion,
+        precio: comboPrecio,
         disponible: true,
         imgRef: v4(),
       });
@@ -104,6 +106,24 @@ async function addPlatilloHandler() {
             onChange={(e) => setPlatilloName(e.target.value)}
             placeholder="Enter Platillo Name"
           />
+
+
+          
+        <input
+            type="text"
+            value={comboDescripcion}
+            onChange={(e) => setPlatilloDecripcion(e.target.value)}
+            placeholder="Enter Combo Descripcion"
+          />
+
+        <input
+            type="number"
+            value={comboPrecio}
+            onChange={(e) => setPlatilloPrecio(e.target.value)}
+            placeholder="Enter Combo Precio"
+          />
+     
+          
           <button onClick={addPlatilloHandler}>Add Platillo</button>
           <button onClick={deletePlatillo}>Delete Platillo</button>
 
