@@ -30,11 +30,11 @@ function Ayuda() {
                             
                         <div className={styles.formulario2}>
                             <h3>Correo</h3>
-                            <input type="text" placeholder='Correo electrónico' onChange={(event) => {
+                            <input type="email" placeholder='Correo electrónico' onChange={(event) => {
                             setRegEmail(event.target.value)
                         }} />
                             <h3>Teléfono</h3>
-                            <input type="text"  placeholder='Teléfono' onChange={(event) => {
+                            <input type="number"  placeholder='Teléfono' onChange={(event) => {
                             setTelefono(event.target.value)
                         }} />
                         </div>

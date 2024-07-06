@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css"
 import logo from '../img/Logo.png'
 import mlogo from '../img/LogoMonigotech.png';
-import iglogo from '../img/iglogo.png';
+//import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 import tlogo from '../img/tlogo.png';
-//import ig_2 from '../img/ig_2.png';
+import ig_2 from '../img/ig_2.png';
 import pa from '../img/PA.png';
 import pc from '../img/PC.png';
+
 
 
 
@@ -33,7 +34,7 @@ export default function NavBar() {
                 <img className={styles.tlogo} src={tlogo} alt="DeliPernil" />
                 <img className={styles.mlogo} src={mlogo} alt="Logo" />
                 <div className={styles.container}>
-                    <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
+                    <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={ig_2} alt="Logo" /></a>
                     <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
 
                 </div>
