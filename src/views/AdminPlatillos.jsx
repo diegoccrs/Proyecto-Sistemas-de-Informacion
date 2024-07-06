@@ -1,5 +1,5 @@
 import styles from './AdminPlatillos.module.css';
-import { collection, doc, updateDoc, deleteDoc, onSnapshot, getDocs, query,  } from 'firebase/firestore';
+import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
@@ -9,11 +9,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 
-function Platillos() {;
+function Platillos() {
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [categorias, setCategorias] = useState([]);
     const [platillos, setPlatillos] = useState([]); 
     const location = useLocation();
     const categoriaId = location.state?.categoriaId;
+    const [disponibleP, setDisponibleP] = useState(false);
     const [platillosCategoria, setPlatillosCategoria] = useState([]);
     const navigate = useNavigate();
 

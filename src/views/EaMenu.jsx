@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './PedidosActuales.module.css';
 import { firestoreDB } from '../firebase-config';
-import {  doc, setDoc, deleteDoc } from 'firebase/firestore';
-import { useState } from 'react';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 
 function PedidosActuales() {
