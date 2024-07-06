@@ -88,6 +88,7 @@ function Perfil() {
             scroll(0, 0);
             navigate("/perfil");
             location.reload();
+            console.log(nombreCompleto)
 
         } catch (error) {
             console.error("Error updating document: ", error);

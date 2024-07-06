@@ -174,6 +174,9 @@ function Acceder() {
 
     return (
         <div className={styles.pageContainer}>
+            {user ?
+            navigate("/")
+            :
             <div className={styles.boxContainer}>
                 <div className={styles.titleContainer}>
                     <h2>Registrarse</h2>
@@ -232,7 +235,7 @@ function Acceder() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 };
