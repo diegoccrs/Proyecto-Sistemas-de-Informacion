@@ -4,11 +4,11 @@ import { auth, fireStorage, firestoreDB } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import Pfp from "../img/profile-user.png"
 import styles from "./Perfil.module.css";
 
-import {getAdditionalUserInfo} from "firebase/auth";
-import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore"; // Import Firestore functions
-//import { db } from '../firebase';
+//import {getAdditionalUserInfo} from "firebase/auth";
+import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
 
 function Perfil() {
 
@@ -37,7 +37,12 @@ function Perfil() {
     };
 
     const uploadImage = async () => {
-        if(imUp == null) return;
+        if(imUp == null) {
+            scroll(0, 0);
+            navigate("/perfil");
+            location.reload();
+            return;
+        };
         const imgRef = ref(fireStorage, `profileImages/${localStorage.getItem("imageRef")}`);
 
         uploadBytes(imgRef, imUp).then(() => {
@@ -49,11 +54,7 @@ function Perfil() {
     };
 
     getImgRef();
-
-   /*
-    const [nombreCompleto, setNombreCompleto] = useState('');
-    const [facultad, setFacultad] = useState('');
-    const [telefono, setTelefono] = useState('');*/
+    
 
     let nombreCompleto = '';
     let facultad = '';
@@ -101,6 +102,10 @@ function Perfil() {
                 facultad: facultad,
                 telefono: telefono,
             });
+
+            localStorage.setItem("nombreCompleto", nombreCompleto);
+            localStorage.setItem("telefono", telefono);
+            localStorage.setItem("facultad", facultad);
 
             uploadImage();
 
@@ -150,7 +155,7 @@ function Perfil() {
                     
                     <div className={styles.perfil2}>
                         <h2>Foto de Perfil</h2>
-                        <img className={styles.perfil} src={userImage} alt="Logo" />
+                        <img className={styles.perfil} src={userImage || Pfp} alt="Logo" />
                         <input type="file" accept="image/*" onChange={(event) => {setImUp(event.target.files[0])}} />
                         <button onClick={() => {modificarClient()}}>Actualizar</button>
             

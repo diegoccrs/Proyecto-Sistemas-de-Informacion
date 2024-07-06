@@ -15,21 +15,24 @@ function Ayuda() {
             <div className={styles.formularioInfo}>
               <div className={styles.formulario1}>
                 <h3>Nombre</h3>
-                <input type="text" name="name"/>
+                <input type="text" placeholder='Nombre' name="name"/>
                 <h3>Apellido</h3>
-                <input type="text" name="lastname"/>
+                <input type="text" placeholder='Apellido' name="lastname"/>
               </div>
   
               <div className={styles.formulario2}>
                 <h3>Correo</h3>
-                <input type="text" name="email"/>
+                <input type="text" placeholder='Correo' name="email"/>
                 <h3>Teléfono</h3>
-                <input type="text" name="subject" />
+                <input type="text" placeholder='Teléfono' name="subject" />
               </div>
             </div>
-  
-            <h3>Cuéntanos tus dudas o inquietudes</h3>
-            <input className={styles.inputting} type="text" name="subject"/>
+
+            <div>
+              <h3>Cuéntanos tus dudas o inquietudes</h3>
+              <input className={styles.inputting} type="text" placeholder='Tengo una duda con...' name="subject"/>
+            </div>
+
 
             <input type="submit" value="Contáctanos" className={styles.button}/>
 

@@ -111,7 +111,7 @@ function Nosotros() {
                                 </Link>
                             </>
                             )}
-
+                            
                             {!isAdmin && (
                             <>
                                 <h2>Nombre Completo</h2>
@@ -144,14 +144,14 @@ function Nosotros() {
                                     
                                     }} />
 
-                                <Link className={styles['nav-link']} onClick={() => {scroll(0, 0)}} to="/">
-                                    <p>Regresar</p>
+                                <Link className={styles.buttonProf} onClick={() => {scroll(0, 0)}} to="/">
+                                    <h3>Regresar</h3>
                                 </Link>
-                                <Link className={styles['nav-link']} onClick={() => {scroll(0, 0)}} to="/perfil/editarperfil">
-                                    <p>Editar</p>
+                                <Link className={styles.buttonProf} onClick={() => {scroll(0, 0)}} to="/perfil/editarperfil">
+                                    <h3>Editar</h3>
                                 </Link>
-                                <Link className={styles['nav-link']} to="/" onClick={handleDeleteAndSignOut}>
-                                    <p>Eliminar</p>
+                                <Link className={styles.buttonProf} to="/" onClick={handleDeleteAndSignOut}>
+                                    <h3>Eliminar</h3>
                                 </Link>
 
                             </>

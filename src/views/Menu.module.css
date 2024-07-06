@@ -114,7 +114,7 @@
   
   z-index: 1;
   position: relative;
-  top: 42%;
+  top: 39%;
   right: 582%;
   
   color: var(--clr-white);
@@ -131,7 +131,7 @@
   
   z-index: 1;
   position: relative;
-  top: 42%;
+  top: 39%;
   right: 160%;
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
@@ -155,6 +155,7 @@
 
 .menut {
   font-family: font4;
+  color: white;
 }
 
 
@@ -265,6 +266,7 @@
   flex-wrap: wrap;
   gap: 1em;
   justify-content: center;
+  margin-top: 30px;
 
 }
 

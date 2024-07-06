@@ -22,7 +22,7 @@ function PedidosActuales() {
         nombre: platilloName,
         tipo: categoriaName,
         descripcion: comboDescripcion,
-        precio: comboPrecio,
+        precio: parseFloat(comboPrecio),
         disponible: true,
         imgRef: v4(),
       });

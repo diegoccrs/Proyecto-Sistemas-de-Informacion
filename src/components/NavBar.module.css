@@ -35,6 +35,8 @@
 }
 
 .header {
+
+    
     
     display: block;
     align-items: center;
@@ -144,10 +146,12 @@
   }
 
   .perfil{
-    width: 40px;
+    justify-content: center;
+    width: 2rem;
     border-radius: 50%;
-    padding: 0px;
-    margin: 0px;
+    padding: 0px; 
+    margin: 0;             
+    
   }
 
 
