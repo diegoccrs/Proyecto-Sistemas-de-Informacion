@@ -51,6 +51,13 @@ function PedidosActuales() {
 
         <input
             type="text"
+            value={platilloName}
+            onChange={(e) => setPlatilloName(e.target.value)}
+            placeholder="Enter Platillo Name"
+          />
+
+        <input
+            type="text"
             value={platilloDescription}
             onChange={(e) => setPlatilloDescription(e.target.value)}
             placeholder="Enter Platillo Description"

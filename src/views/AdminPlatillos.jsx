@@ -1,15 +1,4 @@
-import styles from './Platillos.module.css';
-
-//import c1 from '../img/View.png';
-//import local from '../img/iglogo.png';
-import iglogo from '../img/iglogo.png';
-import xlogo from '../img/xlogo.png';
-
-import { NavLink } from 'react-router-dom';
-import { routes } from "../constants/routes";
-
-import Map from '../img/Map.png';
-
+import styles from './AdminPlatillos.module.css';
 import { collection, doc, getDoc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, collectionGroup } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
@@ -64,16 +53,34 @@ function Platillos() {
         fetchPlatillos();
       }, []);
 
+    
+    
+
       const updateDisponibleP = async (categoriaId, platilloId) => {
         try {
           const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
           const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
-  
-          await updateDoc(doc(platillosCollectionRef, platilloId), {
-            disponible: !disponibleP
+      
+          const updatedPlatillos = platillos.map((platillo) => {
+            if (platillo.id === platilloId) {
+              const newDisponible = !platillo.data.disponible;
+              return {
+                ...platillo,
+                data: {
+                  ...platillo.data,
+                  disponible: newDisponible
+                }
+              };
+            }
+            return platillo;
           });
+      
+          await updateDoc(doc(platillosCollectionRef, platilloId), {
+            disponible: !platillos.find((platillo) => platillo.id === platilloId).data.disponible
+          });
+      
           console.log("Document successfully updated!");
-          setDisponibleP(!disponibleP); 
+          setPlatillos(updatedPlatillos);
         } catch (error) {
           console.error("Error updating document: ", error);
         }
@@ -82,7 +89,7 @@ function Platillos() {
       
       async function fetchPlatillosByCategoriaId(categoriaId) {
         const platillosData = await getPlatillosByCategoriaId(categoriaId);
-        setPlatillosCategoria(platillosData); // Cambio en esta línea
+        setPlatillosCategoria(platillosData); 
       }
 
       async function getPlatillosByCategoriaId(categoriaId) {
@@ -110,27 +117,28 @@ function Platillos() {
           
           await deleteDoc(platilloDocRef);
           console.log('Platillo successfully deleted!');
-          fetchPlatillosByCategoriaId(idCategoria);
+          fetchPlatillosByCategoriaId(idCategoria); // Actualizar platillos después de eliminar
         } catch (error) {
           console.error('Error deleting platillo: ', error);
         }
       }
+
+
       const renderPlatillos = () => {
-       
         return platillos.map((platillo) => (
-            <div key={platillo.id} className={styles.platillos_impar}>
-                <div className={styles.platillos_descripcion}>
-                <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
-                <p>{styles.description}{platillo.data.descripcion}</p>
-                <p>{platillo.data.precio}</p>
-                <button onClick={() => deletePlatillo(categoriaId, platillo.id)}>Eliminar</button>
-                <button onClick={() => updateDisponibleP(categoriaId, platillo.id)}>
-                    {disponibleP ? 'Apagar' : 'Encender'}
-                 </button>
-                </div>
-                <div></div>
-            
-        
+          <div key={platillo.id} className={styles.platillos_impar}>
+            <div className={styles.platillos_descripcion}>
+              <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
+              <p>{styles.description}{platillo.data.descripcion}</p>
+              <p>{platillo.data.precio}</p>
+              <button onClick={() => deletePlatillo(platillo.data.tipo, platillo.id)}>Eliminar</button>
+              <p>Disponible: {platillo.data.disponible ? 'Sí' : 'No'}</p>
+              
+              <button onClick={() => updateDisponibleP(platillo.data.tipo, platillo.id)}>
+                Actualizar Disponible
+                </button>
+            </div>
+            <div></div>
           </div>
         ));
       };
@@ -173,11 +181,8 @@ function Platillos() {
 
 
     return (
-        
         <div className={styles.pageContainer}>
-            
             <div className={styles.botonesMenu}>{renderCategorias2()}</div>
-            
             <div className={styles.botonesMenu}>
                     
                     <Link className={`${styles["nav-link"]} ${styles.botonMenu}`} to="/menuadmin/editarplatillo">Editar Platillo</Link>
@@ -185,33 +190,11 @@ function Platillos() {
                     <Link className={`${styles["nav-link"]} ${styles.botonMenu}`} to="/menuadmin/eaplatillo">Agregar o Eliminar Platillo</Link>
                 </div>
 
-            <div className={styles.categoria}>
-                
+            <div className={styles.categoria}>   
                 <h1 className={styles.titulo_categoria} > Editar Platillos</h1>
                 <div className={styles.platillos}>
-                    <div className={styles.catalogo}>{renderPlatillos()}</div>
-                    
-                </div>
-                    
-               
-               
-
-            </div>
-
-           
-                
-
-            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>
-                <div className={styles.containerContactos}>
-                    <h1>Llámanos</h1>
-                    <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>
-                    <h2> <a href=""></a> delipernil@gmail.com</h2>
-                    <h2> <a href="tel:04242285852">0424-2285852</a></h2>
-                    <div className={styles.redesSociales}>
-                        <a href="https://www.instagram.com/deliunimet/"><img className={styles.social} src={iglogo} alt="Logo" /></a>
-                        <a href="https://twitter.com/delipernil"><img className={styles.social} src={xlogo} alt="Logo" /></a>
-                    </div>
-                </div>
+                    <div className={styles.catalogo}>{renderPlatillos()}</div>    
+                </div>   
             </div>
         </div>
     );
