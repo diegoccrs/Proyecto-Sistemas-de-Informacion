@@ -162,6 +162,11 @@ justify-content: left;
   display: inline-block;
   margin: 20px;
   padding: 20px 40px;
+  
+}
+
+.paypalButton {
+  margin-left: 45px;
 }
 
 .contactos {
