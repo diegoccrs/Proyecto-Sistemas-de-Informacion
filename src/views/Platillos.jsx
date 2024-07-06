@@ -1,5 +1,6 @@
 import styles from './Platillos.module.css';
 
+import Map from '../img/Map.png';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
 
