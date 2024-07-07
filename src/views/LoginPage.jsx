@@ -177,7 +177,7 @@ function IniciarSesion() {
                         </button>
 
                     </div>
-                    <button className={loading? styles.buttonDisable : styles.button} onClick={login}>Iniciar sesión</button>
+                    <button className={loading? styles.buttonDisable : styles.button} onClick={login}>Iniciar Sesión</button>
                     <p className='errorSignin'>{error}</p>
                 </div>
                 
