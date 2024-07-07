@@ -73,6 +73,12 @@
   .pagcontainer{
     background-color: #2d0461;
     justify-content: center;
+    padding: 50px;
+
+  }
+
+  .comentarioContainer h1 {
+    color: var(--clr-darkpurple);
 
   }
 
@@ -82,7 +88,8 @@
     width: 40%;
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 60px;
+    
+
 
   }
 

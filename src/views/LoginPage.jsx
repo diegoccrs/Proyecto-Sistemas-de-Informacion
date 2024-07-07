@@ -166,7 +166,7 @@ function IniciarSesion() {
                 <input type="password" placeholder='Contraseña' onChange={(event) => {
                     setLogPassword(event.target.value)
                 }} />
-                
+
 
                 <div className={styles.center}>
                     <div className={styles.imageButtonsContainer}>
