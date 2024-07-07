@@ -40,8 +40,8 @@ function Cliente() {
         <h1>Email: {comentarios.id}</h1>
         <div className={styles.comentarioinfo}>
           <h2>Nombre: {comentarios.data.nombreCompleto}</h2>
-          <p> {comentarios.data.comentario }</p>
-        <h3>Telefono: {comentarios.data.telefono}</h3>
+          <h3>Cometario: " {comentarios.data.comentario } " </h3>
+        <h3>Teléfono: {comentarios.data.telefono}</h3>
         </div>
 
         

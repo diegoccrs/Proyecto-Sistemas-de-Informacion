@@ -5,6 +5,27 @@
   }
 
   @font-face {
+    font-family: font1;
+    src: url(Marvel-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: font2;
+    src: url(AlegreyaSansSC-Thin.ttf);
+  }
+  
+  @font-face {
+    font-family: font3;
+    src: url(AlegreyaSansSC-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: font4;
+    src: url(AlegreyaSansSC-Regular.ttf);
+  }
+  
+
+  @font-face {
     font-family: 'Marvel';
     src: url(../assets/Marvel-Bold.ttf);
   }
@@ -61,6 +82,7 @@
     width: 40%;
     border-radius: 8px;
     padding: 20px;
+    margin-bottom: 60px;
 
   }
 
@@ -72,8 +94,16 @@
     justify-content: center;
 
   }
+  
+
+  .comentarioinfo h3 {
+    font-family: font3 ;
+
+  }
+
 
   .comentarioinfo{
+  
     border: solid 5px #2d0461;
     border-radius: 8px;
     padding: 10px;
