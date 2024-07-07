@@ -13,11 +13,14 @@
 
 .categoriaContainer {
   background-color: white;
-  padding: 10px;
+  padding: 10px 20px;
   margin: 20px;
   border-radius: 20px;
+  max-width: 400px;
+}
 
- 
+.categoriaContainer p {
+  font-size: large;
 }
 
 .platilloContainer{
@@ -144,6 +147,7 @@ input:checked + .slider:before {
   justify-content: center;
   padding: 15px;
   font-family: font1;
+  font-size: large;
   }
 
   
@@ -154,14 +158,15 @@ input:checked + .slider:before {
   border-color: var(--clr-darkpurple);
 
   padding: 5px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 200px;
   }
 
   .combo{
-    align-items: center;
+  align-items: center;
   justify-content: center;
-    background-color: #24064b;
+  background-color: #24064b;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;

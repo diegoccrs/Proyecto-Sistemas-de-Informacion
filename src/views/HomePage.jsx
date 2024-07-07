@@ -109,7 +109,11 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <button className={styles.button}>Comprar</button>
+                                <Link className={styles["nav-link"]} to="/compra">
+                                    <button onClick={() => {
+                                        scroll(0, 0)
+                                    }} className={styles.button}>Comprar</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -124,7 +128,11 @@ function HomePage() {
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.colored}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
-                    <button className={styles.button}>Explorar Combos</button>
+                    <Link className={styles["nav-link"]} to="/menu">
+                        <button onClick={() => {
+                            scroll(0, 0)
+                        }} className={styles.button}>Explorar Combos</button>
+                    </Link>
                 </div>                
             </div>
 

@@ -21,7 +21,7 @@ function PedidosActuales() {
       await updateDoc(doc(platillosCollectionRef, platilloName), {
         descripcion: platilloDescription,
         nombre: platilloName,
-        precio: platilloPrice,
+        precio: parseFloat(platilloPrice),
         
       });
       console.log("Document successfully updated!");
