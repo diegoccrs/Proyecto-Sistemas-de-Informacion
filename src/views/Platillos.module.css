@@ -150,11 +150,16 @@
   border: var(--clr-lightpurple) 10px;
 }
 
+.platillos_impar img {
+  max-width: 200px;
+  min-width: 200px;
+  margin: 0px;
+}
+
 .platillos_descripcion{
   text-align: center;
   background-color: var(--clr-white);
   border-radius: 25px;
-  margin-left: 40px;
   padding: 40px;
   width:50%;
   height: fit-content;

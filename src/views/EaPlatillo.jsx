@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './PedidosActuales.module.css';
-import { firestoreDB } from '../firebase-config';
-import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where } from 'firebase/firestore';
+import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
+////////////////////////////////////////////////////////////
+import { fireStorage, firestoreDB } from '../firebase-config.js';
+import { collection, doc, setDoc, addDoc, updateDoc, deleteDoc, onSnapshot, getDocs, query, where, getDoc } from 'firebase/firestore';
+////////////////////////////////////////////////////////////
 import { useState, useEffect } from 'react';
 import { v4 } from 'uuid';
 
@@ -13,18 +16,54 @@ function PedidosActuales() {
   const [comboDescripcion, setPlatilloDecripcion] = useState('');
   const [comboPrecio, setPlatilloPrecio] = useState(0);
 
+////////////////////////////////////////////////////////////
+    const [imUp, setImUp] = useState(null);
+
+    const uploadImage = async () => {
+        if(imUp == null) {
+            scroll(0, 0);
+            navigate("/menuadmin");
+            location.reload();
+            return;
+        };
+        const imgRef = ref(fireStorage, `platillosImages/${Hash}`);
+
+        uploadBytes(imgRef, imUp).then(() => {
+            console.log('Image uploaded!')
+            scroll(0, 0);
+            navigate("/menuadmin");
+            location.reload();
+        });
+    };
+
+    let Hash = '';
+
+    const deleteImage = async (imageId) => {
+        try {
+            const imageRef = ref(fireStorage, `platillosImages/${imageId}`);
+
+            deleteObject(imageRef);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+////////////////////////////////////////////////////////////
+
   async function addPlatillo(categoriaId) {
     try {
       const categoriaDocRef = doc(firestoreDB, "Categoria", categoriaId);
       const platillosCollectionRef = collection(categoriaDocRef, "Platillos");
-  
+        
+      const tempHash = v4();
+      Hash = tempHash;
+
       await setDoc(doc(platillosCollectionRef, platilloName), {
         nombre: platilloName,
         tipo: categoriaName,
         descripcion: comboDescripcion,
         precio: parseFloat(comboPrecio),
         disponible: true,
-        imgRef: v4(),
+        imgRef: tempHash,
       });
   
       console.log("Platillo added to 'Platillos' subcollection with ID: ", platilloName);
@@ -43,19 +82,37 @@ async function addPlatilloHandler() {
     }
   }
 
+////////////////////////////////////////////////////////////
   async function deletePlatillo() {
     try {
       const categoriaDocRef = doc(firestoreDB, 'Categoria', categoriaName);
       const platilloDocRef = doc(collection(categoriaDocRef, 'Platillos'), platilloName);
-      
-      await deleteDoc(platilloDocRef);
-      console.log('Platillo successfully deleted!');
-      fetchPlatillosByCategoriaId(categoriaName);
+      try {
+          const docu = await getDoc(platilloDocRef);
+
+          const imgRef = docu.data().imgRef;
+          
+
+          
+          deleteImage(imgRef)
+      } catch (error) {
+        
+      }
+
+      await deleteDoc(platilloDocRef).then(
+        console.log('Platillo successfully deleted!')).then(
+        fetchPlatillosByCategoriaId(categoriaName)).then(() => {
+            scroll(0, 0);
+            navigate("/menuadmin");
+            location.reload();
+        })
+
     } catch (error) {
       console.error('Error deleting platillo: ', error);
     }
   
   }
+////////////////////////////////////////////////////////////
 
   async function fetchPlatillosByCategoriaId(categoriaId) {
     const platillosData = await getPlatillosByCategoriaId(categoriaId);
@@ -97,14 +154,14 @@ async function addPlatilloHandler() {
             type="text"
             value={categoriaName}
             onChange={(e) => setCategoriaName(e.target.value)}
-            placeholder="Enter Category Name"
+            placeholder="Nombre categoría"
           />
          
          <input
             type="text"
             value={platilloName}
             onChange={(e) => setPlatilloName(e.target.value)}
-            placeholder="Enter Platillo Name"
+            placeholder="Nombre platillo"
           />
 
 
@@ -113,18 +170,23 @@ async function addPlatilloHandler() {
             type="text"
             value={comboDescripcion}
             onChange={(e) => setPlatilloDecripcion(e.target.value)}
-            placeholder="Enter Combo Descripcion"
+            placeholder="Descripción platillo"
           />
 
         <input
             type="number"
             value={comboPrecio}
             onChange={(e) => setPlatilloPrecio(e.target.value)}
-            placeholder="Enter Combo Precio"
+            placeholder="Precio platillo"
           />
+        
+        <input type="file" accept="image/*" onChange={(event) => {setImUp(event.target.files[0])}} />
      
           
-          <button onClick={addPlatilloHandler}>Add Platillo</button>
+          <button onClick={async () => {
+                await addPlatilloHandler();
+                await uploadImage();
+            }}>Add Platillo</button>
           <button onClick={deletePlatillo}>Delete Platillo</button>
 
 

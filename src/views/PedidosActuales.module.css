@@ -1,44 +1,70 @@
 .pedidosActualesContainer {
-    background-color: #2d0461;
-    padding: 20px;
-  }
+  background-color: #2d0461;
+  padding: 20px;
+}
 
-  @font-face {
-    font-family: 'Marvel';
-    src: url(../assets/Marvel-Bold.ttf);
-  }
+@font-face {
+  font-family: 'Marvel';
+  src: url(../assets/Marvel-Bold.ttf);
+}
 
-  .pedidosActualesTitle {
-    font-family: 'Marvel', sans-serif;
-    text-align: center;
-    color: white;
-    font-size: 6.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .pedidoCard {
-    background-color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-  
-  .pedidoNumber {
-    background-color: #2d0461;
-    color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .pedidoInfo {
-    display: flex;
-    flex-direction: column;
-  }
+.pedidosActualesTitle {
+  font-family: 'Marvel', sans-serif;
+  text-align: center;
+  color: white;
+  font-size: 6.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.pedidoCard {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.pedidoNumber {
+  background-color: #2d0461;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.pedidoInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.menu{
+  align-items: center;
+  justify-content: center;
+  background-color: #16052b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: 100%;
+}
+
+.pedidoContainer {
+background-color: white;
+padding: 10px;
+margin: 20px;
+border: solid 7px #5500c4;
+border-radius: 20px;
+
+
+}
+
+.pag{
+background-color: #16052b;
+
+}

@@ -6,9 +6,9 @@ import xlogo from '../img/xlogo.png';
 
 import { collection, doc, getDoc,updateDoc, onSnapshot, getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
-import { firestoreDB } from '../firebase-config';
+import { ref, getDownloadURL } from 'firebase/storage';
+import { auth, fireStorage, firestoreDB } from '../firebase-config.js'
 import { Link, useParams } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -68,7 +68,7 @@ function Platillos() {
               <div className={styles.platillos_descripcion}>
                 <h1 className={styles.titulo_platillo}>{platillo.data.nombre}</h1>
                 <p>{styles.description}{platillo.data.descripcion}</p>
-                <p>{platillo.data.precio}</p>
+                <p>$ {platillo.data.precio}</p>
                 
                 <button
                   onClick={user ?

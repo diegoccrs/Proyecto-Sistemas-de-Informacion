@@ -22,7 +22,7 @@ function PedidosActuales() {
         await setDoc(docRef, {
             combo: comboName,
             descripcion: comboDescripcion, 
-            precio: comboPrecio,
+            precio: parseFloat(comboPrecio),
             disponible: true,
             imgRef: v4(),
         });
@@ -52,7 +52,7 @@ async function deleteCombo() {
       <>
 
       <div className={styles.pedidosActualesContainer}>
-      <h2 className={styles.pedidosActualesTitle}>Eliminar o Agregar Menu</h2>
+      <h2 className={styles.pedidosActualesTitle}>Eliminar o Agregar Combo</h2>
       </div>
 
       
@@ -60,22 +60,23 @@ async function deleteCombo() {
             type="text"
             value={comboName}
             onChange={(e) => setComboName(e.target.value)}
-            placeholder="Enter Combo Name"
+            placeholder="Nombre combo"
           />
 
         <input
             type="text"
             value={comboDescripcion}
             onChange={(e) => setComboDecripcion(e.target.value)}
-            placeholder="Enter Combo Descripcion"
+            placeholder="Descripción combo"
           />
 
           <input
             type="number"
             value={comboPrecio}
             onChange={(e) => setComboPrecio(e.target.value)}
-            placeholder="Enter Combo Precio"
+            placeholder="Precio combo"
           />
+          
           <button onClick={addCombo}>Add Combo</button>
           <button onClick={deleteCombo}>Delete Combo</button>
           

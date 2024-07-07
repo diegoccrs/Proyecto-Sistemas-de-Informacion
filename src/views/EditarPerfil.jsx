@@ -1,6 +1,6 @@
 import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
-import { auth, fireStorage, firestoreDB } from '../firebase-config.js'
+import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { auth, fireStorage, firestoreDB } from '../firebase-config.js';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
@@ -128,12 +128,12 @@ function Perfil() {
                 <div className={styles.perfil}>
                     <div className={styles.perfil1}>
                         <h2>Nombre Completo</h2>
-                        <input type='text' onChange={(event) => {
+                        <input type='text' placeholder='Nombre completo' onChange={(event) => {
                             setNombreCompleto(event.target.value)
                         }} />
 
                         <h2>Teléfono</h2>
-                        <input type='text' onChange={(event) => {
+                        <input type='text' placeholder='Teléfono' onChange={(event) => {
                             setTelefono(event.target.value)
                         }} />
 
@@ -141,6 +141,7 @@ function Perfil() {
                         <input
                             type="text"
                             list="facultadOptions"
+                            placeholder='Facultad'
                             onChange={(event) => {
                                 setFacultad(event.target.value);
                             }} />
