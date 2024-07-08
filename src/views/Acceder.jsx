@@ -219,8 +219,13 @@ function Acceder() {
                             setRegPassword(event.target.value)
                         }} />
 
+                                        
+                                            
+                        
+
                         <div className={styles.center}>
                             <h3>¿Ya estás registrado?</h3>
+                                <Link className={styles["nav-link"]} to="/loginrecup"><h5> ¿Olvidaste tu Contraseña?</h5></Link> 
 
                             <Link to="/login" className={styles.loginButton}>Iniciar Sesión</Link>
                             <div className={styles.imageButtonsContainer}>
