@@ -18,7 +18,7 @@ import Historial from "./views/Historial.jsx";
 import PedidosActuales from "./views/PedidosActuales.jsx";
 import Cliente from "./views/Cliente.jsx";
 import Pedido from "./views/Pedido.jsx";
-
+//import LoginRecup from "./views/LoginRecup.jsx";
 //import PedidoBefore from "./views/PedidoBefore.jsx";
 
 
