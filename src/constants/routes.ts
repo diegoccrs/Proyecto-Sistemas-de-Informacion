@@ -69,10 +69,10 @@ export const routes = [
     {
         path: "/compra",
         name: "Compra",
-    },
+    },    
     {
-        path: "/beforecompra",
-        name: "BeforeCompra",
+        path: "/loginrecup",
+        name: "LoginRecup",
     },
 ] as const
 

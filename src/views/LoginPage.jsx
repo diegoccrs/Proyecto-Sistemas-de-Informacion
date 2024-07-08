@@ -167,6 +167,13 @@ function IniciarSesion() {
                     setLogPassword(event.target.value)
                 }} />
 
+                <div>
+                    <h5>¿Olvidaste tu Contraseña?</h5>
+                    
+
+
+                </div>
+
 
                 <div className={styles.center}>
                     <div className={styles.imageButtonsContainer}>
@@ -185,6 +192,6 @@ function IniciarSesion() {
             </div>
         </div>
     );
-};
+}
 
 export default IniciarSesion
