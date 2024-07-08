@@ -35,7 +35,7 @@
   color: #24064b;
   font-size: 2rem;
   text-align: center;
-  margin: 20px;
+  margin: 0px;
 }
 
 .app{
@@ -47,9 +47,10 @@ font-size: 2rem;
 
 .slogant{
 color: white;
-font-size: 2rem;
+font-size: 3rem;
 text-align: center;
-margin: 20px;
+margin: 0px;
+padding: 20px;
 
 
 }
