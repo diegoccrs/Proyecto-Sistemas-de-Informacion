@@ -26,37 +26,37 @@ function HomePage() {
     const combos = [
         {
         title: 'Combo 1',
-        description: 'Descripción del combo 1',
+        description: 'Cheeseburger con papas y refresco   $7.35',
         image: view,
         },
         {
     
         title: 'Combo 2',
-        description: 'Descripción del combo 2',
+        description: 'Baconburger con papas y refresco   $8.10',
         image: view,
         },
         {
       
         title: 'Combo 3',
-        description: 'Descripción del combo 3',
+        description: 'Hamburguesa doble carne con papas y refresco   $8.45',
         image: view,
         },
         {
         
         title: 'Combo 4',
-        description: 'Descripción del combo 4',
+        description: 'Cachapa de queso con refresco   $9.30',
         image: view,
         },
         {
        
         title: 'Combo 5',
-        description: 'Descripción del combo 5',
+        description: 'Sandwich de pernil con papas y refresco   $6.20',
         image: view,
         },
         {
         
         title: 'Combo 6',
-        description: 'Descripción del combo 6',
+        description: 'Sandwich de queso con refresco   $5.45',
         image: view,
         },
     ];
@@ -109,7 +109,11 @@ function HomePage() {
                             <div className={styles.comboDescription}>
                                 <h2 className={styles.comboTitle}>{combo.title}</h2>
                                 <p>{combo.description}</p>
-                                <button className={styles.button}>Comprar</button>
+                                <Link className={styles["nav-link"]} to="/compra">
+                                    <button onClick={() => {
+                                        scroll(0, 0)
+                                    }} className={styles.button}>Comprar</button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -124,7 +128,11 @@ function HomePage() {
                 <div className={styles.descripcioncombos}>
                     <h1 className={styles.colored}>COMBOS</h1>
                     <h2>Deléitate con nuestros irresistibles combos a los <div className={styles.colored}>mejores precios,</div> donde cada bocado es un viaje de sabores.</h2>
-                    <button className={styles.button}>Explorar Combos</button>
+                    <Link className={styles["nav-link"]} to="/menu">
+                        <button onClick={() => {
+                            scroll(0, 0)
+                        }} className={styles.button}>Explorar Combos</button>
+                    </Link>
                 </div>                
             </div>
 

@@ -222,7 +222,7 @@ function Acceder() {
                         <div className={styles.center}>
                             <h3>¿Ya estás registrado?</h3>
 
-                            <Link to="/login" className={styles.loginButton}>Iniciar Sesion</Link>
+                            <Link to="/login" className={styles.loginButton}>Iniciar Sesión</Link>
                             <div className={styles.imageButtonsContainer}>
                                 <button className={styles.imageButton} onClick={() => loginPopupGoogle()}>
                                     <img src={googlelogo} alt="google" />

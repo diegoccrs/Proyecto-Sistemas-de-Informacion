@@ -35,6 +35,8 @@
 }
 
 .header {
+
+    
     
     display: block;
     align-items: center;
@@ -106,9 +108,14 @@
     font-size: 1.3rem;
     font-family: font1;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: 0.1s ease-in-out;
     padding: 3px;
 
+  }
+
+  .nav-link-access:hover {
+    color: #711ae1;
+    background-color: #e4abfe;
   }
   
   .nav-link:hover {
@@ -144,10 +151,12 @@
   }
 
   .perfil{
-    width: 40px;
+    justify-content: center;
+    width: 2rem;
     border-radius: 50%;
-    padding: 0px;
-    margin: 0px;
+    padding: 0px; 
+    margin: 0;             
+    
   }
 
 

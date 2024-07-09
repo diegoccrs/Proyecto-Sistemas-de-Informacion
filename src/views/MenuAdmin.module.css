@@ -1,101 +1,178 @@
 .menu{
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(#FFAE50 10%, #24064b 90%);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#FFAE50 10%, #24064b 90%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  padding: 30px;
+
 }
 
 .categoriaContainer {
-    background-color: white;
-    padding: 10px;
-    margin: 20px;
-    border-radius: 20px;
+  background-color: white;
+  padding: 10px 20px;
+  margin: 20px;
+  border-radius: 20px;
+  max-width: 400px;
+}
 
-   
-  }
+.categoriaContainer p {
+  font-size: large;
+}
 
 .platilloContainer{
-    background-color: white;
-    padding: 10px;
-    margin: 20px;
-    border-radius: 20px;
+  background-color: white;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 20px;
 
 
+}
+.slogan{
+  color: #24064b;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0px;
+}
+
+.app{
+background-color: #24064b;
+text-align: center;
+color: white;
+font-size: 2rem;
+}
+
+.slogant{
+color: white;
+font-size: 3rem;
+text-align: center;
+margin: 0px;
+padding: 20px;
+
+
+}
+
+.titulocombo{
+color: black;
+}
+
+.description{
+color: black;
 }
 
 
 
 .toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.on-label,
+.off-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.on-label {
+  left: 4px;
+  background-color: #2196F3;
+}
+
+.off-label {
+  right: 4px;
+  background-color: #ccc;
+}
+
+.botonesMenu{
+  color: var(--clr-white);
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-start;
+  gap: 1em;
+  justify-content: center;
+  padding: 15px;
+  font-family: font1;
+  font-size: large;
   }
+
   
-  .toggle-switch input {
-    display: none;
+.botonMenu{
+  background-color: var(--clr-lightpurple);
+  border-radius: 5px;
+  border: solid 5px;
+  border-color: var(--clr-darkpurple);
+
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 200px;
   }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    border-radius: 34px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  .on-label,
-  .off-label {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 4px;
-  }
-  
-  .on-label {
-    left: 4px;
-    background-color: #2196F3;
-  }
-  
-  .off-label {
-    right: 4px;
-    background-color: #ccc;
+
+  .combo{
+  align-items: center;
+  justify-content: center;
+  background-color: #24064b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-top-left-radius: 80px;
+  border-top-right-radius: 80px;
+  padding: 30px;
+
   }

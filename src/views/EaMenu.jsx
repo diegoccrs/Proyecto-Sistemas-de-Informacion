@@ -56,7 +56,7 @@ async function deleteCategoria() {
             type="text"
             value={categoriaName}
             onChange={(e) => setCategoriaName(e.target.value)}
-            placeholder="Enter Category Name"
+            placeholder="Nombre categoría"
           />
           <button onClick={addCategoria}>Add Categoria</button>
           <button onClick={deleteCategoria}>Delete Categoria</button>

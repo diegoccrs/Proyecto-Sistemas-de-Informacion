@@ -7,7 +7,7 @@ import PayPal from '../components/PayPal.jsx';
 import styles from './Pedido.module.css';
 import iglogo from '../img/iglogo.png';
 import xlogo from '../img/xlogo.png';
-import fondo from '../img/fondo1.png';
+import Map from '../img/Map.png';
 
 
 import { Link } from "react-router-dom";
@@ -66,7 +66,8 @@ function ResumenPedido() {
                         <h2>Para poder comprar y disfrutar de los productos que ofrecemos</h2>
                         <h2>Regístrate o Inicia Sesión</h2>
 
-                        <Link to="/acceder" className={styles.paypalButton}>Registrarse</Link>
+                        <Link to="/acceder" className={`${styles["nav-link"]} ${styles.purpleLink}`}>Registrarse</Link>
+                        <Link to="/login" className={styles.loginButton}>Iniciar Sesion</Link>
                     </>
                     : 
                     <>
@@ -111,7 +112,7 @@ function ResumenPedido() {
             </div>
 
 
-            <div className={styles.contactos} style={{ backgroundImage: `url(${fondo})` }}>                            
+            <div className={styles.contactos} style={{ backgroundImage: `url(${Map})` }}>                            
                 <div className={styles.containerContactos}>
                     <h1>Llámanos</h1>
                     <h2> <a href="https://maps.app.goo.gl/GTvtRsQVo77zFdKL8"> Caracas 1073, Miranda, Universidad Metropolitana de Caracas</a></h2>

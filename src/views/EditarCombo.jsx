@@ -21,7 +21,7 @@ function PedidosActuales() {
       await updateDoc(categoriaDocRef, {
         combo: comboNewName,
         descripcion: comboDescripcion,
-        precio: comboPrecio,
+        precio: parseFloat(comboPrecio),
       });
       console.log("Document successfully updated!");
       

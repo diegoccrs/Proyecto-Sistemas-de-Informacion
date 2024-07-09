@@ -3,7 +3,8 @@ import { collection, doc, updateDoc, deleteDoc, onSnapshot, getDocs, query,  } f
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import { useState, useEffect } from 'react';
-import { firestoreDB } from '../firebase-config';
+import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
+import { fireStorage, firestoreDB } from '../firebase-config.js';
 import { Link, useParams } from "react-router-dom";
 import { useLocation, useNavigate } from 'react-router-dom';
 

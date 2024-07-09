@@ -66,7 +66,14 @@
     padding: 5px;
     padding-left: 50px;
     padding-right: 50px;
-  }
+
+    transition: 0.15s ease-in;
+}
+
+.botonMenu:hover{
+  color: #6f00ff;
+  background-color: #ffa237;
+}
 
 .tituloboton h1 {
   text-align: center;
@@ -114,7 +121,7 @@
   
   z-index: 1;
   position: relative;
-  top: 42%;
+  top: 39%;
   right: 582%;
   
   color: var(--clr-white);
@@ -131,7 +138,7 @@
   
   z-index: 1;
   position: relative;
-  top: 42%;
+  top: 39%;
   right: 160%;
   color: var(--clr-white);
   background-color: var(--clr-darkpurple);
@@ -155,6 +162,7 @@
 
 .menut {
   font-family: font4;
+  color: white;
 }
 
 
@@ -181,7 +189,7 @@
   height: auto;
   display: block;
   object-fit: cover;
-  justify-self:left;
+  justify-self: left;
   
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -265,17 +273,24 @@
   flex-wrap: wrap;
   gap: 1em;
   justify-content: center;
+  margin-top: 30px;
 
 }
 
-.cartamenu{
+.cartamenu {
   justify-content: center;
 
   width: 50;
-  /*height: fit-content;*/
   background-color: var(--clr-white);
   border-radius: 10px;
-  padding: 3px;
+  padding: 10px 15px;
+  transition: 0.1s ease-in-out;
+ 
+}
+
+.cartamenu:hover {
+  color: #b575dd;
+  background-color: #fbf2ff;
  
 }
 

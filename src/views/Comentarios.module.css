@@ -33,6 +33,11 @@
   src: url(../assets/AlegreyaSansSC-Regular.ttf);
 }
 
+
+.slogan h1 {
+  font-family: font2;
+}
+
 .slogan {
   height: 125px;
   background-color: var(--clr-dark);
@@ -40,18 +45,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
+  font-family: font4;  
   color: var(--clr-white);
 }
 
-.slogant{
-  font-family: font1;
-
-}
 
 
 
 .formularioayuda {
+  text-align: center;
   font-family: font3;
   display: flex;
   flex-direction: column;
@@ -62,7 +64,6 @@
 .formularioInfo {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 5em;
 }
 
@@ -96,6 +97,7 @@
 }
 
 .containerContactos{
+  text-align: center;
   background-color: var(--clr-white);
   border-radius: 25px;
   margin-left: 40px;
@@ -116,11 +118,3 @@
   height: 30px;
   
 }
-
-.anonimo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-

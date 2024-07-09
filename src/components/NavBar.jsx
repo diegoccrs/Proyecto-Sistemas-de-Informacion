@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { ref, getDownloadURL } from 'firebase/storage';
 import { auth, fireStorage } from '../firebase-config.js'
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";

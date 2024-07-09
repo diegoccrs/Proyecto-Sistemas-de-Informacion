@@ -72,37 +72,37 @@ function Menu() {
     const combos = [
         {
         title: 'Combo 1',
-        description: 'Descripción del combo 1',
+        description: 'Cheeseburger con papas y refresco   $7.35',
         image: view,
         },
         {
     
         title: 'Combo 2',
-        description: 'Descripción del combo 2',
+        description: 'Baconburger con papas y refresco   $8.10',
         image: view,
         },
         {
         
         title: 'Combo 3',
-        description: 'Descripción del combo 3',
+        description: 'Hamburguesa doble carne con papas y refresco   $8.45',
         image: view,
         },
         {
         
         title: 'Combo 4',
-        description: 'Descripción del combo 4',
+        description: 'Cachapa de queso con refresco   $9.30',
         image: view,
         },
         {
         
         title: 'Combo 5',
-        description: 'Descripción del combo 5',
+        description: 'Sandwich de pernil con papas y refresco   $6.20',
         image: view,
         },
         {
         
         title: 'Combo 6',
-        description: 'Descripción del combo 6',
+        description: 'Sandwich de queso con refresco   $5.45',
         image: view,
         },
     ];
@@ -145,9 +145,11 @@ function Menu() {
                                     <div className={styles.comboDescription}>
                                         <h2 className={styles.comboTitle}>{combo.title}</h2>
                                         <p>{combo.description}</p>
-                                        <Link  to="/menu">
-                                            <button className={styles.button}>Comprar</button>
-                                        </Link> 
+                                        <Link className={styles["nav-link"]} to="/compra">
+                                            <button onClick={() => {
+                                                scroll(0, 0)
+                                            }} className={styles.button}>Comprar</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>                    
