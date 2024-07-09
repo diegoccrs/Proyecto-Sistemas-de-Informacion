@@ -57,7 +57,7 @@
     border-radius: 5px;
   }
   
-  button {
+  .button {
     background-color: rgb(248, 176, 248);
     color: rgb(83, 8, 118);
     padding: 10px 20px;
@@ -65,6 +65,12 @@
     margin: 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.15s ease-in-out;
+  }
+
+  .button:hover {
+    color: #b218ff;
+    background-color: #e3a6ff;
   }
 
   .buttonDisable {

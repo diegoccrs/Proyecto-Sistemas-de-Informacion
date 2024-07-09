@@ -108,9 +108,14 @@
     font-size: 1.3rem;
     font-family: font1;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: 0.1s ease-in-out;
     padding: 3px;
 
+  }
+
+  .nav-link-access:hover {
+    color: #711ae1;
+    background-color: #e4abfe;
   }
   
   .nav-link:hover {

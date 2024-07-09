@@ -136,8 +136,13 @@
   font-size: 1.25rem;
   font-family: font1;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: 0.1s ease-in;
   padding: 10px;  
+}
+
+.button:hover{
+  color: #711ae1;
+  background-color: #e4abfe;
 }
 
 .combos{  
@@ -225,6 +230,7 @@
 
 .comboDescription {
   text-align: center;
+  margin-top: 100px;
 }
 
 .comboDescription{

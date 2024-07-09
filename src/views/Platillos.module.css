@@ -64,7 +64,13 @@
   padding: 5px;
   padding-left: 50px;
   padding-right: 50px;
+  transition: 0.15s ease-in-out;
   }
+
+.botonMenu:hover {
+  color: #741be8;
+  background-color: #e3a6ff;
+}
 
   .botonMenuC {
     background-color: var(--clr-lightpurple);
@@ -123,8 +129,13 @@
   font-size: 1.25rem;
   font-family: font1;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: 0.1s ease-in;
   padding: 10px;  
+}
+
+.button:hover{
+  color: #711ae1;
+  background-color: #e4abfe;
 }
 
 .Description_platillo {

@@ -92,3 +92,12 @@ font-size: 12px;
   margin: 5px;
   padding: 5px;
 }
+
+input[type="file"]::file-selector-button {
+  background-color: #c28ee3;
+  color: rgb(87, 46, 104);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

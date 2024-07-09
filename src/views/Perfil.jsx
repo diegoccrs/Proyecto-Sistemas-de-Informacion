@@ -8,11 +8,10 @@ import {
     getAuth,
     deleteUser
 } from 'firebase/auth'
-import { auth, fireStorage } from '../firebase-config.js'
+import { doc, deleteDoc } from 'firebase/firestore';
+import { auth, fireStorage, firestoreDB } from '../firebase-config.js'
+import { ref, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
 import styles from './Perfil.module.css';
-//import styles from './Perfil.module.css';
-//import googlelogo from '../img/google.png';
-//import facebooklogo from '../img/facebook.png';
 
 
 function Nosotros() {
@@ -48,13 +47,27 @@ function Nosotros() {
     const navigate = useNavigate();
     
 
+
+    const deleteImage = async () => {
+        try {
+            const imageRef = ref(fireStorage, `profileImages/${localStorage.getItem("imageRef")}`);
+
+            deleteObject(imageRef);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     async function handleDeleteAndSignOut() {
         try {
           await deleteClient();
+          await deleteImage();
     
           const authInstance = getAuth();
           await deleteUser(authInstance.currentUser).then(() => {
             console.log('User deleted');
+            scroll(0, 0);
+            location.reload();
           }).catch((error) => {
             console.error("Error deleting user: ", error);
           });
@@ -66,8 +79,8 @@ function Nosotros() {
 
     async function deleteClient() {
         try {
-          const id = auth.currentUser.uid;
-          const docRef = doc(db, "Usuario", id);
+          const id = localStorage.getItem("email");
+          const docRef = doc(firestoreDB, "Usuario", id);
     
           await deleteDoc(docRef);
         } catch (error) {
